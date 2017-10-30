@@ -1,0 +1,7 @@
+README FILE FOR lmomco/inst/legacy
+
+This directory contains defunct versions of functions used in earlier versions of lmomco. They are retained here for historical reasons and to provide a means to verify algorithmic changes should they be needed.
+
+cdfpe3.original.R
+        This function is an old implementation of cdfpe3.R and represents
+        original port of cdfpe3 from Hosking's 1996 FORTRAN library.

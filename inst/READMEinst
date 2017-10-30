@@ -1,0 +1,7 @@
+READMEinst
+
+The doc directory contains a mixture of still incomplete additions to the documentation of the lmomco package.
+
+The directory legacy contains legacy code snippets or functions that the author felt like something needed to be done with.
+
+The directory testdata contains data files that will not directly load via the data() mechanism of R during a package installation and then execution. These data files require addition tweaking to the arguments of the read.table function and the like. These data files are used for additional flexibility in using lmomco in an educational environment.

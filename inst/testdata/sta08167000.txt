@@ -1,0 +1,140 @@
+#
+# U.S. Geological Survey
+# National Water Information System
+# Retrieved: 2008-01-29 10:34:12 EST
+#
+# ---------------------WARNING---------------------
+# The data you have obtained from this automated
+# U.S. Geological Survey database have not received
+# Director's approval and as such are provisional
+# and subject to revision.  The data are released
+# on the condition that neither the USGS nor the
+# United States Government may be held liable for
+# any damages resulting from its use.
+#
+# More data may be available offline.
+# #For more information on these data,  contact  Texas NWISWeb Data Inquiries.
+
+# This file contains the annual peak streamflow data.
+#
+# This information includes the following fields:
+#
+#  agency_cd     Agency Code
+#  site_no       USGS station number
+#  peak_dt       format YYYY-MM-DD
+#  peak_va       Annual peak streamflow value in cfs
+#  peak_cd       Peak Discharge-Qualification codes (see explanation below)
+#  gage_ht       Gage height for the associated peak streamflow in feet
+#  gage_ht_cd    Gage height qualification codes
+#  year_last_pk  Peak streamflow reported is the highest since this year
+#  ag_dt         Date of maximum gage-height for water year (if not concurrent with peak)
+#  ag_tm         Time of maximum gage-height for water year (if not concurrent with peak
+#  ag_gage_ht    maximum Gage height for water year in feet (if not concurrent with peak
+#  ag_gage_ht_cd maximum Gage height code
+#
+# Sites in this file include:
+#  USGS 08167000 Guadalupe Rv at Comfort, TX
+#
+# Peak Streamflow-Qualification Codes(peak_cd):
+#   1 ... Discharge is a Maximum Daily Average
+#   2 ... Discharge is an Estimate
+#   3 ... Discharge affected by Dam Failure
+#   4 ... Discharge less than indicated value,
+#           which is Minimum Recordable Discharge at this site
+#   5 ... Discharge affected to unknown degree by
+#           Regulation or Diversion
+#   6 ... Discharge affected by Regulation or Diversion
+#   7 ... Discharge is an Historic Peak
+#   8 ... Discharge actually greater than indicated value
+#   9 ... Discharge due to Snowmelt, Hurricane,
+#           Ice-Jam or Debris Dam breakup
+#   A ... Year of occurrence is unknown or not exact
+#   B ... Month or Day of occurrence is unknown or not exact
+#   C ... All or part of the record affected by Urbanization,
+#            Mining, Agricultural changes, Channelization, or other
+#   D ... Base Discharge changed during this year
+#   E ... Only Annual Maximum Peak available for this year
+#
+# Gage height qualification codes(gage_ht_cd,ag_gage_ht_cd):
+#   1 ... Gage height affected by backwater
+#   2 ... Gage height not the maximum for the year
+#   3 ... Gage height at different site and(or) datum
+#   4 ... Gage height below minimum recordable elevation
+#   5 ... Gage height is an estimate
+#   6 ... Gage datum changed during this year
+#
+#
+agency_cd	site_no	peak_dt	peak_tm	peak_va	peak_cd	gage_ht	gage_ht_cd	year_last_pk	ag_dt	ag_tm	ag_gage_ht	ag_gage_ht_cd	modify_dt
+#5s	15s	10d	6s	8s	27s	8s	13s	4s	10d	6s	8s	11s	19d
+USGS	08167000	1869-07			7	42.30							2008-01-28 00:49:17
+USGS	08167000	1900-07-16			7	38.40							2008-01-28 00:49:17
+USGS	08167000	1932-07-01			7	38.40							2008-01-28 00:49:17
+USGS	08167000	1939		3820									2008-01-28 00:49:17
+USGS	08167000	1939-10-10		7520		14.79							2008-01-28 00:49:17
+USGS	08167000	1941-04-27		15400		19.14							2008-01-28 00:49:17
+USGS	08167000	1942-04-25		7010		14.50							2008-01-28 00:49:17
+USGS	08167000	1942-10-15		3870		12.10							2008-01-28 00:49:17
+USGS	08167000	1944-05-26		74200		29.40							2008-01-28 00:49:17
+USGS	08167000	1945-09-29		15000		18.50							2008-01-28 00:49:17
+USGS	08167000	1946-05-06		6400		14.04							2008-01-28 00:49:17
+USGS	08167000	1947-06-24		14400		18.20							2008-01-28 00:49:17
+USGS	08167000	1948-07-12		1390		7.04							2008-01-28 00:49:17
+USGS	08167000	1949-02-26		12100		17.23							2008-01-28 00:49:17
+USGS	08167000	1950-04-02		2630		9.89							2008-01-28 00:49:17
+USGS	08167000	1951-05-15		7970		14.98							2008-01-28 00:49:17
+USGS	08167000	1952-09-10		45600		25.44							2008-01-28 00:49:17
+USGS	08167000	1952-12-19		4430		12.51							2008-01-28 00:49:17
+USGS	08167000	1954-04-30		7830		14.90							2008-01-28 00:49:17
+USGS	08167000	1955-07-17		9030		15.58							2008-01-28 00:49:17
+USGS	08167000	1956-08-20		2450		10.03							2008-01-28 00:49:17
+USGS	08167000	1957-04-24		40500		24.59							2008-01-28 00:49:17
+USGS	08167000	1957-10-15		24200		21.68							2008-01-28 00:49:17
+USGS	08167000	1959-06-26		22500		21.19							2008-01-28 00:49:17
+USGS	08167000	1959-10-04		111000		33.15							2008-01-28 00:49:17
+USGS	08167000	1960-10-16		15000		18.54							2008-01-28 00:49:17
+USGS	08167000	1962-05-29		1220		6.92							2008-01-28 00:49:17
+USGS	08167000	1962-10-28		1880		8.70							2008-01-28 00:49:17
+USGS	08167000	1964-09-22		12800		17.50							2008-01-28 00:49:17
+USGS	08167000	1965-06-23		13900		18.05							2008-01-28 00:49:17
+USGS	08167000	1966-08-13		37000		23.99							2008-01-28 00:49:17
+USGS	08167000	1967-09-15		2620		10.43							2008-01-28 00:49:17
+USGS	08167000	1968-01-20		8960		15.56							2008-01-28 00:49:17
+USGS	08167000	1969-09-17		2690		10.44							2008-01-28 00:49:17
+USGS	08167000	1969-10-05		22500		21.20							2008-01-28 00:49:17
+USGS	08167000	1971-08-13		60700		27.67							2008-01-28 00:49:17
+USGS	08167000	1971-10-19		7460		14.64							2008-01-28 00:49:17
+USGS	08167000	1973-07-15		8180		15.10							2008-01-28 00:49:17
+USGS	08167000	1973-10-13		31300		22.06							2008-01-28 00:49:17
+USGS	08167000	1974-10-31		14400		17.41							2008-01-28 00:49:17
+USGS	08167000	1976-07-16		2230		8.78							2008-01-28 00:49:17
+USGS	08167000	1977-04-15		54400		25.93							2008-01-28 00:49:17
+USGS	08167000	1978-08-02		240000		40.90							2008-01-28 00:49:17
+USGS	08167000	1979-06-01		8610		14.89							2008-01-28 00:49:17
+USGS	08167000	1980-09-07		12000		12.72							2008-01-28 00:49:17
+USGS	08167000	1981-06-16		24200		16.92							2008-01-28 00:49:17
+USGS	08167000	1981-10-13		36400		20.38							2008-01-28 00:49:17
+USGS	08167000	1983-06-15		1260		3.80							2008-01-28 00:49:17
+USGS	08167000	1984-05-20		243		1.58							2008-01-28 00:49:17
+USGS	08167000	1984-12-31		43900		19.88							2008-01-28 00:49:17
+USGS	08167000	1985-10-19		73700		27.50							2008-01-28 00:49:17
+USGS	08167000	1987-07-17		130000		31.50							2008-01-28 00:49:17
+USGS	08167000	1988-07-11		54000		23.26							2008-01-28 00:49:17
+USGS	08167000	1989-01-28		1020		5.27							2008-01-28 00:49:17
+USGS	08167000	1990-05-03		27900		18.59							2008-01-28 00:49:17
+USGS	08167000	1991-09-15		10000		13.28							2008-01-28 00:49:17
+USGS	08167000	1991-12-20		54700		23.37							2008-01-28 00:49:17
+USGS	08167000	1992-11-19		1880		6.91							2008-01-28 00:49:17
+USGS	08167000	1994-05-14		18900		16.33							2008-01-28 00:49:17
+USGS	08167000	1994-12-09		3110		8.47							2008-01-28 00:49:17
+USGS	08167000	1996-09-15		1740		6.70							2008-01-28 00:49:17
+USGS	08167000	1997-06-22		73700		25.91							2008-01-28 00:49:17
+USGS	08167000	1998-08-23		20000		16.64							2008-01-28 00:49:17
+USGS	08167000	1999-06-21		2580		7.35							2008-01-28 00:49:17
+USGS	08167000	2000-09-03		417		3.09							2008-01-28 00:49:17
+USGS	08167000	2000-10-23		59400		24.08							2008-01-28 00:49:17
+USGS	08167000	2002-07-04		128000		31.38							2008-01-28 00:49:17
+USGS	08167000	2002-10-07		3950		9.00							2008-01-28 00:49:17
+USGS	08167000	2004-06-09		55600		23.54							2008-01-28 00:49:17
+USGS	08167000	2004-10-23	0545	16400		15.63							2008-01-28 00:49:17
+USGS	08167000	2006-03-20	1000	559		3.29							2008-01-28 00:49:17
+USGS	08167000	2007-08-17	0015	62800		24.54							2008-01-28 00:49:17

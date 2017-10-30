@@ -1,0 +1,117 @@
+ERRATA FOR FIRST EDITION OF THE FOLLOWING BOOK
+
+    Asquith, W.H., 2011, Distributional analysis with L-moment statistics
+       using the R environment for statistical computing: Createspace
+       Independent Publishing Platform, 2nd printing, ISBN 978--146350841--8.
+       http://www.amazon.com/dp/1463508417
+
+========== START ERRATA FOR SECOND PRINTING (post February 2013) ======
+
+p.xi: Preface incorrectly says that only one figure not generated from
+           code in the book. Actually, seven figures (12.13--12.18) and
+           fix the page reference to the actual dissertation (p. 379--380,
+           382--383).
+  (This is not an errata per se, but represents slight clarification.)
+
+p.18: Added ahead of Section 2.1.1: 'Lastly, prodigious treatment of 
+           distributional analysis is found in Karian and Dudewicz (2011).'
+           and included Karian and Dudewicz (2011) in the References.
+           (11/7/2013)
+  (This is not an errata per se, I was not aware of the book until 2013.)
+
+p.48: Added a 'Stedinger et al. (1993)' citation to closing paragraph of
+           the equations for the median. (11/7/2013)
+  (This is not an errata per se, but represents a slight enhancement.)
+
+p.93: Added a 'Viglione (2010)' citation and minor restructuring of the
+           two paragraphs following the eq. for \tau_r = \lambda_r/\lambda_2, 
+           and included Viglione (2010) in the References. (11/7/2013)
+  (This is not an errata per se, I was not aware of the paper until 2013.)
+
+p.179-80: Added some expanded notes and another equation concerning
+           relation between tau2 and the shape parameter if the bounds
+           are zero.
+
+p.179: A "tau_3 > 0" note for log-Normal3 is needed as in "for x > 0 and
+           tau_3 > 0" just before eq. 8.37 is displayed. Then, a new final
+           sentence for that paragraph (after "sigma_log > 0"), should be
+           added (7/23/2013):
+     "The reflection rule (see p. 27) could be used for tau_3 < 0 when log-
+      Normal3 application is used in lieu of the Generalized Normal."
+  (This is not an errata per se, but represents slight clarification.)
+
+p.203: "remarkablely" should be written "remarkably"
+
+p.204: Character "k" in eqs. 9.1 and 9.2 should be a "\kappa".
+
+p.209: Added 'Karian and Dudewicz (2011)' citation among others for the
+           GLD. (11/7/2013)
+  (This is not an errata per se, I was not aware of the book until 2013.)
+
+p.316: Incorrect opening quotation mark used for the opening quote by
+           Gubareva and Gartsman (2010). Trivial fix.
+
+p.320: Incorrect author-name order in Balakrishnan and Chen (1995), it
+           should be Chen and Balakrishnan (1995) but the order on the
+           citation inside the text (see PWM chapter) is correct.
+
+==========  END ERRATA FOR SECOND PRINTING (post February 2013) =======
+
+
+==========  START ERRATA FOR FIRST PRINTING (post June 2011) ==========
+
+backcover: fixed misspelling of Wakeby in late June 2011
+
+p.3: accesssible --> accessible (09/03/2011)
+
+p.49: Added the incomplete beta function for contrast against the complete
+               beta function in eq. 3.10. Sorry, but equation numbers in 
+               the remainder of the chapter change by one. Minor changes
+               in indexing beta function related topics. (2/18/2013)
+
+p.95: eq. 6.39 shows L-moments in terms of E[X_{1:k}], added another eq.
+               for L-moments in terms of E[X_{k:k}] so that the definitions
+               by the two types of extrema are shown in parallel. Sorry,
+               but equation numbers in remainder of the chapter change by
+               one. Minor tweaks of p.95 to reflect "minima or maxima" terms.
+
+From Jason Giovannettone (05/22/2012)
+p.140: eq.7.25  drop the '/\beta' from (x/\beta)^{\alpha-1} verified correct
+                against seven other references
+
+From Jason Giovannettone (05/21/2012)
+p.146: eq.7.43  Y = -(x - \xi)/\alpha
+p.149: eq.7.57  f(x) = \alpha^{-1}exp(Y){exp[-exp(Y)]}
+# WHA---confirm lmomco is ok
+
+p.153: scale --> shape1 and scale --> shape2 above eq. 7.68
+p.153: (\tau_3 - \hat\tau_3)^2 --> (\lambda_1 - \hat\lambda_1)^2
+p.153: (\tau_4 - \hat\tau_4)^2 --> (\lambda_2 - \hat\lambda_2)^2
+# WHA---confirm lmomco is ok. Bad cut/paste from GLD during writing.
+
+p.154: spare ; deleted in 7-29
+
+p.160: Added "modified" in front of two Modified Bessels (9/21/2012)
+           Bold faced modified and adjusted indexing.
+
+p.190: removed ()'s around "a-1" in eq. 8.84 and 8.85 (5/22/2012)
+
+p.191: lower case "beta" instead of "Beta" in three locations (9/18/2013)
+
+p.204: plural "constraints" needed above eq. 9.1 (04/12/2012)
+
+p.209: 1/f(x) = a[k(F^(k-1) PLUS h(1-F)^(h-1)] (09/04/2011)
+# WHA---confirm lmomco is ok and Karian and Dudewicz (2000, p.9)
+
+p.209: dissertation --> monograph
+
+p.326: order statistcs --> order statistics (in Sillitto reference)
+
+p.330: fixed a small copula-related indexing order in late June 2011
+
+p.332: incomplete Beta function ratio --> incomplete beta function ratio
+            (9/18/2013)
+
+==========  END OF ERRATA FOR FIRST PRINTING (post June 2011) ==========
+
+
