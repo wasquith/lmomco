@@ -2,7 +2,7 @@
 NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
 
-Version 2.2.8--
+Version 2.2.8--11/01/2017 (Illumination Album in Probe)
 1. Enhancement: lmomkap() and parkap() overhauled into R idioms. Minor errors in 
       old lmomkap() fixed and parkap() breaks entirely from Hosking's Newton-
       Raphson approach to one based on simultaneous 2-d optimization by optim()
@@ -31,7 +31,7 @@ Version 2.2.8--
       function mixing when one has two data objects from the x2xlo() function.
       This has been on the drawing board since version 1.7.3 (January 28, 2013).
       *** Experimental and subject to overhaul. ***
-6. Changes to documentation and come code cleaning in par2cdf2.R/Rd, par2qua2.R/Rd,
+6. Changes to documentation and code cleaning in par2cdf2.R/Rd, par2qua2.R/Rd,
       f2flo.Rd, flo2f.Rd, and x2xlo.Rd.
 7. Added: xlo=NULL argument to f2flo() and flo2f() as optional means to get
       the probability level of the threshold into the logic.
