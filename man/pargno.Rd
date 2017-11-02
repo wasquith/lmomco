@@ -33,6 +33,10 @@ Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approa
 \examples{
 lmr <- lmoms(rnorm(20))
 pargno(lmr)
+
+\dontrun{
+x <- c(2.4, 2.7, 2.3, 2.5, 2.2, 62.4, 3.8, 3.1)
+gno <- pargno(lmoms(x)) # triggers warning: Hosking's limit is Tau3=+-0.95 }
 }
 \keyword{distribution (parameters)}
 \keyword{Distribution: Generalized Normal}
