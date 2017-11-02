@@ -2,6 +2,10 @@
 NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
 
+Version 2.2.9--11/02/2017
+1. Added high L-skew example to pargno.Rd as clarification on Issue 4 in 2.2.8.
+
+
 Version 2.2.8--11/01/2017 (Illumination Album in Probe)
 1. Enhancement: lmomkap() and parkap() overhauled into R idioms. Minor errors in 
       old lmomkap() fixed and parkap() breaks entirely from Hosking's Newton-
