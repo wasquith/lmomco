@@ -22,10 +22,10 @@ function(lmom,checklmom=TRUE,...) {
        return()
     }
 
-    T3 <- lmom$ratios[3]
+    T3 <- lmom$ratios[3]; SGN <- sign(T3)
     if(abs(T3) > 0.95) {
       warning("L-skew is too large, truncating L-skew to 0.95")
-      T3 <- 0.95
+      T3 <- SGN*0.95
       #para[1] = 0
       #para[2] = -1
       #para[3] = 0
