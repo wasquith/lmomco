@@ -190,7 +190,7 @@ print(summary(Q100tru - Q100lmr)) # Method of L-moment   (mean = -0.00176)
 print(summary(Q100tru - Q100mps)) # Method of MPS        (mean = -0.02746)
 print(var(Q100tru - Q100lmr, na.rm=TRUE)) # Method of L-moments (0.009053)
 print(var(Q100tru - Q100mps, na.rm=TRUE)) # Method of MPS       (0.009880)
-# CONCLUSION: MPS is very competitive but still behind the mighty L-moments.
+# CONCLUSION: MPS is very competitive to the mighty L-moments.
 
 LMR <- data.frame(METHOD=rep("Method L-moments",        nsim), T3=T3lmr, T4=T4lmr)
 MPS <- data.frame(METHOD=rep("Maximum Product Spacing", nsim), T3=T3mps, T4=T4mps)
