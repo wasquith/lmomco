@@ -30,6 +30,7 @@ function(x, type, para.int=NULL, silent=TRUE, null.on.not.converge=TRUE,
      return(NULL)
   }
 
+  SM <- log(.Machine$double.xmin); LM <- log(.Machine$double.xmax)
   "afunc" <- function(para, x=NULL, ...) {
        #print(para)
        lmomco.para <- vec2par(pretransf(para), type=type, paracheck=TRUE)
@@ -37,8 +38,10 @@ function(x, type, para.int=NULL, silent=TRUE, null.on.not.converge=TRUE,
        #print(lmomco.para$para)
        pdf <- par2pdf(x,lmomco.para) # pull into local scope, in case of later
        # interception of problems
+       #FF <- nonexceeds(sig6=TRUE); plot(FF, qlmomco(FF, lmomco.para), type="l")
+       pdf <- log(pdf); pdf[pdf == -Inf] <- SM; pdf[pdf == +Inf] <- LM
        # The negative is to accommodate the minimization setup of optim()
-       L <- -sum(log(pdf), na.rm=TRUE) # lmomco should fill NAs with zeros by
+       L <- -sum(pdf, na.rm=TRUE) # lmomco should fill NAs with zeros by
        # global package design assumptions but just incase some leaked through na.rm=T
        if(! silent) message(" L=",L)
        return(L)
