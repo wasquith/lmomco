@@ -7,6 +7,11 @@ Version 2.3.1--
       data value.) The Examples section expanded with a demonstration using the
       generalized lambda distribution that converges slowly on a dataset in part
       because of zero densities manifesting during the optimization.
+2. Buggish Fix: mle2par.Rd needed a change to the Examples for the generalized
+      gamma (three parameter and not two) was not working and change was
+      required in order to work an mimicks that in mps2par.Rd (see Issue 3).
+3. BUG FIX: mle2par() and mps2par() were not properly distinguishing between a
+      para.int of either a list (say from lmom2par or a vector of parameters).
 
 
 Version 2.2.9--11/08/2017
