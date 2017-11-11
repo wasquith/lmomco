@@ -95,7 +95,7 @@ function(x, type, para.int=NULL, ties=c("bernstein", "rounding", "density"),
         warning("could not estimate initial parameters via L-moments")
         return(NULL)
      }
-  } else if(is.vector(para.int)) {
+  } else if(! is.list(para.int) & is.vector(para.int)) {
      para.int <- vec2par(para.int, type=type)
      if(is.null(para.int)) {
         warning("initial parameters given by vector are not valid for initial parameters, ",
