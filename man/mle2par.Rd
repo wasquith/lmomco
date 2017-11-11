@@ -82,7 +82,10 @@ plot( MLE, MPS, xlab="SKEWNESS BY MLE", ylab="SKEWNESS BY MPS")#}
 # Demonstration of parameter transformation and retransformation
 set.seed(9209) # same seed used under mps2par() in parallel example
 x <- rlmomco(500, vec2par(c(1,1,3), type="gam")) # 3-p Generalized Gamma
-mle2par(x, type="gam", para.int=NULL, silent=FALSE, p=3, # p triggers 3pGenGamma
+guess <- lmr2par(x, type="gam", p=3) # By providing a 3-p guess the 3-p
+# Generalized Gamma will be triggered internally. There are problems passing
+# "p" argument to optim() if that function is to pick up the ... argument.
+mle2par(x, type="gam", para.int=guess, silent=FALSE,
            ptransf=  function(t) { c(log(t[1]), log(t[2]), t[3])},
            pretransf=function(t) { c(exp(t[1]), exp(t[2]), t[3])})$para
 # Reports:       mu     sigma        nu   for some simulated data.
