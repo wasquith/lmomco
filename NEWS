@@ -12,6 +12,10 @@ Version 2.3.1--
       required in order to work an mimicks that in mps2par.Rd (see Issue 3).
 3. BUG FIX: mle2par() and mps2par() were not properly distinguishing between a
       para.int of either a list (say from lmom2par) or a vector of parameters.
+4. Added x2pars() that converts data in x into three parameter sets for a
+      given distribution by L-moments, MLE, and MPS.
+5. Added pars2x() that converts probability into three quantile estimates from
+      the ensemble of parameter estimates returned by x2pars().
 
 
 Version 2.2.9--11/08/2017
