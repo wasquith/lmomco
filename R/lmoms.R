@@ -1,5 +1,5 @@
 "lmoms" <-
-function(x, nmom=5, no.stop=FALSE) {
+function(x, nmom=5, no.stop=FALSE, vecit=FALSE) {
   n <- length(x)
 
   if(nmom > n) {
@@ -14,5 +14,17 @@ function(x, nmom=5, no.stop=FALSE) {
 
   z <- TLmoms(x,nmom=nmom)
   z$source <- "lmoms"
+  if(! vecit) return(z)
+  if(nmom == 1) {
+     z <- z$lambdas[1]
+  } else if(nmom == 2) {
+     z <- c(z$lambdas[1], z$lambdas[2])
+  } else {
+     z <- c(z$lambdas[1], z$lambdas[2], z$ratios[3:nmom])
+  }
+  attr(z, which="trim")     <- NULL
+  attr(z, which="rightrim") <- NULL
+  attr(z, which="leftrim")  <- NULL
+  attr(z, which="source")   <- "lmoms"
   return(z)
 }

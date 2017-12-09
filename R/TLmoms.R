@@ -1,5 +1,5 @@
 "TLmoms" <-
-function(x, nmom=5, trim=NULL, leftrim=NULL, rightrim=NULL) {
+function(x, nmom=5, trim=NULL, leftrim=NULL, rightrim=NULL, vecit=FALSE) {
   if(nmom < 1) {
     warning("Number of L-moments is less than 1")
     return()
@@ -46,5 +46,17 @@ function(x, nmom=5, trim=NULL, leftrim=NULL, rightrim=NULL) {
   z <- list(lambdas = L, ratios = R,
             trim=trim, leftrim=leftrim,
             rightrim=rightrim, source="TLmoms")
+  if(! vecit) return(z)
+  if(nmom == 1) {
+     z <- z$lambdas[1]
+  } else if(nmom == 2) {
+     z <- c(z$lambdas[1], z$lambdas[2])
+  } else {
+     z <- c(z$lambdas[1], z$lambdas[2], z$ratios[3:nmom])
+  }
+  attr(z, which="trim")     <- trim
+  attr(z, which="rightrim") <- rightrim
+  attr(z, which="leftrim")  <- leftrim
+  attr(z, which="source")   <- source
   return(z)
 }

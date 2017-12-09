@@ -5,12 +5,13 @@
 Compute the sample L-moments. The mathematical expression for sample L-moment computation is shown under \code{\link{TLmoms}}. The formula jointly handles sample L-moment computation and sample TL-moment (Elamir and Seheult, 2003) computation. A description of the most common L-moments is provided under \code{\link{lmom.ub}}.
 }
 \usage{
-lmoms(x, nmom=5, no.stop=FALSE)
+lmoms(x, nmom=5, no.stop=FALSE, vecit=FALSE)
 }
 \arguments{
   \item{x}{A vector of data values.}
   \item{nmom}{The number of moments to compute. Default is 5.}
   \item{no.stop}{A logical to return \code{NULL} instead of issuing a \code{stop()} if \code{nmom} is greater than the sample size or if all the values are equal. This is a very late change (decade+) to the foundational function in the package. Auxiliary coding to above this function to avoid the internal \code{stop()} became non-ignorable in large data mining exercises. It was a design mistake to have the \code{stop()} and not a \code{warning()} instead.}
+  \item{vecit}{A logical to return the first two \eqn{\lambda_i \in 1,2} and then the \eqn{\tau_i \in 3,\cdots} where the length of the returned vector is controlled by the \code{nmom} argument. This argument will store the trims (see \code{\link{TLmoms}}) as \code{NULL} used (see the \bold{Example} that follows).}
 }
 \value{
   An \R \code{list} is returned.
@@ -37,8 +38,10 @@ distributions using linear combinations of order statistics: Journal of the Roya
 }
 \author{ W.H. Asquith}
 
-\seealso{\code{\link{lmom.ub}}, \code{\link{TLmoms}}, \code{\link{lmorph}}, \code{\link{lmoms.bernstein}}}
+\seealso{\code{\link{lmom.ub}}, \code{\link{TLmoms}}, \code{\link{lmorph}}, \code{\link{lmoms.bernstein}}, \code{\link{vec2lmom}}}
 \examples{
 lmoms(rnorm(30),nmom=4)
+
+vec2lmom(lmoms(rexp(30), nmom=3, vecit=TRUE)) # re-vector
 }
 \keyword{L-moment (sample)}

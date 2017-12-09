@@ -16,6 +16,9 @@ Version 2.3.1--
       given distribution by L-moments, MLE, and MPS.
 5. Added pars2x() that converts probability into three quantile estimates from
       the ensemble of parameter estimates returned by x2pars().
+6. Added the vecit argument to lmoms() and TLmoms() to convert the list of the
+      L-moments, which is venerable in this package, to a vector such as
+      vec2lmom() can digest. Credit S.C. Worland
 
 
 Version 2.2.9--11/08/2017
