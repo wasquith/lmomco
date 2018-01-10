@@ -3,7 +3,8 @@ function(lmom, checklmom=TRUE,
          method=c("A", "DG", "ADG"),
          sqrt.t3t4=TRUE, eps=1e-4,
          checkbounds=TRUE, kapapproved=TRUE,
-         A.guess=NULL, K.guess=NULL, H.guess=NULL,...) {
+         snap.tau4=FALSE, nudge.tau4=0,
+         A.guess=NULL, K.guess=NULL, H.guess=NULL, ...) {
 
     method <- match.arg(method)
 
@@ -18,8 +19,7 @@ function(lmom, checklmom=TRUE,
 
     para <- vector(mode="numeric", length=4)
     names(para) <- c("xi","alpha","kappa","h")
-    para <- c(NA, NA, NA, NA);
-
+    para <- c(NA, NA, NA, NA)
 
     z <- list(type   = 'aep4',    para   = para,
               source = "paraep4", method = method,
@@ -55,7 +55,11 @@ function(lmom, checklmom=TRUE,
                           co[4]*a^4 + co[5]*a^5 + co[6]*a^6 + co[7]*a^7
 
        if(T4 < T4.lowerbounds) {
-          if(kapapproved) {
+          if(snap.tau4) {
+             T4o <- T4
+             T4 <- T4.lowerbounds + abs(nudge.tau4) # only permit upwards
+             z$message <- paste0("Tau4 snapped up to lower bounds of Tau3-Tau4: ", T4o, " ---> ",T4)
+          } else if(kapapproved) {
              z <- parkap(lmom)
              z$ifailkap  <- z$ifail
              z$ifailtextkap <- z$ifailtext
@@ -93,13 +97,13 @@ function(lmom, checklmom=TRUE,
     if(method != "A") {
       opt <- NULL
         "fn" <- function(ps, ...) {
-             para <- list(para=c(0,ps), type="aep4")
+             para <- list(para=c(0,exp(ps)), type="aep4")
              slmr <- lmomaep4(para, paracheck=FALSE)
              return(log(1 + (L2 - slmr$lambdas[2])^2
                           + (L3 - slmr$lambdas[3])^2
                           + (L4 - slmr$lambdas[4])^2))
         }
-        try( opt <- optim(c(A.guess,K.guess,H.guess), fn), silent=TRUE)
+        try( opt <- optim(log(c(A.guess,K.guess,H.guess)), fn), silent=TRUE)
           if(is.null(opt) | length(opt$par) == 0) {
             L234$ifail_L234 <- 1
             L234$optim.converg_L234 <- NA
@@ -115,7 +119,7 @@ function(lmom, checklmom=TRUE,
                return(z)
             }
           } else {
-            para[2:4] <- opt$par
+            para[2:4] <- exp(opt$par)
             A <- para[2]
             K <- para[3]
             H <- para[4]
@@ -151,14 +155,14 @@ function(lmom, checklmom=TRUE,
       "sqrtit" <- function(x) { return(x) }
       if(sqrt.t3t4) "sqrtit" <- function(x) { return(sqrt(x)) }
 
-       opt <- NULL
+      opt <- NULL
       "fn" <- function(ps, ...) {
-           para <- list(para=c(0,1,ps), type="aep4")
+           para <- list(para=c(0,1,exp(ps)), type="aep4")
            #print(para)
            slmr <- lmomaep4(para, paracheck=FALSE, t3t4only=TRUE)
            return(sqrtit((T3 - slmr$T3)^2 + (T4 - slmr$T4)^2))
       }
-      try( opt <- optim(c(K.guess,H.guess), fn), silent=TRUE)
+      try( opt <- optim(log(c(K.guess,H.guess)), fn), silent=TRUE)
          if(is.null(opt) | length(opt$par) == 0) {
             T34$ifail_T34 <- 1
             T34$optim.converg_T34 <- NA
@@ -172,7 +176,9 @@ function(lmom, checklmom=TRUE,
             z$ifailtext <- message
             return(z)
          }
-         para[3:4] <- opt$par
+         para[3:4] <- exp(opt$par)
+         #if(para[3] <= 0) para[3] <- exp(-4) # Asquith (2014, figs. 1--2) plateaus: log(K) << -2
+         #if(para[4] <= 0) para[4] <- exp(-4) # Asquith (2014, figs. 1--2) plateaus: log(H) << -2
          K <- para[3]
          H <- para[4]
          KmK <- 1/K - K
