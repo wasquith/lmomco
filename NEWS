@@ -19,6 +19,11 @@ Version 2.3.1--
 6. Added the vecit argument to lmoms() and TLmoms() to convert the list of the
       L-moments, which is venerable in this package, to a vector such as
       vec2lmom() can digest. Credit S.C. Worland
+7. Added log-exp transformation of the parameters AEP4 estimation to ensure that
+      they remain in the positive domain.
+8. Added arguments snap.tau4 and nudge.tau4 to paraep4() to permit the forcing
+      of the AEP4 solution to the L-kurtosis of the lower boundary and example
+      added to paraep4.Rd.
 
 
 Version 2.2.9--11/08/2017
@@ -26,16 +31,16 @@ Version 2.2.9--11/08/2017
 
 
 Version 2.2.8--11/01/2017 (Illumination Album in Probe)
-1. Enhancement: lmomkap() and parkap() overhauled into R idioms. Minor errors in 
+1. Enhancement: lmomkap() and parkap() overhauled into R idioms. Minor errors in
       old lmomkap() fixed and parkap() breaks entirely from Hosking's Newton-
       Raphson approach to one based on simultaneous 2-d optimization by optim()
       using either a mean absolute deviation of Tau3 and Tau4 or square root of
       total squared divergences (Pythagorean distance). The preference appears
       to be Pythagorean distance from extensive simulations. The new algorithm
-      performs very similarly to Hosking's but achieves much greater symmetry 
-      about Tau3=0 in failures. Hosking's tends to fail in the far upper 
-      negative Tau3 and large Tau4 corner of L-moment ratio diagram. Both 
-      methods fail as Tau3 and Tau4 approach the theoretical lower bounds of 
+      performs very similarly to Hosking's but achieves much greater symmetry
+      about Tau3=0 in failures. Hosking's tends to fail in the far upper
+      negative Tau3 and large Tau4 corner of L-moment ratio diagram. Both
+      methods fail as Tau3 and Tau4 approach the theoretical lower bounds of
       Tau3 and Tau4.
 2. Enhancement: Most of the "par***()" functions now have the parameters
       explicitly initialized as NA. This should mitigate some very subtle
@@ -85,7 +90,7 @@ Version 2.2.6--03/06/2017: (Daffodil cluster)
       for mps2par() when NaN to zero. Some further testing indicates that
       during optimization that parameter space could get accessed for some
       distributions that cause NaN to be returned from the CDF. The zeros in
-      turn get hit with log(Delta), which the triggers Inf that is fed back to 
+      turn get hit with log(Delta), which the triggers Inf that is fed back to
       the simplex and a portion of inappropriate parameter space gets flagged
       during the optimization. This trap is anticipated to enhance the robust-
       ness of the MPS algorithm.
@@ -98,7 +103,7 @@ Version 2.2.6--03/06/2017: (Daffodil cluster)
       algorithm providing LN3 support. These non-NA leak through to the
       conditionals on the parameter values. Rearrangement of tests made so that
       if standard deviation is zero, which is representative of the leak, then
-      immediate return of FALSE is made. Also added a finiteness check on LAM1 
+      immediate return of FALSE is made. Also added a finiteness check on LAM1
       and LAM2. Berry Boessenkool provided discovery of a cascade of errors
       when extremely high L-skew was fed to parln3().
 6. Enhancement: removed extra check on L-moment validity in parln3.R by calling
@@ -110,7 +115,7 @@ Version 2.2.6--03/06/2017: (Daffodil cluster)
       About 20 functions involved, so about 40 lines of code removed.
       Berry Boessenkool provided this suggestion.
 8. BUG FIX: Infinite L-moments could leak through are.lmom.valid() as testing
-      TRUE. For example, the sample L-moments of logarithms of data having a 
+      TRUE. For example, the sample L-moments of logarithms of data having a
       zero. This should have been fixed years ago for even the author would add
       elaborate checking in applications. This feature should have long had its
       own implementation. Thanks to Brian Breaker for pushing the issue.
@@ -123,7 +128,7 @@ Version 2.2.6--03/06/2017: (Daffodil cluster)
 Version 2.2.5--September 9, 2016: ("PG that Turtle Biscuit" Release)
 1. PERFORMANCE FIX: pdfpe3() a certain combination of SIGMA and GAMMA
       parameters could leak through and cause later div0, for which a passage
-      to Normality should be triggered. This caused intensive study of 
+      to Normality should be triggered. This caused intensive study of
       performance for small variation and near zero skew. Gutted the function
       and using dgamma() and parallel logic to cdfpe3().
 2. BUG FIX: lmompe3() had a misspecified variable accessing the 2nd parameter
@@ -139,16 +144,16 @@ Version 2.2.5--September 9, 2016: ("PG that Turtle Biscuit" Release)
       plotting-position formula.
 5. Added the "null.on.not.converge" argument to mle2par() and mps2par().
 6. Added the 3-parameter Generalized Gamma to *gam() functions using the special
-      parameterization of the 3-p GG in the gamlss package. Though a gamlss 
+      parameterization of the 3-p GG in the gamlss package. Though a gamlss
       dependency is not foreseen, cross applications are now possible.
-7. Text adjustment to pdfpe3.Rd and addition of two examples related to 
+7. Text adjustment to pdfpe3.Rd and addition of two examples related to
       interaction with the PearsonDS package support for Pearson Type III.
 8. Added arguments "alt.other.lab" and "npp.as.aep" to add.lmomco.axis() to
       support the inversion of axis drawing from nonexceedance probability to
       exceedance probability.
 9. Euler's constant standardization in lmomrevgum(), mps2par(), pargum(),
       and parrevgum() to the DiGamma: "print(-digamma(1), digits=15)"
-10. Added "ptransf" and "pretransf" arguments to mle2par() and mps2par() to 
+10. Added "ptransf" and "pretransf" arguments to mle2par() and mps2par() to
       support parameter transformation and retransformation if a user needs to
       impose parameter constraints to assist the optimizer.
 11. Added "no.stop" argument to lmoms().
@@ -929,14 +934,14 @@ Version 1.2.1---November 20, 2010
      SNR in the literature. Also, if nu=0 for the Rice, then behind-the-scenes
      generation of Rayleigh parameters with xi=0 is made and the Rayleigh
      distribution functions are used. If SNR > 24 for the Rice, then behind-the-
-     scenes generation of Normal parameters is made and the Normal distribution 
+     scenes generation of Normal parameters is made and the Normal distribution
      functions used. This SNR threshold was determined by careful evaluation of
      the LCV, Tau3, Tau4, SNR, and G used in RiceTable generation in the file
      inst/doc/SysDataBuilder.R. The evaluation looks and numerical problems such
-     as Tau3 and Tau4 breakdown as Normal distribution is approached and 
+     as Tau3 and Tau4 breakdown as Normal distribution is approached and
      filtering for sub Rayleigh solutions. Finally, if SNR > 52 for the Rice,
      then the use of the Laguerre polynomial for variance estimation to feed to
-     the Normal is bypassed and the SNR used in place of sqrt(pi/2) * 
+     the Normal is bypassed and the SNR used in place of sqrt(pi/2) *
      LaguerreHalf(-SNR^2/2) because:
         sqrt(pi/2)*LaguerreHalf(-53^2/2) \approx 52 == 52.00962
         sqrt(pi/2)*LaguerreHalf(-53^2/2) \approx 53 == 53.00943
