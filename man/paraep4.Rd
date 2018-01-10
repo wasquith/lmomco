@@ -19,21 +19,24 @@ The initial guesses for the \eqn{\kappa} and \eqn{h} parameters derives from a h
 and
 \deqn{h \mapsto \{-3 \le \log(h) \le 3, \Delta\log(h)=0.05\}\mbox{.}}
 
-The function will not return parameters if the following lower bounds of \eqn{\tau_4} are not met: \cr \eqn{\tau_4 \ge 0.77555(|\tau_3|) - 3.3355(|\tau_3|)^2 + 14.196(|\tau_3|)^3 - 29.909(|\tau_3|)^4 + 37.214(|\tau_3|)^5 - 24.741(|\tau_3|)^6 + 6.7998(|\tau_3|)^7}. For this polynomial, the residual standard error is RSE = 0.0003125 and the maximum absolute error for \eqn{\tau_3{:}[0,1] < 0.0015}. The actual coefficients in \code{\link{paraep4}} have additional significant figures.
+The function will not return parameters if the following lower (estimated) bounds of \eqn{\tau_4} are not met: \cr \eqn{\tau_4 \ge 0.77555(|\tau_3|) - 3.3355(|\tau_3|)^2 + 14.196(|\tau_3|)^3 - 29.909(|\tau_3|)^4 + 37.214(|\tau_3|)^5 - 24.741(|\tau_3|)^6 + 6.7998(|\tau_3|)^7}. For this polynomial, the residual standard error is RSE = 0.0003125 and the maximum absolute error for \eqn{\tau_3{:}[0,1] < 0.0015}. The actual coefficients in \code{\link{paraep4}} have additional significant figures. However, the argument \code{snap.tau4}, if set, will set \eqn{\tau_4} equal to the prediction from the polynomial. This estimate of \eqn{\tau_4} should be close enough numerically to the boundary because the optimization is made using a log-transformation to ensure that \eqn{\alpha}, \eqn{\kappa}, and \eqn{h} remain in the positive domain---though the argument \code{nudge.tau4} is provided to offset \eqn{\tau_4} upward just incase of optimization problems.
 }
 \usage{
 paraep4(lmom, checklmom=TRUE, method=c("A", "DG", "ADG"),
         sqrt.t3t4=TRUE, eps=1e-4, checkbounds=TRUE, kapapproved=TRUE,
+        snap.tau4=FALSE, nudge.tau4=0,
         A.guess=NULL, K.guess=NULL, H.guess=NULL, ...)
 }
 \arguments{
   \item{lmom}{An L-moment object created by \code{\link{lmoms}} or \code{\link{vec2lmom}}.}
   \item{checklmom}{Should the L-moments be checked for validity using the \code{\link{are.lmom.valid}} function. Normally this should be left as the default and it is very unlikely that the L-moments will not be viable (particularly in the \eqn{\tau_4} and \eqn{\tau_3} inequality). However, for some circumstances or large simulation exercises then one might want to bypass this check.}
-  \item{method}{Which method for parameter estimation should be used. The \dQuote{A} or \dQuote{DG} methods. The \dQuote{ADG} method will run both methods and retains the salient optimization results of each but the official parameters in \code{para} are those from the \dQuote{A} method. Lastly, all minimization is based on the \code{optim} function using the Nelder-Mead method and default arguments.}
+  \item{method}{Which method for parameter estimation should be used. The \dQuote{A} or \dQuote{DG} methods. The \dQuote{ADG} method will run both methods and retains the salient optimization results of each but the official parameters in \code{para} are those from the \dQuote{A} method. Lastly, all minimization is based on the \code{optim} function using the Nelder--Mead method and default arguments.}
   \item{sqrt.t3t4}{If true and the method is \dQuote{A}, then the square root of the sum of square errors in \eqn{\tau_3} and \eqn{\tau_4} are used instead of sum of square differences alone.}
  \item{eps}{A small term or threshold for which the square root of the sum of square errors in \eqn{\tau_3} and \eqn{\tau_4} is compared to to judge \dQuote{good enough} for the alogrithm to set the \code{ifail} on return in addition to convergence flags coming from the \code{optim} function. Note that \code{eps} is only used if the \dQuote{A} or \dQuote{ADG} methods are triggered because the other method uses the scale parameter which in reality could be quite large relative to the other two shape parameters, and a reasonable default for such a secondary error threshold check would be ambiguous.}
   \item{checkbounds}{Should the lower bounds of \eqn{\tau_4} be verified and if sample \eqn{\hat\tau_3} and \eqn{\hat\tau_4} are outside of these bounds, then \code{NA} are returned for the solutions.}
   \item{kapapproved}{Should the Kappa distribution be fit by \code{\link{parkap}} if \eqn{\hat\tau_4} is below the lower bounds of \eqn{\tau_4}? This fitting is only possible if \code{checkbounds} is true. The Kappa and AEP4 overlap partially. The AEP4 extends \eqn{\tau_4} above Generalized Logistic and Kappa extends \eqn{\tau_4} below the lower bounds of \eqn{\tau_4} for AEP4 and extends all the way to the theoretical limits as used within \code{\link{are.lmom.valid}}.}
+  \item{snap.tau4}{A logical to \dQuote{snap} the \eqn{\tau_4} upwards to the lower boundary if the given \eqn{\tau_4} is lower than the boundary described in the polynomial.}
+  \item{nudge.tau4}{An offset to the snapping of \eqn{\tau_4} intended to move \eqn{\tau_4} just above the lower bounds in case of optimization problems. (The absolute value of the nudge is made internally to ensure only upward movement.)}
   \item{A.guess}{A user specified guess of the \eqn{\alpha} parameter to provide to the optimization of any of the methods. This argument just superceeds the simple initial guess of \eqn{\alpha = 1}.}
   \item{K.guess}{A user specified guess of the \eqn{\kappa} parameter to supercede that derived from the \env{.lmomcohash$AEPkh2lmrTable} in file \file{sysdata.rda}.}
   \item{H.guess}{A user specified guess of the \eqn{h} parameter to supercede that derived from the \env{.lmomcohash$AEPkh2lmrTable} in file \file{sysdata.rda}.}
@@ -66,15 +69,22 @@ Computational Statistics and Data Analysis, v. 52, no. 3, pp. 1661--1673.
 \seealso{\code{\link{lmomaep4}}, \code{\link{cdfaep4}}, \code{\link{pdfaep4}}, \code{\link{quaaep4}}, \code{\link{quaaep4kapmix}}
 }
 \examples{
-# As of version 1.6.2, it is felt that in spirit of CRAN CPU
-# reduction that the intensive operations of paraep4() should
-# be kept a bay. However, the following examples are useful.
+# As a general rule AEP4 optimization can be CPU intensive
+
+\dontrun{
+lmr <- vec2lmom(c(305, 263, 0.815, 0.631))
+plotlmrdia(lmrdia()); points(lmr$ratios[3], lmr$ratios[4], pch=16, cex=3)
+PAR <- paraep4(lmr, snap.tau4=TRUE) # will just miss the default eps
+FF <- nonexceeds(sig6=TRUE)
+plot(FF, quaaep4(FF, PAR), type="l", log="y")
+lmomaep4(PAR) # 305, 263, 0.8150952, 0.6602706 (compare to those in lmr) }
+
 \dontrun{
 PAR <- list(para=c(100, 1000, 1.7, 1.4), type="aep4")
 lmr <- lmomaep4(PAR)
 aep4 <- paraep4(lmr, method="ADG")
-print(aep4)
-}
+print(aep4) # }
+
 \dontrun{
 PARdg  <- paraep4(lmr, method="DG")
 PARasq <- paraep4(lmr, method="A")
@@ -88,8 +98,10 @@ plot(qF, quaaep4(F, PARdg), type="n", ylim=ylim,
 lines(qF, quaaep4(F, PAR), col=8, lwd=10) # the true curve
 lines(qF, quaaep4(F, PARdg),  col=2, lwd=3)
 lines(qF, quaaep4(F, PARasq), col=3, lwd=2, lty=2)
-# See how the red curve deviates, Delicado-Goria failed
-# and the ifail attribute in PARdg is TRUE.
+# See how the red curve deviates, Delicado and Goria failed
+# and the ifail attribute in PARdg is TRUE. Note for lmomco 2.3.1+
+# that after movement to log-exp transform to the parameters during
+# optimization that this "error" as described does not appear to occur.
 
 print(PAR$para)
 print(PARdg$para)
@@ -110,15 +122,14 @@ MADasq <- mean(ePAR1asq, ePAR2asq, ePAR3asq, ePAR4asq)
 
 # We see that the Asquith method performs better for the example
 # parameters in PAR and inspection of the graphic will show that
-# the Delicado-Goria solution is obviously off.
+# the Delicado and Goria solution is obviously off. (See Note above)
 print(MADdg)
 print(MADasq)
 
 # Repeat the above with this change in parameter to
 # PAR <- list(para=c(100, 1000, .7, 1.4), type="aep4")
 # and the user will see that all three methods converged on the
-# correct values.
-}
+# correct values. }
 }
 \keyword{distribution (parameters)}
 \keyword{Distribution: Asymmetric Exponential Power}
