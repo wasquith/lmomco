@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Version 2.3.1--
+Version 2.3.1--03/08/2018
 1. Enhancement: mle2par() inadvertently was not trapping for conditions of zero
       density. (Say a given fit having a lower bounds larger than the smallest
       data value.) The Examples section expanded with a demonstration using the
