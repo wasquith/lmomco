@@ -2,7 +2,7 @@
 \alias{fliplmoms}
 \title{Flip L-moments by Flip Attribute in L-moment Vector}
 \description{
-This function flips the L-moments by a flip attribute in an L-moment object such as that returned by \code{\link{lmomsRCmark}}. The function will attempt to identify the L-moment object and \code{\link{lmorph}} as necessary, but this support is not guaranteed.  The flipping process is used to support left-tail censoring using the right-tail censoring alogrithms of \pkg{lmomco}. The odd order (\code{seq(3,n,by2)}) \eqn{\lambda_r} and \eqn{\tau_r} are negated. The mean \eqn{\hat\lambda_1} is computed by subtracting the \eqn{\lambda_1} from the \var{lmom} argument from the flip \var{M}: \eqn{\hat\lambda_1 = M - \lambda_1} and the \eqn{\tau_2} is subsequently adjusted by the new mean. This function is written to provide a convenient method to re-transform or back flip the L-moments computed by \code{\link{lmomsRCmark}}. Careful analysis of the example problem listed here should be made.
+This function flips the L-moments by a flip attribute within an L-moment object such as that returned by \code{\link{lmomsRCmark}}. The function will attempt to identify the L-moment object and \code{\link{lmorph}} as necessary, but this support is not guaranteed.  The flipping process is used to support left-tail censoring using the right-tail censoring alogrithms of \pkg{lmomco}. The odd order (\code{seq(3,n,by2)}) \eqn{\lambda_r} and \eqn{\tau_r} are negated. The mean \eqn{\hat\lambda_1} is computed by subtracting the \eqn{\lambda_1} from the \var{lmom} argument from the flip \var{M}: \eqn{\hat\lambda_1 = M - \lambda_1} and the \eqn{\tau_2} is subsequently adjusted by the new mean. This function is written to provide a convenient method to re-transform or back flip the L-moments computed by \code{\link{lmomsRCmark}}. Detailed review of the example problem listed here is recommended.
 }
 \usage{
 fliplmoms(lmom, flip=NULL, checklmom=TRUE)
@@ -71,7 +71,6 @@ LClmr <- lmorph(LClmr)
 #LClmr$flip <- 100; fliplmoms(LClmr) # would also work
 fliplmoms(LClmr, flip=flip) # OUTPUT2 STARTS HERE
 
-# The two outputs are the same showing how the flip argument works
-}
+# The two outputs are the same showing how the flip argument works }
 }
 \keyword{data censoring}
