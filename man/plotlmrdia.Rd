@@ -5,16 +5,16 @@
 Plot the L-moment ratio diagram of L-skew and L-kurtosis from an L-moment ratio diagram object returned by \code{\link{lmrdia}}.  This diagram is useful for selecting a distribution to model the data. The application of L-moment diagrams is well documented in the literature. This function is intended to function as a demonstration of L-moment ratio diagram plotting.
 }
 \usage{
-plotlmrdia(lmr, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
+plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
            noaep4=FALSE, nogev=FALSE, noglo=FALSE, nogpa=FALSE,
            nope3=FALSE,  nogno=FALSE, nogov=FALSE, nocau=TRUE,
            noexp=FALSE,  nonor=FALSE, nogum=FALSE, noray=FALSE,
            nosla=TRUE,  nouni=FALSE,
-           xlab="L-SKEW", ylab="L-KURTOSIS",
+           xlab="L-SKEW", ylab="L-KURTOSIS", add=FALSE, empty=FALSE,
            autolegend=FALSE, xleg=NULL, yleg=NULL, ...)
 }
 \arguments{
-  \item{lmr}{L-moment diagram object from \code{\link{lmrdia}}.}
+  \item{lmr}{L-moment diagram object from \code{\link{lmrdia}}, if \code{NULL}, then \code{empty} is internally set to \code{TRUE}.}
   \item{nopoints}{If \code{TRUE} then point distributions are not drawn.}
   \item{nolines}{If \code{TRUE} then line distributions are not drawn.}
   \item{nolimits}{If \code{TRUE} then theoretical limits of L-moments are not drawn.}
@@ -34,6 +34,8 @@ plotlmrdia(lmr, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
   \item{nosla}{If \code{TRUE} then point (limiting, TL-moment [trim=1]) of the Slash distribution is not drawn.}
   \item{xlab}{Horizonal axis label passed to \code{xlab} of the \code{plot} function.}
   \item{ylab}{Vertical axis label passed to \code{ylab} of the \code{plot} function.}
+  \item{add}{A logical to toggle a call to \code{plot} to start a new plot, otherwise, just the trajectories are otherwise plotted.}
+  \item{empty}{A logical to return before any trajectories are plotted but after the condition of the \code{add} has been evaluated, and \dQuote{empty} character string is returned.}
   \item{autolegend}{Generate the legend by built-in algorithm.}
   \item{xleg}{X-coordinate of the legend.}
   \item{yleg}{Y-coordinate of the legend.}
@@ -85,35 +87,34 @@ plotlmrdia(lmrdia()) # simplest of all uses
 
 \dontrun{
 # A more complex example follows.
-# For a given mean, L-scale, L-skew and L-kurtosis, a sample size
-# of 30 and using 50 simulations, set the L-moments in lmr and fit
-# a Kappa distribution
-T3 <- 0.34; T4 <- 0.21; n <- 30; nsim <- 50;
+# For a given mean, L-scale, L-skew, and L-kurtosis, let us use a sample size
+# of 30 and using 500 simulations, set the L-moments in lmr and fit the Kappa.
+T3 <- 0.34; T4 <- 0.21; n <- 30; nsim <- 500
 lmr <- vec2lmom(c(10000,7500,T3,T4)); kap <- parkap(lmr)
 
-# Next, create vectors for storage of simulated L-skew (t3)
-# and L-kurtosis (t4)
-t3 <- vector(mode = "numeric"); t4 <- t3;
+# Next, create vectors for storing simulated L-skew (t3) and L-kurtosis (t4)
+t3 <- t4 <- vector(mode = "numeric")
 
-# Next, perform nsim simulations by randomly drawing from the Kappa
-# distribution and compute the L-moments in sim.lmr and store the
-# t3 and t4 values of each simulated sample.
+# Next, perform nsim simulations by randomly drawing from the Kappa distribution
+# and compute the L-moments in sim.lmr and store the t3 and t4 of each sample.
 for(i in 1:nsim) {
   sim.lmr <- lmoms(rlmomco(n,kap))
   t3[i] <- sim.lmr$ratios[3]; t4[i] <- sim.lmr$ratios[4]
 }
 
-# Finally, plot the diagram with a legend at a specified location,
-# and "zoom" into the diagram by setting the axis limits.
+# Next, plot the diagram with a legend at a specified location, and "zoom"
+# into the diagram by manually setting the axis limits.
 plotlmrdia(lmrdia(), autolegend=TRUE, xleg=0.1, yleg=.41,
-           xlim=c(-.1,.5), ylim=c(-.1,.4), nopoints=TRUE)
+        xlim=c(-.1,.5), ylim=c(-.1,.4), nopoints=TRUE, empty=TRUE)
 
-# Follow up with plotting of the t3,t4 values and the mean of these.
+# Follow up by plotting the {t3,t4} values and the mean of these.
 points(t3,t4)
 points(mean(t3),mean(t4),pch=16,cex=3)
 
-# A complete the example by plotting crossing dashed lines at the
-# population values of L-skew and L-kurtosis
+# Now plot the trajectories of the distributions.
+plotlmrdia(lmrdia(), add=TRUE)
+
+# Finally, plot crossing dashed lines at true values of L-skew and L-kurtosis.
 lines(c(T3,T3),c(-1,1),col=8, lty=2)
 lines(c(-1,1),c(T4,T4),col=8, lty=2) #}
 }
