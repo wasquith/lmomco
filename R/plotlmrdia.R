@@ -1,5 +1,5 @@
 "plotlmrdia" <-
-function(lmr,
+function(lmr=NULL,
       nopoints=FALSE,
       nolines=FALSE,
       nolimits=FALSE,
@@ -19,6 +19,7 @@ function(lmr,
       nouni=FALSE,
          xlab="L-SKEW",
          ylab="L-KURTOSIS",
+         add=FALSE, empty=FALSE,
          autolegend=FALSE,xleg=NULL,yleg=NULL,
          ...) {
 
@@ -30,10 +31,13 @@ function(lmr,
    Ecex    <- vector(mode = "numeric")
    entryi  <- 0
 
-   plot(lmr$limits, xlab = xlab, ylab = ylab, type = "n",
-        ...)
+   if(is.null(lmr)) empty <- TRUE
+   if(! add) {
+      plot(c(-1,1), c(-0.25,1), xlab = xlab, ylab = ylab, type = "n", ...)
+   }
+   if(empty) return("empty")
 
-   if(nolimits == FALSE) {
+   if(! nolimits) {
      lines(lmr$limits,lwd=2,col=8)
      entryi <- entryi + 1
      entries[entryi] <- "Theoretical limits"
@@ -43,8 +47,8 @@ function(lmr,
      Elty[entryi] <- 1
      Ecex[entryi] <- 1
    }
-   if(nolines == FALSE) {
-     if(noaep4 == FALSE) {
+   if(! nolines) {
+     if(! noaep4) {
         lines(lmr$aep4, col=2, lty=3)
         entryi <- entryi + 1
         entries[entryi] <- "AEP4"
@@ -54,7 +58,7 @@ function(lmr,
         Elty[entryi] <- 4
         Ecex[entryi] <- 1
      }
-     if(nogev == FALSE) {
+     if(! nogev) {
         lines(lmr$gev, col=2,lty=2)
         entryi <- entryi + 1
         entries[entryi] <- "GEV"
@@ -64,7 +68,7 @@ function(lmr,
         Elty[entryi] <- 2
         Ecex[entryi] <- 1
      }
-     if(noglo == FALSE) {
+     if(! noglo) {
         lines(lmr$glo, col=3)
         entryi <- entryi + 1
         entries[entryi] <- "GLO"
@@ -74,7 +78,7 @@ function(lmr,
         Elty[entryi] <- 1
         Ecex[entryi] <- 1
      }
-     if(nogno == FALSE) {
+     if(! nogno) {
         lines(lmr$gno, col=4, lty=2)
         entryi <- entryi + 1
         entries[entryi] <- "GNO"
@@ -84,7 +88,7 @@ function(lmr,
         Elty[entryi] <- 2
         Ecex[entryi] <- 1
      }
-     if(nogov == FALSE) {
+     if(! nogov) {
         lines(lmr$gov, col=6, lty=2)
         entryi <- entryi + 1
         entries[entryi] <- "GOV"
@@ -94,7 +98,7 @@ function(lmr,
         Elty[entryi] <- 2
         Ecex[entryi] <- 1
      }
-     if(nogpa == FALSE) {
+     if(! nogpa) {
         lines(lmr$gpa, col=4)
         entryi <- entryi + 1
         entries[entryi] <- "GPA"
@@ -104,7 +108,7 @@ function(lmr,
         Elty[entryi] <- 1
         Ecex[entryi] <- 1
      }
-     if(nope3 == FALSE) {
+     if(! nope3) {
         lines(lmr$pe3, col=6)
         entryi <- entryi + 1
         entries[entryi] <- "PE3"
@@ -115,8 +119,8 @@ function(lmr,
         Ecex[entryi] <- 1
      }
    }
-   if(nopoints == FALSE) {
-     if(nocau == FALSE) {
+   if(! nopoints) {
+     if(! nocau) {
         points(lmr$cau,pch=13,col=3,cex=1.25)
         entryi <- entryi + 1
         entries[entryi] <- "CAU (limiting TL1)"
@@ -126,7 +130,7 @@ function(lmr,
         Elty[entryi] <- NA
         Ecex[entryi] <- 1.25
      }
-     if(noexp == FALSE) {
+     if(! noexp) {
         points(lmr$exp,pch=16,col=2,cex=1.5)
         entryi <- entryi + 1
         entries[entryi] <- "EXP"
@@ -136,7 +140,7 @@ function(lmr,
         Elty[entryi] <- NA
         Ecex[entryi] <- 1.5
      }
-     if(nonor == FALSE) {
+     if(! nonor) {
         points(lmr$nor,pch=15,col=2,cex=1.5)
         entryi <- entryi + 1
         entries[entryi] <- "NOR"
@@ -146,7 +150,7 @@ function(lmr,
         Elty[entryi] <- NA
         Ecex[entryi] <- 1.5
      }
-     if(nogum == FALSE) {
+     if(! nogum) {
         points(lmr$gum,pch=17,col=2,cex=1.5)
         entryi <- entryi + 1
         entries[entryi] <- "GUM"
@@ -156,7 +160,7 @@ function(lmr,
         Elty[entryi] <- NA
         Ecex[entryi] <- 1.5
      }
-     if(noray == FALSE) {
+     if(! noray) {
         points(lmr$ray,pch=18,col=2,cex=1.5)
         entryi <- entryi + 1
         entries[entryi] <- "RAY"
@@ -166,7 +170,7 @@ function(lmr,
         Elty[entryi] <- NA
         Ecex[entryi] <- 1.5
      }
-     if(nosla == FALSE) {
+     if(! nosla) {
         points(lmr$sla,pch=10,cex=1.25,col=3)
         entryi <- entryi + 1
         entries[entryi] <- "SLA (TL1)"
@@ -176,7 +180,7 @@ function(lmr,
         Elty[entryi] <- NA
         Ecex[entryi] <- 1.25
      }
-     if(nouni == FALSE) {
+     if(! nouni) {
         points(lmr$uniform,pch=12,cex=1.25,col=2)
         entryi <- entryi + 1
         entries[entryi] <- "UNI"
