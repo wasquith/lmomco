@@ -6,7 +6,7 @@ This function estimates the L-moments of the Generalized Logistic distribution g
 \deqn{\lambda_1 = \xi + \alpha \left(\frac{1}{\kappa} - \frac{\pi}{\sin(\kappa\pi)}\right) \mbox{,}}
 \deqn{\lambda_2 = \frac{\alpha \kappa \pi}{\sin(\kappa\pi)} \mbox{,}}
 \deqn{\tau_3 = -\kappa \mbox{, and}}
-\deqn{\tau_4 = \frac{(1+5\kappa^2)}{6} \mbox{.}}
+\deqn{\tau_4 = \frac{(1+5\tau_3^2)}{6} = \frac{(1+5\kappa^2)}{6}\mbox{.}}
 }
 \usage{
 lmomglo(para)
