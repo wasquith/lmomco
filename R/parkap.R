@@ -1,8 +1,8 @@
 "parkap" <-
-function(lmom,checklmom=TRUE,...) {
+function(lmom, checklmom=TRUE,
+               snap.tau4=FALSE, nudge.tau4=sqrt(.Machine$double.eps), ...) {
     para <- rep(NA,4)
-    XL <- NA
-    XU <- NA
+    XL <- XU <- NA
     names(para) <- c("xi","alpha","kappa","h")
     #  IFAIL  *OUTPUT* FAIL FLAG. ON EXIT, IT IS SET AS FOLLOWS.
     #                  0  SUCCESSFUL EXIT
@@ -44,6 +44,7 @@ function(lmom,checklmom=TRUE,...) {
     BIG    <- 10;
     OFLEXP <- log(.Machine$double.xmax);
     OFLGAM <- uniroot(function(x) lgamma(x)-OFLEXP,c(1,OFLEXP))$root;
+    message <- ""
 
     if(length(lmom$L1) == 0) { # convert to named L-moments
       lmom <- lmorph(lmom)     # nondestructive conversion!
@@ -52,19 +53,26 @@ function(lmom,checklmom=TRUE,...) {
       warning("L-moments are invalid")
       IFAIL <- 1
       return(list(type = 'kap', para = para, source="parkap",
-                  support = c(NA,NA),
+                  support = c(NA,NA), message=message,
                   ifail = IFAIL,
                   ifailtext = "L-moments are invalid."))    }
 
     T3 <- lmom$TAU3
     T4 <- lmom$TAU4
 
-    if(T4 >= (5*T3*T3+1)/6 ) {
-      IFAIL <- 2
-      return(list(type = 'kap', para = para, source="parkap",
-                  support = c(NA,NA),
-                  ifail = IFAIL,
-                  ifailtext = "TAU3 and TAU4 are above Generalized Logistic line."))
+    T4.upperbounds <- (5*T3*T3+1)/6
+    if(T4 >= T4.upperbounds) {
+      if(snap.tau4) {
+         T4o <- T4
+         T4 <- T4.upperbounds - abs(nudge.tau4) # only permit downwards (see paraep4)
+         message <- paste0("Tau4 snapped up to upper bounds of Tau3-Tau4: ", T4o, " ---> ",T4)
+      } else {
+        IFAIL <- 2
+        return(list(type = 'kap', para = para, source="parkap",
+                    support = c(NA,NA), message=message,
+                    ifail = IFAIL,
+                    ifailtext = "TAU3 and TAU4 are above Generalized Logistic line."))
+      }
     }
     #
     #  SET STARTING VALUES FOR N-R ITERATION:
@@ -100,7 +108,7 @@ function(lmom,checklmom=TRUE,...) {
         if(G > OFLGAM) {
           IFAIL <- 5
           return(list(type = 'kap', para = para, source="parkap",
-                  support = c(NA,NA),
+                  support = c(NA,NA), message=message,
                   ifail = IFAIL,
                   ifailtext = "H/K iteration encountered numerical difficulties."))
         }
@@ -122,7 +130,7 @@ function(lmom,checklmom=TRUE,...) {
         if(ALAM2 == 0) {
           IFAIL <- 5
           return(list(type = 'kap', para = para, source="parkap",
-                  support = c(NA,NA),
+                  support = c(NA,NA), message=message,
                   ifail = IFAIL,
                   ifailtext = "H/K iteration encountered numerical difficulties."))
         }
@@ -152,7 +160,7 @@ function(lmom,checklmom=TRUE,...) {
         #
         IFAIL <- 4
         return(list(type = 'kap', para = para, source="parkap",
-                  support = c(NA,NA),
+                  support = c(NA,NA), message=message,
                   ifail = IFAIL,
                   ifailtext = "Unable to make progress from current point in H/K iteration."))
       }
@@ -249,7 +257,7 @@ function(lmom,checklmom=TRUE,...) {
     if(MAXITLOOPEND == TRUE) {
       IFAIL <- 3
       return(list(type = 'kap', para = para, source="parkap",
-                  support = c(NA,NA),
+                  support = c(NA,NA), message=message,
                   ifail = IFAIL,
                   ifailtext = "Iteration on H and K failed to converge."))
     }
@@ -263,7 +271,7 @@ function(lmom,checklmom=TRUE,...) {
     if(TEMP > OFLEXP) {
       IFAIL <- 6
       return(list(type = 'kap', para = para, source="parkap",
-                  support = c(NA,NA),
+                  support = c(NA,NA), message=message,
                   ifail = IFAIL,
                   ifailtext = "H and K converged, but overflow on XI and ALPHA."))
     }
@@ -272,7 +280,7 @@ function(lmom,checklmom=TRUE,...) {
     if(TEMP > OFLEXP) {
       IFAIL <- 6
       return(list(type = 'kap', para = para, source="parkap",
-                  support = c(NA,NA),
+                  support = c(NA,NA), message=message,
                   ifail = IFAIL,
                   ifailtext = "H and K converged, but overflow on XI and ALPHA."))
     }
@@ -294,7 +302,7 @@ function(lmom,checklmom=TRUE,...) {
     kapsup <- c(XL,XU)
     names(kapsup) <- c("lower", "upper")
     return(list(type = 'kap', para = para, source="parkap",
-                support = kapsup,
+                support = kapsup, message=message,
                 ifail = IFAIL,
                 ifailtext = "Successful parameter estimation."))
 }

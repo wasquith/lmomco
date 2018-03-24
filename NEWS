@@ -3,6 +3,14 @@ NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
 Version 2.3.2--
 1. Minor Rd updates throughout.
+2. Added the add and empty arguments to plotlmrdia() for finer control, which 
+      permits the plotting of the diagram boundaries, then inserting say 
+      sample values, and **then** plotting the trajectories desired on top.
+      This is a feature that really should have been present from the beginning.
+      Thanks to feedback from Y. Zhou.
+3. Added arguments snap.tau4 and nudge.tau4 to parkap() to permit the forcing
+      of the Kappa solution to the L-kurtosis of the upper boundary and example
+      added to parkap.Rd. This is similar to the AEP4 changes in 2.3.1:(8) below.
 
 
 Version 2.3.1--03/08/2018
