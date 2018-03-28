@@ -3,14 +3,21 @@ NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
 Version 2.3.2--
 1. Minor Rd updates throughout.
-2. Added the add and empty arguments to plotlmrdia() for finer control, which 
-      permits the plotting of the diagram boundaries, then inserting say 
+2. Added the add and empty arguments to plotlmrdia() for finer control, which
+      permits the plotting of the diagram boundaries, then inserting say
       sample values, and **then** plotting the trajectories desired on top.
       This is a feature that really should have been present from the beginning.
       Thanks to feedback from Y. Zhou.
 3. Added arguments snap.tau4 and nudge.tau4 to parkap() to permit the forcing
       of the Kappa solution to the L-kurtosis of the upper boundary and example
       added to parkap.Rd. This is similar to the AEP4 changes in 2.3.1:(8) below.
+4. Added the case argument to add.lmomco.axis() to provide option of mixed case
+      for the default axis labels.
+5. Enhancement: Extended the limits of probability in add.lmomco.axis out to
+      [1-0.99999, 0.99999] but then internally consult par()$usr to identify
+      ticks and labels outside the plot and then remove before calling the
+      Axis() function. This was needed as users seem to be probing deeper into
+      the tails than originally envisioned.
 
 
 Version 2.3.1--03/08/2018
