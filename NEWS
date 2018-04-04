@@ -18,6 +18,8 @@ Version 2.3.2--
       ticks and labels outside the plot and then remove before calling the
       Axis() function. This was needed as users seem to be probing deeper into
       the tails than originally envisioned.
+4. Clarified Tau4 bounds in lmomglo.Rd.
+5. Spelling fixed in ACKNOWLEDGEMENTS.
 
 
 Version 2.3.1--03/08/2018
