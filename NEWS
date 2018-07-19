@@ -20,6 +20,8 @@ Version 2.3.2--
       the tails than originally envisioned.
 4. Clarified Tau4 bounds in lmomglo.Rd.
 5. Spelling fixed in ACKNOWLEDGEMENTS.
+6. Added argument x in add.log.axis() for nice axis limits aligning to integers
+      (1:9) within a log10-cycle and modified the example in add.log.axis.Rd. 
 
 
 Version 2.3.1--03/08/2018
