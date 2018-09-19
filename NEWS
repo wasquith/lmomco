@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Version 2.3.2--
+Version 2.3.2--09/09/2018 (Gutter Flutter)
 1. Minor Rd updates throughout.
 2. Added the add and empty arguments to plotlmrdia() for finer control, which
       permits the plotting of the diagram boundaries, then inserting say
