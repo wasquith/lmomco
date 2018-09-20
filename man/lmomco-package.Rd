@@ -49,24 +49,24 @@ The results show compatible estimates between the two packages. Lastly, let us p
 }
 }
 \references{
-Asquith, W.H., 2007, L-moments and TL-moments of the generalized lambda distribution: Computational Statistics and Data Analysis, v. 51, no. 9, pp. 4484--4496, \url{http://dx.doi.org/10.1016/j.csda.2006.07.016}
+Asquith, W.H., 2007, L-moments and TL-moments of the generalized lambda distribution: Computational Statistics and Data Analysis, v. 51, no. 9, pp. 4484--4496, \url{https://dx.doi.org/10.1016/j.csda.2006.07.016}.
 
-Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8, \url{http://www.amazon.com/dp/1463508417/}
+Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8, \url{https://www.amazon.com/dp/1463508417/}.
 
-Asquith, W.H., 2014, Parameter estimation for the 4-parameter asymmetric exponential power distribution by the method of L-moments using R: Computational Statistics and Data Analysis, v. 71, pp. 955--970, \url{http://dx.doi.org/10.1016/j.csda.2012.12.013}
+Asquith, W.H., 2014, Parameter estimation for the 4-parameter asymmetric exponential power distribution by the method of L-moments using R: Computational Statistics and Data Analysis, v. 71, pp. 955--970, \url{https://dx.doi.org/10.1016/j.csda.2012.12.013}.
 
 Dey, D.K., Roy, Dooti, Yan, Jun, 2016, Univariate extreme value analysis, chapter 1, \emph{in} Dey, D.K., and Yan, Jun, eds., Extreme value modeling and risk analysis---Methods and applications: Boca Raton, FL, CRC Press, pp. 1--22.
 
-Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational statistics and data analysis, vol. 43, pp. 299-314,  \url{http://dx.doi.org/10.1016/S0167-9473(02)00250-5}
+Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational statistics and data analysis, vol. 43, pp. 299-314,  \url{https://dx.doi.org/10.1016/S0167-9473(02)00250-5}.
 
 Hosking, J.R.M., 1990, L-moments---Analysis and estimation of
-distributions using linear combinations of order statistics: Journal of the Royal Statistical Society, Series B, v. 52, pp. 105--124, \url{http://www.jstor.org/stable/2345653}
+distributions using linear combinations of order statistics: Journal of the Royal Statistical Society, Series B, v. 52, pp. 105--124.
 
-Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approach based on L-moments: Cambridge University Press, \url{http://www.amazon.com/dp/0521019400/}
+Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approach based on L-moments: Cambridge University Press, \url{http://www.amazon.com/dp/0521019400/}.
 
-Nair, N.U., Sankaran, P.G., and Balakrishnan, N., 2013, Quantile-based reliability analysis: Springer, New York, \url{http://www.amazon.com/dp/0817683607/}
+Nair, N.U., Sankaran, P.G., and Balakrishnan, N., 2013, Quantile-based reliability analysis: Springer, New York, \url{https://www.amazon.com/dp/0817683607/}.
 
-Serfling, R., and Xiao, P., 2007, A contribution to multivariate L-moments---L-comoment matrices: Journal of Multivariate Analysis, v. 98, pp. 1765--1781, \url{http://dx.doi.org/10.1016/j.jmva.2007.01.008}
+Serfling, R., and Xiao, P., 2007, A contribution to multivariate L-moments---L-comoment matrices: Journal of Multivariate Analysis, v. 98, pp. 1765--1781, \url{https://dx.doi.org/10.1016/j.jmva.2007.01.008}.
 }
 \author{William Asquith \email{william.asquith@ttu.edu} }
 \seealso{
