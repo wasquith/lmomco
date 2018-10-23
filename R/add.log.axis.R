@@ -1,6 +1,6 @@
 "add.log.axis" <-
 function(make.labs=FALSE, logs=c(2, 3, 4, 5, 6, 7, 8, 9), side=1,
-         two.sided=FALSE, label=NULL, x=NULL, ...) {
+         two.sided=FALSE, label=NULL, x=NULL, col.ticks=1, ...) {
    if(! is.null(x)) { # aligning or snapping limits in untransformed x
      x <- log10(x[! is.na(x) & x > 0])
      y <- abs(as.integer(min(x))) + 1
@@ -27,11 +27,11 @@ function(make.labs=FALSE, logs=c(2, 3, 4, 5, 6, 7, 8, 9), side=1,
       the.logs <- c(the.logs, the.logs.in.cycle)
    }
    if(make.labs) {
-      Axis(at=the.logs, labels=the.logs, side=side, tcl=0, ...)
+      axis(side, at=the.logs, labels=the.logs, tcl=0, col.ticks=col.ticks,  col=NA, ...)
       mtext(label, line=2, side=side)
    } else {
-      Axis(at=the.logs, labels=NA, side=side, ...)
-      if(two.sided) Axis(at=the.logs,  labels=NA, side=other.side, ...)
+      axis(side, at=the.logs, labels=NA, col.ticks=col.ticks,  col=NA, ...)
+      if(two.sided) axis(other.side, at=the.logs,  labels=NA, col.ticks=col.ticks,  col=NA, ...)
    }
 }
 
