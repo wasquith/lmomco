@@ -4,7 +4,7 @@
 \description{
 This function computes the cumulative probability or nonexceedance probability of the Generalized Normal distribution given parameters (\eqn{\xi}, \eqn{\alpha}, and \eqn{\kappa}) computed by \code{\link{pargno}}. The cumulative distribution function is
 \deqn{F(x) = \Phi(Y) \mbox{,} }
-where \eqn{\Phi} is the cumulative ditribution function of the Standard Normal distribution and \eqn{Y} is
+where \eqn{\Phi} is the cumulative distribution function of the Standard Normal distribution and \eqn{Y} is
 \deqn{Y = -\kappa^{-1} \log\left(1 - \frac{\kappa(x-\xi)}{\alpha}\right)\mbox{,}}
 for \eqn{\kappa \ne 0} and
 \deqn{Y = (x-\xi)/\alpha\mbox{,}}
