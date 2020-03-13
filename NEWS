@@ -1,6 +1,13 @@
 --------------------------------------------------------------------------------
 NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
+Version 2.3.4--03/13/2020
+1. Added twoside.suppress.labels argument to add.lmomco.axis().
+2. BUG FIX: some fixes to the label plotting and quantile edges within
+      add.lmomco.axis() that were found through some large batch processing. 
+3. Spelling correction in cdfnor.Rd.
+
+
 Version 2.3.3--02/19/2019
 1. Added the type argument to f2f() and f2flo() functions to permit subtle
       variation in the treatment of the subsetting of nonexceedance
@@ -19,11 +26,12 @@ Version 2.3.2--09/09/2018 (Gutter Flutter)
       added to parkap.Rd. This is similar to the AEP4 changes in 2.3.1:(8) below.
 4. Added the case argument to add.lmomco.axis() to provide option of mixed case
       for the default axis labels.
-5. Enhancement: Extended the limits of probability in add.lmomco.axis out to
+5. Enhancement: Extended the limits of probability in add.lmomco.axis() out to
       [1-0.99999, 0.99999] but then internally consult par()$usr to identify
       ticks and labels outside the plot and then remove before calling the
       Axis() function. This was needed as users seem to be probing deeper into
-      the tails than originally envisioned.
+      the tails than originally envisioned. The par()$usr use was buggy, see
+      version 2.3.4:no2.
 4. Clarified Tau4 bounds in lmomglo.Rd.
 5. Spelling fixed in ACKNOWLEDGEMENTS.
 6. Added argument x in add.log.axis() for nice axis limits aligning to integers

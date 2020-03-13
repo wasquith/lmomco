@@ -7,7 +7,8 @@ This function provides special support for adding probability-like axes to an ex
 The function provides a convenient interface for labeling and titling two axes, so adjustments to default margins might be desired. The pertinent control is achieved using the \code{par()} function, which might be of the form \code{par(mgp=c(3,0.5,0), mar=c(5,4,4,3))} say for plotting the \pkg{lmomco} axis both on the left and right (see \code{\link{z.par2cdf}} for an example).
 }
 \usage{
-add.lmomco.axis(side=1, twoside=FALSE, side.type=c("NPP", "RI", "SNV"),
+add.lmomco.axis(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
+                side.type=c("NPP", "RI", "SNV"),
                 otherside.type=c("NA", "RI", "SNV", "NPP"),
                 alt.lab=NA, alt.other.lab=NA, npp.as.aep=FALSE,
                 case=c("upper", "lower"),
@@ -16,6 +17,7 @@ add.lmomco.axis(side=1, twoside=FALSE, side.type=c("NPP", "RI", "SNV"),
 \arguments{
   \item{side}{The side of the plot (1=bottom, 2=left, 3=top, 4=right).}
   \item{twoside}{A logical triggering whether the tick marks are echoed on the opposite side. This value is forced to \code{FALSE} if \code{otherside.type} is not \code{"NA"}.}
+  \item{twoside.suppress.labels}{A logical to turn off labeling on the opposite side. This is useful if only the ticks (major and minor) are desired.}
   \item{side.type}{The axis type for the primary \code{side}.}
   \item{otherside.type}{The optional axis type for the opposite side. The default is a literal not applicable.}
     \item{alt.lab}{A short-cut to change the axis label without having to specify a \code{*.control} argument and its \code{label} attribute. The label attribute of \code{alt.lab} is not \code{NA} is used instead of the defaults. This argument overrides behavior of the \code{otherside.type} labeling so use of \code{alt.lab} only makes sense if \code{otherside.type} is left as \code{NA}.}

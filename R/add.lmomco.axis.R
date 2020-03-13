@@ -1,5 +1,5 @@
 "add.lmomco.axis" <-
-function(side=1, twoside=FALSE,
+function(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
          side.type=c("NPP", "RI", "SNV"), otherside.type=c("NA", "RI", "SNV", "NPP"),
          alt.lab=NA, alt.other.lab=NA, npp.as.aep=FALSE, case=c("upper", "lower"),
          NPP.control=NULL, RI.control=NULL, SNV.control=NULL, ...) {
@@ -10,21 +10,28 @@ function(side=1, twoside=FALSE,
    otherside.type <- match.arg(otherside.type)
    if(otherside.type == "NA") otherside.type <- NA
    if(twoside & ! is.na(otherside.type)) twoside <- FALSE
-   lims <- par()$usr
-   ifelse(side == 1 | side == 3, lims <- lims[3:4], lims <- lims[1:2])
+   lims <- par()$usr; #print(lims)
+   ifelse(side == 1 | side == 3, lims <- lims[1:2], lims <- lims[3:4])
+   #print(lims)
+   lims <- pnorm(lims)
+   #print(lims)
    "my.nonexceeds" <- function(minors=FALSE) {
       if(minors) {
          FF <- c(0.55, 0.65, 0.75, 0.825, 0.850, 0.875,
                 0.91, 0.92, 0.93, 0.94, 0.96, 0.97,
                 0.9925, 0.996, 0.997, 0.9996, 0.9997, 0.99996, 0.99997)
          FF <- c(sort(1-FF), FF)
-         FF <- FF[FF > lims[1]]; FF <- FF[FF < lims[2]]
+         FF <- FF[FF >= lims[1]]; FF <- FF[FF <= lims[2]]
+         FF <- unique(c(lims[1],FF,lims[2])) # the real nature of the nums, this is backup
          return(FF)
       } else {
          FF <- c(0.6, 0.7, 0.8, 0.9, 0.95, 0.98, 0.99, 0.995, 0.998, 0.999,
                  0.9995, 0.9998, 0.9999, 0.99995, 0.99998, 0.99999)
          FF <- c(sort(1-FF), 0.5, FF)
-         FF <- FF[FF > lims[1]]; FF <- FF[FF < lims[2]]
+         #print(FF)
+         FF <- FF[FF >= lims[1]]; FF <- FF[FF <= lims[2]]
+         #print(FF)
+         FF <- unique(c(lims[1],FF,lims[2])) # the real nature of the nums, this is backup
          return(FF)
       }
    }
@@ -81,7 +88,11 @@ function(side=1, twoside=FALSE,
 
       if(twoside) {
          Axis(qNPP,     at=qNPP,     labels=NA,      side=other.side, ..., tcl=0.8*tcl)
-         Axis(qNPP.lab, at=qNPP.lab, labels=NPP.lab, side=other.side, ..., tcl=1.3*tcl)
+         if(twoside.suppress.labels) {
+           Axis(qNPP.lab, at=qNPP.lab, labels=NA, side=other.side, ..., tcl=1.3*tcl)
+         } else {
+           Axis(qNPP.lab, at=qNPP.lab, labels=NPP.lab, side=other.side, ..., tcl=1.3*tcl)
+         }
       }
    }
 
