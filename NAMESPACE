@@ -1,5 +1,5 @@
 importFrom("grDevices", "rgb")
-importFrom("graphics", "Axis", "arrows", "legend", "lines", "mtext",
+importFrom("graphics", "Axis", "arrows", "axis", "legend", "lines", "mtext",
            "par", "plot", "points", "polygon", "text")
 importFrom("stats", "approx", "binomial", "coefficients", "complete.cases",
            "dcauchy", "dexp", "dgamma", "dnorm", "dt", "glm",
