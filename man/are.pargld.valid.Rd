@@ -50,5 +50,5 @@ para <- pargld(lmr); are.pargld.valid(para)}
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Generalized Lambda}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

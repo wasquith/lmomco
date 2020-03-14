@@ -34,5 +34,5 @@ the distribution parameter object and the intent of the user.
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Generalized Exponential Poisson}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

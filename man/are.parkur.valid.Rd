@@ -35,5 +35,5 @@ if(are.parkur.valid(para)) Q <- quakur(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Kumaraswamy}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

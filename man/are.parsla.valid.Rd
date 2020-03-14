@@ -30,5 +30,5 @@ if(are.parsla.valid(para)) Q <- quasla(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Slash}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

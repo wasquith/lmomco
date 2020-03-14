@@ -39,5 +39,5 @@ if(are.pargev.valid(para)) Q <- quagev(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Generalized Extreme Value}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

@@ -36,5 +36,5 @@ if(are.parkap.valid(para)) Q <- quakap(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Kappa}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

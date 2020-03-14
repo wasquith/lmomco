@@ -39,5 +39,5 @@ if(are.parglo.valid(para)) Q <- quaglo(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Generalized Logistic}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

@@ -34,5 +34,5 @@ if(are.parcau.valid(para)) Q <- quacau(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Cauchy}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

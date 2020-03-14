@@ -35,5 +35,5 @@ if(are.parray.valid(para)) Q <- quaray(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Rayleigh}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

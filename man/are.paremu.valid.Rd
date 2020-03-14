@@ -28,5 +28,5 @@ if(are.paremu.valid(para)) Q <- quaemu(0.5,para) # }
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Eta-Mu}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

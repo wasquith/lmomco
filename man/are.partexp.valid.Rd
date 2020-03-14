@@ -29,5 +29,5 @@ if(are.partexp.valid(para)) Q <- quatexp(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Exponential (trimmed)}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

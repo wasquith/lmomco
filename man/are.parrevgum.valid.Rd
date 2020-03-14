@@ -36,5 +36,5 @@ if(are.parrevgum.valid(para)) Q <- quarevgum(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Gumbel (reversed)}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

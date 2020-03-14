@@ -39,5 +39,5 @@ if(are.parnor.valid(para)) Q <- quanor(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Normal}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

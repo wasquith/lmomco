@@ -39,5 +39,5 @@ if(are.pargum.valid(para)) Q <- quagum(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Gumbel}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

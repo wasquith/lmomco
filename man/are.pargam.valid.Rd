@@ -40,6 +40,6 @@ if(are.pargam.valid(para)) Q <- quagam(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Gamma}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 \keyword{Distribution: Generalized Gamma}
 

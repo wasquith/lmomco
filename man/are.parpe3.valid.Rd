@@ -39,5 +39,5 @@ if(are.parpe3.valid(para)) Q <- quape3(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Pearson Type III}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

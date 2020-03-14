@@ -39,5 +39,5 @@ if(are.pargpa.valid(para)) Q <- quagpa(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Generalized Pareto}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

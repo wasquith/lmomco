@@ -27,5 +27,5 @@ if(are.parkmu.valid(para)) Q <- quakmu(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Kappa-Mu}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

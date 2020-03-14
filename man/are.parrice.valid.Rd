@@ -33,5 +33,5 @@ Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the 
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Rice}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

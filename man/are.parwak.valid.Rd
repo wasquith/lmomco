@@ -39,5 +39,5 @@ if(are.parwak.valid(para)) Q <- quawak(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Wakeby}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

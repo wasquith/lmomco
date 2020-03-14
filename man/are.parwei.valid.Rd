@@ -31,5 +31,5 @@ if(are.parwei.valid(para)) Q <- quawei(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Weibull}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

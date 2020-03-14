@@ -38,5 +38,5 @@ if(are.paraep4.valid(para)) Q <- quaaep4(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Asymmetric Exponential Power}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

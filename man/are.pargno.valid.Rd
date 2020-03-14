@@ -41,5 +41,5 @@ if(are.pargno.valid(para)) Q <- quagno(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Generalized Normal}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

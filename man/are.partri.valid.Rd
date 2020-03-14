@@ -32,5 +32,5 @@ if(are.partri.valid(para)) Q <- quatri(0.5,para)
 \keyword{utility (distribution)}
 \keyword{Distribution: Asymmetric Triangular}
 \keyword{Distribution: Triangular}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

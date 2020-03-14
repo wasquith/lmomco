@@ -30,5 +30,5 @@ if(are.parln3.valid(para)) Q <- qualn3(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Log-Normal (3-parameter)}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 

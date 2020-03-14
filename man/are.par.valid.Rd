@@ -31,6 +31,6 @@ if(are.par.valid(para))    Q <- quaexp(0.5,para)
 if(are.parexp.valid(para)) Q <- quaexp(0.5,para)
 }
 \keyword{utility (distribution)}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 \keyword{distribution (utility)}
 

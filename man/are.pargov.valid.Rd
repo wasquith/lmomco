@@ -36,6 +36,6 @@ if(are.pargov.valid(para)) Q <- quagov(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Govindarajulu}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 
 

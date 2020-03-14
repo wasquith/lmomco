@@ -30,5 +30,5 @@ if(are.parlap.valid(para)) Q <- qualap(0.5,para)
 }
 \keyword{utility (distribution)}
 \keyword{Distribution: Laplace}
-\keyword{utility (distribution, parameter validation)}
+\keyword{utility (distribution/parameter validation)}
 
