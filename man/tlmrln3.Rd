@@ -61,5 +61,5 @@ The function uses numerical integration of the quantile function of the distribu
   # only part of the GNO
 }
 }
-\keyword{L-moment (trimmed, distribution)}
+\keyword{L-moment (trimmed distribution)}
 \keyword{Distribution: Log-Normal (3-parameter)}

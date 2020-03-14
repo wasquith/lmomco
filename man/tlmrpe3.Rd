@@ -74,5 +74,5 @@ tlmrpe3(leftrim=2, rightrim=4, xi=100, beta=20) # another slow example
   # near limits of the PE3.
 }
 }
-\keyword{L-moment (trimmed, distribution)}
+\keyword{L-moment (trimmed distribution)}
 \keyword{Distribution: Pearson Type III}

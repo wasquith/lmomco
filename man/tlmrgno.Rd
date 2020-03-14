@@ -75,5 +75,5 @@ tlmrgno(leftrim=3, rightrim=2, xi=120, alpha=55) # another slow example
   # near limits of the GNO.
 }
 }
-\keyword{L-moment (trimmed, distribution)}
+\keyword{L-moment (trimmed distribution)}
 \keyword{Distribution: Generalized Normal}

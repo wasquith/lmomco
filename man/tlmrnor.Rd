@@ -35,5 +35,5 @@ tlmrnor(leftrim=2, rightrim=1)
 tlmrnor(leftrim=2, rightrim=1, mu=100, sigma=1000) # another slow example
 }
 }
-\keyword{L-moment (trimmed, distribution)}
+\keyword{L-moment (trimmed distribution)}
 \keyword{Distribution: Normal}

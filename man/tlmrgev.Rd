@@ -75,6 +75,6 @@ tlmrgev(leftrim=12, rightrim=1, xi=100, alpha=20) # another slow example
   # near limits of the GEV.
 }
 }
-\keyword{L-moment (trimmed, distribution)}
+\keyword{L-moment (trimmed distribution)}
 \keyword{Distribution: Generalized Extreme Value}
 

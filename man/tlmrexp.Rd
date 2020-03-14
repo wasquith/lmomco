@@ -35,7 +35,7 @@ tlmrexp(trim=2)
 tlmrexp(trim=2, xi=2) # another slow example
 }
 }
-\keyword{L-moment (trimmed, distribution)}
+\keyword{L-moment (trimmed distribution)}
 \keyword{Distribution: Exponential}
 \keyword{Distribution: Exponential (trimmed)}
 

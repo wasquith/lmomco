@@ -35,5 +35,5 @@ tlmrgum(trim=2)
 tlmrgum(trim=2, xi=2) # another slow example
 }
 }
-\keyword{L-moment (trimmed, distribution)}
+\keyword{L-moment (trimmed distribution)}
 \keyword{Distribution: Gumbel}
