@@ -22,5 +22,5 @@ is.emu(para)
 para <- vec2par(c(0.25, 1.4), type='emu')
 if(is.emu(para)) Q <- quaemu(0.5,para) #}
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Eta-Mu}

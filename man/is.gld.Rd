@@ -25,5 +25,5 @@ if(is.gld(para) == TRUE) {
 }
 }
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Generalized Lambda}

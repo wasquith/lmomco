@@ -23,5 +23,5 @@ if(is.revgum(para)) {
   Q <- quarevgum(0.5,para)
 }
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Gumbel (reversed)}

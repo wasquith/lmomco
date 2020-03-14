@@ -25,5 +25,5 @@ if(is.texp(yy) & is.texp(zz)) {
    print(lmomtexp(zz)$lambdas)
 }
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Exponential (trimmed)}

@@ -23,5 +23,5 @@ if(is.ray(para)) {
   Q <- quaray(0.5,para)
 }
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Rayleigh}

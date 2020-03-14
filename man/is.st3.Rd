@@ -22,5 +22,5 @@ if(is.st3(para)) {
   Q <- quast3(0.25,para)
 }
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Student t (3-parameter)}

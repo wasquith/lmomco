@@ -23,5 +23,5 @@ if(is.gev(para) == TRUE) {
   Q <- quagev(0.5,para)
 }
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Generalized Extreme Value}

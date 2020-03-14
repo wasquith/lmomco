@@ -23,5 +23,5 @@ if(is.lmrq(para) == TRUE) {
   Q <- qualmrq(0.5,para)
 }
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Linear Mean Residual Quantile Function}

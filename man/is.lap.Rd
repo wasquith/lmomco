@@ -23,5 +23,5 @@ if(is.lap(para) == TRUE) {
   Q <- qualap(0.5,para)
 }
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Laplace}

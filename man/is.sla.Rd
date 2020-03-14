@@ -23,5 +23,5 @@ if(is.sla(para) == TRUE) {
   Q <- quasla(0.5,para)
 }
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Slash}

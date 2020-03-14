@@ -23,5 +23,5 @@ if(is.gam(para) == TRUE) {
   Q <- quagam(0.5,para)
 }
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Gamma}

@@ -23,6 +23,6 @@ if(is.tri(para) == TRUE) {
   Q <- quatri(0.5,para)
 }
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Asymmetric Triangular}
 \keyword{Distribution: Triangular}

@@ -23,5 +23,5 @@ if(is.exp(para) == TRUE) {
   Q <- quaexp(0.5,para)
 }
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Exponential}

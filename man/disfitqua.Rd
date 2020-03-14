@@ -81,7 +81,7 @@ par2lmom(vec2par(par3$para,      type="wak"))$ratios # final L-moments}
 }
 \keyword{distribution (parameters)}
 \keyword{quantile function}
-\keyword{percentiles, method of}
+\keyword{method of percentiles}
 \concept{irregular quantiles}
 \concept{available quantiles}
 

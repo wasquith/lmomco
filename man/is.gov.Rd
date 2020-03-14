@@ -23,5 +23,5 @@ if(is.gov(para) == TRUE) {
   Q <- quagov(0.5,para)
 }
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Govindarajulu}

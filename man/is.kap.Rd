@@ -23,5 +23,5 @@ if(is.kap(para) == TRUE) {
   Q <- quakap(0.5,para)
 }
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Kappa}

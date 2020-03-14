@@ -23,5 +23,5 @@ if(is.kmu(para)) {
   Q <- quakmu(0.5,para)
 }
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Kappa-Mu}

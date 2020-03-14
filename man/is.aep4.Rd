@@ -23,5 +23,5 @@ if(is.aep4(para) == TRUE) {
   Q <- quaaep4(0.55,para)
 }
 }
-\keyword{utility (distribution, type check)}
+\keyword{utility (distribution/type check)}
 \keyword{Distribution: Asymmetric Exponential Power}
