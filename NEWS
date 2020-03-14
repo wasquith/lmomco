@@ -1,12 +1,32 @@
 --------------------------------------------------------------------------------
 NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Version 2.3.4--03/13/2020
+Version 2.3.6--03/14/2020
+1. The CRAN incoming checks throwing <<Variables with usage in documentation
+     object 'clearforkporosity' but not in code: 'clearforkporosity'>>
+     This is a hard error to figure out. The Writing R Extensions documentation
+     is not helpful. Comparison of the clearforkporosity.Rd to that of the
+     DrillBitLifetime.Rd, which is not having an error, shows that a data() 
+     wrapper for the usage in clearforkporosity.Rd on "clearforkporosity" is
+     missing relative to DrillBitLifetime.Rd. Also removed the Examples section
+     for clearforkporosity.Rd.
+2. Added LazyData: true declaration in DESCRIPTION based on reading of the
+     Writing R Extensions documentation.
+
+
+Version 2.3.5--03/13/2020 : CRAN submission difficulties
+1. Removed commas from all keyword{} declarations in the affected Rd files.
+     It appears that CRAN incoming checks think an author has mistakenly
+     provided multiple keywords terms within the declaration, which for lmomco
+     this was not actually happening. The comma use was deliberate, but removed
+     now at anyrate.
+
+
+Version 2.3.4--03/13/2020 : CRAN submission difficulties
 1. Added twoside.suppress.labels argument to add.lmomco.axis().
 2. BUG FIX: some fixes to the label plotting and quantile edges within
       add.lmomco.axis() that were found through some large batch processing. 
 3. Spelling correction in cdfnor.Rd.
-
 
 Version 2.3.3--02/19/2019
 1. Added the type argument to f2f() and f2flo() functions to permit subtle
