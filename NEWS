@@ -1,6 +1,19 @@
 --------------------------------------------------------------------------------
 NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
+Version 2.3.7--
+1. Some work on improving warning messages when MASS::mvrnorm() fails because
+     the variance-covariance matrix is not positive definite. A minor error 
+     trapping in complete failure in computing L-moments of the quasf vector.
+     Added the tol-erance argument so that we can pass it to MASS:mvrnorm().
+     The author has one school of though that perhaps ... should be doing this.
+2. Added a Note in qua2ci.cov.Rd with an example sample that causes the failure
+     of MASS::mvrnorm() and show some ways to mitigate for this.
+3. BUG FIX: Some minor bug work on qua2ci.cov() during careful study during
+     no. 1. The dimless argument would not ever work with nmom equal to 1 or 2,
+     now fixed.
+
+
 Version 2.3.6--03/14/2020
 1. The CRAN incoming checks throwing <<Variables with usage in documentation
      object 'clearforkporosity' but not in code: 'clearforkporosity'>>
@@ -27,6 +40,7 @@ Version 2.3.4--03/13/2020 : CRAN submission difficulties
 2. BUG FIX: some fixes to the label plotting and quantile edges within
       add.lmomco.axis() that were found through some large batch processing. 
 3. Spelling correction in cdfnor.Rd.
+
 
 Version 2.3.3--02/19/2019
 1. Added the type argument to f2f() and f2flo() functions to permit subtle
