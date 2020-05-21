@@ -1,6 +1,6 @@
 "qua2ci.cov" <-
 function(x,f, type=NULL, nsim=1000, interval=c("confidence", "none"), level=0.90,
-              asnorm=FALSE, altlmoms=NULL, flip=NULL, dimless=TRUE,
+              tol=1E-6, asnorm=FALSE, altlmoms=NULL, flip=NULL, dimless=TRUE,
               usefastlcov=TRUE, nmom=5, getsimlmom=FALSE, verbose=FALSE, ...) {
    interval <- match.arg(interval)
    if(is.null(type)) {
@@ -67,8 +67,18 @@ function(x,f, type=NULL, nsim=1000, interval=c("confidence", "none"), level=0.90
          lmrcv <- lmoms.cov(newx, nmom=nmom)
       }
       sLM <- NULL
-      try(sLM   <- MASS::mvrnorm(n=nsim, c(0, 1, altlmoms$ratios[3:nmom]), lmrcv))
-      if(is.null(sLM)) { print(lmrcv); stop("here") }
+      fed <- 0
+      if(nmom >= 2) fed <- c(fed, 1)
+      if(nmom >= 3) fed <- c(fed, altlmoms$ratios[3:nmom])
+      try(sLM   <- MASS::mvrnorm(n=nsim, fed, lmrcv, tol=tol))
+      if(is.null(sLM)) {
+        message("x=")
+        print(x)
+        message("lmrcv=")
+        print(lmrcv)
+        warning("returning NULL (try increasing the tol-erance)")
+        return(NULL)
+      }
          MU <- altlmoms$lambdas[1] # desired mean, which could be the original mean
          L2 <- altlmoms$lambdas[2] # desired L2, which again could be the original
       # based on afore logic involving: if(is.null(altlmoms)) altlmoms <- xlmoms
@@ -85,14 +95,23 @@ function(x,f, type=NULL, nsim=1000, interval=c("confidence", "none"), level=0.90
          lmrcv <- lmoms.cov(x, nmom=nmom)
       }
       sLM <- NULL
-      try(sLM <- MASS::mvrnorm(n=nsim, altlmoms$lambdas, lmrcv))
-      if(is.null(sLM)) { print(x); print(lmrcv); stop("here") }
+      try(sLM <- MASS::mvrnorm(n=nsim, altlmoms$lambdas, lmrcv, tol=tol))
+      if(is.null(sLM)) {
+        message("x=")
+        print(x)
+        message("lmrcv=")
+        print(lmrcv)
+        warning("returning NULL (try increasing the tol-erance)")
+        return(NULL)
+      }
    }
+
    if(verbose) {
       message(" Var-covar matrix");              print(lmrcv)
       message(" Summary of simulated lambdas "); print(summary(sLM))
    }
    if(getsimlmom) return(sLM)
+
    # Confidence limit computation
    ci <- c((1-level)/2, 1-(1-level)/2) # division by 2 because two tailed
    n <- length(f)
@@ -125,6 +144,10 @@ function(x,f, type=NULL, nsim=1000, interval=c("confidence", "none"), level=0.90
          # except for distributions having thin slices of valid L-moment
          # domain or simulations near the boundary of the distributions,
          # say above the Tau4 of the Generalized Logistic distribution.
+      }
+      if(length(quasf) < 3) {
+        warning("critical failure, no quantiles to then estimate the distribution for")
+        return(NULL)
       }
       lmr <- lmoms(quasf, nmom=3) # the L-moments of the simulated quantiles
       mu  <- lmr$lambdas[1]; lscale <- lmr$lambdas[2]
