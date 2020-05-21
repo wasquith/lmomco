@@ -6,7 +6,7 @@ This function estimates the lower and upper limits of a specified confidence int
 }
 \usage{
 qua2ci.cov(x,f, type=NULL, nsim=1000,
-                interval=c("confidence", "none"), level=0.90,
+                interval=c("confidence", "none"), level=0.90, tol=1E-6,
                 asnorm=FALSE, altlmoms=NULL, flip=NULL, dimless=TRUE,
                 usefastlcov=TRUE, nmom=5, getsimlmom=FALSE, verbose=FALSE, ...)
 }
@@ -17,6 +17,7 @@ qua2ci.cov(x,f, type=NULL, nsim=1000,
   \item{nsim}{The number of simulations to perform. Large numbers produce more refined confidence limit estimates at the cost of CPU time. The default is anticipated to be large enough to semi-quantitatively interpret results without too much computational delay. Larger simulation numbers are recommended.}
   \item{interval}{The type of interval to compute. If \code{"none"}, then the simulated quantiles are returned at which point \emph{only} the first value in \eqn{f} or \code{f[1]} will be considered but a warning will be issued to remind the user. This option is nice for making boxplots of the quantile distribution.}
   \item{level}{The confidence interval (\eqn{0 \le } \code{level} \eqn{ < 1}). The interval is specified as the size of the interval for which the default is 0.90 or the 90th percentile. The function will return the 5th [\eqn{(1-0.90)/2}] and 95th [\eqn{(1-(1-0.90)/2)}] percentile cumulative probability of the simulated quantile distribution as specified by the nonexceedance probability argument.}
+  \item{tol}{The tolerance argument of same name and default to feed to \code{MASS::mvrnorm()} and try increasing this tolerance if the error \dQuote{'Sigma' is not positive definite} occurs (see \bold{Note} for more discussion).}
   \item{asnorm}{Use the mean and standard deviation of the simulated quantiles as parameters of the Normal distribution to estimate the confidence interval. Otherwise, a Bernstein polynomial approximation (\code{\link{dat2bernqua}}) to the empirical distribution of the simulated quantile distribution is used.}
   \item{altlmoms}{Alternative L-moments to rescale the simulated L-moments from the variance-covariance structure of the sample L-moments in \code{x}. These L-moments need to be an \pkg{lmomco} package L-moment object (e.g. \code{\link{lmoms}}). The presence of alternative L-moments will result in \code{dimless=TRUE}.}
   \item{flip}{A flipping or reflection value denoted as \eqn{\eta}. The values in \code{x} are flipped by this value (\eqn{y = \eta - x}) and analysis proceeds with flipped information, and then results are flipped back just prior to returning values with the exception that if \code{getsimlmom=TRUE} then the simultated L-moments are in \dQuote{flipped space.}}
@@ -37,6 +38,53 @@ qua2ci.cov(x,f, type=NULL, nsim=1000,
   \item{qua_mean}{The mean of the simulated quantiles for which the median and mean should be very close if the simulation size is large enough and the quantile distribution is symmetrical.}
   \item{qua_var}{The variance (\eqn{\sigma^2(F)}) of the simulated quantiles.}
   \item{qua_lam2}{The L-scale (\eqn{\lambda_2(F)}) of the simulated quantiles for which \eqn{\sigma^2(F) \approx \pi\times\lambda^2_2(F)}.}
+}
+\note{
+These particular data set needs further evaluation as these particular sample can produce non-positive definite matrix being fed to \code{MASS:mvrnorm()}. It is noted that there are no ties in this data set.
+\preformatted{
+  test_dat <- c(0.048151736, 0.036753258, 0.034895847, 0.082792447, 0.096984927,
+                0.213977450, 0.020264292, 0.269585438, 0.304746113, 0.066339093,
+                0.015651114, 0.025122412, 0.184095698, 0.047167958, 0.049824752,
+                0.043390768, 0.055228680, 0.009325696, 0.042145010, 0.008113992,
+                0.118901521, 0.050399301, 0.049646181, 0.032299402, 0.015229284,
+                0.013684668, 0.049371734, 0.068426211, 0.207159600, 0.087228473,
+                0.306276783, 0.024870356, 0.016946801, 0.051553444, 0.017654117)
+  qua2ci.cov(test_dat, 0.5, type="pe3", tol=1E-6, nmom=5) # fails
+}
+
+Next we, try focusing on the upper left corner of the matrix, after all we do not need beyond the 3rd moment because the Pearson III is being used.
+\preformatted{
+  qua2ci.cov(test_dat, 0.5, type="pe3", tol=1E-6, nmom=3) # fails
+}
+
+Now try increasing the tolerance setting on the matrix postive definite test in the \code{MASS::mvrnorm()} function.
+\preformatted{
+  qua2ci.cov(test_dat, 0.5, type="pe3", tol=1E-4, nmom=5) # fails
+}
+
+Now try again just focusing on the upper left corner that we really need.
+\preformatted{
+  set.seed(1)
+  qua2ci.cov(test_dat, 0.5, type="pe3", tol=1E-4, nmom=3) # IT WORKS
+  # nonexceed     lwr      fit      upr  qua_med qua_mean   qua_var qua_lam2
+  #       0.5 0.02762 0.044426 0.061189 0.044322 0.044319 0.0001019 0.005672
+}
+
+Let us now try a hack of smoothing the data through the Bernstein polynomial. Perhaps subtle issues in the data can be \dQuote{fixed} by this and the seed has been set to have the \code{MASS::mvrnorm()} see the same seed although the variance-covariance matrix is slightly changing. Notice that the tolerance now returns to the default and that we are requesting up through the 5th L-moment.
+\preformatted{
+  set.seed(1)
+  n <- length(test_dat)
+  smth_dat <- dat2bernqua((1:n)/(n+1), test_dat)
+  qua2ci.cov(smth_dat, 0.5, type="pe3", tol=1E-6, nmom=5) # IT WORKS
+  # nonexceed     lwr      fit     upr  qua_med qua_mean   qua_var  qua_lam2
+  #       0.5 0.02864 0.048288 0.06778 0.048406 0.048201 0.0001405 0.0066678
+}
+
+A quick look at the smoothing. The author is not advocating for this but this trick might be useful in data-mining scale work where for some samples, we need something back. The user might then consider using the differences \code{upr}\eqn{-}\code{fit} and \code{fit}\eqn{-}\code{lwr} to reconstruct the interval from a fit based on the original sample.
+\preformatted{
+  plot( (1:n)/(n+1), sort(test_dat))
+  lines((1:n)/(n+1), smth_dat, col=2)
+}
 }
 \author{ W.H. Asquith}
 \seealso{\code{\link{lmoms}}, \code{\link{lmoms.cov}}, \code{\link{qua2ci.simple}}
