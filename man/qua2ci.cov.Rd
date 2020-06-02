@@ -50,6 +50,26 @@ These particular data set needs further evaluation as these particular sample ca
                 0.013684668, 0.049371734, 0.068426211, 0.207159600, 0.087228473,
                 0.306276783, 0.024870356, 0.016946801, 0.051553444, 0.017654117)
   qua2ci.cov(test_dat, 0.5, type="pe3", tol=1E-6, nmom=5) # fails
+
+  lams <- lmoms(    test_dat)$lambdas
+  lamc <- lmoms.cov(test_dat)
+  n <- 100
+  set.seed(1)
+  MV1 <- mvtnorm::rmvnorm(n, mean=lams, sigma=lamc, method="eigen")
+  MV1 <- mvtnorm::rmvnorm(n, mean=lams, sigma=lamc, method="chol")
+  MV1 <- mvtnorm::rmvnorm(n, mean=lams, sigma=lamc, method="svd")
+  colnames(MV1) <- paste0(rep("lam",5),1:5)
+  set.seed(1)
+  MV2 <- MASS::mvrnorm(n, lams, lamc, tol=5E-2)
+  set.seed(1)
+  MV3 <- MASS::mvrnorm(n, lams, lamc, tol=Inf)
+
+  summary(MV2-MV3)
+  summary(MV1)
+  summary(MV2)
+  plotlmrdia(lmrdia(), xlim=c(0.3,0.7), ylim=c(0,.6))
+  points(MV1[,3]/MV1[,2], MV1[,4]/MV1[,2], col="red",  cex=0.5)
+  points(MV2[,3]/MV2[,2], MV2[,4]/MV2[,2], col="blue", cex=0.5)
 }
 
 Next we, try focusing on the upper left corner of the matrix, after all we do not need beyond the 3rd moment because the Pearson III is being used.
