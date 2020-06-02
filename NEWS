@@ -5,13 +5,17 @@ Version 2.3.7--
 1. Some work on improving warning messages when MASS::mvrnorm() fails because
      the variance-covariance matrix is not positive definite. A minor error 
      trapping in complete failure in computing L-moments of the quasf vector.
-     Added the tol-erance argument so that we can pass it to MASS:mvrnorm().
+     Added the tolerance argument so that we can pass it to MASS:mvrnorm().
      The author has one school of though that perhaps ... should be doing this.
+     Also mvtnorm package provides an alterative normal variate simulator.
 2. Added a Note in qua2ci.cov.Rd with an example sample that causes the failure
      of MASS::mvrnorm() and show some ways to mitigate for this.
 3. BUG FIX: Some minor bug work on qua2ci.cov() during careful study during
      no. 1. The dimless argument would not ever work with nmom equal to 1 or 2,
      now fixed.
+4. Color fix: It seems in R4.0.+ that colors 2,3,4 are not no longer limited
+     red, green, blue, respectively. These have been replaced as
+     "red", "green", and "blue" in plotlmrdia.R/.Rd.
 
 
 Version 2.3.6--03/14/2020
