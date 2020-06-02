@@ -49,7 +49,7 @@ function(lmr=NULL,
    }
    if(! nolines) {
      if(! noaep4) {
-        lines(lmr$aep4, col=2, lty=3)
+        lines(lmr$aep4, col="red", lty=3)
         entryi <- entryi + 1
         entries[entryi] <- "AEP4"
         Elwd[entryi] <- 1
@@ -59,7 +59,7 @@ function(lmr=NULL,
         Ecex[entryi] <- 1
      }
      if(! nogev) {
-        lines(lmr$gev, col=2,lty=2)
+        lines(lmr$gev, col="red",lty=2)
         entryi <- entryi + 1
         entries[entryi] <- "GEV"
         Elwd[entryi] <- 1
@@ -69,7 +69,7 @@ function(lmr=NULL,
         Ecex[entryi] <- 1
      }
      if(! noglo) {
-        lines(lmr$glo, col=3)
+        lines(lmr$glo, col="green")
         entryi <- entryi + 1
         entries[entryi] <- "GLO"
         Elwd[entryi] <- 1
@@ -79,7 +79,7 @@ function(lmr=NULL,
         Ecex[entryi] <- 1
      }
      if(! nogno) {
-        lines(lmr$gno, col=4, lty=2)
+        lines(lmr$gno, col="blue", lty=2)
         entryi <- entryi + 1
         entries[entryi] <- "GNO"
         Elwd[entryi] <- 1
@@ -99,7 +99,7 @@ function(lmr=NULL,
         Ecex[entryi] <- 1
      }
      if(! nogpa) {
-        lines(lmr$gpa, col=4)
+        lines(lmr$gpa, col="blue")
         entryi <- entryi + 1
         entries[entryi] <- "GPA"
         Elwd[entryi] <- 1
@@ -121,7 +121,7 @@ function(lmr=NULL,
    }
    if(! nopoints) {
      if(! nocau) {
-        points(lmr$cau,pch=13,col=3,cex=1.25)
+        points(lmr$cau,pch=13,col="green",cex=1.25)
         entryi <- entryi + 1
         entries[entryi] <- "CAU (limiting TL1)"
         Elwd[entryi] <- NA
@@ -131,7 +131,7 @@ function(lmr=NULL,
         Ecex[entryi] <- 1.25
      }
      if(! noexp) {
-        points(lmr$exp,pch=16,col=2,cex=1.5)
+        points(lmr$exp,pch=16,col="red",cex=1.5)
         entryi <- entryi + 1
         entries[entryi] <- "EXP"
         Elwd[entryi] <- NA
@@ -141,7 +141,7 @@ function(lmr=NULL,
         Ecex[entryi] <- 1.5
      }
      if(! nonor) {
-        points(lmr$nor,pch=15,col=2,cex=1.5)
+        points(lmr$nor,pch=15,col="red",cex=1.5)
         entryi <- entryi + 1
         entries[entryi] <- "NOR"
         Elwd[entryi] <- NA
@@ -151,7 +151,7 @@ function(lmr=NULL,
         Ecex[entryi] <- 1.5
      }
      if(! nogum) {
-        points(lmr$gum,pch=17,col=2,cex=1.5)
+        points(lmr$gum,pch=17,col="red",cex=1.5)
         entryi <- entryi + 1
         entries[entryi] <- "GUM"
         Elwd[entryi] <- NA
@@ -161,7 +161,7 @@ function(lmr=NULL,
         Ecex[entryi] <- 1.5
      }
      if(! noray) {
-        points(lmr$ray,pch=18,col=2,cex=1.5)
+        points(lmr$ray,pch=18,col="red",cex=1.5)
         entryi <- entryi + 1
         entries[entryi] <- "RAY"
         Elwd[entryi] <- NA
@@ -171,7 +171,7 @@ function(lmr=NULL,
         Ecex[entryi] <- 1.5
      }
      if(! nosla) {
-        points(lmr$sla,pch=10,cex=1.25,col=3)
+        points(lmr$sla,pch=10,cex=1.25,col="green")
         entryi <- entryi + 1
         entries[entryi] <- "SLA (TL1)"
         Elwd[entryi] <- NA
@@ -181,7 +181,7 @@ function(lmr=NULL,
         Ecex[entryi] <- 1.25
      }
      if(! nouni) {
-        points(lmr$uniform,pch=12,cex=1.25,col=2)
+        points(lmr$uniform,pch=12,cex=1.25,col="red")
         entryi <- entryi + 1
         entries[entryi] <- "UNI"
         Elwd[entryi] <- NA
