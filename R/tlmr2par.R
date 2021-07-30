@@ -1,15 +1,49 @@
 "tlmr2par" <-
-function(x, type, para.init=NULL, nmom=NULL,
+function(x, type, para.int=NULL,
                   trim=NULL, leftrim=NULL, rightrim=NULL, ...) {
 
-  # x is a data vector, type is an lmomco distribution abbreviation dist.list()
-  # para.init is an lmomco parameter list of an initial guess at the solution
-  # multi-dimensional optimization needs such guesses, uniroot() (1D) needs function end points
-  if(is.null(nmom)) { # attempt to get the correct number
-    nmom <- dist.list(type=type) # how many parameters in the distribution
-  } # we care because vectors(nmom long) are used for sum of squares computation
+   if(is.null(type)) {
+     warning("must specify distribution type")
+     return(NULL)
+   }
+   if(is.null(para.int)) {
+     lmr <- lmoms(x)
+     if(!are.lmom.valid(lmr)) {
+       warning("L-moments of x are not valid for initial parameters, ",
+               "try manual initial parameters")
+       return(NULL)
+     }
+     para.int <- lmom2par(lmr, type=type, ...)
+     if(is.null(para.int)) {
+       warning("could not estimate initial parameters via L-moments")
+       return(NULL)
+     }
+   } else if(!is.list(para.int) & is.vector(para.int)) {
+     para.int <- vec2par(para.int, type = type)
+     if(is.null(para.int)) {
+       warning("initial parameters given by vector are not valid for initial parameters, ",
+               "try other initial parameters")
+       return(NULL)
+     }
+   }
 
-  if(is.null(trim) & is.null(leftrim) & is.null(rightrim)) trim <- 0
+   if(is.null(para.int)) {
+     warning(" initial parameters are NULL")
+     return(NULL)
+   }
+   if(para.int$type != type) {
+     warning("distribution requested to fit does not match the type of the ",
+             "initial parameters")
+     return(NULL)
+   }
+   if(length(para.int$para) == 1) {
+     warning("function is not yet built for single parameter optimization")
+     return(NULL)
+   }
+
+  nmom <- length(para.int$para)
+
+  if(  is.null(trim) & is.null(leftrim) & is.null(rightrim)) trim <- 0
   if(! is.null(trim)) { # this is setting symmetrical trimming as a shortcut
     leftrim  <- trim
     rightrim <- trim
@@ -42,14 +76,16 @@ function(x, type, para.init=NULL, nmom=NULL,
   }
 
   rt <- NULL # standard hack around optim() is to try()
-  try(rt <- stats::optim(para.init$para,    afunc, tlmr=tlmr, type=type,
-                                  leftrim=leftrim, rightrim=rightrim, ...))
+  try(rt <- stats::optim(para.int$para,    afunc, tlmr=tlmr, type=type,
+                                 leftrim=leftrim, rightrim=rightrim, ...))
   if(is.null(rt)) {
     warning("failure, so returning NULL, insert further advice to the user")
     return(NULL)
   }
 
   trim.para <- vec2par(rt$par, type=type) # final the formal lmomco parameter list
+  trim.para$source <- "tlmr2par"
   trim.para$rt <- rt # store the results for later use by the user if ever needed
+  trim.para$para.int <- para.int
   return(trim.para)
 }
