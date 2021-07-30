@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Version 2.3.7--
+Version 2.3.7--08/03/2021
 1. Some work on improving warning messages when MASS::mvrnorm() fails because
      the variance-covariance matrix is not positive definite. A minor error 
      trapping in complete failure in computing L-moments of the quasf vector.
@@ -16,6 +16,8 @@ Version 2.3.7--
 4. Color fix: It seems in R4.0.+ that colors 2,3,4 are not no longer limited
      red, green, blue, respectively. These have been replaced as
      "red", "green", and "blue" in plotlmrdia.R/.Rd.
+5. Added tlmr2par() for attempt at a general interface for fitting a
+     distribution to the TL-moments.
 
 
 Version 2.3.6--03/14/2020
