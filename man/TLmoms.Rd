@@ -28,7 +28,7 @@ TLmoms(x, nmom, trim=NULL, leftrim=NULL, rightrim=NULL, vecit=FALSE)
   \item{source}{An attribute identifying the computational source of the L-moments: \dQuote{TLmoms}.}
 }
 \references{
-Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational statistics and data analysis, v. 43, pp. 299-314.
+Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statistics and Data Analysis, v. 43, pp. 299--314.
 }
 \author{ W.H. Asquith}
 
