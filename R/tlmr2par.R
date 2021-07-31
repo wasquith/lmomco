@@ -59,7 +59,7 @@ function(x, type, para.int=NULL,
   # we set the nmom here only for (1) speed efficiency, don't compute deeper than
   # needed and to (2) avoid a bug of vector recycling by R in sum of squares later
 
-  # the heart of optimization is sometype of object function, here we quietly
+  # the heart of optimization is some type of object function, here we quietly
   # define one on the fly. The function's first argument is a simple vector
   # controlled a level about by the optim() function to come. The rest of the
   # arguments are named arguments to be set when the optim() function is used.
@@ -71,6 +71,7 @@ function(x, type, para.int=NULL,
      # we have a "guess" at the parameters in new.para and now we know how to convert
      # those to TL-moments
      fit.tlmr <- theoTLmoms(new.para, leftrim=leftrim, rightrim=rightrim, nmom=nmom)
+     if(fit.tlmr$lambdas[2] <= 0) return(Inf)
      err <- sum((tlmr$lambdas - fit.tlmr$lambdas)^2) # sum of squares
      return(err) # Sum of square errors, we want to minimize this quantity!!!
   }
@@ -82,8 +83,10 @@ function(x, type, para.int=NULL,
     warning("failure, so returning NULL, insert further advice to the user")
     return(NULL)
   }
-
   trim.para <- vec2par(rt$par, type=type) # final the formal lmomco parameter list
+  if(is.null(trim.para)) {
+    trim.para <- list(para=rep(NA, nmom), text="invalid parameters, see rt, try a different para.int")
+  }
   trim.para$source <- "tlmr2par"
   trim.para$rt <- rt # store the results for later use by the user if ever needed
   trim.para$para.int <- para.int

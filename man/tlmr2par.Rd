@@ -21,6 +21,7 @@ tlmr2par(x, type, para.int=NULL, trim=NULL, leftrim=NULL, rightrim=NULL, ...)
 
   \item{type}{The type of distribution in three character (minimum) format.}
   \item{para}{The parameters of the distribution.}
+  \item{text}{Optional material. If the solution fails but the optimization appears to converge, then this element is inserted into the list and the \code{para} will be all \code{NA}.}
   \item{source}{Attribute specifying source of the parameters.}
   \item{rt}{The list from the \code{optim()} function.}
   \item{para.int}{A copy of the initial parameters given.}
@@ -31,6 +32,20 @@ Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statis
 \author{ W.H. Asquith}
 \seealso{\code{\link{theoTLmoms}}, \code{\link{TLmoms}}}
 \examples{
+\donttest{
+# (1) An example to check that trim(0,0) should recover whole sample
+the.data <- rlmomco(140, vec2par(c(3,.4,-.1), type="pe3"))
+wild.guess <- vec2par(c(mean(the.data),1,0), type="pe3")
+pe3whole <- lmom2par(lmoms(the.data),         type="pe3")
+pe3trimA  <- tlmr2par(the.data, "pe3", para.int=wild.guess, leftrim=0,  rightrim=0)
+pe3trimB  <- tlmr2par(the.data, "pe3", para.int=wild.guess, leftrim=10, rightrim=3)
+message("PE3 parent       = ", paste0(pe3whole$para, sep=" "))
+message("PE3 whole sample = ", paste0(pe3whole$para, sep=" "))
+message("PE3 trim( 0, 0)  = ", paste0(pe3trimA$para, sep=" "))
+message("PE3 trim(10, 3)  = ", paste0(pe3trimB$para, sep=" ")) #}
+
+\donttest{
+# (2) An example with "real" outliers
 FF <- lmomco::nonexceeds(); qFF <- qnorm(FF); type <- "gev"
 the.data <- c(3.064458, 3.139879, 3.167317, 3.225309, 3.324282, 3.330414,
              3.3304140, 3.340444, 3.357935, 3.376577, 3.378398, 3.392697,
@@ -39,17 +54,28 @@ the.data <- c(3.064458, 3.139879, 3.167317, 3.225309, 3.324282, 3.330414,
              3.5224440, 3.523746, 3.527630, 3.527630, 3.531479, 3.546543,
              3.5932860, 3.597695, 3.600973, 3.614897, 3.620136, 3.660865,
              3.6848450, 3.820858, 4.708421)
-# visually, looks like 3 outliers to the left and one outlier to the right
-whole.para <- lmom2par(lmoms(the.data), type=type)
-trim.para  <- tlmr2par(the.data, type, para.int=whole.para, leftrim=3, rightrim=1)
+the.data <- sort(the.data) # though already sorted, backup for plotting needs
 
+# visually, looks like 3 outliers to the left and one outlier to the right
+t1 <- 3; t2 <- 1 # see left and right trimming and then estimation parameters
+whole.para <- lmom2par(lmoms(the.data), type=type)
+trim.para  <- tlmr2par(the.data, type, para.int=whole.para, leftrim=t1, rightrim=t2)
+
+n <- length(the.data)
+pchs <- rep(1, n)
+pchs[1:t1]     <- 16
+pchs[(n-t2):n] <- 16
+cols <- rep(grey(0.5), n)
+cols[1:t1]     <- "red"
+cols[(n-t2):n] <- "purple"
 plot( qFF, qlmomco(FF, whole.para), type="l", lwd=2, ylim=c(3.1,4.8),
            xlab="Standard normal variate", ylab="Some phenomena, log10(cfs)")
 lines(qFF, qlmomco(FF, trim.para), col=4, lwd=3)
-points(qnorm(pp(the.data)), sort(the.data), pch=1, col=grey(.5))
-legend("topleft", c("L-moments", "TL-moments(3,2)"), bty="n",
+points(qnorm(pp(the.data)), sort(the.data), pch=pchs, col=cols)
+legend("topleft", c("L-moments",
+                   paste0("TL-moments(", t1, ",", t2,")")), bty="n",
                   lty=c(1,1), lwd=c(2,3), col=c(1,4))
-# see the massive change from the whole sample to the trim(3,1) curve
+# see the massive change from the whole sample to the trim(t1,t2) curve}
 }
 \keyword{L-moment (sample)}
 \keyword{L-moment (trimmed sample)}
