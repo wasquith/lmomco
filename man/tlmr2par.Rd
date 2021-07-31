@@ -56,18 +56,26 @@ the.data <- c(3.064458, 3.139879, 3.167317, 3.225309, 3.324282, 3.330414,
              3.6848450, 3.820858, 4.708421)
 the.data <- sort(the.data) # though already sorted, backup for plotting needs
 
-# visually, looks like 3 outliers to the left and one outlier to the right
-t1 <- 3; t2 <- 1 # see left and right trimming and then estimation parameters
+# visually, looks like 4 outliers to the left and one outlier to the right
+# perhaps the practical situation is that we do not wan the left tail to
+# mess up the right when fitting a distribution because maybe the practical
+# aspects are the that right tail is of engineering interest, but then we
+# have some idea that the one very large event is of questionable suitability
+t1 <- 4; t2 <- 1 # see left and right trimming and then estimation parameters
 whole.para <- lmom2par(lmoms(the.data), type=type)
 trim.para  <- tlmr2par(the.data, type, para.int=whole.para, leftrim=t1, rightrim=t2)
 
 n <- length(the.data)
-pchs <- rep(1, n)
-pchs[1:t1]     <- 16
-pchs[(n-t2):n] <- 16
 cols <- rep(grey(0.5), n)
-cols[1:t1]     <- "red"
-cols[(n-t2):n] <- "purple"
+pchs <- rep(1, n)
+if(t1 != 0) {
+  cols[      1 :t1] <- "red"
+  cols[(n-t2+1):n ] <- "purple"
+}
+if(t2 != 0) {
+  pchs[      1 :t1] <- 16
+  pchs[(n-t2+1):n ] <- 16
+}
 plot( qFF, qlmomco(FF, whole.para), type="l", lwd=2, ylim=c(3.1,4.8),
            xlab="Standard normal variate", ylab="Some phenomena, log10(cfs)")
 lines(qFF, qlmomco(FF, trim.para), col=4, lwd=3)
