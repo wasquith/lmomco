@@ -1,6 +1,6 @@
 \name{theoTLmoms}
 \alias{theoTLmoms}
-\title{ The Theoretical Trimmed L-moments and TL-moment Ratios using Integration of the Quantile Function }
+\title{The Theoretical Trimmed L-moments and TL-moment Ratios using Integration of the Quantile Function}
 \description{
 Compute the theoretrical trimmed L-moments (TL-moments) for a vector. The level of symmetrical or asymmetrical trimming is
 specified. A theoretrical TL-moment in integral form is
@@ -111,7 +111,7 @@ Where the 2nd optimization shows that if the largest value for the 21 years of d
 Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statistics and Data Analysis, v. 43, pp. 299--314.
 }
 \author{ W.H. Asquith}
-\seealso{\code{\link{theoLmoms}}, \code{\link{TLmoms}}}
+\seealso{\code{\link{theoLmoms}}, \code{\link{TLmoms}}, \code{\link{tlmr2par}}}
 \examples{
 para <- vec2par(c(0,1),type='nor') # standard normal
 TL00 <- theoTLmoms(para) # compute ordinary L-moments

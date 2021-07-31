@@ -147,7 +147,7 @@ Soukissian, T.H., and Tsalis, C., 2015, The effect of the generalized extreme va
 
 Wong, T.S.T., and Li, W.K., 2006, A note on the estimation of extreme value distributions using maximum product of spacings: IMS Lecture Notes, v. 52, pp. 272--283.
 }
-\seealso{\code{\link{lmom2par}}, \code{\link{mle2par}}}
+\seealso{\code{\link{lmom2par}}, \code{\link{mle2par}}, \code{\link{tlmr2par}}}
 \examples{
 \dontrun{
 pe3 <- vec2par(c(4.2, 0.2, 0.6), type="pe3") # Simulated values should have at least

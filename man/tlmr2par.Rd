@@ -1,6 +1,6 @@
 \name{tlmr2par}
 \alias{tlmr2par}
-\title{ Sample Trimmed L-moments to Fitted Distribution }
+\title{Sample Trimmed L-moments to Fitted Distribution}
 \description{
 Parameter estimation of a distribution given initial estimate of the parameters of the distribution to the sample trimmed L-moment (TL-moment) using numerical optimization.
 }
@@ -9,7 +9,7 @@ tlmr2par(x, type, para.int=NULL, trim=NULL, leftrim=NULL, rightrim=NULL, ...)
 }
 \arguments{
   \item{x}{A vector of data values.}
-  \item{type}{Three character (minimum) distribution type (for example, \code{type="gev"}).}
+  \item{type}{Three character (minimum) distribution type (for example, \code{type="gev"}, see \code{\link{dist.list}}.}
   \item{para.int}{Initial parameters as a vector \eqn{\Theta} or as an \pkg{lmomco} parameter \dQuote{object} from say \code{\link{vec2par}}. If a vector is given, then internally \code{\link{vec2par}} is called with distribution equal to \code{type}.}
   \item{trim}{Level of symmetrical trimming to use in the computations. Although \code{NULL} is in the argument list, the default is 0---the usual L-moment is returned.}
   \item{leftrim}{Level of trimming of the left-tail of the sample, which should be left to \code{NULL} if no or symmetrical trimming is used.}
@@ -29,7 +29,7 @@ tlmr2par(x, type, para.int=NULL, trim=NULL, leftrim=NULL, rightrim=NULL, ...)
 Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statistics and Data Analysis, v. 43, pp. 299--314.
 }
 \author{ W.H. Asquith}
-\seealso{\code{\link{TLmoms}}}
+\seealso{\code{\link{theoTLmoms}}, \code{\link{TLmoms}}}
 \examples{
 FF <- lmomco::nonexceeds(); qFF <- qnorm(FF); type <- "gev"
 the.data <- c(3.064458, 3.139879, 3.167317, 3.225309, 3.324282, 3.330414,

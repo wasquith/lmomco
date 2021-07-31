@@ -15,7 +15,7 @@ mle2par(x, type, para.int=NULL, silent=TRUE, null.on.not.converge=TRUE,
 }
 \arguments{
   \item{x}{A vector of data values.}
-  \item{type}{Three character (minimum) distribution type (for example, \code{type="gev"}).}
+  \item{type}{Three character (minimum) distribution type (for example, \code{type="gev"}), see \code{\link{dist.list}}.}
   \item{para.int}{Initial parameters as a vector \eqn{\Theta} or as an \pkg{lmomco} parameter \dQuote{object} from say \code{\link{vec2par}}. If a vector is given, then internally \code{\link{vec2par}} is called with distribution equal to \code{type}.}
   \item{silent}{A logical to silence the \code{try()} function wrapping the \code{optim()} function.}
   \item{null.on.not.converge}{A logical to trigging simple return of \code{NULL} if the \code{optim()} function returns a nonzero convergence status.}
@@ -41,7 +41,7 @@ During the optimization process, the function requires evaluation at the initial
 if \code{Inf} is returned on first call to the objective function. The \code{silent} by default though will silence this error.  Alternative starting parameters might help.  This function is not built around subordinate control functions to say keep the parameters within distribution-specific bounds.  However, in practice, the L-moment estimates should already be fairly close and the optimizer can take it from there.  More sophisticated MLE for many distributions is widely available in other \R packages. The \pkg{lmomco} package uses its own probability density functions.
 }
 \author{ W.H. Asquith}
-\seealso{\code{\link{lmom2par}}, \code{\link{mps2par}}}
+\seealso{\code{\link{lmom2par}}, \code{\link{mps2par}}, \code{\link{tlmr2par}}}
 \examples{
 \dontrun{
 # This example might fail on mle2par() or mps2par() depending on the values
