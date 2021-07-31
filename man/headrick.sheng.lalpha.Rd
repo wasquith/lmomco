@@ -37,7 +37,7 @@ The authors remind the reader that the second L-moments associated with \eqn{X_j
 Headrick and Sheng (2013) use \eqn{k} to represent \eqn{d} as used here. The change is made because \code{k} is an L-comoment order argument already in use by \code{\link{Lcomoment.matrix}}.
 }
 \references{
-Headrick, T.C. and Sheng, Y., 2013, An alternative to Cronbach's Alpha---A L-moment based measure of internal-consistency reliability: Book Chapters, Paper 1, \url{http://opensiuc.lib.siu.edu/epse_books/1}
+Headrick, T.C., and Sheng, Y., 2013, An alternative to Cronbach's Alpha---An L-moment-based measure of internal-consistency reliability: \emph{in} Millsap, R.E., van der Ark, L.A., Bolt, D.M., Woods, C.M. (eds) New Developments in Quantitative Psychology, Springer Proceedings in Mathematics and Statistics, v. 66, \doi{10.1007/978-1-4614-9348-8_2}.
 }
 \author{ W.H. Asquith}
 \seealso{\code{\link{Lcomoment.matrix}}}

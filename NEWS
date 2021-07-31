@@ -18,6 +18,12 @@ Version 2.3.7--08/03/2021
      "red", "green", and "blue" in plotlmrdia.R/.Rd.
 5. Added tlmr2par() for attempt at a general interface for fitting a
      distribution to the TL-moments.
+6. Various minor edits to documentation here and there given quite a long
+     time since a good look. Perhaps in some future release, the author will
+     have read the entire manual again, as of August 2021, it has been a
+     number of years.
+7. Updates triggered by R CMD check --as-cran for R 4.1 and mostly in the
+     \doi{} declaration that has shown up sometime past in R releases.
 
 
 Version 2.3.6--03/14/2020
