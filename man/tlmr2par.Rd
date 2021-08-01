@@ -1,8 +1,9 @@
+\encoding{UTF-8}
 \name{tlmr2par}
 \alias{tlmr2par}
 \title{Sample Trimmed L-moments to Fitted Distribution}
 \description{
-Parameter estimation of a distribution given initial estimate of the parameters of the distribution to the sample trimmed L-moment (TL-moment) using numerical optimization.
+Parameter estimation of a distribution given initial estimate of the parameters of the distribution to the sample trimmed L-moment (TL-moment) using numerical optimization. Thought the TL-moments can be used with substantial depth into either tail and need not be symmetrically trimmed, the TL-moments do not appear as useful when substantial tail trimming is needed, say for mix population mitigation. Then censored or truncation methods might be preferred. The \code{\link{x2xlo}} family of operations can be used for conditional left-tail truncation, which is not uncommon in frequency analyses of rail-tail interest water resources phenomena.
 }
 \usage{
 tlmr2par(x, type, para.int=NULL, trim=NULL, leftrim=NULL, rightrim=NULL, ...)
@@ -30,7 +31,7 @@ tlmr2par(x, type, para.int=NULL, trim=NULL, leftrim=NULL, rightrim=NULL, ...)
 Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statistics and Data Analysis, v. 43, pp. 299--314.
 }
 \author{ W.H. Asquith}
-\seealso{\code{\link{theoTLmoms}}, \code{\link{TLmoms}}}
+\seealso{\code{\link{theoTLmoms}}, \code{\link{TLmoms}}, \code{\link{lmr2par}}}
 \examples{
 \donttest{
 # (1) An example to check that trim(0,0) should recover whole sample
@@ -87,3 +88,5 @@ legend("topleft", c("L-moments",
 }
 \keyword{L-moment (sample)}
 \keyword{L-moment (trimmed sample)}
+\keyword{Ensemble list of parameter estimation methods}
+\keyword{Ensemble list of major parameter estimation methods}
