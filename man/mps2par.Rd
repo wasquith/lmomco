@@ -242,3 +242,4 @@ mps2par(x, type="gam", para.int=guess, silent=FALSE,
 \concept{product of spacing estimation}
 \keyword{goodness-of-fit}
 \keyword{Moran-Darling statistic}
+\keyword{Ensemble list of major parameter estimation methods}

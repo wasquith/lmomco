@@ -48,4 +48,5 @@ lines(nonexceeds(), par2qua(nonexceeds(), slash), col=2)
 \keyword{parameter (L-moments to)}
 \keyword{distribution (utility)}
 \keyword{parameter (estimation)}
+\keyword{Ensemble list of major parameter estimation methods}
 

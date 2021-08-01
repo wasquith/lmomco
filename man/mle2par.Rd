@@ -114,4 +114,4 @@ lines(FF, quagld(FF, p5), col=4); lines(FF, par2qua(FF, p6), col=6) #}
 \keyword{parameter (maximum likelihood to)}
 \keyword{distribution (utility)}
 \keyword{parameter (estimation)}
-
+\keyword{Ensemble list of major parameter estimation methods}

@@ -84,4 +84,5 @@ par2lmom(vec2par(par3$para,      type="wak"))$ratios # final L-moments}
 \keyword{method of percentiles}
 \concept{irregular quantiles}
 \concept{available quantiles}
+\keyword{Ensemble list of major parameter estimation methods}
 
