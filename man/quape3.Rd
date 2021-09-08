@@ -34,6 +34,37 @@ approach based on L-moments: Cambridge University Press.
 \examples{
   lmr <- lmoms(c(123,34,4,654,37,78))
   quape3(0.5,parpe3(lmr))
+
+\dontrun{
+  # Let us run an experiment on the reflection symmetric PE3.
+  # Pick some parameters suitable for hydrologic applications in log.
+  para_neg <- vec2par(c(3,.3,-1), type="pe3") # Notice only the
+  para_pos <- vec2par(c(3,.3,+1), type="pe3") # sign change of skew.
+
+  nsim <- 1000 # Number of simulations
+  nsam <- 70   # Reasonable sample size in hydrology
+  neg <- pos <- rep(NA, nsim)
+  for(i in 1:nsim) {
+    ff <- runif(nsam) # Ensure that each qlmomco()-->quape3() has same probs.
+    neg[i] <- lmoms.cov(qlmomco(ff, para_neg), nmom=3, se="lmrse")[3]
+    pos[i] <- lmoms.cov(qlmomco(ff, para_pos), nmom=3, se="lmrse")[3]
+    # We have extracted the sample standard error of L-skew from the sample
+    # This is not the same as the standard error of so computed PE3 
+    # parameters, but for the illustration here, it does not matter much.
+  }
+  zz <- data.frame(setau3=c(neg,pos), # preserve to make grouping boxplot
+                   sign=c(rep("negskew", nsim), rep("posskew", nsim)))
+  boxplot(zz$setau3~zz$sign, xlab="Sign of a '1' PE3 skew",
+                             ylab="Standard error of L-skew")
+  mtext("Standard Errors of 1,000 PE3 Parents (3,0.3,+/-1) (n=70)")
+  # Notice that the distribution of the standard errors of L-skew are 
+  # basically the same whether or no the sign of the skew is reversed.
+  # Finally, we make a scatter plot as a check that for any given sample
+  # derived from same probabilities that the standard errors are indeed,
+  # that is, remain sample specific.
+  plot(neg, pos, xlab="Standard error of -1 skew simulation",
+                 ylab="Standard error of +1 skew simulation")
+  mtext("Standard Errors of 1,000 PE3 Parents (3,0.3,+/-1) (n=70)") # }
 }
 \keyword{distribution}
 \keyword{quantile function}
