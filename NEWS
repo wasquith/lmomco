@@ -1,6 +1,12 @@
 --------------------------------------------------------------------------------
 NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
+Version 2.3.8--
+1. Added a donttest{} declaration in quape3() of an example study of the
+     symmetry of the standard error of sample L-skews for a switch in sign
+     of the shape (product moment skew) of the Pearson III.
+
+
 Version 2.3.7--08/03/2021
 1. Some work on improving warning messages when MASS::mvrnorm() fails because
      the variance-covariance matrix is not positive definite. A minor error 
