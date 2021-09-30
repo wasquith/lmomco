@@ -11,7 +11,7 @@ plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
            noexp=FALSE,  nonor=FALSE, nogum=FALSE, noray=FALSE,
            nosla=TRUE,  nouni=FALSE,
            xlab="L-SKEW", ylab="L-KURTOSIS", add=FALSE, empty=FALSE,
-           autolegend=FALSE, xleg=NULL, yleg=NULL, ...)
+           autolegend=FALSE, xleg=NULL, yleg=NULL, legendcex=0.9, ...)
 }
 \arguments{
   \item{lmr}{L-moment diagram object from \code{\link{lmrdia}}, if \code{NULL}, then \code{empty} is internally set to \code{TRUE}.}
@@ -37,8 +37,9 @@ plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
   \item{add}{A logical to toggle a call to \code{plot} to start a new plot, otherwise, just the trajectories are otherwise plotted.}
   \item{empty}{A logical to return before any trajectories are plotted but after the condition of the \code{add} has been evaluated, and \dQuote{empty} character string is returned.}
   \item{autolegend}{Generate the legend by built-in algorithm.}
-  \item{xleg}{X-coordinate of the legend.}
+  \item{xleg}{X-coordinate of the legend. This argument is checked for being a character versus a numeric. If it is a character, then \code{yleg} is not needed and \code{xleg} and take on \dQuote{location may also be specified by setting x to a single keyword} as per the functionality of \code{graphics::legend()} itself.}
   \item{yleg}{Y-coordinate of the legend.}
+  \item{legendcex}{The \code{cex} to pass to \code{graphics::legend()}.}
   \item{...}{Additional arguments passed onto the \code{plot} function.}
 }
 \note{

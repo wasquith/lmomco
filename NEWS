@@ -2,9 +2,12 @@
 NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
 Version 2.3.8--
-1. Added a donttest{} declaration in quape3() of an example study of the
+1. Added a \donttest{} declaration in quape3() of an example study of the
      symmetry of the standard error of sample L-skews for a switch in sign
      of the shape (product moment skew) of the Pearson III.
+2. Added legendcex to plotlmrdia(). Also forgot to fix the color definitions
+     in the legend call within plotlmrdia() (see 2.3.7:4 below). Also corrected
+     inconsistent lty of the AEP4 relative to the diagram and the legend.
 
 
 Version 2.3.7--08/03/2021
