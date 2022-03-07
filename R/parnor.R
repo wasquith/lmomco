@@ -1,7 +1,7 @@
 "parnor" <-
-function(lmom,checklmom=TRUE,...) {
-    para <- rep(NA,2)
-    names(para) <- c("mu","sigma")
+function(lmom, checklmom=TRUE, ...) {
+    para <- rep(NA, 2)
+    names(para) <- c("mu", "sigma")
     if(length(lmom$L1) == 0) { # convert to named L-moments
       lmom <- lmorph(lmom)     # nondestructive conversion!
     }
@@ -11,6 +11,6 @@ function(lmom,checklmom=TRUE,...) {
     }
     para[1] <- lmom$L1
     para[2] <- lmom$L2*sqrt(pi)
-    return(list(type = 'nor', para=para, source="parnor"))
+    return(list(type="nor", para=para, source="parnor"))
 }
 
