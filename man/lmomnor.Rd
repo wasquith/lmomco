@@ -2,11 +2,11 @@
 \alias{lmomnor}
 \title{L-moments of the Normal Distribution}
 \description{
-This function estimates the L-moments of the Normal distribution given the parameters (\eqn{\mu} and \eqn{\sigma}) from \code{\link{parnor}}. The L-moments in terms of the parameters are 
-\eqn{\lambda_1 = \mu}, 
-\eqn{\lambda_2 = \sqrt{\pi} \sigma}, 
-\eqn{\tau_3 = 0}, 
-\eqn{\tau_4 = 0.122602}, and 
+This function estimates the L-moments of the Normal distribution given the parameters (\eqn{\mu} and \eqn{\sigma}) from \code{\link{parnor}}. The L-moments in terms of the parameters are
+\eqn{\lambda_1 = \mu},
+\eqn{\lambda_2 = \sigma / \sqrt{pi}},
+\eqn{\tau_3 = 0},
+\eqn{\tau_4 = 0.122602}, and
 \eqn{\tau_5 = 0}.
 }
 \usage{
@@ -35,10 +35,10 @@ Hosking, J.R.M., 1996, FORTRAN routines for use with the method of L-moments: Ve
 
 Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approach based on L-moments: Cambridge University Press.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{parnor}}, \code{\link{cdfnor}}, \code{\link{pdfnor}}, \code{\link{quanor}} }
 \examples{
-lmr <- lmoms(c(123,34,4,654,37,78))
+lmr <- lmoms(c(123, 34, 4, 654, 37, 78))
 lmr
 lmomnor(parnor(lmr))
 }
