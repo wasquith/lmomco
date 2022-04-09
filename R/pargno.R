@@ -1,7 +1,7 @@
 "pargno" <-
-function(lmom,checklmom=TRUE,...) {
-    para <- rep(NA,3)
-    names(para) <- c("xi","alpha","kappa")
+function(lmom, checklmom=TRUE, ...) {
+    para <- rep(NA, 3)
+    names(para) <- c("xi", "alpha", "kappa")
     "erf" <- function(x) 2 * pnorm(x * sqrt(2)) - 1
 
     # METHOD: RATIONAL-FUNCTION APPROXIMATION OF K IN TERMS OF TAU-3
