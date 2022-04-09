@@ -4,10 +4,28 @@ NEWS for R Package "lmomco"
 Version 2.3.8--
 1. Added a \donttest{} declaration in quape3() of an example study of the
      symmetry of the standard error of sample L-skews for a switch in sign
-     of the shape (product moment skew) of the Pearson III.
+     of the shape (product moment skew) of the Pearson type III.
 2. Added legendcex to plotlmrdia(). Also forgot to fix the color definitions
      in the legend call within plotlmrdia() (see 2.3.7:4 below). Also corrected
      inconsistent lty of the AEP4 relative to the diagram and the legend.
+3. Corrected wrong relation between lambda2 and Sigma in lmomnor.Rd. It appears
+     for years (all of lmomco history?) that lmomnor.Rd claims that the
+     relation lambda2 = sqrt(pi) x sigma, but this is wrong, and the correct
+     relation is lambda2 = sigma / sqrt(pi). This prompted inspection of
+     lmomnor() and parnor().
+4. lmomnor() : Orphaned (unused) variables from legacy FORTRAN porting
+      RRT2 <- 1/sqrt(2) and RRTPI <- 1/sqrt(pi) have been removed and replaced
+      the ZMOM[2] as a constant to the expression 1/sqrt(pi).
+5. parnor() : Some minor code cleaning to parnor.R was made to  more similar
+      idioms that the author uses in coding style.
+6. lmomgno() : Stemming from review of parnor()
+7. Student 3t distribution in pdfst3.Rd needed editing, the t in the integral
+      needed definition.
+8. Eq.8.120 of ISBN 978-1463508418 is incorrect. The ratio of 4/5 in both
+      subequations needs to be 5/4 during testing of implementation of the
+      polynomial density-quantile4 distribution and correct to Hosking (2007).
+9. Added the polynomial density-quantile4 (PDQ4) distribution.
+10. Grammar edit in quawei.Rd.
 
 
 Version 2.3.7--08/03/2021
