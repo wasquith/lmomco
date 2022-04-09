@@ -18,7 +18,8 @@ Version 2.3.8--
       the ZMOM[2] as a constant to the expression 1/sqrt(pi).
 5. parnor() : Some minor code cleaning to parnor.R was made to  more similar
       idioms that the author uses in coding style.
-6. lmomgno() : Stemming from review of parnor()
+6. lmomgno() : Stemming from review of parnor(), removed orphaned variables or
+      switch to explicit mathematical operations for the otherwise constants.
 7. Student 3t distribution in pdfst3.Rd needed editing, the t in the integral
       needed definition.
 8. Eq.8.120 of ISBN 978-1463508418 is incorrect. The ratio of 4/5 in both
