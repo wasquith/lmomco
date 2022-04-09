@@ -17,14 +17,8 @@ function(para) {
 
     erf <- function(x) 2 * pnorm(x * sqrt(2)) - 1
 
-    #  ARRAY ZMOM CONTAINS L-MOMENTS OF THE STANDARD NORMAL DIST.
-    ZMOM <- c( 0, 0.564189583547756287,
-               0, 0.122601719540890947,
-               0)
-
-    #  RRT2 IS 1/SQRT(2), RRTPI IS 1/SQRT(PI)
-    RRT2  <- 1/sqrt(2)
-    RRTPI <- 1/sqrt(pi)
+    # L-MOMENTS OF THE STANDARD NORMAL DIST.
+    ZMOM <- c(0, 1/sqrt(pi), 0, 0.122601719540890947, 0)
 
     z$L1   <- para$para[1]
     z$L2   <- para$para[2]*ZMOM[2]
