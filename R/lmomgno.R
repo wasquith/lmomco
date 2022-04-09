@@ -22,15 +22,8 @@ function(para) {
     ESTX <- vector(mode="numeric",length=5)
     for(i in seq(1,5)) ESTX[i] <- 0
 
-
-    #  ARRAY ZMOM CONTAINS L-MOMENTS OF THE STANDARD NORMAL DIST.
-    ZMOM <- c( 0, 0.564189583547756287,
-               0, 0.122601719540890947,
-               0)
-
-    #  RRT2 IS 1/SQRT(2), RRTPI IS 1/SQRT(PI)
-    RRT2  <- 1/sqrt(2)
-    RRTPI <- 1/sqrt(pi)
+    # L-MOMENTS OF THE STANDARD NORMAL DIST.
+    ZMOM <- c(0, 1/sqrt(pi), 0, 0.122601719540890947, 0)
 
     #  RANGE,EPS,MAXIT CONTROL THE ITERATIVE PROCEDURE FOR NUMERICAL INTEGRATION
     RANGE <- 5
@@ -74,19 +67,19 @@ function(para) {
     #
     #         - INITIAL ESTIMATE, USING 16 ORDINATES  (THE 'DO 20' LOOP
     #           CALCULATES LEGENDRE POLYNOMIALS RECURSIVELY)
-    CC   <- -G*RRT2
+    CC   <- -G/sqrt(2)
     XMIN <- CC-RANGE
     XMAX <- CC+RANGE
-    
+
     N <- 16
     XINC <- (XMAX-XMIN)/N
-    for(i in seq(1,N-1)) {         
+    for(i in seq(1,N-1)) {
       X  <- XMIN+i*XINC
       E  <- exp(-((X-CC)^2))
       D  <- erf(X)
       P1 <- 1
       P  <- D
-      for(m in seq(3,5)) {  
+      for(m in seq(3,5)) {
         C1 <- m+m-3
         C2 <- m-2
         C3 <- m-1
@@ -125,7 +118,7 @@ function(para) {
           SUM[m] <- SUM[m]+E*P
         }
       }
-   
+
       #  --- TEST FOR CONVERGENCE
       NOTCGD <- 0
       for(m in seq(5,3,-1)) {
@@ -137,8 +130,8 @@ function(para) {
     if(NOTCGD != 0) {
        warning(c("ITERATION HAS NOT CONVERGED. ONLY THE FIRST ",NOTCGD-1,
                  " L-MOMENTS ARE RELIABLE"))
-    }    
-    CONST  <- -exp(CC*CC)*RRTPI/(ALAM2*G)  
+    }
+    CONST  <- -exp(CC*CC)* (1/sqrt(pi)) /(ALAM2*G)
     z$TAU3 <- CONST*EST[3]
     z$TAU4 <- CONST*EST[4]
     z$TAU5 <- CONST*EST[5]
