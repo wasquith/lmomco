@@ -7,7 +7,7 @@ This function computes the quantiles of the Weibull distribution given parameter
 where \eqn{x(F)} is the quantile for nonexceedance probability \eqn{F},
 \eqn{\zeta} is a location parameter, \eqn{\beta} is a scale parameter, and \eqn{\delta} is a shape parameter.
 
-The Weibull distribution is a reverse Generalized Extreme Value distribution.  As result, the Generalized Extreme Value algorithms are used for implementation of the Weibull in \pkg{lmomco}. The relationS between the Generalized Extreme Value distribution parameters (\eqn{\xi}, \eqn{\alpha}, \eqn{\kappa}) are
+The Weibull distribution is a reverse Generalized Extreme Value distribution.  As result, the Generalized Extreme Value algorithms are used for implementation of the Weibull in \pkg{lmomco}. The relations between the Generalized Extreme Value distribution parameters (\eqn{\xi}, \eqn{\alpha}, \eqn{\kappa}) are
 \eqn{\kappa}) is \eqn{\kappa = 1/\delta}, 
 \eqn{\alpha = \beta/\delta}, and
 \eqn{\xi = \zeta - \beta}.
