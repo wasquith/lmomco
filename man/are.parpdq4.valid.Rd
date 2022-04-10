@@ -1,6 +1,6 @@
 \name{are.parpdq4.valid}
 \alias{are.parpdq4.valid}
-\title{Are the Distribution Parameters Consistent with the Polynomial-Density Quantile4}
+\title{Are the Distribution Parameters Consistent with the Polynomial Density-Quantile4}
 \description{
 Is the distribution parameter object consistent with the corresponding distribution?  The distribution functions  (\code{\link{cdfpdq4}}, \code{\link{pdfpdq4}}, \code{\link{quapdq4}}, and
 \code{\link{lmompdq4}}) require consistent parameters to return the cumulative
@@ -30,6 +30,6 @@ para <- parpdq4(lmoms(c(46, 70, 59, 36, 71, 48, 46, 63, 35, 52)))
 if(are.parpdq4.valid(para)) Q <- quapdq4(0.5, para)
 }
 \keyword{utility (distribution)}
-\keyword{Distribution: Polynomial-Density Quantile4}
+\keyword{Distribution: Polynomial Density-Quantile4}
 \keyword{utility (distribution/parameter validation)}
 

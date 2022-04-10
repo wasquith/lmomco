@@ -1,9 +1,9 @@
 \encoding{utf8}
 \name{cdfpdq4}
 \alias{cdfpdq4}
-\title{Cumulative Distribution Function of the Polynomial-Density Quantile4 Distribution}
+\title{Cumulative Distribution Function of the Polynomial Density-Quantile4 Distribution}
 \description{
-This function computes the cumulative probability or nonexceedance probability of the Polynomial-Density Quantile distribution given parameters (\eqn{\xi}, \eqn{\alpha}, \eqn{\kappa}) computed by \code{\link{parpdq4}}. The cumulative distribution function has no explicit form and requires numerical methods. The \R function \code{uniroot()} is used to root the quantile function \code{\link{quapdq4}} to compute the nonexceedance probability. The distribution's canonical definition is in terms of the quantile function (\code{\link{quapdq4}}).
+This function computes the cumulative probability or nonexceedance probability of the Polynomial Density-Quantile4 (PDQ4) distribution given parameters (\eqn{\xi}, \eqn{\alpha}, \eqn{\kappa}) computed by \code{\link{parpdq4}}. The cumulative distribution function has no explicit form and requires numerical methods. The \R function \code{uniroot()} is used to root the quantile function \code{\link{quapdq4}} to compute the nonexceedance probability. The distribution's canonical definition is in terms of the quantile function (\code{\link{quapdq4}}).
 }
 \usage{
 cdfpdq4(x, para, paracheck=TRUE)
@@ -31,4 +31,4 @@ Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints
 }
 \keyword{distribution}
 \keyword{cumulative distribution function}
-\keyword{Distribution: Polynomial-Density Quantile4}
+\keyword{Distribution: Polynomial Density-Quantile4}

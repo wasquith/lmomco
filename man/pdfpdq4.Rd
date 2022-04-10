@@ -1,9 +1,9 @@
 \encoding{utf8}
 \name{pdfpdq4}
 \alias{pdfpdq4}
-\title{Probability Density Function of the Kumaraswamy Distribution}
+\title{Probability Density Function of the Polynomial Density-Quantile4 Distribution}
 \description{
-This function computes the probability density of the Polynomial-Density Quantile4 distribution given parameters (\eqn{\alpha} and \eqn{\beta})  computed by \code{\link{parpdq4}}. The probability density function has not explicit form. The implementation here simply uses a \emph{five-point stencil} to approciate the derivative of the cumulative distribution function \code{\link{cdfpdq4}} and hence an \code{eps} term is used and multipled to the scale parameter (\eqn{\alpha}) of the distribution. The distribution's canonical definition is in terms of the quantile function (\code{\link{quapdq4}}).
+This function computes the probability density of the Polynomial Density-Quantile4 distribution given parameters (\eqn{\alpha} and \eqn{\beta})  computed by \code{\link{parpdq4}}. The probability density function has not explicit form. The implementation here simply uses a \emph{five-point stencil} to approciate the derivative of the cumulative distribution function \code{\link{cdfpdq4}} and hence an \code{eps} term is used and multipled to the scale parameter (\eqn{\alpha}) of the distribution. The distribution's canonical definition is in terms of the quantile function (\code{\link{quapdq4}}).
 }
 \usage{
 pdfpdq4(x, para, paracheck=TRUE, eps=0.2)
@@ -59,4 +59,4 @@ Statistical Planning and Inference, v. 137, no. 9, pp. 2,870--2,891, \doi{10.101
 }
 \keyword{distribution}
 \keyword{probability density function}
-\keyword{Distribution: Polynomial-Density Quantile4}
+\keyword{Distribution: Polynomial Density-Quantile4}

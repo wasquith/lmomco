@@ -1,9 +1,9 @@
 \encoding{utf8}
 \name{parpdq4}
 \alias{parpdq4}
-\title{Estimate the Parameters of the Polynomial-Density Quantile4 Distribution}
+\title{Estimate the Parameters of the Polynomial Density-Quantile4 Distribution}
 \description{
-This function estimates the parameters of the Polynomial-Density Quantile4 distribution given the L-moments of the data in an L-moment object such as that returned by \code{\link{lmoms}}. The relations between the distribution parameters and L-moments are seen under \code{\link{lmompdq4}}.
+This function estimates the parameters of the Polynomial Density-Quantile4 distribution given the L-moments of the data in an L-moment object such as that returned by \code{\link{lmoms}}. The relations between the distribution parameters and L-moments are seen under \code{\link{lmompdq4}}.
 }
 \usage{
 parpdq4(lmom, checklmom=TRUE)
@@ -59,11 +59,11 @@ Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints
 }
 \examples{
 # Normal, Hosking (2007, p.2883)
-para <- list(para=c(0, 0.4332,-0.7029), type="pdq4")
+para <- list(para=c(0, 0.4332, -0.7029), type="pdq4")
 parpdq4(lmompdq4(para))$para
 # parameter reversion shown
 
-para <- list(para=c(0, 0.4332, 0.7029), type="pdq4")
+para <- list(para=c(0, 0.4332,  0.7029), type="pdq4")
 parpdq4(lmompdq4(para))$para
 # parameter reversion shown with sign change kappa
 
@@ -83,4 +83,4 @@ para <- list(para=c(0, 0.4332, 0), type="pdq4")
 parpdq4(lmompdq4(para))$para }
 }
 \keyword{distribution (parameters)}
-\keyword{Distribution: Polynomial-Density Quantile4}
+\keyword{Distribution: Polynomial Density-Quantile4}

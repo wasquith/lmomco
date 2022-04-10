@@ -1,9 +1,9 @@
 \encoding{utf8}
 \name{lmompdq4}
 \alias{lmompdq4}
-\title{L-moments of the Polynomial-Density Quantile4 Distribution}
+\title{L-moments of the Polynomial Density-Quantile4 Distribution}
 \description{
-This function estimates the L-moments of the Polynomial-Density Quantile4 distribution given the parameters (\eqn{\xi}, \eqn{\alpha}, and \eqn{\kappa}) from \code{\link{parpdq4}}. The L-moments in terms of the parameters are
+This function estimates the L-moments of the Polynomial Density-Quantile4 distribution given the parameters (\eqn{\xi}, \eqn{\alpha}, and \eqn{\kappa}) from \code{\link{parpdq4}}. The L-moments in terms of the parameters are
 \deqn{\lambda_1 = \xi\mbox{,}}
 \deqn{\lambda_2 = \frac{\alpha}{\kappa} (1-\kappa^2) \mathrm{atanh}(\kappa)\mathrm{\ for\ } \kappa > 0\mbox{,}}
 \deqn{\lambda_2 = \frac{\alpha}{\kappa} (1+\kappa^2) \mathrm{atan}(\kappa)\mathrm{\ for\ } \kappa < 0\mbox{,}}
@@ -76,4 +76,4 @@ legend("topleft", c("Monotonic increasing for kappa < 0",
         pt.cex=c(NA, NA, NA, NA, 1), col=c(2, 4, 2, 4, "darkgreen")) # }
 }
 \keyword{L-moment (distribution)}
-\keyword{Distribution: Polynomial-Density Quantile4}
+\keyword{Distribution: Polynomial Density-Quantile4}
