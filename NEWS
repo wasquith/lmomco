@@ -28,9 +28,13 @@ Version 2.3.8--
 11. Eq. 8.106 of ISBN 978-1463508418 is incorrect. The part written as
       [1-\kappa(2F-1)^2] needs to be written as [1-\kappa(2F-1)]^2 for the
       polynomial density-quantile3 distribution and correct to Hosking (2007).
-12. Eq.8.120 of ISBN 978-1463508418 is incorrect. The ratio of 4/5 in both
+12. Eq. 8.120 of ISBN 978-1463508418 is incorrect. The ratio of 4/5 in both
       subequations needs to be 5/4 during testing of implementation of the
       polynomial density-quantile4 distribution and correct to Hosking (2007).
+13. Added PDQ3 and PDQ4 routing in are.par.valid.R, lmom2par.R, par2cdf.R,
+      par2lmom.R, par2pdf.R, par2qua.R, vec2par.R.
+14. Corrected variable and return value and Example in par2pdf.Rd.
+15. Added PDQ3 {t3, t4} trajectory support to lmrdia.R/Rd and plotlmrdia.R/Rd.
 
 
 Version 2.3.7--08/03/2021
