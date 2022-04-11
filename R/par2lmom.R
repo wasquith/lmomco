@@ -64,6 +64,12 @@ function(para,...) {
     else if(type == 'pe3') {
       return(lmompe3(para))
     }
+    else if(type == 'pdq3') {
+      return(lmompdq3(para))
+    }
+    else if(type == 'pdq4') {
+      return(lmompdq4(para))
+    }
     else if(type == 'ray') {
       return(lmomray(para))
     }

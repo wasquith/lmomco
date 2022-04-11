@@ -64,6 +64,12 @@ function(x,para,...) {
     else if(type == 'pe3') {
       return(cdfpe3(x,para))
     }
+    else if(type == 'pdq3') {
+      return(cdfpdq3(x,para))
+    }
+    else if(type == 'pdq4') {
+      return(cdfpdq4(x,para))
+    }
     else if(type == 'ray') {
       return(cdfray(x,para))
     }

@@ -64,6 +64,12 @@ function(f,para,...) {
     else if(type == 'pe3') {
       return(quape3(f,para,...))
     }
+    else if(type == 'pdq3') {
+      return(quapdq3(f,para,...))
+    }
+    else if(type == 'pdq4') {
+      return(quapdq4(f,para,...))
+    }
     else if(type == 'ray') {
       return(quaray(f,para,...))
     }
