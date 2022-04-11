@@ -13,13 +13,12 @@ par2pdf(x, para, ...)
   \item{...}{The additional arguments are passed to the quantile function such as \cr \code{paracheck = FALSE} for the Generalized Lambda distribution (\code{\link{quagld}}).}
 }
 \value{
-  Quantile value for \eqn{F}.
+  Probability density (\eqn{f}) for \eqn{x}.
 }
 \author{W.H. Asquith}
 \seealso{\code{\link{par2cdf}}, \code{\link{par2qua}} }
 \examples{
-lmr     <- lmoms(rnorm(20))
-para    <- parnor(lmr)
-median  <- par2qua(0.5,para)
+para    <- parnor(lmoms(rnorm(20)))
+density <- par2pdf(par2qua(0.5, para), para)
 }
 \keyword{probability density function}
