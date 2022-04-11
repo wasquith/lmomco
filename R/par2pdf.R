@@ -1,95 +1,101 @@
 "par2pdf" <-
-function(f,para,...) {
+function(x,para,...) {
     type <- para$type
     if(type == 'aep4') {
-      return(pdfaep4(f,para))
+      return(pdfaep4(x,para))
     }
     else if(type == 'cau') {
-      return(pdfcau(f,para))
+      return(pdfcau(x,para))
     }
     else if(type == 'emu') {
-      return(pdfemu(f,para))
+      return(pdfemu(x,para))
     }
     else if(type == 'exp') {
-      return(pdfexp(f,para))
+      return(pdfexp(x,para))
     }
     else if(type == 'gam') {
-      return(pdfgam(f,para))
+      return(pdfgam(x,para))
     }
     else if(type == 'gep') {
-      return(pdfgep(f,para))
+      return(pdfgep(x,para))
     }
     else if(type == 'gev') {
-      return(pdfgev(f,para))
+      return(pdfgev(x,para))
     }
     else if(type == 'gld') {
-      return(pdfgld(f,para,...))
+      return(pdfgld(x,para,...))
     }
     else if(type == 'glo') {
-      return(pdfglo(f,para))
+      return(pdfglo(x,para))
     }
     else if(type == 'gno') {
-      return(pdfgno(f,para))
+      return(pdfgno(x,para))
     }
     else if(type == 'gov') {
-      return(pdfgov(f,para))
+      return(pdfgov(x,para))
     }
     else if(type == 'gpa') {
-      return(pdfgpa(f,para))
+      return(pdfgpa(x,para))
     }
     else if(type == 'gum') {
-      return(pdfgum(f,para))
+      return(pdfgum(x,para))
     }
     else if(type == 'kap') {
-      return(pdfkap(f,para))
+      return(pdfkap(x,para))
     }
     else if(type == 'kmu') {
-      return(pdfkmu(f,para))
+      return(pdfkmu(x,para))
     }
     else if(type == 'kur') {
-      return(pdfkur(f,para))
+      return(pdfkur(x,para))
     }
     else if(type == 'lap') {
-      return(pdflap(f,para))
+      return(pdflap(x,para))
     }
     else if(type == 'lmrq') {
-      return(pdflmrq(f,para))
+      return(pdflmrq(x,para))
     }
     else if(type == 'ln3') {
-      return(pdfln3(f,para))
+      return(pdfln3(x,para))
     }
     else if(type == 'nor') {
-      return(pdfnor(f,para))
+      return(pdfnor(x,para))
     }
     else if(type == 'pe3') {
-      return(pdfpe3(f,para))
+      return(pdfpe3(x,para))
+    }
+    else if(type == 'pdq3') {
+      return(pdfpdq3(x,para,...))
+    }
+    else if(type == 'pdq4') {
+      return(pdfpdq4(x,para,...))
     }
     else if(type == 'ray') {
-      return(pdfray(f,para))
+      return(pdfray(x,para))
     }
     else if(type == 'revgum') {
-      return(pdfrevgum(f,para))
+      return(pdfrevgum(x,para))
     }
     else if(type == 'rice') {
-      return(pdfrice(f,para))
+      return(pdfrice(x,para))
     }
     else if(type == 'sla') {
-      return(pdfsla(f,para))
+      return(pdfsla(x,para))
     }
     else if(type == 'st3') {
-      return(pdfst3(f,para))
+      return(pdfst3(x,para))
     }
     else if(type == 'texp') {
-      return(pdftexp(f,para))
+      return(pdftexp(x,para))
     }
     else if(type == 'tri') {
-      return(pdftri(f,para))
+      return(pdftri(x,para))
     }
     else if(type == 'wak') {
-      return(pdfwak(f,para))
+      return(pdfwak(x,para))
     }
     else if(type == 'wei') {
-      return(pdfwei(f,para))
+      return(pdfwei(x,para))
     }
     else {
       stop("Did not find a valid distribution type")
