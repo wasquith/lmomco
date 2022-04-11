@@ -37,7 +37,7 @@ function(lmom,type,...) {
     }
     else if(type == 'gov') {
       return(pargov(lmom, ...))
-    }    
+    }
     else if(type == 'gpa') {
       return(pargpa(lmom,...))
     }
@@ -77,6 +77,12 @@ function(lmom,type,...) {
     else if(type == 'pe3') {
       return(parpe3(lmom, ...))
     }
+    else if(type == 'pdq3') {
+      return(parpdq3(lmom, ...))
+    }
+    else if(type == 'pdq4') {
+      return(parpdq4(lmom, ...))
+    }
     else if(type == 'sla') {
       return(parsla(lmom, ...))
     }
@@ -96,7 +102,7 @@ function(lmom,type,...) {
       return(parwei(lmom, ...))
     }
     else {
-      stop("Do not find a valid distribution type")
+      stop("Did not find a valid distribution type")
     }
 }
 
