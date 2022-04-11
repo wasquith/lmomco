@@ -1,9 +1,8 @@
-"lmrdia" <-
-function() {
+"lmrdia" <- function() {
    step <- 0.005
    n <- 1
    aep4 <- matrix(nrow = 401, ncol = 2)
-   for(t3 in seq(-1,1,step)) {
+   for(t3 in seq(-1, 1, step)) {
      a <- abs(t3)
      co <- c(0.7755464,  -3.3354852,  14.1955782, -29.9090294,
              37.2141451, -24.7411869,   6.7997646)
@@ -20,23 +19,23 @@ function() {
      lim[n,1] <- t3
      lim[n,2] <- 0.25*(5*t3^2 - 1)
      gpa[n,1] <- t3
-     gpa[n,2] <- (t3*(1+5*t3))/(5+t3)
+     gpa[n,2] <- (t3*(1 + 5*t3)) / (5 + t3)
      n <- n + 1
    }
    rgpa <- gpa; rgpa[,1] <- -rgpa[,1]
 
    n <- 1
    gev <- matrix(nrow = 582, ncol = 2)
-   for(k in seq(-1,1,step)) {
+   for(k in seq(-1, 1, step)) {
      h <- -k
-     gev[n,1] <- 2*(1-3^h)/(1-2^h) - 3
-     gev[n,2] <- (5*(1-4^h)-10*(1-3^h)+6*(1-2^h))/(1-2^h)
+     gev[n,1] <- 2*(1 - 3^h) / (1 - 2^h) - 3
+     gev[n,2] <- (5*(1 - 4^h) - 10*(1-3^h) + 6*(1 - 2^h)) / (1 - 2^h)
      n <- n + 1
    }
-   for(k in seq(1-step,10,0.05)) {
+   for(k in seq(1-step, 10, 0.05)) {
      h <- -k
-     gev[n,1] <- 2*(1-3^h)/(1-2^h) - 3
-     gev[n,2] <- (5*(1-4^h)-10*(1-3^h)+6*(1-2^h))/(1-2^h)
+     gev[n,1] <- 2*(1 - 3^h) / (1 - 2^h) - 3
+     gev[n,2] <- (5*(1 - 4^h) - 10*(1 - 3^h) + 6*(1 - 2^h)) / (1 - 2^h)
      n <- n + 1
    }
    gev <- gev[! is.nan(gev[,1]), ]
@@ -44,30 +43,47 @@ function() {
 
    n <- 1
    glo <- matrix(nrow = 401, ncol = 2)
-   for(k in seq(-1,1,step)) {
+   for(k in seq(-1, 1, step)) {
      glo[n,1] <- -k
-     glo[n,2] <- (1+5*k^2)/6
+     glo[n,2] <- (1 + 5*k^2)/6
      n <- n + 1
    }
 
    n <- 1
    pIII <- matrix(nrow = 361, ncol = 2)
-   for(t3 in seq(-.9,.9,step)) {
+   for(t3 in seq(-.9, .9, step)) {
      pIII[n,1] <- t3
-     pIII[n,2] <- 0.1224+0.30115*t3^2+0.95812*t3^4-0.57488*t3^6+0.19383*t3^8
+     pIII[n,2] <- 0.1224 + 0.30115*t3^2 + 0.95812*t3^4 - 0.57488*t3^6 + 0.19383*t3^8
      n <- n + 1
    }
 
    n <- 1
    ln <- matrix(nrow = 361, ncol = 2)
-   for(t3 in seq(-.9,.9,step)) {
+   for(t3 in seq(-.9, .9, step)) {
      ln[n,1] <- t3
-     ln[n,2] <- 0.12282+0.77518*t3^2+0.12279*t3^4-0.13638*t3^6+0.11368*t3^8
+     ln[n,2] <- 0.12282 + 0.77518*t3^2 + 0.12279*t3^4 - 0.13638*t3^6 + 0.11368*t3^8
      n <- n + 1
    }
 
+   # see lmompdq3.Rd
+   t4pdq3 <- function(t3, use5digits=TRUE) {
+     c05 <- c( 0.16688,  0, 0.98951, 0, -0.00526, 0, -0.24074, 0, 0.08906)
+     c16 <- c( 0.166875136751297809, 0,  0.989506002306983601, 0,
+              -0.005255434641059076, 0, -0.240744479052170501, 0,
+               0.089060315246257210)
+     ifelse(use5digits, myc <- c05, myc <- c16)
+     t4 <- vector(mode="numeric", length(t3))
+     for(i in 1:length(t3)) {
+       t4[i] <- sum(sapply(2:length(myc), function(k) myc[k]*t3[i]^(k-1)))
+     }
+     return(t4 + myc[1])
+   }
+   t3s <- seq(-1, 1, step)
+   pdq3 <- matrix(nrow = length(t3s), ncol = 2)
+   pdq3[,1] <- t3s
+   pdq3[,2] <- t4pdq3(t3s)
+
    n <- 1
-   t3s <- seq(-.5,1,0.005)
    gov <- matrix(nrow = length(t3s), ncol = 2)
    for(t3 in t3s) {
      gov[n,1] <- t3
@@ -79,9 +95,9 @@ function() {
    exp <- matrix(nrow = 1, ncol = 2)
    exp[1,] <- c(1/3,1/6)
    gum <- matrix(nrow = 1, ncol = 2)
-   gum[1,] <- c(log(9/8)/log(2),(16*log(2)-10*log(3))/log(2))
+   gum[1,] <- c(log(9/8) / log(2), (16*log(2)-10*log(3)) / log(2))
    nor <- matrix(nrow = 1, ncol = 2)
-   nor[1,] <- c(0,30*pi^-1*atan(sqrt(2))-9)
+   nor[1,] <- c(0, 30*pi^-1 * atan(sqrt(2))-9)
    uni <- matrix(nrow = 1, ncol = 2)
    uni[1,] <- c(0,0)
    ray <- matrix(nrow = 1, ncol = 2)
@@ -90,9 +106,11 @@ function() {
    cau[1,] <- c(0, 1)
    sla <- matrix(nrow = 1, ncol = 2)
    sla[1,] <- c(0, 0.3042045)
+
    z <- list(limits=lim, aep4=aep4, cau=cau, exp=exp,
              gev=gev, glo=glo, gpa=gpa, gum=gum, gno=ln, gov=gov,
-             nor=nor, pe3=pIII, ray=ray, rgov=rgov, rgpa=rgpa,
+             nor=nor, pe3=pIII, pdq3=pdq3,
+             ray=ray, rgov=rgov, rgpa=rgpa,
              slash=sla, uniform=uni, wei=wei)
    return(z)
 }

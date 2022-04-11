@@ -8,6 +8,7 @@ function(lmr=NULL,
       noglo=FALSE,
       nogpa=FALSE,
       nope3=FALSE,
+      nopdq3=FALSE,
       nogno=FALSE,
       nogov=FALSE,
       nocau=TRUE,
@@ -116,6 +117,16 @@ function(lmr=NULL,
         Ecol[entryi] <- 6
         Epch[entryi] <- NA
         Elty[entryi] <- 1
+        Ecex[entryi] <- 1
+     }
+     if(! nopdq3) {
+        lines(lmr$pdq3, col="darkgreen", lty=2)
+        entryi <- entryi + 1
+        entries[entryi] <- "PDQ3"
+        Elwd[entryi] <- 1.3
+        Ecol[entryi] <- "darkgreen"
+        Epch[entryi] <- NA
+        Elty[entryi] <- 2
         Ecex[entryi] <- 1
      }
    }

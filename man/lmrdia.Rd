@@ -25,6 +25,7 @@ lmrdia()
   \item{lognormal}{\eqn{\tau_3} and \eqn{\tau_4} of the Generalized Normal (3-parameter Log-Normal) distribution.}
   \item{nor}{\eqn{\tau_3} and \eqn{\tau_4} of the Normal distribution.}
   \item{pe3}{\eqn{\tau_3} and \eqn{\tau_4} of the Pearson Type III distribution.}
+  \item{pdq3}{\eqn{\tau_3} and \eqn{\tau_4} of the Polynomial Density-Quantile3 distribution.}
   \item{rgov}{\eqn{\tau_3} and \eqn{\tau_4} of the reversed Govindarajulu.}
   \item{rgpa}{\eqn{\tau_3} and \eqn{\tau_4} of the reversed Generalized Pareto.}
   \item{slash}{\eqn{\tau^{(1)}_3} and \eqn{\tau^{(1)}_4} of the Slash distribution (TL-moment [trim=1]).}
@@ -41,6 +42,8 @@ Hosking, J.R.M., 1986, The theory of probability weighted moments: Research Repo
 Hosking, J.R.M., 1990, L-moments---Analysis and estimation of distributions using linear combinations of order statistics: Journal of the Royal Statistical Society, Series B, v. 52, pp. 105--124.
 
 Hosking, J.R.M., 1996, FORTRAN routines for use with the method of L-moments: Version 3, IBM Research Report RC20525, T.J. Watson Research Center, Yorktown Heights, New York.
+
+Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints on their L-moments or expected order statistics: Journal of Statistical Planning and Inference, v. 137, no. 9, pp. 2,870--2,891, \doi{10.1016/j.jspi.2006.10.010}.
 
 Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approach based on L-moments: Cambridge University Press.
 }
