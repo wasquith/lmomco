@@ -29,7 +29,7 @@ quapdq4(f, para, paracheck=TRUE)
 \details{
 The PDQ4 was proposed by Hosking (2007) with the core justification of maximizing entropy and that \dQuote{maximizing entropy subject to a set of constraints can be regarded as deriving a distribution that is consistent with the information specified in the constraints while making minimal assumptions about the form of the distribution other than those embodied in the constraints.} The PDQ4 is that family constrained to the \eqn{\lambda_1, \lambda_2, and \tau_4} values of the L-moments. (See also the Polynomial Density-Quantile3 function for constraint on \eqn{\lambda_1, \lambda_2, and \tau_3} values of the L-moments, \code{\link{quapdq3}}.)
 
-The PDQ4 is a symmetrical distribution (\eqn{\tau_3 = 0} everywhere) that has maximum entropy conditional on having specified values for the L-moments of \eqn{\lambda_1}, \eqn{\lambda_2}, and \eqn{\lambda_4} with \eqn{\lambda_3 = 0}.  The tails of the PDQ4 are exponentially decreasing and the distribution could be useful in distributional analysis with data showing similar tail characteristics. The attainable L-kurtosis range is \eqn{-1/4 < \tau_4 < 1} with the sign change from negative to positive of \eqn{\kappa} occurring at \eqn{\tau_4 = 1/6}. Finally, PDQ4 generalizes the logistic distribution, which is the special case \eqn{\kappa \rightarrow 0}, and contains distributions both lighter-tailed (\eqn{\kappa < 0}) and heavier-tailed (\eqn{\kappa > 0}) than the logistic.
+The PDQ4 is a symmetrical distribution (\eqn{\tau_3 = 0} everywhere) that has maximum entropy conditional on having specified values for the L-moments of \eqn{\lambda_1}, \eqn{\lambda_2}, and \eqn{\lambda_4 = \tau_4\lambda_2} with \eqn{\lambda_3 = \tau_3 = 0}.  The tails of the PDQ4 are exponentially decreasing and the distribution could be useful in distributional analysis with data showing similar tail characteristics. The attainable L-kurtosis range is \eqn{-1/4 < \tau_4 < 1} with the sign change from negative to positive of \eqn{\kappa} occurring at \eqn{\tau_4 = 1/6}. Finally, PDQ4 generalizes the logistic distribution, which is the special case \eqn{\kappa \rightarrow 0}, and contains distributions both lighter-tailed (\eqn{\kappa < 0}) and heavier-tailed (\eqn{\kappa > 0}) than the logistic.
 }
 \references{
 Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints on their L-moments or expected order statistics: Journal of Statistical Planning and Inference, v. 137, no. 9, pp. 2,870--2,891, \doi{10.1016/j.jspi.2006.10.010}.
@@ -44,9 +44,9 @@ plot(qnorm(FF, sd=1), quapdq4(FF, para),
      type="l", col=grey(0.8), lwd=4)
 lines(qnorm(FF, sd=1), qnorm(FF, sd=1), lty=2)
 legend("topleft",
-       c("PDQ4 distribution with same L-moments as the standard normal",
-         "Standard normal distribution"),
-       lwd=c(4, 1), lty=c(1, 2), col=c(grey(0.8), 1))
+       c("Standard normal distribution",
+         "PDQ4 distribution with same L-moments as the standard normal"),
+       lwd=c(1, 4), lty=c(2, 1), col=c(1, grey(0.8)), cex=0.8)
 mtext("Mimic Hosking (2007, fig. 3 [right])")
 }
 \keyword{distribution}
