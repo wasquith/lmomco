@@ -75,6 +75,12 @@ function(para, paracheck=TRUE, ...) {
     else if(type == 'pe3') {
       return(are.parpe3.valid(para,...))
     }
+    else if(type == 'pdq3') {
+      return(are.parpdq3.valid(para,...))
+    }
+    else if(type == 'pdq4') {
+      return(are.parpdq4.valid(para,...))
+    }
     else if(type == 'ray') {
       return(are.parray.valid(para,...))
     }
