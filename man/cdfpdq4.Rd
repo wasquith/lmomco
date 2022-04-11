@@ -11,7 +11,7 @@ cdfpdq4(x, para, paracheck=TRUE)
 \arguments{
   \item{x}{A real value vector.}
   \item{para}{The parameters from \code{\link{parpdq4}} or  \code{\link{vec2par}}.}
-  \item{paracheck}{A logical switch as to whether the validity of the parameters should be checked. Default is \code{paracheck=TRUE}. This switch is made so that the root solution needed for \code{\link{cdfpdq4}} exhibits an extreme speed increase because of the repeated calls to \code{quapdq4}.}
+  \item{paracheck}{A logical switch as to whether the validity of the parameters should be checked. Default is \code{paracheck=TRUE}. This switch is made so that the root solution needed for \code{\link{cdfpdq4}} shows an extreme speed increase because of the repeated calls to \code{quapdq4}.}
 }
 \value{
   Nonexceedance probability (\eqn{F}) for \eqn{x}.
