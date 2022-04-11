@@ -5,6 +5,20 @@ ERRATA FOR FIRST EDITION OF THE FOLLOWING BOOK
        Independent Publishing Platform, 2nd printing, ISBN 978--146350841--8.
        http://www.amazon.com/dp/1463508417
 
+========== START ERRATA (post April    2022) ======
+
+Eq. 8.106 is incorrect. The part written as [1-\kappa(2F-1)^2] needs to be
+      written as [1-\kappa(2F-1)]^2 for the polynomial density-quantile3
+      distribution and correct to Hosking (2007).
+Eq. 8.120 is incorrect. The ratio of 4/5 in both subequations needs to be
+      5/4 during testing of implementation of the polynomial density-quantile4
+      distribution and correct to Hosking (2007).
+# Both the above were discovered during April 2022 implementation of the 
+# PDQ3 and PDQ4 distributions. Corrections to the authors LaTeX sources done.
+
+==========  END ERRATA  (post April    2022) ======
+
+
 ========== START ERRATA FOR SECOND PRINTING (post February 2013) ======
 
 p.xi: Preface incorrectly says that only one figure not generated from
