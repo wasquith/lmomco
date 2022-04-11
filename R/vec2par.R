@@ -98,6 +98,14 @@ function(vec,type,nowarn=FALSE,paracheck=TRUE,...) {
       z <- list(type = 'pe3', para = vec, source = "vec2par")
       names(z$para) <- c("mu","sigma","gamma")
     }
+    else if(type == 'pdq3') {
+      z <- list(type="pdq3", para=vec, source="vec2par")
+      names(z$para) <- c("xi","alpha","kappa")
+    }
+    else if(type == 'pdq4') {
+      z <- list(type="pdq4", para=vec, source="vec2par")
+      names(z$para) <- c("xi","alpha","kappa")
+    }
     else if(type == 'ray') {
       z <- list(type = 'ray', para = vec, source = "vec2par")
       names(z$para) <- c("xi","alpha")
