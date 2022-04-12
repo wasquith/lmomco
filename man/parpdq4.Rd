@@ -6,11 +6,12 @@
 This function estimates the parameters of the Polynomial Density-Quantile4 distribution given the L-moments of the data in an L-moment object such as that returned by \code{\link{lmoms}}. The relations between the distribution parameters and L-moments are seen under \code{\link{lmompdq4}}.
 }
 \usage{
-parpdq4(lmom, checklmom=TRUE)
+parpdq4(lmom, checklmom=TRUE, snapt4uplimit=TRUE)
 }
 \arguments{
   \item{lmom}{An L-moment object created by \code{\link{lmoms}} or \code{\link{vec2lmom}}.}
   \item{checklmom}{Should the \code{lmom} be checked for validity using the \code{\link{are.lmom.valid}} function. Normally this should be left as the default and it is unlikely that the L-moments will not be viable. However, for some circumstances or large simulation exercises then one might want to bypass this check.}
+  \item{snapt4uplimit}{A logical controlling the behavior of the function for \eqn{\tau_4} exceeding an operational upper margin and whether the incoming \eqn{\tau_4} can be snapped down to this margin (see \bold{Note}).}
 }
 \value{
   An \R \code{list} is returned.
@@ -20,7 +21,7 @@ parpdq4(lmom, checklmom=TRUE)
   \item{source}{The source of the parameters: \dQuote{parpdq4}.}
 }
 \note{
-The following is a study of the performance of \code{parpdq4} as the upper limit of the shape parameter \eqn{\kappa} is approached. The algorithms have the ability to estimate the \eqn{\kappa} reliabily, it is the scale parameter \eqn{\alpha} that breaks down and hence there is a hard-wired setting of \eqn{\kappa > 0.98} in which a warning is issue in \code{parpdq4} about \eqn{\alpha} reliability:
+\bold{Upper Limit of the Shape Parameter}---The following is a study of the performance of \code{parpdq4} as the upper limit of the shape parameter \eqn{\kappa} is approached. The algorithms have the ability to estimate the \eqn{\kappa} reliabily, it is the scale parameter \eqn{\alpha} that breaks down and hence there is a hard-wired setting of \eqn{\kappa > 0.98} in which a warning is issue in \code{parpdq4} about \eqn{\alpha} reliability:
 \preformatted{
   A <- 10
   K <- seq(0.8, 1, by=0.0001)
@@ -34,7 +35,7 @@ The following is a study of the performance of \code{parpdq4} as the upper limit
   abline(v=0.98) # heuristically determined threshold
 }
 
-The lower limit of \eqn{\kappa} does not really exist but as \eqn{\kappa \rightarrow -\infty}, the qualty of the \eqn{\alpha} operation will degrade. The approach in the code involves an \R function \code{uniroot()} operation and the lower limit is not set to \code{-Inf} but is set to \code{-.Machine$double.xmax^(1/64)}, which is not too small of a number, but the \eqn{\tau_4} associated with this limit is -0.2499878576145593, which is extremely close to \eqn{\tau_4 > -1/4} lower limit. The implementation here will snap incoming \eqn{\tau_4} to a threshold towards zero as
+\bold{Lower Limit of the Shape Parameter}---The lower limit of \eqn{\kappa} does not really exist but as \eqn{\kappa \rightarrow -\infty}, the qualty of the \eqn{\alpha} operation will degrade. The approach in the code involves an \R function \code{uniroot()} operation and the lower limit is not set to \code{-Inf} but is set to\cr \code{-.Machine$double.xmax^(1/64)},\cr which is not too small of a number, but the \eqn{\tau_4} associated with this limit is -0.2499878576145593, which is extremely close to \eqn{\tau_4 > -1/4} lower limit. The implementation here will snap incoming \eqn{\tau_4} to a threshold towards zero as
 \preformatted{
   smallTAU4 <- -0.2499878576145593
   if(TAU4 < smallTAU4) TAU4 <- smallTAU4 + sqrt(.Machine$double.eps)
@@ -48,6 +49,42 @@ and this snapping produces an operational lower bounds of \eqn{\kappa} of
   # is an operational lower bounds of tau4. Here lower limit
   # tau4 = -0.25 and the operations below return -0.2499878.
   lmompdq4(parpdq4(vec2lmom(c(0, 100, 0, -1/4))))$ratios[4]
+}
+
+\bold{Upper Operational Limit of L-kurtosis}---The script below explores the operational limit of \eqn{\tau_4} within the algorithms themselves. It is seen in the computations that breakdown in the reverse computation of the \eqn{\tau_4} from the parameters begins at \eqn{\tau_4 >= 0.875}. As a result, the argument \code{snapt4upmargin} defaults to snapping the solution to this upper limit for convenience.
+\preformatted{
+  T4s <- seq(0.6, 0.9, by=0.001) # sweeping through very high Tau4
+  unit_std <- 1/sqrt(pi)
+  FF <- pnorm(seq(-6, 6, by=0.01))
+  plot(0,0, type="n", xlim=range(qnorm(FF)), ylim=c(-6, 6),
+            xlab="Standard Normal Variate", "Quantile")
+  for(i in 1:length(T4s)) {
+    lmr  <- vec2lmom(c(0, unit_std, 0, T4s[i]))
+    pdq4 <- parpdq4(lmr, snapt4uplimit=FALSE)
+    lmr4 <- lmompdq4(pdq4)
+    lines(qnorm(FF), quapdq4(FF, pdq4))
+    err1 <- theoLmoms(pdq4)$lambdas[2] - unit_std
+    err2 <- lmr4$lambdas[2] - unit_std
+    print(c(T4s[i], err1, err2)) # both methods of Lambda2 estimation
+  } # working and degenerates at Kappa >= 0.875, so use 0.874 as the margin
+}
+The problem geometrically is, as the \eqn{\tau_4} becomes very \dQuote{large}, that the distribution is become so peaked that its variation will be degenerating to zero, which is not compatible with the infinite limits of the distribution. Presumably beyond \eqn{\tau_4 > 0.874}, the TL-moments could be used with further algorithmic development.
+
+\bold{Lower Limit Performance of L-kurtosis}---The lower limit of \eqn{\tau_4 = -1/4} for the distribution is a statement of pure bimodality (two sides of a coin, as a matter of speaking). Visualization of the quantile function at the lower limit of \eqn{\tau_4} in the recipe that follows shows this fact with two flat-line segments of solid red lines with the change over at right angles at standard normal variate of zero. Then the \eqn{\tau_4} is nudged away from the lower limit just a little and replotted as the dashed line. Two other lines, but still for \eqn{\tau_4 < 0}, are shown in red and dark green. Finally, the demonstration ends with a magenta line for \eqn{\tau_4 = 0}.
+\preformatted{
+  FF <- pnorm(seq(-6, 6, by=0.01))
+  plot(0,0, type="n", xlim=range(qnorm(FF)), ylim=c(-6, 6),
+            xlab="Standard Normal Variate", ylab="Quantile")
+  pdq4 <- parpdq4(vec2lmom(c(0, 1/sqrt(pi), 0, -1/4     )))
+  lines(qnorm(FF), quapdq4(FF, pdq4), col="red")
+  pdq4 <- parpdq4(vec2lmom(c(0, 1/sqrt(pi), 0, -1/4+0.03)))
+  lines(qnorm(FF), quapdq4(FF, pdq4), col="red", lty=2) # dashed
+  pdq4 <- parpdq4(vec2lmom(c(0, 1/sqrt(pi), 0, -1/8     )))
+  lines(qnorm(FF), quapdq4(FF, pdq4), col="darkgreen")
+  pdq4 <- parpdq4(vec2lmom(c(0, 1/sqrt(pi), 0, -1/16    )))
+  lines(qnorm(FF), quapdq4(FF, pdq4), col="blue")
+  pdq4 <- parpdq4(vec2lmom(c(0, 1/sqrt(pi), 0, 0        )))
+  lines(qnorm(FF), quapdq4(FF, pdq4), col="magenta")
 }
 }
 \references{
@@ -80,7 +117,7 @@ parpdq4(lmompdq4(para))$para
 para <- list(para=c(0, 0.4332, -0.0001), type="pdq4")
 parpdq4(lmompdq4(para))$para
 para <- list(para=c(0, 0.4332, 0), type="pdq4")
-parpdq4(lmompdq4(para))$para }
+parpdq4(lmompdq4(para))$para # }
 }
 \keyword{distribution (parameters)}
 \keyword{Distribution: Polynomial Density-Quantile4}

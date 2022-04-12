@@ -1,4 +1,4 @@
-"parpdq4" <- function(lmom, checklmom=TRUE) {
+"parpdq4" <- function(lmom, checklmom=TRUE, snapt4uplimit=TRUE) {
   para <- rep(NA, 3)
   names(para) <- c("xi", "alpha", "kappa")
   if(length(lmom$L1) == 0) {
@@ -16,12 +16,20 @@
   # print(-(1/4) - (5/(4*neginf)) * (1/neginf - 1/atan(neginf)), 16)
   smallTAU4 <- -0.2499878576145593
 
+  bigTAU4 <- 0.874 # see demo in parpdq4.Rd
+
   para[1] <- lmom$L1
   LAM2 <- lmom$L2
   TAU4 <- lmom$TAU4
   if(is.null(TAU4) || is.na(TAU4)) {
      warning("The fourth L-moment ratio is undefined")
      return()
+  }
+  if(TAU4 > bigTAU4) {
+     warning("The tau4 is too big for the algorithm (tau4 <= ", bigTAU4, ")")
+     if(! snapt4uplimit) return()
+     warning("reducing tau4 to the upper margin (tau4 <- ", bigTAU4, ")")
+     TAU4 <- bigTAU4
   }
 
   if(TAU4 < smallTAU4) TAU4 <- smallTAU4 + sqrt(.Machine$double.eps)
@@ -52,7 +60,7 @@
     if(is.null(rt)) {
       message("rooting for solution to Tau4 failed, ",
               "kappa too small, setting kappa to lower limit")
-      para[3] <- neginf; stop()
+      para[3] <- neginf
     } else {
       para[3] <- rt$root#; print(rt$root)
     }
@@ -70,22 +78,3 @@
   zz <- list(para=para, type="pdq4", source="parpdq4")
   return(zz)
 }
-
-#As <- 100 # seq(10,100, by=10)
-#Ks <- 10^(seq(9,1, by=-.2))
-#Ks <- c(Ks, seq(0,1, by=.01))
-#plot(range(As), range(As), type="n", log="")
-#for(a in 1:length(As)) {
-#  for(k in 1:length(Ks)) {
-#    para <- list(para=c(0, As[a],-Ks[k]), type="pdq4")
-#    lmr  <- lmompdq4(para)
-#    npar <- parpdq4(lmr, checklmom=FALSE)
-#    names(npar$para) <- NULL
-#    pctdiff <- (npar$para[2] - As[a])/As[a]
-#    names(pctdiff) <- NULL
-#    #if(pctdiff > 0.01) {
-#      print(c(2, As[a], npar$para[2]))
-#      print(c(3, -Ks[k], npar$para[3]))
-#    #}
-#  }
-#}
