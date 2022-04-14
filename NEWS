@@ -35,6 +35,7 @@ Version 2.3.8--
       par2lmom.R, par2pdf.R, par2qua.R, vec2par.R.
 14. Corrected variable and return value and Example in par2pdf.Rd.
 15. Added PDQ3 {t3, t4} trajectory support to lmrdia.R/Rd and plotlmrdia.R/Rd.
+16. Grammar and spelling fix to rmlmomco.Rd.
 
 
 Version 2.3.7--08/03/2021
