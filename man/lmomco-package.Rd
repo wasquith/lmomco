@@ -38,12 +38,12 @@ Now let us inspect the contents of the six estimates of the three GEV parameters
 }
 The results show compatible estimates between the two packages. Lastly, let us plot what these distributions look like using the \pkg{lmomco} functions: \code{\link{add.lmomco.axis}}, \code{\link{nonexceeds}}, \code{\link{pp}}, and \code{\link{qlmomco}}.
 \preformatted{
-  par(las=2, mgp=c(3,0.5,0)); FF <- nonexceeds(); qFF <- qnorm(FF)
+  par(las=2, mgp=c(3, 0.5, 0)); FF <- nonexceeds(); qFF <- qnorm(FF)
   PP <- pp(Q); qPP <- qnorm(PP); Q <- sort(Q)
   plot(  qFF, qlmomco(FF, lmr), xaxt="n", xlab="", tcl=0.5,
                                 ylab="QUANTILE", type="l")
   lines( qFF, qlmomco(FF, mle), col="blue")
-  lines( qFF, qlmomco(FF, mps), col="red")
+  lines( qFF, qlmomco(FF, mps), col="red" )
   points(qPP, Q, lwd=0.6, cex=0.8, col=grey(0.3)); par(las=1)
   add.lmomco.axis(las=2, tcl=0.5, side.type="NPP")
 }
@@ -61,6 +61,8 @@ Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational statis
 
 Hosking, J.R.M., 1990, L-moments---Analysis and estimation of
 distributions using linear combinations of order statistics: Journal of the Royal Statistical Society, Series B, v. 52, pp. 105--124.
+
+Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints on their L-moments or expected order statistics: Journal of Statistical Planning and Inference, v. 137, no. 9, pp. 2,870--2,891, \doi{10.1016/j.jspi.2006.10.010}.
 
 Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approach based on L-moments: Cambridge University Press, \url{https://www.amazon.com/dp/0521019400/}.
 
