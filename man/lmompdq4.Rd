@@ -5,8 +5,8 @@
 \description{
 This function estimates the L-moments of the Polynomial Density-Quantile4 distribution given the parameters (\eqn{\xi}, \eqn{\alpha}, and \eqn{\kappa}) from \code{\link{parpdq4}}. The L-moments in terms of the parameters are
 \deqn{\lambda_1 = \xi\mbox{,}}
-\deqn{\lambda_2 = \frac{\alpha}{\kappa} (1-\kappa^2)\, \mathrm{atanh}(\kappa)\mathrm{\ for\ } \kappa > 0\mbox{,}}
-\deqn{\lambda_2 = \frac{\alpha}{\kappa} (1+\kappa^2)\, \mathrm{atan}(\kappa)\mathrm{\ for\ } \kappa < 0\mbox{,}}
+\deqn{\lambda_2 = \frac{\alpha}{\kappa} \bigl(1-\kappa^2\bigr)\, \mathrm{atanh}(\kappa)\mathrm{\ for\ } \kappa > 0\mbox{,}}
+\deqn{\lambda_2 = \frac{\alpha}{\kappa} \bigl(1+\kappa^2\bigr)\, \mathrm{atan}(\kappa)\mathrm{\ for\ } \kappa < 0\mbox{,}}
 \deqn{\tau_3 = 0 \mbox{, and}}
 \deqn{\tau_4 = -\frac{1}{4} + \frac{5}{4\kappa}\biggl(\frac{1}{\kappa} - \frac{1}{\mathrm{atanh}(\kappa)} \biggr) \mathrm{\ for\ } \kappa > 0\mbox{,}}
 \deqn{\tau_4 = -\frac{1}{4} - \frac{5}{4\kappa}\biggl(\frac{1}{\kappa} - \frac{1}{\mathrm{atan}(\kappa)} \biggr) \mathrm{\ for\ } \kappa < 0\mbox{,}}
