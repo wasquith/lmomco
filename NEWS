@@ -36,6 +36,9 @@ Version 2.3.8--
 14. Corrected variable and return value and Example in par2pdf.Rd.
 15. Added PDQ3 {t3, t4} trajectory support to lmrdia.R/Rd and plotlmrdia.R/Rd.
 16. Grammar and spelling fix to rmlmomco.Rd.
+17. Updated dist.list.R/Rd and prettydist.R/Rd for the PDQ3 and PDQ4 and
+      fixed bug in dist.list() that was not reporting 3 parameters for GPA.
+18. Edits in theoTLmoms.Rd::Note on an contrived application of TL-moments.
 
 
 Version 2.3.7--08/03/2021
@@ -50,7 +53,7 @@ Version 2.3.7--08/03/2021
 3. BUG FIX: Some minor bug work on qua2ci.cov() during careful study during
      no. 1. The dimless argument would not ever work with nmom equal to 1 or 2,
      now fixed.
-4. Color fix: It seems in R4.0.+ that colors 2,3,4 are not no longer limited
+4. Color fix: It seems in R4.0.+ that colors 2,3,4 are no longer exactly
      red, green, blue, respectively. These have been replaced as
      "red", "green", and "blue" in plotlmrdia.R/.Rd.
 5. Added tlmr2par() for attempt at a general interface for fitting a
