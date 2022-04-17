@@ -37,6 +37,12 @@ Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints
 \author{W.H. Asquith}
 \seealso{\code{\link{parpdq4}}, \code{\link{cdfpdq4}}, \code{\link{pdfpdq4}}, \code{\link{quapdq4}} }
 \examples{
+para <- vec2par(c(0,1,-100), type="pdq4")
+lmompdq4(  para)$ratios[4]                 # -0.2421163
+theoTLmoms(para, nmom=6, trim=0)$ratios[4] # -0.2421163
+theoTLmoms(para, nmom=6, trim=1)$ratios[4] # -0.2022106
+theoTLmoms(para, nmom=6, trim=2)$ratios[4] # -0.1697186
+
 \dontrun{
 para <- list(para=c(20, 1, -0.5), type="pdq4")
 lmoms(quapdq4(runif(100000), para))$lambdas
