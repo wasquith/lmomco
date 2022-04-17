@@ -70,42 +70,45 @@ Robustness is acquired by computing the sample TL-moments such that the \code{ou
 
 The objective now is to fit a GEV to the sample TL-moments in \code{trimmed.lmr}. However, the right-trimmed only (\eqn{t_1 = 0} and \eqn{t_2 = 1}) version of the TL-moments is being used and analytical solutions to the GEV for \eqn{t = (0,1)} are lacking or perhaps they are too much trouble to derive. The \code{theoTLmoms} function provides the avenue for progress because of its numerical integration basis for acquistion of the TL-moments. An objective function for the \eqn{t_2 = 1} TL-moments of the GEV is defined and based on the sum of square errors of the first three TL-moments:
 \preformatted{
-  "gev.afunc" <- function(par, tlmr=NULL) {
+  "afunc" <- function(par, tarlmr=NULL, p=3) {
               the.par  <- vec2par(par, type="gev", paracheck=FALSE)
               fit.tlmr <- theoTLmoms(the.par, rightrim=1, leftrim=0)
-              err1 <- (tlmr$lambdas[1] - fit.tlmr$lambdas[1])^2
-              err2 <- (tlmr$lambdas[2] - fit.tlmr$lambdas[2])^2
-              err3 <- (tlmr$lambdas[3] - fit.tlmr$lambdas[3])^2
-              return(err1 + err2 + err3) # Sum of square errors
+              return(sum((tarlmr$lambdas[1:p] - fit.tlmr$lambdas[1:p])^2))
   }
 }
 and then optimize on this function and make a qualitative comparison between the original sample L-moments (untrimmed) to the equivalent L-moments (untrimmed) of the GEV having TL-moments equaling those in \code{trimmed.lmr}:
 \preformatted{
-  gev.rt   <- optim(first.par$para, gev.afunc, tlmr=trimmed.lmr)
-  last.lmr <- lmomgev(vec2par(gev.rt$par, type="gev"))
-  message("# Sample L-moment ratios: ",
-           paste(round(first.lmr$ratios, digits=4), collapse=" "))
-  message("# Target L-moment ratios: ",
-           paste(round(last.lmr$ratios, digits=4), collapse=" "))
-  # Sample L-moment ratios: NA 0.3202 0.3925 0.3113 0.2852
-  # Target L-moment ratios: NA 0.2951 0.3165 0.2251 0.1304
-}
-The primary result on comparison of the \eqn{\tau_r} shows that the L-skew drops substantially (\eqn{\tau_3 = 0.393 \rightarrow \tau_3^{(t_2{=}1)} = 0.317}). The \eqn{\tau_4} and \eqn{\tau_5} are shown as well but since the GEV is not fit beyond the 3rd L-moment, these are not further considered.
+  rt <- optim(first.par$para, afunc, tarlmr=trimmed.lmr)
+  last.lmr <- lmomgev(vec2par(rt$par, type="gev"))
 
-Now that the \dQuote{target L-moments} are known (\code{last.lmr}), it is possible to optimize again on the value for the \code{outlier} that would provide the \code{last.lmr} within the greater computational framework in use by the analyst.
+  message("# Original sample    L-moment lambdas: ",
+           paste(round(first.lmr$lambdas[1:3], digits=4), collapse=" "))
+  message("# Targeting back-fit L-moment lambdas: ",
+           paste(round(last.lmr$lambdas[ 1:3], digits=4), collapse=" "))
+  # Original sample    L-moment lambdas: 5.7981 1.8565 0.7287
+  # Targeting back-fit L-moment lambdas: 5.5916 1.6501 0.5223
+}
+The primary result on comparison of the \eqn{\lambda_r} shows that the L-scale drops substantially as does L-skew: (\eqn{\tau_3 = 0.7287 / 1.8565 = 0.3925 \rightarrow \lambda_3^{(t_2{=}1)} = 0.5223 / 1.6501 = 0.3165}).
+
+Now that the target L-moments (not TL-moments) are known (\code{last.lmr}), it is possible to optimize again on the value for the \code{outlier} that would provide the \code{last.lmr} within the greater computational framework in use by the analyst.
 \preformatted{
-  "lmr.afunc" <- function(x, target.lmr=NULL) {
+  "bfunc" <- function(x, tarlmr=NULL, p=3) {
               sam.lmr <- lmoms(c(data.org, x))
-              return(sam.lmr$lambdas[1] - target.lmr$lambdas[1])
+              return(sum((tarlmr$lambdas[1:p] - sam.lmr$lambdas[1:p])^2))
   }
-  outlier.rt <- uniroot(lmr.afunc, interval=c(0, outlier), target.lmr=last.lmr)
-  message("# Pseudo-value for highest value: ", round(outlier.rt$root, digits=2))
+  suppressWarnings(outlier.rt <- optim(outlier, bfunc, tarlmr=last.lmr))
+  # silence warning about 1D optimization with optim(), well behaved here
+
+  pseudo.outlier <- round(outlier.rt$par, digits=2)
+  final.lmr <- lmoms(c(data.org, pseudo.outlier))
+
+  message("# Resulting new L-moment lambdas: ",
+          paste(round(final.lmr$lambdas[1:3], digits=4), collapse=" "))
+
+  message("# Pseudo-value for highest value: ", round(outlier.rt$par, digits=2))
   # Pseudo-value for highest value: 16.78
 }
-Where the 2nd optimization shows that if the largest value for the 21 years of data is given a value of 16.78 in lieu of 21.12 that the sample L-moments (untrimmed) will be consistent as if the TL-moments \eqn{t = (0,1)} has been somehow used without resorting to a risky re-coding of the greater computational framework. Finally, the analyst can verify the pseudo-value by:
-\preformatted{
-   pseudo.outlier <- 16.78; print(lmoms(data.org, pseudo.outlier))
-}
+Where the second optimization shows that if the largest value for the 21 years of data is given a value of \eqn{16.78} instead of its original value of \eqn{21.12} that the sample L-moments (untrimmed) will be consistent as if the TL-moments \eqn{t = (0,1)} has been somehow used without resorting to a risky re-coding of the greater computational framework.
 }
 \references{
 Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statistics and Data Analysis, v. 43, pp. 299--314.
