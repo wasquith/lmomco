@@ -16,20 +16,22 @@
   # print(-(1/4) - (5/(4*neginf)) * (1/neginf - 1/atan(neginf)), 16)
   smallTAU4 <- -0.2499878576145593
 
-  bigTAU4 <- 0.874 # see demo in parpdq4.Rd
+  bigTAU4 <- 0.874 # see demos in parpdq4.Rd
+  bigTAU4 <- 0.700 # see demos in parpdq4.Rd
 
   para[1] <- lmom$L1
   LAM2 <- lmom$L2
   TAU4 <- lmom$TAU4
   if(is.null(TAU4) || is.na(TAU4)) {
-     warning("The fourth L-moment ratio is undefined")
+     warning("The fourth L-moment ratio (tau4) is undefined")
      return()
   }
   if(TAU4 > bigTAU4) {
-     warning("The tau4 is too big for the algorithm (tau4 <= ", bigTAU4, ")")
-     if(! snapt4uplimit) return()
-     warning("reducing tau4 to the upper margin (tau4 <- ", bigTAU4, ")")
-     TAU4 <- bigTAU4
+     warning("tau4 is too big for the algorithm (tau4 <= ", bigTAU4, ")")
+     if(snapt4uplimit) {
+       warning("reducing tau4 to the upper margin (tau4 <- ", bigTAU4, ")")
+       TAU4 <- bigTAU4
+     }
   }
 
   if(TAU4 < smallTAU4) TAU4 <- smallTAU4 + sqrt(.Machine$double.eps)

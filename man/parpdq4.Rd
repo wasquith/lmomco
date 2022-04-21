@@ -68,7 +68,21 @@ and this snapping produces an operational lower bounds of \eqn{\kappa} of
     print(c(T4s[i], err1, err2)) # both methods of Lambda2 estimation
   } # working and degenerates at Kappa >= 0.875, so use 0.874 as the margin
 }
-The problem geometrically is, as the \eqn{\tau_4} becomes very \dQuote{large}, that the distribution is become so peaked that its variation will be degenerating to zero, which is not compatible with the infinite limits of the distribution. Presumably beyond \eqn{\tau_4 > 0.874}, the TL-moments could be used with further algorithmic development.
+The problem geometrically is, as the \eqn{\tau_4} becomes very \dQuote{large}, that the distribution is become so peaked that its variation will be degenerating to zero, which is not compatible with the infinite limits of the distribution. Presumably beyond \eqn{\tau_4 > 0.874}, the TL-moments could be used with further algorithmic development. There are other difficulties at though ahead as \eqn{\tau_4} get large.
+
+\bold{Even Lower Operational Limit of L-kurtosis}---Further study of the limits of \eqn{\tau_4} can be made for reliable use of the basic internal functions of \R. Consider the following code:
+\preformatted{
+  T4s <- seq(0.3, 0.8, by=0.001)
+  errs <- vector(mode="numeric", length(T4s))
+  for(i in 1:length(T4s)) {
+    lmra <- vec2lmom(c(0, 1, 0, T4s[i]))
+    para <- parpdq4(lmra, snapt4uplimit=FALSE)
+    lmrb <- lmompdq4(para)
+    errs[i] <- abs(lmra$lambdas[4] - lmrb$lambdas[4])
+    print(c(T4s[i], errs[i], para$para[3]))
+  }
+  plot(T4s, errs)
+}
 
 \bold{Lower Limit Performance of L-kurtosis}---The lower limit of \eqn{\tau_4 = -1/4} for the distribution is a statement of pure bimodality (two sides of a coin, as a matter of speaking). Visualization of the quantile function at the lower limit of \eqn{\tau_4} in the recipe that follows shows this fact with two flat-line segments of solid red lines with the change over at right angles at standard normal variate of zero. Then the \eqn{\tau_4} is nudged away from the lower limit just a little and replotted as the dashed line. Two other lines, but still for \eqn{\tau_4 < 0}, are shown in red and dark green. Finally, the demonstration ends with a magenta line for \eqn{\tau_4 = 0}.
 \preformatted{
@@ -76,19 +90,19 @@ The problem geometrically is, as the \eqn{\tau_4} becomes very \dQuote{large}, t
   plot(0,0, type="n", xlim=range(qnorm(FF)), ylim=c(-6, 6),
             xlab="Standard Normal Variate", ylab="Quantile")
   pdq4 <- parpdq4(vec2lmom(c(0, 1/sqrt(pi), 0, -1/4     )))
-  lines(qnorm(FF), quapdq4(FF, pdq4), col="red")
+  lines(qnorm(FF), quapdq4(FF, pdq4), col="red"   )
   pdq4 <- parpdq4(vec2lmom(c(0, 1/sqrt(pi), 0, -1/4+0.03)))
   lines(qnorm(FF), quapdq4(FF, pdq4), col="red", lty=2) # dashed
   pdq4 <- parpdq4(vec2lmom(c(0, 1/sqrt(pi), 0, -1/8     )))
   lines(qnorm(FF), quapdq4(FF, pdq4), col="darkgreen")
   pdq4 <- parpdq4(vec2lmom(c(0, 1/sqrt(pi), 0, -1/16    )))
-  lines(qnorm(FF), quapdq4(FF, pdq4), col="blue")
+  lines(qnorm(FF), quapdq4(FF, pdq4), col="blue"   )
   pdq4 <- parpdq4(vec2lmom(c(0, 1/sqrt(pi), 0, 0        )))
   lines(qnorm(FF), quapdq4(FF, pdq4), col="magenta")
 }
 }
 \references{
-Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints on their L-moments or expected order statistics: Journal of Statistical Planning and Inference, v. 137, no. 9, pp. 2,870--2,891, \doi{10.1016/j.jspi.2006.10.010}.
+Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints on their L-moments or expected order statistics: Journal of Statistical Planning and Inference, v. 137, no. 9, pp. 2870--2891, \doi{10.1016/j.jspi.2006.10.010}.
 }
 \author{W.H. Asquith}
 \seealso{\code{\link{lmompdq4}},
