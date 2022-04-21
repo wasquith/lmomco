@@ -32,7 +32,7 @@ The PDQ4 was proposed by Hosking (2007) with the core justification of maximizin
 The PDQ4 is a symmetrical distribution (\eqn{\tau_3 = 0} everywhere) that has maximum entropy conditional on having specified values for the L-moments of \eqn{\lambda_1}, \eqn{\lambda_2}, and \eqn{\lambda_4 = \tau_4\lambda_2} with \eqn{\lambda_3 = \tau_3 = 0}.  The tails of the PDQ4 are exponentially decreasing and the distribution could be useful in distributional analysis with data showing similar tail characteristics. The attainable L-kurtosis range is \eqn{-1/4 < \tau_4 < 1} with the sign change from negative to positive of \eqn{\kappa} occurring at \eqn{\tau_4 = 1/6}. Finally, PDQ4 generalizes the logistic distribution, which is the special case \eqn{\kappa \rightarrow 0}, and contains distributions both lighter-tailed (\eqn{\kappa < 0}) and heavier-tailed (\eqn{\kappa > 0}) than the logistic.
 }
 \references{
-Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints on their L-moments or expected order statistics: Journal of Statistical Planning and Inference, v. 137, no. 9, pp. 2,870--2,891, \doi{10.1016/j.jspi.2006.10.010}.
+Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints on their L-moments or expected order statistics: Journal of Statistical Planning and Inference, v. 137, no. 9, pp. 2,870--2891, \doi{10.1016/j.jspi.2006.10.010}.
 }
 \author{W.H. Asquith}
 \seealso{\code{\link{cdfpdq4}}, \code{\link{pdfpdq4}}, \code{\link{lmompdq4}}, \code{\link{parpdq4}}}

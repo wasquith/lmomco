@@ -28,7 +28,7 @@ The PDQ3 was proposed by Hosking (2007) with the core justification of maximizin
 The PDQ3 has maximum entropy conditional on having specified values for the L-moments of \eqn{\lambda_1}, \eqn{\lambda_2}, and \eqn{\lambda_3 = \tau_3\lambda_2}.  The tails of the PDQ3 are exponentially decreasing and the distribution could be useful in distributional analysis with data showing similar tail characteristics. The attainable L-kurtosis range is \eqn{\tau_4 = (5\tau_3/\kappa) - 1}.
 }
 \references{
-Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints on their L-moments or expected order statistics: Journal of Statistical Planning and Inference, v. 137, no. 9, pp. 2,870--2,891, \doi{10.1016/j.jspi.2006.10.010}.
+Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints on their L-moments or expected order statistics: Journal of Statistical Planning and Inference, v. 137, no. 9, pp. 2870--2891, \doi{10.1016/j.jspi.2006.10.010}.
 }
 \author{W.H. Asquith}
 \seealso{\code{\link{cdfpdq3}}, \code{\link{pdfpdq3}}, \code{\link{lmompdq3}}, \code{\link{parpdq3}}}
