@@ -18,9 +18,7 @@ pdfpdq4(x, para, paracheck=TRUE, hfactor=0.2)
   Probability density (\eqn{f}) for \eqn{x}.
 }
 \references{
-Hosking, J.R.M., 2007, Distributions with maximum entropy subject to
-constraints on their L-moments or expected order statistics: Journal of
-Statistical Planning and Inference, v. 137, no. 9, pp. 2,870--2,891, \doi{10.1016/j.jspi.2006.10.010}.
+Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints on their L-moments or expected order statistics: Journal of Statistical Planning and Inference, v. 137, no. 9, pp. 2870--2891, \doi{10.1016/j.jspi.2006.10.010}.
 }
 \author{W.H. Asquith}
 \seealso{\code{\link{cdfpdq4}}, \code{\link{quapdq4}}, \code{\link{lmompdq4}}, \code{\link{parpdq4}}}
