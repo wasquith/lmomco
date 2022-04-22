@@ -64,7 +64,7 @@ and this snapping produces an operational lower bounds of \eqn{\kappa} of
     lmr4 <- lmompdq4(pdq4)
     lines(qnorm(FF), quapdq4(FF, pdq4))
     err1 <- theoLmoms(pdq4)$lambdas[2] - unit_std
-    err2 <- lmr4$lambdas[2] - unit_std
+    err2 <-            lmr4$lambdas[2] - unit_std
     print(c(T4s[i], err1, err2)) # both methods of Lambda2 estimation
   } # working and degenerates at Kappa >= 0.875, so use 0.874 as the margin
 }
