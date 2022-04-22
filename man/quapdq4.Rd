@@ -48,6 +48,30 @@ legend("topleft",
          "PDQ4 distribution with same L-moments as the standard normal"),
        lwd=c(1, 4), lty=c(2, 1), col=c(1, grey(0.8)), cex=0.8)
 mtext("Mimic Hosking (2007, fig. 3 [right])")
+
+\dontrun{
+  # A quick recipe to look at the shapes of quantile functions.
+  FF <- seq(0.001, 0.999, by=0.001)
+  plot(qnorm(FF), qnorm(FF), type="n", ylim=c(-7,7),
+       xlab="Standard normal variate", ylab="PDQ4 variate")
+  abline(h=0, lty=2, lwd=0.9); abline(v=0, lty=2, lwd=0.9)
+
+  l2 <- 1/sqrt(pi)
+  tau4s    <- seq(-1/4, 0.7, by=.05)
+  tau4s[1] <- tau4s[1] + 0.001
+  for(i in 1:length(tau4s)) {
+    lmr <- vec2lmom(c(0, l2, 0, tau4s[i]))
+    if(! are.lmom.valid(lmr))  next
+    pdq4 <- parpdq4(lmr, snapt4uplimit=FALSE)
+    quas <- quapdq4(FF, pdq4)
+    lines(qnorm(FF), qlmomco(FF, pdq4), col=rgb(abs(tau4s[i]), 0, 1))
+  }
+  abline(0,1, col='darkgreen', lwd=3)
+  txt <- "Standard normal distribution (Tau4=0.122602)"
+  txt <- c(txt, paste0("PDQ4 distribution for varying Tau4 values",
+                       " (color varies for accenting)"))
+  legend("topleft", txt, col=c("darkgreen", rgb(0.2, 0, 1)),
+                         cex=0.9, bty="n", lwd=c(3,1)) # }
 }
 \keyword{distribution}
 \keyword{quantile function}
