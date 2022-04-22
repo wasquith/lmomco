@@ -31,6 +31,59 @@ lmompdq4(para, paracheck=TRUE)
   \item{source}{An attribute identifying the computational
 source of the L-moments: \dQuote{lmompdq4}.}
 }
+\note{
+\bold{What L-kurtosis produces the widest 95th-percentile bounds?}---Study of the shapes of the PDQ4 will show that with support for \eqn{\tau_4} much less and even negative and much more than the \eqn{\tau_4 = 0.122602} defined into the Normal distribution considerable variation. The widths or spreads between quantiles moderately deep into the tails might be interesting to study. Consider the code that follows that seeks the \eqn{\tau_4} that will produce the widest 95th-percentile bounds:
+\preformatted{
+  ofunc <- function(t4, l2=NA) {
+    lmr <- vec2lmom(c(0, l2, 0, t4))
+    if(! are.lmom.valid(lmr)) return(-Inf)
+    pdq4  <- lmomco::parpdq4(lmr, snapt4uplimit=FALSE)
+    return(-diff(lmomco::quapdq4(c(0.025, 0.975), pdq4)))
+  }
+  optim(0.2, ofunc, l2=1)$par # [1] 0.4079688
+}
+
+The code maximizes at about \eqn{\tau_4 = 0.4079688}. It is informative to visualizing the nature of the objective function. In the code below, we standardize the width by division of the \eqn{\lambda_2 = 1} for generality and because of symmetry only the 95th percentile requires study:
+\preformatted{
+  lscale <- 1
+  tau4s  <- seq(-1/4, 0.9, by=.01)
+  qua975s <- rep(NA, length(tau4s))
+  for(i in 1:length(tau4s)) {
+    lmr <- vec2lmom(c(0, lscale, 0, tau4s[i]))
+    if(! are.lmom.valid(lmr)) next
+    pdq4 <- lmomco::parpdq4(lmr, snapt4uplimit=FALSE)
+    quas <- lmomco::quapdq4(c(0.025, 0.975), pdq4)
+    qua975s[i] <- quas[2] / lscale
+  }
+  plot(tau4s, qua975s, ylim=c(-.1, 5), col="blue")
+  abline(v=0.73, lty=2) # supporting the "snaptau4uplimit" in parpdq4().
+  abline(v=0.4079688, col=2, lwd=2)
+  abline(h=qnorm(0.975, sd=sqrt(pi)), col="green", lty=3, lwd=3)
+}
+
+The figure so produces shows that the maximum at the red vertical line for \eqn{\tau_4} is at the crest of the blue points. The figure shows that for \eqn{\tau_4 > 0.73} that numerical problems manifest and contribute to an snapping limit of \eqn{\tau_4} in \code{\link{parpdq4}}. The figure also shows with a dotted green line that the equivalent percentile of the Normal distribution with a standard deviation equivalent to the \eqn{\lambda_2 = 1} has two intersections on the widths of the PDQ4.
+
+Now some further experiments on the apparent computational limits to \eqn{\tau_4} can be made using the code that follows. This support the threshold of \eqn{\tau_4 \le 0.73} embedded into \code{\link{parpdq4}} through the use of the \code{\link{theoTLmoms}} function.
+\preformatted{
+  t4s <- seq(-1/4, 1, by=0.01)
+  t4s <- t4s[t4s > -1/4 & t4s < 1]
+  l2s_theo <- t4s_theo <- t6s_theo <- rep(NA, length(t4s))
+  for(i in 1:length(t4s)) {
+    lmr  <- vec2lmom(c(0, 1, 0, t4s[i]))
+    suppressWarnings(par <- parpdq4(lmr, snapt4uplimit=FALSE))
+    tlmr <- theoTLmoms(par, nmom=6, trim=0)
+    l2s_theo[i] <- tlmr$lambdas[2]
+    t4s_theo[i] <- tlmr$ratios[ 4]
+    t6s_theo[i] <- tlmr$ratios[ 6]
+  }
+  plot(t4s_theo, l2s_theo, type="b")
+    abline(v=0.73, lty=2) # see "snaptau4uplimit" in parpdq4()
+  plot(t4s_theo, t4s,      type="b")
+    abline(v=0.73, lty=2) # see "snaptau4uplimit" in parpdq4()
+  plot(t4s_theo, t6s_theo, type="b")
+    abline(v=0.73, lty=2) # see "snaptau4uplimit" in parpdq4()
+}
+}
 \references{
 Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints on their L-moments or expected order statistics: Journal of Statistical Planning and Inference, v. 137, no. 9, pp. 2870--2891, \doi{10.1016/j.jspi.2006.10.010}.
 }
