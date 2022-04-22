@@ -3,15 +3,16 @@
 \alias{pdfpdq4}
 \title{Probability Density Function of the Polynomial Density-Quantile4 Distribution}
 \description{
-This function computes the probability density of the Polynomial Density-Quantile4 distribution given parameters (\eqn{\alpha} and \eqn{\beta})  computed by \code{\link{parpdq4}}. The probability density function has not explicit form. The implementation here simply uses a \emph{five-point stencil} to approciate the derivative of the cumulative distribution function \code{\link{cdfpdq4}} and hence an \code{eps} term is used and multipled to the scale parameter (\eqn{\alpha}) of the distribution. The distribution's canonical definition is in terms of the quantile function (\code{\link{quapdq4}}).
+This function computes the probability density of the Polynomial Density-Quantile4 distribution given parameters (\eqn{\alpha} and \eqn{\beta}) computed by \code{\link{parpdq4}}. The probability density function has not explicit form. The implementation here simply uses a \emph{five-point stencil} to approciate the derivative of the cumulative distribution function \code{\link{cdfpdq4}} and hence an \code{eps} term is used and multipled to the scale parameter (\eqn{\alpha}) of the distribution. The distribution's canonical definition is in terms of the quantile function (\code{\link{quapdq4}}).
 }
 \usage{
-pdfpdq4(x, para, paracheck=TRUE, hfactor=0.2)
+pdfpdq4(x, para, paracheck=TRUE, h=NA, hfactor=0.2)
 }
 \arguments{
   \item{x}{A real value vector.}
   \item{para}{The parameters from \code{\link{parpdq4}} or \code{\link{vec2par}}.}
   \item{paracheck}{A logical switch as to whether the validity of the parameters should be checked. Default is \code{paracheck=TRUE}. This switch is made so that the root solution needed for \code{\link{cdfpdq4}} shows an extreme speed increase because of the repeated calls to \code{quapdq4}.}
+  \item{h}{The differential element of the stencil, if provided, otherwise \code{hfactor} used.}
   \item{hfactor}{A term multiplied to the \eqn{\alpha} parameter to set the \eqn{h} in the numerical derivative. Not optimal, but seems to work for a variety of chosen parameters for plotting the density function.}
 }
 \value{
