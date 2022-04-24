@@ -35,8 +35,9 @@ parpdq4(lmom, checklmom=TRUE, snapt4uplimit=TRUE)
   abline(v=0.98) # heuristically determined threshold
 }
 
-\bold{Lower Limit of the Shape Parameter}---The lower limit of \eqn{\kappa} does not really exist but as \eqn{\kappa \rightarrow -\infty}, the qualty of the \eqn{\alpha} operation will degrade. The approach in the code involves an \R function \code{uniroot()} operation and the lower limit is not set to \code{-Inf} but is set to\cr \code{-.Machine$double.xmax^(1/64)},\cr which is not too small of a number, but the \eqn{\tau_4} associated with this limit is -0.2499878576145593, which is extremely close to \eqn{\tau_4 > -1/4} lower limit. The implementation here will snap incoming \eqn{\tau_4} to a threshold towards zero as
+\bold{Lower Limit of the Shape Parameter}---The lower limit of \eqn{\kappa} does not really exist but as \eqn{\kappa \rightarrow -\infty}, the qualty of the \eqn{\alpha} operation will degrade. The approach in the code involves an \R function \code{uniroot()} operation and the lower limit is not set to \code{-Inf} but is set within sources as the value \cr \code{-.Machine$double.xmax^(1/64)},\cr which is not too small of a number, but the \eqn{\tau_4} associated with this limit is -0.2499878576145593, which is extremely close to \eqn{\tau_4 > -1/4} lower limit. The implementation here will snap incoming \eqn{\tau_4} to a threshold towards zero as
 \preformatted{
+  TAU4 <- "users tau4"
   smallTAU4 <- -0.2499878576145593
   if(TAU4 < smallTAU4) TAU4 <- smallTAU4 + sqrt(.Machine$double.eps)
   print(TAU4, 16) # -0.2499878427133981
@@ -105,8 +106,7 @@ The problem geometrically is, as the \eqn{\tau_4} becomes very \dQuote{large}, t
 Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints on their L-moments or expected order statistics: Journal of Statistical Planning and Inference, v. 137, no. 9, pp. 2870--2891, \doi{10.1016/j.jspi.2006.10.010}.
 }
 \author{W.H. Asquith}
-\seealso{\code{\link{lmompdq4}},
-\code{\link{cdfpdq4}}, \code{\link{pdfpdq4}}, \code{\link{quapdq4}}
+\seealso{\code{\link{lmompdq4}}, \code{\link{cdfpdq4}}, \code{\link{pdfpdq4}}, \code{\link{quapdq4}}
 }
 \examples{
 # Normal, Hosking (2007, p.2883)
@@ -119,19 +119,19 @@ parpdq4(lmompdq4(para))$para
 # parameter reversion shown with sign change kappa
 
 \dontrun{
-# other looks disabled for check --timings
-para <- list(para=c(0, 0.4332, 0.97), type="pdq4")
-parpdq4(lmompdq4(para))$para
-# see now that alpha changing in fourth decimal as kappa
-# approaches the 0.98 threshold (see Note)
+  # other looks disabled for check --timings
+  para <- list(para=c(0, 0.4332, 0.97), type="pdq4")
+  parpdq4(lmompdq4(para))$para
+  # see now that alpha changing in fourth decimal as kappa
+  # approaches the 0.98 threshold (see Note)
 
-# make two quick checks near zero and then zero
-para <- list(para=c(0, 0.4332, +0.0001), type="pdq4")
-parpdq4(lmompdq4(para))$para
-para <- list(para=c(0, 0.4332, -0.0001), type="pdq4")
-parpdq4(lmompdq4(para))$para
-para <- list(para=c(0, 0.4332, 0), type="pdq4")
-parpdq4(lmompdq4(para))$para # }
+  # make two quick checks near zero and then zero
+  para <- list(para=c(0, 0.4332, +0.0001), type="pdq4")
+  parpdq4(lmompdq4(para))$para
+  para <- list(para=c(0, 0.4332, -0.0001), type="pdq4")
+  parpdq4(lmompdq4(para))$para
+  para <- list(para=c(0, 0.4332, 0), type="pdq4")
+  parpdq4(lmompdq4(para))$para # }
 }
 \keyword{distribution (parameters)}
 \keyword{Distribution: Polynomial Density-Quantile4}

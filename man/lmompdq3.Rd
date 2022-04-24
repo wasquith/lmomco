@@ -98,14 +98,14 @@ Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approa
 \seealso{\code{\link{parpdq3}}, \code{\link{cdfpdq3}}, \code{\link{pdfpdq3}}, \code{\link{quapdq3}} }
 \examples{
 \dontrun{
-para <- list(para=c(20, 1, -0.5), type="pdq3")
-lmoms(quapdq3(runif(100000), para))$lambdas
-lmompdq3(para)$lambdas #}
+  para <- list(para=c(20, 1, -0.5), type="pdq3")
+  lmoms(quapdq3(runif(100000), para))$lambdas
+  lmompdq3(para)$lambdas #}
 
 \dontrun{
-para <- list(para=c(20, 1, +0.5), type="pdq3")
-lmoms(quapdq3(runif(100000), para))$lambdas
-lmompdq3(para)$lambdas #}
+  para <- list(para=c(20, 1, +0.5), type="pdq3")
+  lmoms(quapdq3(runif(100000), para))$lambdas
+  lmompdq3(para)$lambdas #}
 }
 \keyword{L-moment (distribution)}
 \keyword{Distribution: Polynomial Density-Quantile3}

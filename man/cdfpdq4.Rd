@@ -28,6 +28,14 @@ Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints
   Fpdq4 <- cdfpdq4(quapdq4(FF, para), para)
   plot(FF, Fpdq4, type="l", col=grey(0.8), lwd=4)
   # should be a 1:1 line, it is }
+
+\dontrun{
+  para <- list(para=c(0, 0.4332, -0.7029), type="pdq4")
+  X <- seq(-5, +12, by=(12 - -5) / 500)
+  plot( X, cdfpdq4(X, para), type="l", col=grey(0.8), lwd=4, ylim=c(0, 1))
+  lines(X, pf( exp(X), df1=5, df2=4), lty=2)
+  lines(X, c(NA, diff( cdfpdq4(X, para))          / ((12 - -5) / 500)))
+  lines(X, c(NA, diff( pf( exp(X), df1=5, df2=4)) / ((12 - -5) / 500)), lty=2) # }
 }
 \keyword{distribution}
 \keyword{cumulative distribution function}

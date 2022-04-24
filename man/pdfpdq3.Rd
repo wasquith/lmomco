@@ -31,12 +31,10 @@ Statistical Planning and Inference, v. 137, no. 9, pp. 2870--2891, \doi{10.1016/
   X <- seq(-5, +12, by=(12 - -5) / 1000)
   plot( X, pdfpdq3(X, para), type="l", col=grey(0.8), lwd=4, ylim=c(0, 0.3))
   lines(X, c(NA, diff(pf(exp(X), df1=7, df2=1))/((12 - -5) / 1000)), lty=2)
-  legend("topleft",
-       c("log F(7,1) distribution with same L-moments",
-         "PDQ3 distribution with same L-moments as the log F(7,1)"),
-       lwd=c(1, 4), lty=c(2, 1), col=c(1, grey(0.8)), cex=0.8)
+  legend("topleft", c("log F(7,1) distribution with same L-moments",
+                      "PDQ3 distribution with same L-moments as the log F(7,1)"),
+                    lwd=c(1, 4), lty=c(2, 1), col=c(1, grey(0.8)), cex=0.8)
   mtext("Mimic Hosking (2007, fig. 2 [left])")
-
   check.pdf(pdfpdq3, para) }
 
 \dontrun{
@@ -45,7 +43,6 @@ Statistical Planning and Inference, v. 137, no. 9, pp. 2870--2891, \doi{10.1016/
   maxX <- quapdq3(0.9999, para)
   X <- seq(minX, maxX, by=(maxX - minX) / 1000)
   plot( X, pdfpdq3(X, para), type="l", col=grey(0.8), lwd=4)
-
   check.pdf(pdfpdq3, para) }
 }
 \keyword{distribution}

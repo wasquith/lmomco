@@ -37,36 +37,37 @@ Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints
 \author{W.H. Asquith}
 \seealso{\code{\link{cdfpdq4}}, \code{\link{pdfpdq4}}, \code{\link{lmompdq4}}, \code{\link{parpdq4}}}
 \examples{
-FF <- seq(0.0001, 0.9999, by=0.001)
-para <- list(para=c(0, 0.4332, -0.7029), type="pdq4")
-plot(qnorm(FF, sd=1), quapdq4(FF, para),
-     xlab="Standard normal variate", ylab="Quantiles, Q(f)",
-     type="l", col=grey(0.8), lwd=4)
-lines(qnorm(FF, sd=1), qnorm(FF, sd=1), lty=2)
-legend("topleft",
-       c("Standard normal distribution",
-         "PDQ4 distribution with same L-moments as the standard normal"),
-       lwd=c(1, 4), lty=c(2, 1), col=c(1, grey(0.8)), cex=0.8)
-mtext("Mimic Hosking (2007, fig. 3 [right])")
+  lmr <- lmoms(c(123, 34, 4, 654, 37, 78))
+  quapdq4(0.5, parpdq4(lmr)) # [1] 155
+
+\dontrun{
+  FF <- seq(0.0001, 0.9999, by=0.001)
+  para <- list(para=c(0, 0.4332, -0.7029), type="pdq4")
+  plot( qnorm(FF, sd=1), quapdq4(FF, para), type="l", col=grey(0.8), lwd=4,
+       xlab="Standard normal variate", ylab="Quantiles, Q(f)")
+  lines(qnorm(FF, sd=1),   qnorm(FF, sd=1), lty=2)
+  legend("topleft", c("Standard normal distribution",
+                      "PDQ4 distribution with same L-moments as the standard normal"),
+        lwd=c(1, 4), lty=c(2, 1), col=c(1, grey(0.8)), cex=0.8)
+  mtext("Mimic Hosking (2007, fig. 3 [right])") # }
 
 \dontrun{
   # A quick recipe to look at the shapes of quantile functions.
   FF <- seq(0.001, 0.999, by=0.001)
-  plot(qnorm(FF), qnorm(FF), type="n", ylim=c(-7,7),
+  plot(qnorm(FF), qnorm(FF), type="n", ylim=c(-7, 7),
        xlab="Standard normal variate", ylab="PDQ4 variate")
   abline(h=0, lty=2, lwd=0.9); abline(v=0, lty=2, lwd=0.9)
 
-  l2 <- 1/sqrt(pi)
+  lscale   <- 1 / sqrt(pi)
   tau4s    <- seq(-1/4, 0.7, by=.05)
   tau4s[1] <- tau4s[1] + 0.001
   for(i in 1:length(tau4s)) {
-    lmr <- vec2lmom(c(0, l2, 0, tau4s[i]))
-    if(! are.lmom.valid(lmr))  next
+    lmr <- vec2lmom(c(0, lscale, 0, tau4s[i]))
+    if(! are.lmom.valid(lmr)) next
     pdq4 <- parpdq4(lmr, snapt4uplimit=FALSE)
-    quas <- quapdq4(FF, pdq4)
     lines(qnorm(FF), qlmomco(FF, pdq4), col=rgb(abs(tau4s[i]), 0, 1))
   }
-  abline(0,1, col='darkgreen', lwd=3)
+  abline(0,1, col="darkgreen", lwd=3)
   txt <- "Standard normal distribution (Tau4=0.122602)"
   txt <- c(txt, paste0("PDQ4 distribution for varying Tau4 values",
                        " (color varies for accenting)"))

@@ -33,16 +33,19 @@ Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints
 \author{W.H. Asquith}
 \seealso{\code{\link{cdfpdq3}}, \code{\link{pdfpdq3}}, \code{\link{lmompdq3}}, \code{\link{parpdq3}}}
 \examples{
-FF <- seq(0.002475, 1-0.002475, by=0.001)
-para <- list(para=c(0.6933, 1.5495, 0.5488), type="pdq3")
-plot(log(FF/(1-FF)), quapdq3(FF, para), type="l", col=grey(0.8), lwd=4,
-     xlab="Logistic variate, log(f/(1-f))", ylab="Quantile, Q(f)")
-lines(log(FF/(1-FF)), log(qf(FF, df1=7, df2=1)), lty=2)
-legend("topleft",
-       c("log F(7,1) distribution with same L-moments",
-         "PDQ3 distribution with same L-moments as the log F(7,1)"),
-       lwd=c(1, 4), lty=c(2, 1), col=c(1, grey(0.8)), cex=0.8)
-mtext("Mimic Hosking (2007, fig. 2 [right])")
+lmr <- lmoms(c(123, 34, 4, 654, 37, 78))
+quapdq3(0.5, parpdq3(lmr)) # [1] 51.22802
+
+\dontrun{
+  FF <- seq(0.002475, 1 - 0.002475, by=0.001)
+  para <- list(para=c(0.6933, 1.5495, 0.5488), type="pdq3")
+  plot(log(FF/(1-FF)), quapdq3(FF, para), type="l", col=grey(0.8), lwd=4,
+       xlab="Logistic variate, log(f/(1-f))", ylab="Quantile, Q(f)")
+  lines(log(FF/(1-FF)), log(qf(FF, df1=7, df2=1)), lty=2)
+  legend("topleft", c("log F(7,1) distribution with same L-moments",
+                      "PDQ3 distribution with same L-moments as the log F(7,1)"),
+         lwd=c(1, 4), lty=c(2, 1), col=c(1, grey(0.8)), cex=0.8)
+  mtext("Mimic Hosking (2007, fig. 2 [right])") # }
 }
 \keyword{distribution}
 \keyword{quantile function}

@@ -24,17 +24,18 @@ Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints
 \examples{
 \dontrun{
   FF <- seq(0.001, 0.999, by=0.001)
-  para <- list(para=c(0.6933, 1.5495, 0.5488), type="pdq3")
+  para  <- list(para=c(0.6933, 1.5495, 0.5488), type="pdq3")
   Fpdq3 <- cdfpdq3(quapdq3(FF, para), para)
   plot(FF, Fpdq3, type="l", col=grey(0.8), lwd=4)
   # should be a 1:1 line, it is }
 
+\dontrun{
   para <- list(para=c(0.6933, 1.5495, 0.5488), type="pdq3")
-  X <- seq(-5, +12, by=(12 - -5) / 1000)
+  X <- seq(-5, +12, by=(12 - -5) / 500)
   plot( X, cdfpdq3(X, para), type="l", col=grey(0.8), lwd=4, ylim=c(0, 1))
-  lines(X, pf(exp(X), df1=7, df2=1), lty=2)
-  lines(X, c(NA, diff(cdfpdq3(X, para))/((12 - -5) / 1000)))
-  lines(X, c(NA, diff(pf(exp(X), df1=7, df2=1))/((12 - -5) / 1000)))
+  lines(X, pf( exp(X), df1=7, df2=1), lty=2)
+  lines(X, c(NA, diff( cdfpdq3(X, para))          / ((12 - -5) / 500)))
+  lines(X, c(NA, diff(  pf(exp(X), df1=7, df2=1)) / ((12 - -5) / 500)), lty=2) # }
 }
 \keyword{distribution}
 \keyword{cumulative distribution function}
