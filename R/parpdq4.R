@@ -27,7 +27,7 @@
      return()
   }
   if(TAU4 > bigTAU4) {
-     warning("tau4 is too big for the algorithm (tau4 <= ", bigTAU4, ")")
+       warning("tau4 is too big for the algorithm (tau4 <= ", bigTAU4, ")")
      if(snapt4uplimit) {
        warning("reducing tau4 to the upper margin (tau4 <- ", bigTAU4, ")")
        TAU4 <- bigTAU4
