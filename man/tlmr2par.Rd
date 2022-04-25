@@ -35,9 +35,9 @@ Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statis
 \examples{
 \donttest{
 # (1) An example to check that trim(0,0) should recover whole sample
-the.data <- rlmomco(140, vec2par(c(3,.4,-.1), type="pe3"))
-wild.guess <- vec2par(c(mean(the.data),1,0), type="pe3")
-pe3whole <- lmom2par(lmoms(the.data),         type="pe3")
+the.data <- rlmomco(140, vec2par(c(3, 0.4, -0.1), type="pe3"))
+wild.guess <- vec2par(c(mean(the.data), 1, 0),    type="pe3")
+pe3whole <- lmom2par(lmoms(the.data),             type="pe3")
 pe3trimA  <- tlmr2par(the.data, "pe3", para.int=wild.guess, leftrim=0,  rightrim=0)
 pe3trimB  <- tlmr2par(the.data, "pe3", para.int=wild.guess, leftrim=10, rightrim=3)
 message("PE3 parent       = ", paste0(pe3whole$para, sep=" "))
@@ -78,7 +78,8 @@ if(t2 != 0) {
   pchs[(n-t2+1):n ] <- 16
 }
 plot( qFF, qlmomco(FF, whole.para), type="l", lwd=2, ylim=c(3.1,4.8),
-           xlab="Standard normal variate", ylab="Some phenomena, log10(cfs)")
+           xlab="Standard normal variate",
+           ylab="Some phenomena, log10(cfs)")
 lines(qFF, qlmomco(FF, trim.para), col=4, lwd=3)
 points(qnorm(pp(the.data)), sort(the.data), pch=pchs, col=cols)
 legend("topleft", c("L-moments",
