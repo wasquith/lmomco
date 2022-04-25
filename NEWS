@@ -39,6 +39,9 @@ Version 2.3.8--
 17. Updated dist.list.R/Rd and prettydist.R/Rd for the PDQ3 and PDQ4 and
       fixed bug in dist.list() that was not reporting 3 parameters for GPA.
 18. Edits in theoTLmoms.Rd::Note on an contrived application of TL-moments.
+19. Minor spacing adjustments in tlmr2par.Rd : Examples. Likely need to sweep
+      the entire Rd suite an closer look at spacings to make the Examples
+      easier to read.
 
 
 Version 2.3.7--08/03/2021
