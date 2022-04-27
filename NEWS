@@ -42,6 +42,11 @@ Version 2.3.8--
 19. Minor spacing adjustments in tlmr2par.Rd : Examples. Likely need to sweep
       the entire Rd suite an closer look at spacings to make the Examples
       easier to read.
+20. Bug fix in incorrect support being represented by pdfgpa(). Complete
+      overhaul made in pdfgpa.R. Added further example to pdfgpa.Rd and
+      clarified sign convention on the shape parameter. Some simultaneous
+      cleanup to cdfgpa.Rd and quagpa.Rd. The bug was reported form testing
+      results reported by Christophe Dutang.
 
 
 Version 2.3.7--08/03/2021
