@@ -16,7 +16,7 @@ pdfgpa(x, para, paracheck=TRUE)
 \arguments{
   \item{x}{A real value vector.}
   \item{para}{The parameters from \code{\link{pargpa}} or \code{\link{vec2par}}.}
-    \item{paracheck}{A logical switch as to whether the validity of the parameters should be checked.}
+  \item{paracheck}{A logical switch as to whether the validity of the parameters should be checked.}
 }
 \value{
   Probability density (\eqn{f}) for \eqn{x}.
@@ -31,24 +31,22 @@ Hosking, J.R.M. and Wallis, J.R., 1997, Regional frequency analysis---An approac
 \author{W.H. Asquith}
 \seealso{\code{\link{cdfgpa}}, \code{\link{quagpa}}, \code{\link{lmomgpa}}, \code{\link{pargpa}}}
 \examples{
-  lmr <- lmoms(c(123, 34 , 4, 654, 37, 78))
+  lmr <- lmoms(c(123, 34, 4, 654, 37, 78))
   gpa <- pargpa(lmr)
   x   <- quagpa(0.5, gpa)
          pdfgpa(  x, gpa)
 
 \dontrun{
-  # We explore the use of maximum likelihood for GPA estimation on its
-  # density function with stress testing near the K > -1 lower limit,
-  # K near zero, and then large K producing extreme densities. We check
-  # the convergence and check on parameters back estimating the mean.
-  # The experiment is designed that with repeated operations that
-  # convergence "failures" in stats::optim()
+  # We explore using maximum likelihood for GPA estimation on its density function
+  # with stress testing near the K > -1 lower limit, K near zero, and then large K
+  # producing extreme densities. We check the convergence and check on parameters
+  # back estimating the mean. The experiment is designed that with repeated
+  # operations that convergence "failures" in stats::optim()
   #   1  'indicates that the iteration limit maxit had been reached'
-  #   10 'indicates degeneracy of the Nelder–Mead simplex.'
-  # With the 10 being a bit more common and 1 but still for many runs
-  # convergence at K = 8 is still attainable. Also, note the care in
-  # the construction of the ptransf and pretransf for the honoring the
-  # GPA parameter space.
+  #   10 'indicates degeneracy of the Nelder-Mead simplex.'
+  # With the 10 being a bit more common and 1 but still for many runs convergence
+  # at K = 8 is still attainable. Also, note the care in the construction of the
+  # ptransf and pretransf for the honoring the GPA parameter space.
   small <- .Machine$double.eps; n <- 1000 # samples
   for(k in c(-1+small, -0.99, -1/2, -small, 0, 1/2, 8)) {
     names(k) <- "myKappa"
