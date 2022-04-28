@@ -47,6 +47,13 @@ Version 2.3.8--
       clarified sign convention on the shape parameter. Some simultaneous
       cleanup to cdfgpa.Rd and quagpa.Rd. The bug was reported form testing
       results reported by Christophe Dutang.
+21. GEV shape parameter constraint K > -1 in ISBN 978-1463508418 is incorrect.
+22. Bug fix in are.pargev.valid(), see No. 21.
+23. Bug fix in some incorrect support being prepresented by pdfgev(). Overhaul
+      that basically mimics structure of pdfgpa() (see. No. 20). Some
+      simultaneous cleanup to cdfgpa.Rd and quagpa.Rd. The bug was reported
+      form testing results reported by Christophe Dutang. The treatment of
+      near zero Kappa was also ported to cdfgev().
 
 
 Version 2.3.7--08/03/2021
