@@ -2,10 +2,7 @@
 \alias{are.pargev.valid}
 \title{Are the Distribution Parameters Consistent with the Generalized Extreme Value Distribution}
 \description{
-Is the distribution parameter object consistent with the corresponding distribution?  The distribution functions  (\code{\link{cdfgev}}, \code{\link{pdfgev}}, \code{\link{quagev}}, and \code{\link{lmomgev}}) require consistent parameters to return the cumulative
-probability (nonexceedance), density, quantile, and L-moments of the distribution,
-respectively. These functions internally use the \code{\link{are.pargev.valid}}
-function.
+Is the distribution parameter object consistent with the corresponding distribution?  The distribution functions  (\code{\link{cdfgev}}, \code{\link{pdfgev}}, \code{\link{quagev}}, and \code{\link{lmomgev}}) require consistent parameters to return the cumulative probability (nonexceedance), density, quantile, and L-moments of the distribution, respectively. These functions internally use the \code{\link{are.pargev.valid}} function.
 }
 \usage{
 are.pargev.valid(para, nowarn=FALSE)
@@ -24,8 +21,7 @@ Hosking, J.R.M., 1996, FORTRAN routines for use with the method of L-moments: Ve
 Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approach based on L-moments: Cambridge University Press.
 }
 \note{
-This function calls \code{\link{is.gev}} to verify consistency between
-the distribution parameter object and the intent of the user.
+This function calls \code{\link{is.gev}} to verify consistency between the distribution parameter object and the intent of the user.
 }
 \author{W.H. Asquith}
 \seealso{ \code{\link{is.gev}}, \code{\link{pargev}} }
