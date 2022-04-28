@@ -1,6 +1,8 @@
 "pdfgpa" <-
 function(x, para, paracheck=TRUE) {
-  if(! are.pargpa.valid(para)) return()
+  if(paracheck) {
+    if(! are.pargpa.valid(para)) return()
+  }
   U <- para$para[1]
   A <- para$para[2]
   K <- para$para[3]
