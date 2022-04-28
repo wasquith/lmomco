@@ -1,19 +1,19 @@
 "cdfgev" <-
-function(x,para) {
-    if(! are.pargev.valid(para)) return()
-    XI <- para$para[1]
-    A  <- para$para[2]
-    K  <- para$para[3]
-
-    f <- vector(mode = "numeric", length=length(x))
-    Y <- (x - XI)/A
-    if(K == 0) {
-       f <- exp(-exp(-Y))
-    } else {
-       ARG <- 1-K*Y
-       Y <- suppressWarnings( -log(ARG)/K )
-       f <- exp(-exp(-Y))
+function(x, para, paracheck=TRUE) {
+    if(paracheck) {
+      if(! are.pargev.valid(para)) return()
     }
+    U <- para$para[1]
+    A <- para$para[2]
+    K <- para$para[3]
+
+    Y <- (x - U)/A
+    ZERO <- sqrt(.Machine$double.eps)
+    if(abs(K) > ZERO) {
+      Y <- suppressWarnings( -log(1-K*Y)/K )
+    }
+    f <- exp(-exp(-Y))
+
     if(K < 0) {
        f[!is.finite(f)] <- 0
     } else if(K > 0) {
