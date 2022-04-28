@@ -16,6 +16,9 @@ Eq. 8.120 is incorrect. The ratio of 4/5 in both subequations needs to be
 # Both the above were discovered during April 2022 implementation of the 
 # PDQ3 and PDQ4 distributions. Corrections to the authors LaTeX sources done.
 
+P.170 Declaration that Kappa of the GEV is > -1 is incorrect. The Kappa can
+      attain any Kappa. Corrections to the author's LaTeX sources done.
+
 ==========  END ERRATA  (post April    2022) ======
 
 
