@@ -14,7 +14,7 @@ parln3(lmom, zeta=NULL, checklmom=TRUE, ...)
   \item{...}{Other arguments to pass.}
 }
 \details{
-Let the L-moments by in variable \code{lmr}, if the \eqn{\zeta} (lower bounds) is unknown, then the algorithms return the same fit as the Generalized Normal will attain. However, \code{\link{pargno}} does not have intrinsic control on the lower bounds and \code{\link{parln3}} does. The \eqn{\lambda_1}, \eqn{\lambda_2}, and \eqn{\tau_3} are used in the fitting for \code{\link{pargno}} and \code{\link{parln3}} but only \eqn{\lambda_1} and \eqn{\lambda_2} are used when the \eqn{\zeta} is provided as in \code{parln3(lmr, zeta=0)}. In otherwords, if \eqn{\zeta} is known, then \eqn{\tau_3} is not used and shaping comes from the choice of \eqn{\zeta}. 
+Let the L-moments by in variable \code{lmr}, if the \eqn{\zeta} (lower bounds) is unknown, then the algorithms return the same fit as the Generalized Normal will attain. However, \code{\link{pargno}} does not have intrinsic control on the lower bounds and \code{\link{parln3}} does. The \eqn{\lambda_1}, \eqn{\lambda_2}, and \eqn{\tau_3} are used in the fitting for \code{\link{pargno}} and \code{\link{parln3}} but only \eqn{\lambda_1} and \eqn{\lambda_2} are used when the \eqn{\zeta} is provided as in \code{parln3(lmr, zeta=0)}. In otherwords, if \eqn{\zeta} is known, then \eqn{\tau_3} is not used and shaping comes from the choice of \eqn{\zeta}.
 }
 \value{
   An \R \code{list} is returned.
@@ -44,8 +44,7 @@ lmr.neg$lambdas[1] <- -lmr.neg$lambdas[1]
 lmr.neg$ratios[3]  <- -lmr.neg$ratios[3]
 F <- nonexceeds()
 plot(F, -qualn3(1-F, parln3(lmr.neg)), type="l", lwd=3, col=2) # red line
-lines(F, quagno(F, pargno(lmr.pos))) # black line
-}
+lines(F, quagno(F, pargno(lmr.pos))) # black line }
 }
 \keyword{distribution (parameters)}
 \keyword{Distribution: Log-Normal (3-parameter)}
