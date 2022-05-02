@@ -9,6 +9,7 @@
     return()
   }
 
+  ifail = ""
   # By having neginf not hideously deep in magnitude, we greatly reduce the iteration counts
   # for uniroot() when kappa < 0, so we have a truncation on the depth here but notice that
   # we are still in a few parts per million
@@ -37,24 +38,21 @@
   if(TAU4 < smallTAU4) TAU4 <- smallTAU4 + sqrt(.Machine$double.eps)
   #print(TAU4, 16) # -0.2499878427133981
 
-  if(1/6 <= TAU4 & TAU4 <= 1) {
+  if(1/6 <= TAU4 & TAU4 < 1) {
     fn <- function(K) {
        val <- -(1/4) + (5/(4*K)) * (1/K - 1/atanh(K))
        if(is.nan(val)) val <- 1/6
-       #points(K, val, pch=21, bg=4)
        return(val - TAU4)
     }
     rt <- NULL
-    try(rt <- uniroot(fn, interval=c(0,1)))
+    try(rt <- uniroot(fn, interval=c(0, 1)))
     para[3] <- rt$root
-    para[2] <- LAM2 * para[3] / ((1-para[3]^2)*atanh(para[3]))
+    para[2] <- LAM2 * para[3] / ( (1-para[3]^2) * atanh(para[3]) )
     if(is.nan(para[2])) para[2] <- LAM2 # logistic limit
   } else if(TAU4 < 1/6) {
     fn <- function(K) {
        val <- -(1/4) - (5/(4*K)) * (1/K - 1/atan(K))
        if(is.nan(val)) val <- 1/6
-       #print(c(K, TAU4, val))
-       #points(K, val, pch=21, bg=2)
        return(val - TAU4)
     }
     rt <- NULL # could use -.Machine$double.xmax^0.25 or even further but, 1E5 is
@@ -68,15 +66,15 @@
     }
     para[2] <- LAM2 * para[3] / ((1+para[3]^2)*atan(para[3]))
     if(is.nan(para[2])) {
-      print(para[3])
+      ifail <- paste0("alpha is NaN with a kappa=", para[2], "on L2=", LAM2)
     }
   } else {
-    warning("what to do about TAU4 == 1?") # well are.lmom.valid() would catch
-    return(NULL)
+    ifail <- "TAU4 >= 1 is incompatible"
+    return(list(para=para, type="pdq4", ifail=ifail, source="parpdq4"))
   }
   if(para[3] > 0.98) {
-    warning("kappa > 0.98, alpha (yes alpha) results could be unreliable")
+    ifail <- "kappa > 0.98, alpha (yes alpha) results could be unreliable"
   }
-  zz <- list(para=para, type="pdq4", source="parpdq4")
+  zz <- list(para=para, type="pdq4", ifail=ifail, source="parpdq4")
   return(zz)
 }

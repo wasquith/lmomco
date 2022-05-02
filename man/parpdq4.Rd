@@ -18,10 +18,11 @@ parpdq4(lmom, checklmom=TRUE, snapt4uplimit=TRUE)
 
   \item{type}{The type of distribution: \code{pdq4}.}
   \item{para}{The parameters of the distribution.}
+  \item{ifail}{A text message concerning any nuances in the results to report.}
   \item{source}{The source of the parameters: \dQuote{parpdq4}.}
 }
 \note{
-\bold{Upper Limit of the Shape Parameter}---The following is a study of the performance of \code{parpdq4} as the upper limit of the shape parameter \eqn{\kappa} is approached. The algorithms have the ability to estimate the \eqn{\kappa} reliabily, it is the scale parameter \eqn{\alpha} that breaks down and hence there is a hard-wired setting of \eqn{\kappa > 0.98} in which a warning is issue in \code{parpdq4} about \eqn{\alpha} reliability:
+\bold{Upper Limit of the Shape Parameter}---The following is a study of the performance of \code{parpdq4} as the upper limit of the shape parameter \eqn{\kappa} is approached. The algorithms have the ability to estimate the \eqn{\kappa} reliabily, it is the scale parameter \eqn{\alpha} that breaks down and hence there is a hard-wired setting of \eqn{\kappa > 0.98} in which a message is issued to \code{ifail} about \eqn{\alpha} reliability:
 \preformatted{
   A <- 10
   K <- seq(0.8, 1, by=0.0001)
