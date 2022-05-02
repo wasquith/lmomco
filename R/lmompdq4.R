@@ -10,7 +10,7 @@
   K <- para$para[3]
   if(K > 0.98) {
     warning("kappa > 0.98, later alpha results could be unreliable, ",
-            "if alpha back computed by lmompdq4()")
+            "if alpha back computed by lmompdq4(parpdq4())")
   }
   z$lambdas[1] <- U
   z$lambdas[c(3,5)] <- z$ratios[c(3,5)] <- 0
