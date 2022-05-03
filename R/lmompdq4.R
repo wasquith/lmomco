@@ -8,8 +8,8 @@
   U <- para$para[1]
   A <- para$para[2]
   K <- para$para[3]
-  if(K > 0.98) {
-    warning("kappa > 0.98, later alpha results could be unreliable, ",
+  if(K > 0.99) {
+    warning("kappa > 0.99, later alpha results could be unreliable, ",
             "if alpha back computed by lmompdq4(parpdq4())")
   }
   z$lambdas[1] <- U

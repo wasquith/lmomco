@@ -33,7 +33,7 @@ Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints
                       "PDQ4 distribution with same L-moments as the standard normal"),
                     lwd=c(1, 4), lty=c(2, 1), col=c(1, grey(0.8)), cex=0.8)
   mtext("Mimic Hosking (2007, fig. 3 [left])")
-  check.pdf(pdfpdq4, para, hfactor=.3) }
+  check.pdf(pdfpdq4, para, hfactor=0.3) }
 
 \dontrun{
   para <- list(para=c(100, 43.32, -0.7029), type="pdq4")
@@ -42,7 +42,7 @@ Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints
   X <- seq(minX, maxX, by=(maxX - minX) / 1000)
   plot( X, pdfpdq4(X, para), type="l", col=grey(0.8), lwd=4)
 
-  check.pdf(pdfpdq4, para, hfactor=.3) }
+  check.pdf(pdfpdq4, para, hfactor=0.3) }
 }
 \keyword{distribution}
 \keyword{probability density function}

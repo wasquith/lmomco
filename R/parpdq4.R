@@ -17,8 +17,8 @@
   # print(-(1/4) - (5/(4*neginf)) * (1/neginf - 1/atan(neginf)), 16)
   smallTAU4 <- -0.2499878576145593
 
-  bigTAU4 <- 0.874 # see code described in parpdq4.Rd and lmompdq4.Rd
-  bigTAU4 <- 0.730 # see code described in parpdq4.Rd and lmompdq4.Rd
+  bigTAU4 <- 0.866 # see code described in parpdq4.Rd and lmompdq4.Rd
+  bigTAU4 <- 0.845 # see code described in parpdq4.Rd and lmompdq4.Rd
 
   para[1] <- lmom$L1
   LAM2 <- lmom$L2
@@ -28,10 +28,12 @@
      return()
   }
   if(TAU4 > bigTAU4) {
-       warning("tau4 is too big for the algorithm (tau4 <= ", bigTAU4, ")")
+     txt <- paste0("tau4 is deemed too large (tau4 <= ", bigTAU4, ")\n")
      if(snapt4uplimit) {
-       warning("reducing tau4 to the upper margin (tau4 <- ", bigTAU4, ")")
+       warning(txt, "  reducing to upper algorithm margin (tau4 <- ", bigTAU4, ")")
        TAU4 <- bigTAU4
+     } else {
+       warning(txt, "  not reducing to upper algorithm margin (tau4 <- ", bigTAU4, ")")
      }
   }
 
@@ -45,9 +47,9 @@
        return(val - TAU4)
     }
     rt <- NULL
-    try(rt <- uniroot(fn, interval=c(0, 1)))
+    try(rt <- uniroot(fn, interval=c(0, 1), tol=.Machine$double.eps^0.5))
     para[3] <- rt$root
-    para[2] <- LAM2 * para[3] / ( (1-para[3]^2) * atanh(para[3]) )
+    para[2] <- LAM2 * para[3] / ( (1 - para[3]^2) * atanh(para[3]) )
     if(is.nan(para[2])) para[2] <- LAM2 # logistic limit
   } else if(TAU4 < 1/6) {
     fn <- function(K) {
@@ -56,7 +58,7 @@
        return(val - TAU4)
     }
     rt <- NULL # could use -.Machine$double.xmax^0.25 or even further but, 1E5 is
-    try(rt <- uniroot(fn, interval=c(neginf, 0)), silent=TRUE) # tau4=-0.249992
+    try(rt <- uniroot(fn, interval=c(neginf, 0), tol=.Machine$double.eps^0.5), silent=TRUE) # tau4=-0.249992
     if(is.null(rt)) {
       message("rooting for solution to Tau4 failed, ",
               "kappa too small, setting kappa to lower limit")
@@ -64,7 +66,7 @@
     } else {
       para[3] <- rt$root#; print(rt$root)
     }
-    para[2] <- LAM2 * para[3] / ((1+para[3]^2)*atan(para[3]))
+    para[2] <- LAM2 * para[3] / ( (1 + para[3]^2) * atan(para[3]) )
     if(is.nan(para[2])) {
       ifail <- paste0("alpha is NaN with a kappa=", para[2], "on L2=", LAM2)
     }
@@ -72,8 +74,8 @@
     ifail <- "TAU4 >= 1 is incompatible"
     return(list(para=para, type="pdq4", ifail=ifail, source="parpdq4"))
   }
-  if(para[3] > 0.98) {
-    ifail <- "kappa > 0.98, alpha (yes alpha) results could be unreliable"
+  if(para[3] > 0.99) {
+    ifail <- "kappa > 0.99, alpha (yes alpha) results could be unreliable"
   }
   zz <- list(para=para, type="pdq4", ifail=ifail, source="parpdq4")
   return(zz)

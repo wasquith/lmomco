@@ -22,18 +22,19 @@ parpdq4(lmom, checklmom=TRUE, snapt4uplimit=TRUE)
   \item{source}{The source of the parameters: \dQuote{parpdq4}.}
 }
 \note{
-\bold{Upper Limit of the Shape Parameter}---The following is a study of the performance of \code{parpdq4} as the upper limit of the shape parameter \eqn{\kappa} is approached. The algorithms have the ability to estimate the \eqn{\kappa} reliabily, it is the scale parameter \eqn{\alpha} that breaks down and hence there is a hard-wired setting of \eqn{\kappa > 0.98} in which a message is issued to \code{ifail} about \eqn{\alpha} reliability:
+\bold{Upper Limit of the Shape Parameter}---The following is a study of the performance of \code{parpdq4} as the upper limit of the shape parameter \eqn{\kappa} is approached. The algorithms have the ability to estimate the \eqn{\kappa} reliabily, it is the scale parameter \eqn{\alpha} that breaks down and hence there is a hard-wired setting of \eqn{\kappa > 0.99} in which a message is issued to \code{ifail} about \eqn{\alpha} reliability:
 \preformatted{
-  A <- 10
+  A <- 100
   K <- seq(0.8, 1, by=0.0001)
   As <- Ks <- rep(NA, length(K))
   for(i in 1:length(K)) {
-    para <- list(para=c(0, A, K[i]), type="pdq4")
-    As[i] <- parpdq4(lmompdq4(para))$para[2]
-    Ks[i] <- parpdq4(lmompdq4(para))$para[3]
+    para  <- list(para=c(0, A, K[i]), type="pdq4")
+    pdq4  <- parpdq4(lmompdq4(para), snapt4uplimit=FALSE)
+    As[i] <- pdq4$para[2]
+    Ks[i] <- pdq4$para[3]
   }
   plot( K, (As-A)/A, type="l", col="red")
-  abline(v=0.98) # heuristically determined threshold
+  abline(v=0.99) # heuristically determined threshold
 }
 
 \bold{Lower Limit of the Shape Parameter}---The lower limit of \eqn{\kappa} does not really exist but as \eqn{\kappa \rightarrow -\infty}, the qualty of the \eqn{\alpha} operation will degrade. The approach in the code involves an \R function \code{uniroot()} operation and the lower limit is not set to \code{-Inf} but is set within sources as the value \cr \code{-.Machine$double.xmax^(1/64)},\cr which is not too small of a number, but the \eqn{\tau_4} associated with this limit is -0.2499878576145593, which is extremely close to \eqn{\tau_4 > -1/4} lower limit. The implementation here will snap incoming \eqn{\tau_4} to a threshold towards zero as
@@ -43,8 +44,7 @@ parpdq4(lmom, checklmom=TRUE, snapt4uplimit=TRUE)
   if(TAU4 < smallTAU4) TAU4 <- smallTAU4 + sqrt(.Machine$double.eps)
   print(TAU4, 16) # -0.2499878427133981
 }
-and this snapping produces an operational lower bounds of \eqn{\kappa} of
--65455.6715146775. This topic can be explored by operations such as
+and this snapping produces an operational lower bounds of \eqn{\kappa} of -65455.6715146775. This topic can be explored by operations such as
 \preformatted{
   # Have tau4 but with internals to protect quality of the
   # alpha estimation and speed root-solving the kappa, there
@@ -53,12 +53,13 @@ and this snapping produces an operational lower bounds of \eqn{\kappa} of
   lmompdq4(parpdq4(vec2lmom(c(0, 100, 0, -1/4))))$ratios[4]
 }
 
-\bold{Upper Operational Limit of L-kurtosis}---The script below explores the operational limit of \eqn{\tau_4} within the algorithms themselves. It is seen in the computations that breakdown in the reverse computation of the \eqn{\tau_4} from the parameters begins at \eqn{\tau_4 >= 0.875}. As a result, the argument \code{snapt4upmargin} defaults to snapping the solution to this upper limit for convenience.
+\bold{Upper Operational Limit of L-kurtosis}---The script below explores the operational limit of \eqn{\tau_4} within the algorithms themselves. It is seen in the computations that breakdown in the reverse computation of the \eqn{\tau_4} from the parameters begins at \eqn{\tau_4 >= 0.867}. As a result, the argument \code{snapt4upmargin} by default and convenience could trigger snapping the solution to this upper limit (see section \bold{Even Lower Maximum Operational Limit of L-kurtosis}).
 \preformatted{
-  T4s <- seq(0.6, 0.9, by=0.001) # sweeping through very high Tau4
+  T4s <- seq(0.8, 0.9, by=0.001) # sweeping through very high Tau4
   unit_std <- 1/sqrt(pi)
   FF <- pnorm(seq(-6, 6, by=0.01))
-  plot(0,0, type="n", xlim=range(qnorm(FF)), ylim=c(-6, 6),
+  plot(0,0, type="n", xlim=range(qnorm(FF)),
+            xlim=range(FF), ylim=c(-6, 6),
             xlab="Standard Normal Variate", "Quantile")
   for(i in 1:length(T4s)) {
     lmr  <- vec2lmom(c(0, unit_std, 0, T4s[i]))
@@ -67,24 +68,28 @@ and this snapping produces an operational lower bounds of \eqn{\kappa} of
     lines(qnorm(FF), quapdq4(FF, pdq4))
     err1 <- theoLmoms(pdq4)$lambdas[2] - unit_std
     err2 <-            lmr4$lambdas[2] - unit_std
-    print(c(T4s[i], err1, err2)) # both methods of Lambda2 estimation
-  } # working and degenerates at Kappa >= 0.875, so use 0.874 as the margin
+    vals <- c(T4s[i], pdq4$para[3], err1, err2)
+    names(vals) <- c("Tau4", "Kappa", "Err1(theoLmoms)", "Err2(lmompdq4)")
+    print(vals) # both methods of Lambda2 estimation
+  } # working and degenerates at Tau4 >= 0.867, so use 0.866 as a margin
 }
-The problem geometrically is, as the \eqn{\tau_4} becomes very \dQuote{large}, that the distribution is become so peaked that its variation will be degenerating to zero, which is not compatible with the infinite limits of the distribution. Presumably beyond \eqn{\tau_4 > 0.874}, the TL-moments could be used with further algorithmic development. There are other difficulties at though ahead as \eqn{\tau_4} get large.
+The problem geometrically is, as the \eqn{\tau_4} becomes very \dQuote{large}, that the distribution is become so peaked that its variation will be degenerating to zero, which is not compatible with the infinite limits of the distribution. Presumably beyond \eqn{\tau_4 >= 0.867}, the TL-moments could be used with further algorithmic development. There are other difficulties though in the next example as \eqn{\tau_4} gets large.
 
-\bold{Even Lower Operational Limit of L-kurtosis}---Further study of the limits of \eqn{\tau_4} can be made for reliable use of the basic internal functions of \R. Consider the following code:
+\bold{Even Lower Maximum Operational Limit of L-kurtosis}---Further study of the limits of maximum operational limit of \eqn{\tau_4} can be made for reliable use of the basic internal functions of \R. Consider the following code:
 \preformatted{
-  T4s <- seq(0.3, 0.8, by=0.001)
+  T4s <- seq(0.4, 0.9, by=0.002)
   errs <- vector(mode="numeric", length(T4s))
   for(i in 1:length(T4s)) {
     lmra <- vec2lmom(c(0, 1, 0, T4s[i]))
     para <- parpdq4(lmra, snapt4uplimit=FALSE)
     lmrb <- lmompdq4(para)
-    errs[i] <- abs(lmra$lambdas[4] - lmrb$lambdas[4])
+    errs[i] <- abs(lmra$lambdas[4] - lmrb$lambdas[4])/lmra$lambdas[4]
     print(c(T4s[i], errs[i], para$para[3]))
   }
-  plot(T4s, errs)
+  plot(T4s, errs, ylab="abs(Lambda4 - EstLambda4)/Lambda4", col="red")
+  abline(v=0.845, type=2) # so use 0.845 as a lower margin
 }
+The \eqn{\tau_4 >= 0.845} is therefore a more defensive upper limit for operational purposes of the \pkg{lmomco} package.
 
 \bold{Lower Limit Performance of L-kurtosis}---The lower limit of \eqn{\tau_4 = -1/4} for the distribution is a statement of pure bimodality (two sides of a coin, as a matter of speaking). Visualization of the quantile function at the lower limit of \eqn{\tau_4} in the recipe that follows shows this fact with two flat-line segments of solid red lines with the change over at right angles at standard normal variate of zero. Then the \eqn{\tau_4} is nudged away from the lower limit just a little and replotted as the dashed line. Two other lines, but still for \eqn{\tau_4 < 0}, are shown in red and dark green. Finally, the demonstration ends with a magenta line for \eqn{\tau_4 = 0}.
 \preformatted{
