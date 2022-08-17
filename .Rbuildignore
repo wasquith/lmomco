@@ -1,1 +1,10 @@
+.DS_Store
+.git
+.Rhistory
+.Rapp.history
+.Rhistory
 inst/legacy
+NEWS
+man/lmomcoBook.Rd
+man/lmomcoNews.Rd
+R/lmomcoNewsBook.R
