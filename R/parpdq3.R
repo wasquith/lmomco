@@ -28,9 +28,12 @@
   para[2] <- LAM2 * (1 - K*TAU3) / (1 - K^2)
   para[2] <- exp(log(LAM2) + log(1 - K*TAU3) - log(1 - K^2))
   para[1] <- LAM1 - para[2]*((1+K)*log(1+K) - (1-K)*log(1-K) - K*log(4))
+
+  zz <- list(para=para, type="pdq3", ifail=0, ifailtext="", source="parpdq3")
+
   if(abs(para[3]) > 0.98) {
-    warning("|kappa| > 0.98, alpha (yes alpha) results could be unreliable")
+    zz$ifail <- 1
+    zz$ifailtext <- "|kappa| > 0.98, alpha (yes alpha) results could be unreliable"
   }
-  zz <- list(para=para, type="pdq3", source="parpdq3")
   return(zz)
 }

@@ -13,9 +13,12 @@
             fn <- function(of, target_qua=NA) {
                       qua <- quapdq3(of, para, paracheck=FALSE)
                       val <- target_qua - qua
+               #print(c(of, qua, val))
                return(val)
             }
-            root <- uniroot(fn, c(0,1), target_qua=x[i])
+            root <- NULL
+            try(root <- uniroot(fn, c(0,1), target_qua=x[i]), silent=TRUE)
+            if(is.null(root)) return(NA)
             return(root$root)
   })
   names(f) <- NULL

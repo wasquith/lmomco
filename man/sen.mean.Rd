@@ -1,7 +1,7 @@
-\encoding{UTF-8}
+\encoding{utf8}
 \name{sen.mean}
 \alias{sen.mean}
-\title{Sen's Weighted Mean Statistic}
+\title{Sen Weighted Mean Statistic}
 \description{
 The Sen weighted mean statistic \eqn{\mathcal{S}_{n,k}} is a robust estimator of the mean of a distribution
 \deqn{\mathcal{S}_{n,k} = {n \choose 2k+1}^{-1} \sum_{i=1}^n {i - 1 \choose k} {n - i \choose k } x_{i:n}\mbox{,}}
@@ -25,7 +25,7 @@ sen.mean(x, k=0)
 
 Sen, P.K., 1964, On some properties of the rank-weighted means: Journal Indian Society of Agricultural Statistics: v. 16, pp. 51--61.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{TLmoms}}, \code{\link{gini.mean.diff}}}
 \examples{
 fake.dat <- c(123, 34, 4, 654, 37, 78)

@@ -1,7 +1,7 @@
-\encoding{UTF-8}
+\encoding{utf8}
 \name{gini.mean.diff}
 \alias{gini.mean.diff}
-\title{ Gini Mean Difference Statistic }
+\title{Gini Mean Difference Statistic }
 \description{
 The Gini mean difference statistic \eqn{\mathcal{G}} is a robust estimator of distribution scale and is closely related to the second L-moment \eqn{\lambda_2 = \mathcal{G}/2}.
 \deqn{\mathcal{G} = \frac{2}{n(n-1)}\sum_{i=1}^n (2i - n - 1) x_{i:n}\mbox{,}}
@@ -25,11 +25,10 @@ distributions using linear combinations of order statistics: Journal of the Roya
 
 \enc{Jurečková}{Jureckova}, J., and Picek, J., 2006, Robust statistical methods with R: Boca Raton, Fla., Chapman and Hall/CRC, ISBN 1--58488--454--1.
 }
-\author{ W.H. Asquith}
-
+\author{W.H. Asquith}
 \seealso{\code{\link{lmoms}}}
 \examples{
-fake.dat <- c(123,34,4,654,37,78)
+fake.dat <- c(123, 34, 4, 654, 37, 78)
 gini <- gini.mean.diff(fake.dat)
 lmr <- lmoms(fake.dat)
 str(gini)

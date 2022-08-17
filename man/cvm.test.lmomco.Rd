@@ -1,7 +1,7 @@
 \encoding{utf8}
 \name{cvm.test.lmomco}
 \alias{cvm.test.lmomco}
-\title{ \enc{Cramér--von Mises}{Cramer--von Mises} Test for Goodness-of-Fit }
+\title{\enc{Cramér--von Mises}{Cramer--von Mises} Test for Goodness-of-Fit}
 \description{
 The \enc{Cramér--von Mises}{Cramer--von Mises} test for goodness-of-fit is implemented for the order statistics \eqn{x_{1:n} \le x_{i:n} \le x_{n:n}} of a sample of size \eqn{n}. Define the test statistic (\enc{Csörgő}{Csorgo} and Faraway, 1996) as
 \deqn{\omega^2 = \frac{1}{12n} + \sum_{i=1}^n \biggl[\frac{2i-1}{2n} - F_\theta(x_i)\biggr]\mbox{,}}
@@ -18,7 +18,7 @@ cvm.test.lmomco(x, para1, ...)
 \value{
   An \R \code{list} is returned.
   \item{null.dist}{The null distribution, which is an echoing of the \code{para} argument, which recall for \pkg{lmomco} that is contains the distribution abbreviation.}
-  \item{text}{The string \dQuote{Cramer-von Mises test of goodness-of-fit}.}
+  \item{text}{The string \dQuote{Cramer--von Mises test of goodness-of-fit}.}
   \item{statistic}{The \eqn{\omega^2} as defined above (see \bold{Note}).}
   \item{p.value}{The p-value computed from the \code{pCvM()} function from the \pkg{goftest} package for the null distribution of the test statistic.}
   \item{source}{An attribute identifying the computational source of the L-moments:\cr \dQuote{cvm.test.lmomco}.}
@@ -30,7 +30,7 @@ The above definition for \eqn{\omega^2} as the \enc{Cramér--von Mises}{Cramer--
 }
 }
 \note{
-An example of coverage probabilities demonstrating the differences in what the p-values mean on whether the parent is known or the "parent" is coming from the sample. The p-values are quite different and inference has subtle differences. In ensemble, comparing the test statistic amongst distribution choices might be more informative than a focus on p-values being below a critical alpha.
+An example of coverage probabilities demonstrating the differences in what the p-values mean on whether the parent is known or the \dQuote{parent} is coming from the sample. The p-values are quite different and inference has subtle differences. In ensemble, comparing the test statistic amongst distribution choices might be more informative than a focus on p-values being below a critical alpha.
 \preformatted{
   parent <- vec2par(c(20,120), type="gam"); nsim <- 10000
   pp <- nn <- ee <- rep(NA,nsim)
@@ -49,8 +49,8 @@ The rejection rate for the Gamma is about 5 percent, which matches the 0.05 spec
 \references{
 \enc{Csörgő}{Csorgo}, S., and Faraway, J.J., 1996, The exact and asymptotic distributions of \enc{Cramér--von Mises}{Cramer--von Mises} statistics: Journal of the Royal Statistical Society, Series B, v. 58, pp. 221--234.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{lmrdia}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{lmrdia}} }
 \examples{
 # An example in which the test is conducted on a sample but the parent is known.
 # This will lead to more precise inference than if the sample parameters are used.

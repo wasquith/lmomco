@@ -12,7 +12,9 @@ function(x, para, paracheck=TRUE, h=NA, hfactor=0.2) {
   f2 <-  8*cdfpdq3(x + h, para, paracheck=FALSE)
   f3 <- -8*cdfpdq3(x - h, para, paracheck=FALSE)
   f4 <-    cdfpdq3(x-2*h, para, paracheck=FALSE)
-  return( (f1+f2+f3+f4) / (12*h) )
+  density <- (f1+f2+f3+f4) / (12*h)
+  density[density < 0] <- 0
+  return(density)
   # (f(x+h) - f(x-h)) / 2h
   #f1 <- cdfpdq3(x+h, para, paracheck=FALSE)
   #f2 <- cdfpdq3(x-h, para, paracheck=FALSE)

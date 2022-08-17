@@ -13,7 +13,7 @@ Lcomoment.matrix(DATAFRAME, k=1)
 }
 \details{
 L-comoments are computed for each item in the \code{data.frame}. L-comoments of order \eqn{k = 1} are means and co-means. L-comoments of order \eqn{k = 2} are L-scale and L-coscale values. L-comoments of order \eqn{k = 3} are L-skew and L-coskews. L-comoments of order \eqn{k = 4} are L-kurtosis and L-cokurtosis, and so on. The usual univariate L-moments of order \eqn{k} as seen from \code{\link{lmom.ub}} or \code{\link{lmoms}} are along the diagonal. This function does not make use of \code{\link{lmom.ub}} or \code{\link{lmoms}}. The function \code{\link{Lcomoment.matrix}} calls \code{\link{Lcomoment.Lk12}} for each cell in the matrix. The L-comoment matrix for \eqn{d}-random variables is
-  \deqn{ \mbox{\boldmath $\Lambda_k$} = (\hat{\lambda}_{k[ij]})
+  \deqn{ \mathbf{\Lambda}_k = (\hat{\lambda}_{k[ij]})
        }
 computed over the pairs (\eqn{X^{(i)},X^{(j)}}) where \eqn{1 \le i \le j \le d}.
 }
@@ -36,8 +36,8 @@ Serfling, R., and Xiao, P., 2007, A contribution to multivariate L-moments---L-c
 \seealso{\code{\link{Lcomoment.Lk12}}, \code{\link{Lcomoment.coefficients}}}
 \examples{
 D  <- data.frame(X1=rnorm(30), X2=rnorm(30), X3=rnorm(30))
-L1 <- Lcomoment.matrix(D,k=1)
-L2 <- Lcomoment.matrix(D,k=2)
+L1 <- Lcomoment.matrix(D, k=1)
+L2 <- Lcomoment.matrix(D, k=2)
 }
 \keyword{multivariate}
 \keyword{L-comoment}

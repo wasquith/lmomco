@@ -28,6 +28,8 @@ lmompdq4(para, paracheck=TRUE)
   \item{trim}{Level of symmetrical trimming used in the computation, which is \code{0}.}
   \item{leftrim}{Level of left-tail trimming used in the computation, which is \code{NULL}.}
   \item{rightrim}{Level of right-tail trimming used in the computation, which is \code{NULL}.}
+  \item{ifail}{A numeric field connected to the \code{ifailtext}; a value of 0 indicates fully successful operation of the function.}
+  \item{ifailtext}{A message, instead of a warning, about the internal operations or operational limits of the function.}
   \item{source}{An attribute identifying the computational
 source of the L-moments: \dQuote{lmompdq4}.}
 }

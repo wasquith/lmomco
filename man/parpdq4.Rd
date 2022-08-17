@@ -18,7 +18,8 @@ parpdq4(lmom, checklmom=TRUE, snapt4uplimit=TRUE)
 
   \item{type}{The type of distribution: \code{pdq4}.}
   \item{para}{The parameters of the distribution.}
-  \item{ifail}{A text message concerning any nuances in the results to report.}
+  \item{ifail}{A numeric field connected to the \code{ifailtext}; a value of 0 indicates fully successful operation of the function.}
+  \item{ifailtext}{A message, instead of a warning, about the internal operations or operational limits of the function.}
   \item{source}{The source of the parameters: \dQuote{parpdq4}.}
 }
 \note{

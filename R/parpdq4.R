@@ -68,15 +68,20 @@
     }
     para[2] <- LAM2 * para[3] / ( (1 + para[3]^2) * atan(para[3]) )
     if(is.nan(para[2])) {
-      ifail <- paste0("alpha is NaN with a kappa=", para[2], "on L2=", LAM2)
+      ifail <-
+      return(list(para=para, type="pdq4", ifail=ifail,
+                  ifailtext=paste0("alpha is NaN with a kappa=", para[2], "on L2=", LAM2),
+                  source="parpdq4"))
     }
   } else {
-    ifail <- "TAU4 >= 1 is incompatible"
-    return(list(para=para, type="pdq4", ifail=ifail, source="parpdq4"))
+    return(list(para=para, type="pdq4", ifail=1,
+                ifailtext="TAU4 >= 1 is incompatible",
+                source="parpdq4"))
   }
   if(para[3] > 0.99) {
-    ifail <- "kappa > 0.99, alpha (yes alpha) results could be unreliable"
+    return(list(para=para, type="pdq4", ifail=ifail,
+                ifailtext="kappa > 0.99, alpha (yes alpha) results could be unreliable",
+                source="parpdq4"))
   }
-  zz <- list(para=para, type="pdq4", ifail=ifail, source="parpdq4")
-  return(zz)
+  return(list(para=para, type="pdq4", ifail=0, ifailtext="", source="parpdq4"))
 }

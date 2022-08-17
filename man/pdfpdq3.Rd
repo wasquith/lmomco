@@ -35,7 +35,7 @@ Statistical Planning and Inference, v. 137, no. 9, pp. 2870--2891, \doi{10.1016/
                       "PDQ3 distribution with same L-moments as the log F(7,1)"),
                     lwd=c(1, 4), lty=c(2, 1), col=c(1, grey(0.8)), cex=0.8)
   mtext("Mimic Hosking (2007, fig. 2 [left])")
-  check.pdf(pdfpdq3, para) }
+  check.pdf(pdfpdq3, para) # }
 
 \dontrun{
   para <- list(para=c(100, 43.32, -0.7029), type="pdq3")
@@ -43,7 +43,22 @@ Statistical Planning and Inference, v. 137, no. 9, pp. 2870--2891, \doi{10.1016/
   maxX <- quapdq3(0.9999, para)
   X <- seq(minX, maxX, by=(maxX - minX) / 1000)
   plot( X, pdfpdq3(X, para), type="l", col=grey(0.8), lwd=4)
-  check.pdf(pdfpdq3, para) }
+  check.pdf(pdfpdq3, para) # }
+
+\dontrun{
+  para <- vec2par(c(0.4729820, 3.0242067, 0.9880701), type="pdq3")
+  print(lmom2par(par2lmom(para), type="pdq3"))
+  # "|kappa| > 0.98, alpha (yes alpha) results could be unreliable"
+  # So, we are entering into a problem for which the kappa parameter is
+  # very large and instabilities in the algorithm will result, but
+  # vec2par() has not mechanism for determining this type of situation.
+  # Ultimately, things will manifest with a check.pdf() that fails.
+  sup <- lmomco::supdist(para)$support
+  xx <- seq(sup[1], sup[2], by=diff(range(sup)) / 2000)
+  plot(xx, pdfpdq3(xx, para), type="l", col=grey(0.8))
+  plot(xx, pdfpdq3(xx, para), type="l", col=grey(0.8), xlim=c(-1,10))
+  # See hints of instability in the density shape in the second plot
+  check.pdf(pdfpdq3, para) # non-finite function value }
 }
 \keyword{distribution}
 \keyword{probability density function}

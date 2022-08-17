@@ -17,6 +17,8 @@ parpdq3(lmom, checklmom=TRUE)
 
   \item{type}{The type of distribution: \code{pdq3}.}
   \item{para}{The parameters of the distribution.}
+  \item{ifail}{A numeric field connected to the \code{ifailtext}; a value of 0 indicates fully successful operation of the function.}
+  \item{ifailtext}{A message, instead of a warning, about the internal operations or operational limits of the function.}
   \item{source}{The source of the parameters: \dQuote{parpdq3}.}
 }
 \note{
@@ -28,8 +30,8 @@ The following is a study of the performance of \code{parpdq3} as the upper limit
   As <- Ks <- rep(NA, length(K))
   for(i in 1:length(K)) {
     para <- list(para=c(0, A, K[i]), type="pdq3")
-    As[i] <- parpdq32(lmompdq3(para))$para[2]
-    Ks[i] <- parpdq32(lmompdq3(para))$para[3]
+    As[i] <- parpdq3( lmompdq3(para) )$para[2]
+    Ks[i] <- parpdq3( lmompdq3(para) )$para[3]
   }
   plot( K, (As-A)/A, type="l", col="red")
   abline(v=c(-0.98, +0.98)) # heuristically determined threshold

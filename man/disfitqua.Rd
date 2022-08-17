@@ -39,7 +39,7 @@ disfitqua(x, f, objfun=c("rmse", "mad"),
 The \code{disfitqua} function is likely more difficult to apply for \eqn{n > 3} (high parameter) distributions because of the inherent complexity of the mathematics of such distributions and their applicable parameter (and thus valid L-moment ranges). The complex interplay between parameters and L-moments can make identification of suitable initial parameters \code{init.para} or initial L-moments \code{init.lmr} more difficult than is the case for \eqn{n \le 3} distributions. The default initial parameters are computed from an assumed condition that the L-moments ratios \eqn{\tau_r = 0} for \eqn{r \ge 3}. This is not ideal, however, and the \bold{Examples} show how to move into high parameter distributions using the results from a previous fit.
 }
 \references{
-Asquith, W.H., and Roussel, M.C., 2009, Regression equations for estimation of annual peak-streamflow frequency for undeveloped watersheds in Texas using an L-moment-based, PRESS-minimized, residual-adjusted approach: U.S. Geological Survey Scientific Investigations Report 2009--5087, 48 p., \url{http://pubs.usgs.gov/sir/2009/5087}
+Asquith, W.H., and Roussel, M.C., 2009, Regression equations for estimation of annual peak-streamflow frequency for undeveloped watersheds in Texas using an L-moment-based, PRESS-minimized, residual-adjusted approach: U.S. Geological Survey Scientific Investigations Report 2009--5087, 48 p., \doi{10.3133/sir20095087}.
 }
 \author{ W.H. Asquith}
 \seealso{ \code{\link{dist.list}}, \code{\link{lmoms}}, \code{\link{lmom2vec}}, \code{\link{par2lmom}}, \code{\link{par2qua}}, \code{\link{vec2lmom}}, \code{\link{vec2par}} }

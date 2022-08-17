@@ -1,7 +1,31 @@
 --------------------------------------------------------------------------------
 NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Version 2.3.8--
+Version 2.4.4--08/15/2022
+1.  Changes to pdfpdq3.R to truncate negative densities to zero.
+2.  Changes to cdfpdf3.R to trap f() not of opposite signs on the the uniroot().
+     This is made for the extremeStat package tests. This also made overhauls
+     to the "ifail" and "ifailtext" in parpdf3.R/Rd and warning() removed.
+3.  No. 2 caused then for parallelism lmompdq4.R/Rd parpdq4.R/Rd to be changed
+     in regards to the "ifail" and "ifailtext" and warning() removed.
+
+
+Version 2.4.3--08/14/2022
+1.  Removing man/lmomcoBook.Rd, man/lmomcoNews.Rd, and R/lmomcoNewsBook.R
+     by .Rbuildignore and NAMESPACE has these commented out.
+
+
+Version 2.4.2--08/14/2022
+1.  Removing this NEWS.
+
+
+Version 2.4.1--08/14/2022
+1.  Automated CRAN submission checks caught invalid math expression in 
+     Lcomoment.matrix.Rd.
+2.  Changed url to doi declaration in References of disfitqua.Rd.
+
+
+Version 2.3.8--08/14/2022
 1.  Added a \donttest{} declaration in quape3() of an example study of the
      symmetry of the standard error of sample L-skews for a switch in sign
      of the shape (product moment skew) of the Pearson type III.
@@ -54,6 +78,8 @@ Version 2.3.8--
       simultaneous cleanup to cdfgpa.Rd and quagpa.Rd. The bug was reported
       form testing results reported by Christophe Dutang. The treatment of
       near zero Kappa was also ported to cdfgev().
+24. CRAN check fix on "Undefined control sequence" for some of the math in
+      lmomgld.Rd.
 
 
 Version 2.3.7--08/03/2021

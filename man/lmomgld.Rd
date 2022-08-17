@@ -14,20 +14,20 @@ The second L-moment or L-scale in terms of the parameters and the mean is
 		             \frac{1}{h+2} \right) - \xi \mbox{.}}
 
 The third L-moment in terms of the parameters, the mean, and L-scale is
-\deqn{\mbox{\boldmath $Y$} = 2\xi + \frac{6\alpha}{(\kappa+3)} -
+\deqn{Y = 2\xi + \frac{6\alpha}{(\kappa+3)} -
                                          3(\alpha+\xi) + \xi \mbox{, and}}
-\deqn{\lambda_3 = \mbox{\boldmath $Y$} + 6\alpha
+\deqn{\lambda_3 = Y + 6\alpha
                       \left(\frac{2}{h+2} -
 		            \frac{1}{h+3} -
 			    \frac{1}{h+1}\right) \mbox{.}}
 
 The fourth L-moment in termes of the parameters and the first three L-moments is
-\deqn{\mbox{\boldmath $Y$} = \frac{-3}{h+4}\left(\frac{2}{h+2} -
+\deqn{Y = \frac{-3}{h+4}\left(\frac{2}{h+2} -
                                 \frac{1}{h+3} -
 				\frac{1}{h+1}\right) \mbox{,}}
-\deqn{\mbox{\boldmath $Z$} = \frac{20\xi}{4} + \frac{20\alpha}{(\kappa+4)} -
-                                              20 \mbox{\boldmath $Y$}\alpha \mbox{, and}}
-\deqn{\lambda_4 = \mbox{\boldmath $Z$} -
+\deqn{Z = \frac{20\xi}{4} + \frac{20\alpha}{(\kappa+4)} -
+                                              20 Y\alpha \mbox{, and}}
+\deqn{\lambda_4 = Z -
                          5(\kappa + 3(\alpha+\xi) - \xi) +
                                 6(\alpha + \xi) - \xi \mbox{.}}
 
