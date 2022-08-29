@@ -32,7 +32,7 @@ The above definition for \eqn{\omega^2} as the \enc{Cramér--von Mises}{Cramer--
 \note{
 An example of coverage probabilities demonstrating the differences in what the p-values mean on whether the parent is known or the \dQuote{parent} is coming from the sample. The p-values are quite different and inference has subtle differences. In ensemble, comparing the test statistic amongst distribution choices might be more informative than a focus on p-values being below a critical alpha.
 \preformatted{
-  parent <- vec2par(c(20,120), type="gam"); nsim <- 10000
+  parent <- vec2par(c(20, 120), type="gam"); nsim <- 10000
   pp <- nn <- ee <- rep(NA,nsim)
   for(i in 1:nsim) {
     x <- rlmomco(56, parent); lmr <- lmoms(x)
@@ -44,7 +44,7 @@ An example of coverage probabilities demonstrating the differences in what the p
   message("ESTIMATED NORMAL       'rejection rate'=", sum(nn < 0.05)/nsim)
   message("ESTIMATED EXPONENTIAL  'rejection rate'=", sum(ee < 0.05)/nsim)
 }
-The rejection rate for the Gamma is about 5 percent, which matches the 0.05 specified in the conditional. The Normal is about zero, and the Exponential is about 21 percent. The fitted Normal almost always passes for the real parent, though Gamma, for the sample size and amount of L-skewness involved. The Exponential does not. This illustrates that the p-value can be misleading in the single-sample version of this test. Thus when fit by parameters from the sample, the test statistic is nearly always smaller than the one for a prespecified set of parameters. The significance level will be smaller than intended.
+The rejection rate for the Gamma is about 5 percent, which matches the 0.05 specified in the conditional. The Normal is about zero, and the Exponential is about 21 percent. The fitted Normal almost always passes for the real parent, though Gamma, for the sample size and amount of L-skewness involved. The Exponential does not. This illustrates that the p-value can be misleading in the single-sample version of this test. Thus, when fit by parameters from the sample, the test statistic is nearly always smaller than the one for a prespecified set of parameters. The significance level will be smaller than intended.
 }
 \references{
 \enc{Csörgő}{Csorgo}, S., and Faraway, J.J., 1996, The exact and asymptotic distributions of \enc{Cramér--von Mises}{Cramer--von Mises} statistics: Journal of the Royal Statistical Society, Series B, v. 58, pp. 221--234.
@@ -54,7 +54,7 @@ The rejection rate for the Gamma is about 5 percent, which matches the 0.05 spec
 \examples{
 # An example in which the test is conducted on a sample but the parent is known.
 # This will lead to more precise inference than if the sample parameters are used.
-mu <- 120; sd <- 25; para <- vec2par(c(120,25), type="nor")
+mu <- 120; sd <- 25; para <- vec2par(c(120, 25), type="nor")
 x <- rnorm(56, mean=mu, sd=sd)
 T1 <- cvm.test.lmomco(x, para)$statistic
 T2 <- goftest::cvm.test(x, null="pnorm", mean=mu, sd=sd)$statistic
