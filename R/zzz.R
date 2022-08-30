@@ -4,6 +4,6 @@ function(lib, pkg) {
   dsc <- packageDescription(pkg) # function will not be found without
   # loading the utils package in the Depends: section of the DESCRIPTION
   if(interactive() || getOption("verbose")) {
-    MSG(sprintf("# Package %s (%s) loaded [try lmomcoNews()].", pkg, dsc$Version))
+    MSG(sprintf("# Package %s (%s) loaded", pkg, dsc$Version))
   }
 }
