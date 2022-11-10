@@ -19,7 +19,7 @@ cdfgep(x, para)
 \references{
 Barreto-Souza, W., and Cribari-Neto, F., 2009, A generalization of the exponential-Poisson distribution: Statistics and Probability, 79, pp. 2493--2500.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{pdfgep}}, \code{\link{quagep}}, \code{\link{lmomgep}}, \code{\link{pargep}}}
 \examples{
 gep <- list(para=c(2, 1.5, 3), type="gep")

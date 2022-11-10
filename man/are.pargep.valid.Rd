@@ -26,8 +26,8 @@ Barreto-Souza, W., and Cribari-Neto, F., 2009, A generalization of the exponenti
 This function calls \code{\link{is.gep}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.gep}}, \code{\link{pargep}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.gep}}, \code{\link{pargep}} }
 \examples{
 #para <- pargep(lmoms(c(123,34,4,654,37,78)))
 #if(are.pargep.valid(para)) Q <- quagep(0.5,para)

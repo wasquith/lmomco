@@ -39,7 +39,7 @@ lmomlap(para)
 \references{
 Hosking, J.R.M., 1986, The theory of probability weighted moments: IBM Research Report RC12210, T.J. Watson Research Center, Yorktown Heights, New York.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{parlap}}, \code{\link{cdflap}}, \code{\link{pdflap}}, \code{\link{qualap}}  }
 \examples{
 lmr <- lmoms(c(123,34,4,654,37,78))

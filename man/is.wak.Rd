@@ -15,8 +15,8 @@ is.wak(para)
 
   \item{FALSE}{If the \code{type} is not \code{wak}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parwak}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parwak}} }
 \examples{
 para <- parwak(lmoms(c(123,34,4,654,37,78)))
 if(is.wak(para) == TRUE) {

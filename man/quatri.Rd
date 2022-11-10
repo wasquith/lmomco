@@ -23,7 +23,7 @@ quatri(f, para, paracheck=TRUE)
 \value{
   Quantile value for nonexceedance probability \eqn{F}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{cdftri}}, \code{\link{pdftri}}, \code{\link{lmomtri}}, \code{\link{partri}}}
 \examples{
   lmr <- lmoms(c(46, 70, 59, 36, 71, 48, 46, 63, 35, 52))

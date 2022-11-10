@@ -22,11 +22,11 @@ are.parrice.valid(para, nowarn=FALSE)
 \note{
 This function calls \code{\link{is.rice}} to verify consistency between the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 }
-\seealso{ \code{\link{is.rice}}, \code{\link{parrice}} }
+\seealso{\code{\link{is.rice}}, \code{\link{parrice}} }
 \examples{
 #para <- parrice(lmoms(c(123,34,4,654,37,78)))
 #if(are.parrice.valid(para)) Q <- quarice(0.5,para)

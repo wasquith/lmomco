@@ -52,7 +52,7 @@ Greenwood, J.A., Landwehr, J.M., Matalas, N.C., and Wallis, J.R., 1979, Probabil
 
 Hosking, J.R.M., 1990, L-moments--Analysis and estimation of distributions using linear combinations of order statistics: Journal of the Royal Statistical Society, Series B, v. 52, pp. 105--124.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmom.ub}}, \code{\link{pwm.ub}}, \code{\link{pwm}}, \code{\link{lmom2pwm}}}
 \examples{
 D <- c(123,34,4,654,37,78)

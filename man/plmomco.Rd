@@ -14,7 +14,7 @@ plmomco(x, para)
 \value{
   Nonexceedance probability (\eqn{0 \le F \le 1}) for \code{x}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{dlmomco}}, \code{\link{qlmomco}}, \code{\link{rlmomco}},  \code{\link{slmomco}}, \code{\link{add.lmomco.axis}}
 }
 \examples{

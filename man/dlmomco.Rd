@@ -14,7 +14,7 @@ dlmomco(x, para)
 \value{
   Probability density for \code{x}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{plmomco}}, \code{\link{qlmomco}}, \code{\link{rlmomco}}, \code{\link{slmomco}} }
 \examples{
 para <- vec2par(c(0,1),type="nor") # standard normal parameters

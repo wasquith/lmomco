@@ -37,7 +37,7 @@ source of the L-moments: \dQuote{lmomtexp}.}
 \references{
 Vogel, R.M., Hosking, J.R.M., Elphick, C.S., Roberts, D.L., and Reed, J.M., 2008, Goodness of fit of probability distributions for sightings as species approach extinction: Bulletin of Mathematical Biology, DOI 10.1007/s11538-008-9377-3, 19 p.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{partexp}}, \code{\link{cdftexp}}, \code{\link{pdftexp}}, \code{\link{quatexp}} }
 \examples{
 set.seed(1) # to get a suitable L-CV

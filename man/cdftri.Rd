@@ -21,7 +21,7 @@ cdftri(x, para)
 \value{
   Nonexceedance probability (\eqn{F}) for \eqn{x}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{pdftri}}, \code{\link{quatri}}, \code{\link{lmomtri}}, \code{\link{partri}}}
 \examples{
   lmr <- lmoms(c(46, 70, 59, 36, 71, 48, 46, 63, 35, 52))

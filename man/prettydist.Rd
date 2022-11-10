@@ -14,7 +14,7 @@ prettydist(x)
 A vector of distribution identifiers.
 }
 \author{W.H. Asquith}
-\seealso{ \code{\link{dist.list}} }
+\seealso{\code{\link{dist.list}} }
 \examples{
 the.lst <- dist.list() # the authoritative list of abbreviations
 prettydist(the.lst)

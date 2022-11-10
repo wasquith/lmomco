@@ -15,8 +15,8 @@ is.glo(para)
 
   \item{FALSE}{If the \code{type} is not \code{glo}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parglo}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parglo}} }
 \examples{
 para <- parglo(lmoms(c(123,34,4,654,37,78)))
 if(is.glo(para) == TRUE) {

@@ -22,7 +22,7 @@ Hosking, J.R.M., 1990, L-moments---Analysis and estimation of distributions usin
 
 Hosking, J.R.M. and Wallis, J.R., 1997, Regional frequency analysis---An approach based on L-moments: Cambridge University Press.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmom.ub}}, \code{\link{lmoms}}, \code{\link{pwm2lmom}} }
 \examples{
 lmr <- lmoms(rnorm(20))

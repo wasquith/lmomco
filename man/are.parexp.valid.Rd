@@ -31,8 +31,8 @@ approach based on L-moments: Cambridge University Press.
 This function calls \code{\link{is.exp}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.exp}}, \code{\link{parexp}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.exp}}, \code{\link{parexp}} }
 \examples{
 para <- parexp(lmoms(c(123,34,4,654,37,78)))
 if(are.parexp.valid(para)) Q <- quaexp(0.5,para)

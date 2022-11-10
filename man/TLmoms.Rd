@@ -1,6 +1,6 @@
 \name{TLmoms}
 \alias{TLmoms}
-\title{ The Sample Trimmed L-moments and L-moment Ratios }
+\title{The Sample Trimmed L-moments and L-moment Ratios }
 \description{
 Compute the sample trimmed L-moments (TL-moments) for a vector. The level of symmetrical trimming is specified. The mathematical expression for a TL-moment is seen under \code{\link{TLmom}}.  The \code{\link{TLmoms}} function loops across that expression and the \code{\link{TLmom}} function for each \code{nmom}=\eqn{r} set in the argument list.
 }
@@ -30,7 +30,7 @@ TLmoms(x, nmom, trim=NULL, leftrim=NULL, rightrim=NULL, vecit=FALSE)
 \references{
 Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statistics and Data Analysis, v. 43, pp. 299--314.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 
 \seealso{\code{\link{TLmom}}, \code{\link{lmoms}}, and \code{\link{lmorph}}}
 \examples{

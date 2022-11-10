@@ -40,7 +40,7 @@ pdfemu(x, para, paracheck=TRUE)
 \references{
 Yacoub, M.D., 2007, The kappa-mu distribution and the eta-mu distribution: IEEE Antennas and Propagation Magazine, v. 49, no. 1, pp. 68--81
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{cdfemu}}, \code{\link{quaemu}}, \code{\link{lmomemu}}, \code{\link{paremu}}}
 \examples{
 \dontrun{

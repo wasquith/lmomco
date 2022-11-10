@@ -28,7 +28,7 @@ rreslife.lmoms(f, para, nmom=5)
   \item{rightrim}{Level of right-tail trimming used in the computation, which is \code{NULL} because no trimming theory for L-moments of residual life have been developed or researched.}
   \item{source}{An attribute identifying the computational source of the L-moments: \dQuote{rreslife.lmoms}.}
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Nair, N.U., Sankaran, P.G., and Balakrishnan, N., 2013, Quantile-based reliability analysis: Springer, New York.
 }

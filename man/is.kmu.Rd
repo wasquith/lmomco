@@ -15,8 +15,8 @@ is.kmu(para)
 
   \item{FALSE}{If the \code{type} is not \code{kmu}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parkmu}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parkmu}} }
 \examples{
 para <- vec2par(c(3.1, 1.4), type='kmu')
 if(is.kmu(para)) {

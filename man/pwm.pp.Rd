@@ -1,6 +1,6 @@
 \name{pwm.pp}
 \alias{pwm.pp}
-\title{ Plotting-Position Sample Probability-Weighted Moments }
+\title{Plotting-Position Sample Probability-Weighted Moments }
 \description{
 The sample probability-weighted moments (PWMs) are computed from the plotting positions of the data. The first five \eqn{\beta_r}'s are computed by default. The plotting-position formula for a sample size of \eqn{n} is
 \deqn{pp_i = \frac{i+A}{n+B} \mbox{,}}
@@ -35,8 +35,8 @@ Hosking, J.R.M., 1990, L-moments---Analysis and estimation of
 distributions using linear combinations of order statistics: Journal
 of the Royal Statistical Society, Series B, v. 52, pp. 105--124.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{pwm.ub}}, \code{\link{pwm.gev}}, \code{\link{pwm2lmom}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{pwm.ub}}, \code{\link{pwm.gev}}, \code{\link{pwm2lmom}} }
 \examples{
 pwm <- pwm.pp(rnorm(20), A=-0.35, B=0)
 

@@ -15,7 +15,7 @@ quast3(f, para, paracheck=TRUE)
 \value{
   Quantile value for nonexceedance probability \eqn{F}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 }

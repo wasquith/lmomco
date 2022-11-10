@@ -30,7 +30,7 @@ lmomTLgpa(para)
 \references{
 Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statistics and Data Analysis, v. 43, pp. 299--314.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmomgpa}}, \code{\link{parTLgpa}}, \code{\link{cdfgpa}}, \code{\link{pdfgpa}}, \code{\link{quagpa}} }
 \examples{
 TL <- TLmoms(c(123,34,4,654,37,78,21,3400),trim=1)

@@ -15,8 +15,8 @@ is.kur(para)
 
   \item{FALSE}{If the \code{type} is not \code{kur}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parkur}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parkur}} }
 \examples{
 para <- parkur(lmoms(c(0.25, 0.4, 0.6, 0.65, 0.67, 0.9)))
 if(is.kur(para) == TRUE) {

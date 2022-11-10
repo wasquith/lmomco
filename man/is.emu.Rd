@@ -15,8 +15,8 @@ is.emu(para)
 
   \item{FALSE}{If the \code{type} is not \code{emu}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{paremu}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{paremu}} }
 \examples{
 \dontrun{
 para <- vec2par(c(0.25, 1.4), type='emu')

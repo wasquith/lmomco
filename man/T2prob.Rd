@@ -15,7 +15,7 @@ T2prob(T)
 \value{
    A vector of annual nonexceedance probabilities.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{prob2T}}, \code{\link{nonexceeds}}, \code{\link{add.lmomco.axis}}}
 \examples{
 T <- c(1, 2, 5, 10, 25, 50, 100, 250, 500)

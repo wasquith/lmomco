@@ -21,7 +21,7 @@ qualmrq(f, para, paracheck=TRUE)
 \references{
 Midhu, N.N., Sankaran, P.G., and Nair, N.U., 2013, A class of distributions with linear mean residual quantile function and it's generalizations: Statistical Methodology, v. 15, pp. 1--24.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{cdflmrq}}, \code{\link{pdflmrq}}, \code{\link{lmomlmrq}}, \code{\link{parlmrq}}
 }
 \examples{

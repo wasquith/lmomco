@@ -24,7 +24,7 @@ This function calls \code{\link{is.pdq3}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
 \author{W.H. Asquith}
-\seealso{ \code{\link{is.pdq3}}, \code{\link{parpdq3}} }
+\seealso{\code{\link{is.pdq3}}, \code{\link{parpdq3}} }
 \examples{
 para <- parpdq3(lmoms(c(46, 70, 59, 36, 71, 48, 46, 63, 35, 52)))
 if(are.parpdq3.valid(para)) Q <- quapdq3(0.5, para)

@@ -1,6 +1,6 @@
 \name{pp.median}
 \alias{pp.median}
-\title{ Quantile Function of the Ranks of Plotting Positions }
+\title{Quantile Function of the Ranks of Plotting Positions }
 \description{
 The median of a plotting position. The median is \eqn{pp^\star_r = IIB(0.5, r, n+1-r)}.  \eqn{IIB} is the \dQuote{inverse of the incomplete beta function} or the quantile function of the Beta distribution as provided in \R by \code{qbeta(f, a, b)}.  Readers might consult Gilchrist (2011, chapter 12) and Karian and Dudewicz (2011, p. 510). The \eqn{pp'_r} are known in some fields as \dQuote{mean rankit} and \eqn{pp^\star_r} as \dQuote{median rankit.}
 }
@@ -21,8 +21,8 @@ Gilchrist, W.G., 2000, Statistical modelling with quantile functions: Chapman an
 
 Karian, Z.A., and Dudewicz, E.J., 2011, Handbook of fitting statistical distributions with R: Boca Raton, FL, CRC Press.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{pp}}, \code{\link{pp.f}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{pp}}, \code{\link{pp.f}} }
 \examples{
 \dontrun{
 X <- rexp(10)*rexp(10)

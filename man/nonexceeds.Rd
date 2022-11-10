@@ -1,6 +1,6 @@
 \name{nonexceeds}
 \alias{nonexceeds}
-\title{ Some Common or Useful Nonexceedance Probabilities }
+\title{Some Common or Useful Nonexceedance Probabilities }
 \description{
 This function returns a vector nonexceedance probabilities.
 }
@@ -15,8 +15,8 @@ nonexceeds(f01=FALSE, less=FALSE, sig6=FALSE)
 \value{
   A vector of selected nonexceedance probabilities \eqn{F} useful in assessing the \dQuote{frequency curve} in applications (noninclusive). This vector is intended to be helpful and self-documenting when common \eqn{F} values are desired to explore deep into both distribution tails.
 }
-\author{ W.H. Asquith }
-\seealso{ \code{\link{check.fs}}, \code{\link{prob2T}}, \code{\link{T2prob}} }
+\author{W.H. Asquith }
+\seealso{\code{\link{check.fs}}, \code{\link{prob2T}}, \code{\link{T2prob}} }
 \examples{
 lmr <- lmoms(rnorm(20))
 para <- parnor(lmr)

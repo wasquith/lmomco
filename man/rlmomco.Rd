@@ -17,7 +17,7 @@ rlmomco(n, para)
 \note{
 The action of this function in \R idiom is \code{par2qua(runif(n), para)} for the distribution parameters \code{para}, the \R function \code{runif} is the Uniform distribution, and \code{n} being the simulation size. 
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{dlmomco}}, \code{\link{plmomco}}, \code{\link{qlmomco}}, \code{\link{slmomco}} }
 \examples{
 lmr      <- lmoms(rnorm(20)) # generate 20 standard normal variates

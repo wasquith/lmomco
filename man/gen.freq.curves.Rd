@@ -27,7 +27,7 @@ gen.freq.curves(n, para, F=NULL, nsim=10, callplot=TRUE, aslog=FALSE,
 \value{
   This function is largely used for its graphical side effects, but if estimates of the lower and upper confidence limits are known (say from \code{\link{genci.simple}}) then this function can be used to evaluate the counts of simulations at nonexceedance probability \code{FCI} outside the limits provided in \code{lowerCI} and \code{upperCI}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmom2par}}, \code{\link{nonexceeds}}, \code{\link{rlmomco}}, \code{\link{lmoms}}
 }
 \examples{

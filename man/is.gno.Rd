@@ -15,8 +15,8 @@ is.gno(para)
 
   \item{FALSE}{If the \code{type} is not \code{gno}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{pargno}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{pargno}} }
 \examples{
 para <- pargno(lmoms(c(123,34,4,654,37,78)))
 if(is.gno(para) == TRUE) {

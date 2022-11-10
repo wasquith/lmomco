@@ -36,7 +36,7 @@ genci.simple(para, n, f=NULL, level=0.90, edist="gno", nsim=1000,
   \item{ifail}{A failure integer.}
   \item{ifailtext}{Text message associated with \code{ifail}.}
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{genci}}, \code{\link{gen.freq.curves}}
 }
 \examples{

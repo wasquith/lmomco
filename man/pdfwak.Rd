@@ -24,7 +24,7 @@ approach based on L-moments: Cambridge University Press.
 
 Sourced from written communication with Dr. Hosking in October 2007.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{cdfwak}}, \code{\link{quawak}}, \code{\link{lmomwak}}, \code{\link{parwak}}}
 \examples{
 \dontrun{

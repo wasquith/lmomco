@@ -40,7 +40,7 @@ During the optimization process, the function requires evaluation at the initial
 }
 if \code{Inf} is returned on first call to the objective function. The \code{silent} by default though will silence this error.  Alternative starting parameters might help.  This function is not built around subordinate control functions to say keep the parameters within distribution-specific bounds.  However, in practice, the L-moment estimates should already be fairly close and the optimizer can take it from there.  More sophisticated MLE for many distributions is widely available in other \R packages. The \pkg{lmomco} package uses its own probability density functions.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmom2par}}, \code{\link{mps2par}}, \code{\link{tlmr2par}}}
 \examples{
 \dontrun{

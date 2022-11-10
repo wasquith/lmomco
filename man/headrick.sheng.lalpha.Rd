@@ -1,7 +1,7 @@
 \name{headrick.sheng.lalpha}
 \alias{headrick.sheng.lalpha}
 \alias{lalpha}
-\title{ The Sample Headrick and Sheng L-alpha }
+\title{The Sample Headrick and Sheng L-alpha }
 \description{
 Compute the sample Headrick and Sheng \dQuote{L-alpha} (Headrick and Sheng, 2013) by
 \deqn{\alpha_L = \frac{d}{d-1}
@@ -39,7 +39,7 @@ Headrick and Sheng (2013) use \eqn{k} to represent \eqn{d} as used here. The cha
 \references{
 Headrick, T.C., and Sheng, Y., 2013, An alternative to Cronbach's Alpha---An L-moment-based measure of internal-consistency reliability: \emph{in} Millsap, R.E., van der Ark, L.A., Bolt, D.M., Woods, C.M. (eds) New Developments in Quantitative Psychology, Springer Proceedings in Mathematics and Statistics, v. 66, \doi{10.1007/978-1-4614-9348-8_2}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{Lcomoment.matrix}}}
 \examples{
 # Table 1 in Headrick and Sheng (2013)

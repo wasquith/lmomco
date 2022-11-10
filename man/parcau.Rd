@@ -21,7 +21,7 @@ parcau(lmom, ...)
 \references{
 Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statistics and Data Analysis, v. 43, pp. 299--314.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{TLmoms}}, \code{\link{lmomcau}}, \code{\link{cdfcau}}, \code{\link{pdfcau}}, \code{\link{quacau}}
 }
 \examples{

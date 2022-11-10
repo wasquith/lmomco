@@ -15,8 +15,8 @@ is.lap(para)
 
   \item{FALSE}{If the \code{type} is not \code{lap}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parlap}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parlap}} }
 \examples{
 para <- parlap(lmoms(c(123,34,4,654,37,78)))
 if(is.lap(para) == TRUE) {

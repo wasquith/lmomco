@@ -15,8 +15,8 @@ is.gov(para)
 
   \item{FALSE}{If the \code{type} is not \code{gov}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{pargov}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{pargov}} }
 \examples{
 para <- pargov(lmoms(c(123,34,4,654,37,78)))
 if(is.gov(para) == TRUE) {

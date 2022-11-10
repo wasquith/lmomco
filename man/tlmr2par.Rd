@@ -30,7 +30,7 @@ tlmr2par(x, type, para.int=NULL, trim=NULL, leftrim=NULL, rightrim=NULL, ...)
 \references{
 Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statistics and Data Analysis, v. 43, pp. 299--314.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{theoTLmoms}}, \code{\link{TLmoms}}, \code{\link{lmr2par}}}
 \examples{
 \donttest{

@@ -18,11 +18,11 @@ are.parst3.valid(para, nowarn=FALSE)
 \note{
 This function calls \code{\link{is.st3}} to verify consistency between the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 }
-\seealso{ \code{\link{is.st3}}, \code{\link{parst3}} }
+\seealso{\code{\link{is.st3}}, \code{\link{parst3}} }
 \examples{
 para <- parst3(lmoms(c(90,134,100,114,177,378)))
 if(are.parst3.valid(para)) Q <- quast3(0.5,para)

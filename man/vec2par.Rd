@@ -33,7 +33,7 @@ If the distribution is a Reverse Gumbel (\code{type=revgum}) or Generalized Pare
 \note{
 If the \code{type} is not amongst the official list given above, then the \code{type} given is loaded into the \code{type} element of the returned list and an other element \code{isuser = TRUE} is also added. There is no \code{isuser} created if the distribution is supported by \pkg{lmomco}. This is an attempt to given some level of flexibility so that others can create their own distributions or conduct research on derivative code from \pkg{lmomco}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmom2par}}, \code{\link{par2vec}}}
 \examples{
 para <- vec2par(c(12,123,0.5),'gev')

@@ -15,8 +15,8 @@ is.exp(para)
 
   \item{FALSE}{If the \code{type} is not \code{exp}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parexp}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parexp}} }
 \examples{
 para <- parexp(lmoms(c(123,34,4,654,37,78)))
 if(is.exp(para) == TRUE) {

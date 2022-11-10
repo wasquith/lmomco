@@ -26,7 +26,7 @@ See NEWS file and entries for version 2.0.1 for this "R Marcum"
       pchisq(b^2, df=2*nu, ncp=a^2, lower.tail=FALSE) }
 }
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 }

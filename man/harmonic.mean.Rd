@@ -1,6 +1,6 @@
 \name{harmonic.mean}
 \alias{harmonic.mean}
-\title{ The Harmonic Mean with Zero-Value Correction }
+\title{The Harmonic Mean with Zero-Value Correction }
 \description{
 Compute the harmonic mean of a vector with a zero-value correction.
 \deqn{\check{\mu} =
@@ -29,7 +29,7 @@ The harmonic mean can not be computed when zero values are present. This situati
 \references{
 Texas Commission on Environmental Quality, 2003, Procedures to implement the Texas surface-water-quality standards: TCEQ RG--194, p. 47
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 
 \seealso{\code{\link{pmoms}}}
 \examples{

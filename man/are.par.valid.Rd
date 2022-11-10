@@ -19,8 +19,8 @@ are.par.valid(para, paracheck=TRUE, ...)
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{vec2par}}, \code{\link{dist.list}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{vec2par}}, \code{\link{dist.list}} }
 \examples{
 vec  <- c(12,120)           # parameters of exponential distribution
 para <- vec2par(vec,'exp')  # build exponential distribution parameter

@@ -113,7 +113,7 @@ Where the second optimization shows that if the largest value for the 21 years o
 \references{
 Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statistics and Data Analysis, v. 43, pp. 299--314.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{theoLmoms}}, \code{\link{TLmoms}}, \code{\link{tlmr2par}}}
 \examples{
 para <- vec2par(c(0,1),type='nor') # standard normal

@@ -15,8 +15,8 @@ is.nor(para)
 
   \item{FALSE}{If the \code{type} is not \code{nor}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parnor}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parnor}} }
 \examples{
 para <- parnor(lmoms(c(123,34,4,654,37,78)))
 if(is.nor(para) == TRUE) {

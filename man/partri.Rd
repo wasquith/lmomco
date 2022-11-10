@@ -27,7 +27,7 @@ partri(lmom, checklmom=TRUE, ...)
   \item{obj.val}{The value of the objective function, which is the error of the optimization.}
   \item{source}{The source of the parameters: \dQuote{partri}.}
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmomtri}},
 \code{\link{cdftri}}, \code{\link{pdftri}}, \code{\link{quatri}}
 }

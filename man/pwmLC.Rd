@@ -1,6 +1,6 @@
 \name{pwmLC}
 \alias{pwmLC}
-\title{ Sample Probability-Weighted Moments for Left-Tail Censoring }
+\title{Sample Probability-Weighted Moments for Left-Tail Censoring }
 \description{
 Compute the sample probability-weighted moments (PWMs) for left-tail censored data set---that is a data set censored from below. The censoring threshold is denoted as \eqn{T}.
 }
@@ -35,8 +35,8 @@ to reset the data vector \code{x}. By operating on the data in this fashion one 
 \references{
 Zafirakou-Koulouris, A., Vogel, R.M., Craig, S.M., and Habermeier, J., 1998, L-moment diagrams for censored observations: Water Resources Research, v. 34, no. 5, pp. 1241--1249.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{lmoms}}, \code{\link{pwm2lmom}}, \code{\link{pwm}}, \code{\link{pwmRC}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{lmoms}}, \code{\link{pwm2lmom}}, \code{\link{pwm}}, \code{\link{pwmRC}} }
 \examples{
 #
 }

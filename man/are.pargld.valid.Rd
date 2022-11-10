@@ -36,8 +36,8 @@ Karian, Z.A., and Dudewicz, E.J., 2000, Fitting statistical distributions---The 
 \note{
 This function calls \code{\link{is.gld}} to verify consistency between the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.gld}}, \code{\link{pargld}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.gld}}, \code{\link{pargld}} }
 \examples{
 \dontrun{
 para <- vec2par(c(123,34,4,3),type='gld')

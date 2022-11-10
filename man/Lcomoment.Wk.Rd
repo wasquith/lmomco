@@ -1,6 +1,6 @@
 \name{Lcomoment.Wk}
 \alias{Lcomoment.Wk}
-\title{ Weighting Coefficient for Sample L-comoment }
+\title{Weighting Coefficient for Sample L-comoment }
 \description{
 Compute the weight factors for computation of an L-comoment for order \code{k}, order statistic \code{r}, and sample size \code{n}.
 }
@@ -25,7 +25,7 @@ The weight factor \eqn{w^{(k)}_{r:n}} is the discrete Legendre polynomial. The w
 \note{
 The function begins with a capital letter. This is intentionally done so that lower case namespace is preserved.  By using a capital letter now, then \code{lcomoment.Wk} remains an available name in future releases.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 

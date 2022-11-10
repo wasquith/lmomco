@@ -1,6 +1,6 @@
 \name{check.fs}
 \alias{check.fs}
-\title{ Check Vector of Nonexceedance Probabilities }
+\title{Check Vector of Nonexceedance Probabilities }
 \description{
 This function checks that a nonexceedance probability (\eqn{F}) is in the \eqn{0 \le F \le 1} range.
 It does not check that the distribution specified by parameters for \eqn{F = 0} or \eqn{F = 1} is valid. End point checking is left to additional internal checks within the functions implementing the distribution. The function is intended for internal use to build a flow of logic throughout the distribution functions. Users are not anticipated to need this function themselves. The \code{\link{check.fs}} function is separate because of the heavy use of the logic across a myriad of functions in \pkg{lmomco}.
@@ -15,9 +15,8 @@ check.fs(fs)
   \item{TRUE}{The nonexceedance probabilities are valid.}
   \item{FALSE}{The nonexceedance probabilities are invalid.}
 }
-\author{ W.H. Asquith}
-\seealso{
-\code{\link{quaaep4}},
+\author{W.H. Asquith}
+\seealso{\code{\link{quaaep4}},
 \code{\link{quaaep4kapmix}},
 \code{\link{quacau}},
 \code{\link{quaemu}},

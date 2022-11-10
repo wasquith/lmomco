@@ -30,7 +30,7 @@ vec2pwm(vec, as.list=FALSE)
   \item{betas}{The PWMs.}
   \item{source}{Source of the PWMs: \dQuote{vec2pwm}.}
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{vec2lmom}}, \code{\link{lmom2pwm}}, \code{\link{pwm2lmom}}}
 \examples{
 pwm <- vec2pwm(c(12,123,12,12,54))

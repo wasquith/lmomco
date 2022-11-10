@@ -21,7 +21,7 @@ parsla(lmom, ...)
 \references{
 Rogers, W.H., and Tukey, J.W., 1972, Understanding some long-tailed symmetrical distributions: Statistica Neerlandica, v. 26, no. 3, pp. 211--226.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{TLmoms}}, \code{\link{lmomsla}}, \code{\link{cdfsla}}, \code{\link{pdfsla}}, \code{\link{quasla}}
 }
 \examples{

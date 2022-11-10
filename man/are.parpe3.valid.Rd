@@ -31,8 +31,8 @@ approach based on L-moments: Cambridge University Press.
 This function calls \code{\link{is.pe3}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.pe3}}, \code{\link{parpe3}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.pe3}}, \code{\link{parpe3}} }
 \examples{
 para <- parpe3(lmoms(c(123,34,4,654,37,78)))
 if(are.parpe3.valid(para)) Q <- quape3(0.5,para)

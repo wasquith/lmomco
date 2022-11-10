@@ -28,7 +28,7 @@ Hosking, J.R.M., 1996, FORTRAN routines for use with the method of L-moments: Ve
 
 Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approach based on L-moments: Cambridge University Press.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmomgpa}},
 \code{\link{cdfgpa}}, \code{\link{pdfgpa}}, \code{\link{quagpa}}
 }

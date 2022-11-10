@@ -1,6 +1,6 @@
 \name{lmoms.cov}
 \alias{lmoms.cov}
-\title{ Distribution-Free Variance-Covariance Structure of Sample L-moments }
+\title{Distribution-Free Variance-Covariance Structure of Sample L-moments }
 \description{
 Compute the distribution-free, variance-covariance matrix (\eqn{\widehat{\mathrm{var}}(\lambda)}) of the sample L-moments (\eqn{\hat\lambda_r}) or alternatively the sample probability-weighted moments (\eqn{\hat\beta_k}, Elamir and Seheult, 2004, sec. 5). The \eqn{\widehat{\mathrm{var}}(\lambda)} is defined by the matrix product
 
@@ -56,9 +56,8 @@ Elamir, E.A.H., and Seheult, A.H., 2004, Exact variance structure of sample L-mo
 
 Karvanen, Juha, 2016, Lmoments---L-moments and quantile mixtures: R package version 1.2-3, accessed February 22, 2016 at https://cran.r-project.org/web/packages/Lmoments/index.html
 }
-\author{ W.H. Asquith}
-\seealso{
-\code{\link{lmoms}}, \code{\link{pwm}}
+\author{W.H. Asquith}
+\seealso{\code{\link{lmoms}}, \code{\link{pwm}}
 }
 \examples{
 \dontrun{

@@ -15,8 +15,8 @@ is.tri(para)
 
   \item{FALSE}{If the \code{type} is not \code{tri}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{partri}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{partri}} }
 \examples{
 para <- partri(lmoms(c(46, 70, 59, 36, 71, 48, 46, 63, 35, 52)))
 if(is.tri(para) == TRUE) {

@@ -98,7 +98,7 @@ Karvanen, J., Eriksson, J., and Koivunen, V., 2002, Adaptive score functions for
 
 Karian, Z.A., and Dudewicz, E.J., 2000, Fitting statistical distibutions---The generalized lambda distribution and generalized bootstrap methods: CRC Press, Boca Raton, FL, 438 p.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{pargld}}, \code{\link{cdfgld}}, \code{\link{pdfgld}},  \code{\link{quagld}}}
 \examples{
 \dontrun{

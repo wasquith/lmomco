@@ -1,6 +1,6 @@
 \name{lcomoms2}
 \alias{lcomoms2}
-\title{ The Sample L-comoments for Two Variables }
+\title{The Sample L-comoments for Two Variables }
 \description{
 Compute the sample L-moments for the \R two variable  \code{data.frame}. The \dQuote{2} in the function name is to refer to fact that this function operates on only two variables. The length of the variables must be greater than the number of L-comoments requested.
 }
@@ -28,7 +28,7 @@ lcomoms2(DATAFRAME, nmom=3, asdiag=FALSE, opdiag=FALSE, ...)
 \note{
 This function computes the L-comoments through the generalization of the \code{\link{Lcomoment.matrix}} and \code{\link{Lcomoment.coefficients}} functions.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 }

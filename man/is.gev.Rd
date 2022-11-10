@@ -15,8 +15,8 @@ is.gev(para)
 
   \item{FALSE}{If the \code{type} is not \code{gev}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{pargev}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{pargev}} }
 \examples{
 para <- pargev(lmoms(c(123,34,4,654,37,78)))
 if(is.gev(para) == TRUE) {

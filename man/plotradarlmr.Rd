@@ -38,7 +38,7 @@ plotradarlmr(lmom, num.axis=4, plot=TRUE, points=FALSE, poly=TRUE, tag=NA,
 \note{
 This function has many implicit flexible features. The example below attempts to be reasonably comprehensive. Note that in the example that it is required to continue \dQuote{knowing} what \code{minrat} and \code{maxrat} where used with \code{plot=TRUE}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{plotlmrdia}}}
 \examples{
 \dontrun{

@@ -17,7 +17,7 @@ ralmomco(f, para, alpha=0)
 \value{
    \eqn{\alpha}-percentile residual quantile value for \eqn{F}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Nair, N.U., and Vineshkumar, B., 2011, Reversed percentile residual life and related concepts: Journal of the Korean Statistical Society, v. 40, no. 1, pp. 85--92.
 

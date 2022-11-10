@@ -21,7 +21,7 @@ add.log.axis(make.labs=FALSE, logs=c(2, 3, 4, 5, 6, 7, 8, 9), side=1,
 \value{
    No value is returned, except if argument \code{x} is given, for which nice axis limits are returned. By overall design, this function is used for its side effects.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{add.lmomco.axis}} }
 \examples{
 \dontrun{

@@ -1,6 +1,6 @@
 \name{lmrdiscord}
 \alias{lmrdiscord}
-\title{ Compute Discordance on L-CV, L-skew, and L-kurtosis }
+\title{Compute Discordance on L-CV, L-skew, and L-kurtosis }
 \description{
 This function computes the Hosking and Wallis discordancy of the first three L-moment ratios (L-CV, L-skew, and L-kurtosis) according to their implementation in Hosking and Wallis (1997) and earlier. Discordancy triplets of these L-moment ratios is heuristically measured by effectively locating the triplet from the mean center of the 3-dimensional cloud of values. The \pkg{lmomRFA} provides for discordancy embedded in the \dQuote{L-moment method} of regional frequency analysis. The author of \pkg{lmomco} chooses to have a separate \dQuote{high level} implementation for emergent ideas of his in evaluating unusual sample distributions outside of the \code{regdata} object class envisioned by Hosking in the \pkg{lmomRFA} package.
 
@@ -57,7 +57,7 @@ Consultation of the \code{lmomRFA.f} and \code{regtst()} function of the \pkg{lm
 \references{
 Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approach based on L-moments: Cambridge University Press.
 }
-\author{ W.H. Asquith }
+\author{W.H. Asquith }
 \seealso{\code{\link{lmoms}}
 }
 \examples{

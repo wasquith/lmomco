@@ -19,8 +19,8 @@ are.paremu.valid(para, nowarn=FALSE)
 This function calls \code{\link{is.emu}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.emu}}, \code{\link{paremu}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.emu}}, \code{\link{paremu}} }
 \examples{
 \dontrun{
 para <- vec2par(c(0.4, .04), type="emu")

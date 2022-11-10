@@ -19,7 +19,7 @@ cmlmomco(f, para)
 \value{
   Conditional mean residual value for \eqn{F} or conditional mean life for \eqn{F}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Kupka, J., and Loo, S., 1989, The hazard and vitality measures of ageing: Journal of Applied Probability, v. 26, pp. 532--542.
 

@@ -15,8 +15,8 @@ is.gum(para)
 
   \item{FALSE}{If the \code{type} is not \code{gum}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{pargum}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{pargum}} }
 \examples{
 para <- pargum(lmoms(c(123,34,4,654,37,78)))
 if(is.gum(para) == TRUE) {

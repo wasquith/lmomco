@@ -25,7 +25,7 @@ Nair, N.U., Sankaran, P.G., Balakrishnan, N., 2013, Quantile-based reliability a
 
 Nair, N.U., Sankaran, P.G., and Vineshkumar, B., 2012, The Govindarajulu distribution---Some Properties and applications: Communications in Statistics, Theory and Methods, 41(24), 4391--4406.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{cdfgov}}, \code{\link{pdfgov}}, \code{\link{lmomgov}}, \code{\link{pargov}}}
 \examples{
 lmr <- lmoms(c(123,34,4,654,37,78))

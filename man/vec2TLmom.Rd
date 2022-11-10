@@ -24,7 +24,7 @@ vec2TLmom(vec, ...)
 \note{
 The motiviation for this function that arrange trivial arguments for \code{\link{vec2lmom}} is that it is uncertain how TL-moments will grow in the research community and there might someday be a needed for alternative support without having to touch \code{\link{vec2lmom}}. Plus there is nice function name parallelism in having a dedicated function for the TL-moments as there is for L-moments and probability-weighted moments.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{TLmoms}}, \code{\link{vec2lmom}}}
 \examples{
 TL <- vec2TLmom(c(12,0.6,0.34,0.20,0.05),lscale=FALSE,trim=1)

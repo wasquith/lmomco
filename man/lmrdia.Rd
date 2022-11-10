@@ -47,8 +47,8 @@ Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints
 
 Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approach based on L-moments: Cambridge University Press.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{plotlmrdia}}}
+\author{W.H. Asquith}
+\seealso{\code{\link{plotlmrdia}}}
 \examples{
 lratios <- lmrdia()
 }

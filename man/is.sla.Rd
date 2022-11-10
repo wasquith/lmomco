@@ -15,8 +15,8 @@ is.sla(para)
 
   \item{FALSE}{If the \code{type} is not \code{sla}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parsla}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parsla}} }
 \examples{
 para <- vec2par(c(12,1.2), type='sla')
 if(is.sla(para) == TRUE) {

@@ -18,7 +18,7 @@ x2pars(x, verbose=TRUE, ...)
   \item{mle}{Parameters from MLE. This is expected to be \code{NULL} if the method fails, and the \code{NULL} is tested for in \code{\link{pars2x}}.}
   \item{mps}{Parameters from MPS. This is expected to be \code{NULL} if the method fails, and the \code{NULL} is tested for in \code{\link{pars2x}}.}
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{pars2x}} }
 \examples{
 \dontrun{

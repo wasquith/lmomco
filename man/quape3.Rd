@@ -29,7 +29,7 @@ Yorktown Heights, New York.
 Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An
 approach based on L-moments: Cambridge University Press.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{cdfpe3}}, \code{\link{pdfpe3}}, \code{\link{lmompe3}}, \code{\link{parpe3}}}
 \examples{
   lmr <- lmoms(c(123,34,4,654,37,78))

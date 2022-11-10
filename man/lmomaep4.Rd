@@ -71,7 +71,7 @@ source of the L-moments: \dQuote{lmomaep4}.}
   \item{T3}{L-skew, \eqn{\tau_3}.}
   \item{T4}{L-kurtosis, \eqn{\tau_4}.}
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2014, Parameter estimation for the 4-parameter asymmetric exponential power distribution by the method of L-moments using R: Computational Statistics and Data Analysis, v. 71, pp. 955--970.
 

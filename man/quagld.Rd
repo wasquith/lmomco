@@ -26,7 +26,7 @@ Asquith, W.H., 2007, L-moments and TL-moments of the generalized lambda distribu
 Karian, Z.A., and Dudewicz, E.J., 2000, Fitting statistical distributions---The generalized lambda distribution and generalized bootstrap methods:
 CRC Press, Boca Raton, FL, 438 p.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{cdfgld}}, \code{\link{pargld}}, \code{\link{lmomgld}}, \code{\link{lmomTLgld}}, \code{\link{pargld}}, \code{\link{parTLgld}}
 }
 \examples{

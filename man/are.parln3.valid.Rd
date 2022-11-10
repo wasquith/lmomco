@@ -19,11 +19,11 @@ are.parln3.valid(para, nowarn=FALSE)
 This function calls \code{\link{is.ln3}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 }
-\seealso{ \code{\link{is.ln3}}, \code{\link{parln3}} }
+\seealso{\code{\link{is.ln3}}, \code{\link{parln3}} }
 \examples{
 para <- parln3(lmoms(c(123,34,4,654,37,78)))
 if(are.parln3.valid(para)) Q <- qualn3(0.5,para)

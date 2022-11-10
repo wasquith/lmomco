@@ -22,8 +22,8 @@ f2flo(f, pp=NA, xlo=NULL, type=c("ge", "gt"))
 \value{
   A vector of conditional nonexceedance probabilities.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{x2xlo}}, \code{\link{flo2f}}, \code{\link{f2f}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{x2xlo}}, \code{\link{flo2f}}, \code{\link{f2f}} }
 \examples{
 # See examples for x2xlo().
 }

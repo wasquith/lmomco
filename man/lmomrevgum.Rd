@@ -32,7 +32,7 @@ source of the L-moments: \dQuote{lmomrevgum}.}
 \references{
 Hosking, J.R.M., 1995, The use of L-moments in the analysis of censored data, in Recent Advances in Life-Testing and Reliability, edited by N. Balakrishnan, chapter 29, CRC Press, Boca Raton, Fla., pp. 546--560.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{parrevgum}}, \code{\link{cdfrevgum}}, \code{\link{pdfrevgum}}, \code{\link{quarevgum}} }
 \examples{
 lmr <- lmoms(c(123,34,4,654,37,78))

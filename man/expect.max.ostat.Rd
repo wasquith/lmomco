@@ -91,7 +91,7 @@ Gilchrist, W.G., 2000, Statistical modelling with quantile functions: Chapman an
 
 Hosking, J.R.M., 2006, On the characterization of distributions by their L-moments: Journal of Statistical Planning and Inference, v. 136, no. 1, pp. 193--198.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{theoLmoms.max.ostat}}, \code{\link{expect.min.ostat}}, \code{\link{eostat}}}
 \examples{
 para <- vec2par(c(10,100), type="nor")

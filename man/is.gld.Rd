@@ -15,8 +15,8 @@ is.gld(para)
 
   \item{FALSE}{If the \code{type} is not \code{gld}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{pargld}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{pargld}} }
 \examples{
 \dontrun{
 para <- vec2par(c(123,120,3,2),type="gld")

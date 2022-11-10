@@ -47,7 +47,7 @@ David, H.A., 1981, Order statistics: John Wiley, New York.
 
 Hampel, F.R., 1974, The influence curve and its role in robust estimation: Journal of the American Statistical Association, v. 69, no. 346, pp. 383--393.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{expect.max.ostat}}
 }
 \examples{

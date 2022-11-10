@@ -1,6 +1,6 @@
 \name{lmoms}
 \alias{lmoms}
-\title{ The Sample L-moments and L-moment Ratios }
+\title{The Sample L-moments and L-moment Ratios }
 \description{
 Compute the sample L-moments. The mathematical expression for sample L-moment computation is shown under \code{\link{TLmoms}}. The formula jointly handles sample L-moment computation and sample TL-moment (Elamir and Seheult, 2003) computation. A description of the most common L-moments is provided under \code{\link{lmom.ub}}.
 }
@@ -36,7 +36,7 @@ Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational statis
 Hosking, J.R.M., 1990, L-moments---Analysis and estimation of
 distributions using linear combinations of order statistics: Journal of the Royal Statistical Society, Series B, v. 52, pp. 105--124.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 
 \seealso{\code{\link{lmom.ub}}, \code{\link{TLmoms}}, \code{\link{lmorph}}, \code{\link{lmoms.bernstein}}, \code{\link{vec2lmom}}}
 \examples{

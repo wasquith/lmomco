@@ -18,7 +18,7 @@ LaguerreHalf(x)
 \value{
 The value for the Laguerre polynomial is returned.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{pdfrice}}}
 \examples{
 LaguerreHalf(-100^2/(2*10^2))

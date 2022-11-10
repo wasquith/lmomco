@@ -1,6 +1,6 @@
 \name{TLmom}
 \alias{TLmom}
-\title{ A Sample Trimmed L-moment }
+\title{A Sample Trimmed L-moment }
 \description{
 A sample trimmed L-moment (TL-moment) is computed for a vector. The \eqn{r \ge 1} order of the L-moment is specified as well as the level of symmetrical trimming.  A trimmed TL-moment
 \eqn{\hat{\lambda}^{(t_1,t_2)}_r} is
@@ -39,7 +39,7 @@ The presence of the \code{sortdata} switch can be dangerous. L-moment computatio
 \references{
 Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statistics and Data Analysis, v. 43, pp. 299--314.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{TLmoms}}}
 \examples{
 X1 <- rcauchy(30)

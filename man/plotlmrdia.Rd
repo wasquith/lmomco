@@ -83,7 +83,7 @@ approach based on L-moments: Cambridge University Press.
 
 Vogel, R.M., and Fennessey, N.M., 1993, L moment diagrams should replace product moment diagrams: Water Resources Research, v. 29, no. 6, pp. 1745--1752.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmrdia}}, \code{\link{plotradarlmr}}}
 \examples{
 plotlmrdia(lmrdia()) # simplest of all uses

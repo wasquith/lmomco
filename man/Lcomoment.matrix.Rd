@@ -1,6 +1,6 @@
 \name{Lcomoment.matrix}
 \alias{Lcomoment.matrix}
-\title{ Compute Sample L-comoment Matrix }
+\title{Compute Sample L-comoment Matrix }
 \description{
 Compute the L-comoments from a rectangular \code{data.frame} containing arrays of random variables. The order of the L-comoments is specified.
 }
@@ -27,7 +27,7 @@ computed over the pairs (\eqn{X^{(i)},X^{(j)}}) where \eqn{1 \le i \le j \le d}.
 \note{
 The function begins with a capital letter. This is intentionally done so that lower case namespace is preserved. By using a capital letter now, then \code{lcomoment.matrix} remains an available name in future releases.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 

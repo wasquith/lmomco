@@ -25,7 +25,7 @@ quakmu(f, para, paracheck=TRUE, getmed=FALSE, qualo=NA, quahi=NA, verbose=FALSE,
 \references{
 Yacoub, M.D., 2007, The kappa-mu distribution and the eta-mu distribution: IEEE Antennas and Propagation Magazine, v. 49, no. 1, pp. 68--81
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{cdfkmu}}, \code{\link{pdfkmu}}, \code{\link{lmomkmu}}, \code{\link{parkmu}}}
 \examples{
 quakmu(0.75,vec2par(c(0.9, 1.5), type="kmu"))

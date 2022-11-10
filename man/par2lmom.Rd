@@ -17,7 +17,7 @@ par2lmom(para, ...)
 \value{
   An L-moment object (an \R \code{list}) is returned.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmom2par}}}
 \examples{
 lmr      <- lmoms(rnorm(20))

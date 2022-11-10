@@ -17,7 +17,7 @@ is.pdq3(para)
   \item{FALSE}{If the \code{type} is not \code{pdq3}.}
 }
 \author{W.H. Asquith}
-\seealso{ \code{\link{parpdq3}} }
+\seealso{\code{\link{parpdq3}} }
 \examples{
 para <- parpdq3(lmoms(c(46, 70, 59, 36, 71, 48, 46, 63, 35, 52)))
 if(is.pdq3(para) == TRUE) {

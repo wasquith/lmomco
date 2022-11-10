@@ -15,7 +15,7 @@ par2qua(f,para,...)
 \value{
   Quantile value for \eqn{F}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{par2cdf}}, \code{\link{par2pdf}}}
 \examples{
 lmr     <- lmoms(rnorm(20))

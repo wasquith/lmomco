@@ -21,8 +21,8 @@ Midhu, N.N., Sankaran, P.G., and Nair, N.U., 2013, A class of distributions with
 \note{
 This function calls \code{\link{is.lmrq}} to verify consistency between the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.lmrq}}, \code{\link{parlmrq}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.lmrq}}, \code{\link{parlmrq}} }
 \examples{
 para <- parlmrq(lmoms(c(3, 0.05, 1.6, 1.37, 0.57, 0.36, 2.2)))
 if(are.parlmrq.valid(para)) Q <- qualmrq(0.5,para)

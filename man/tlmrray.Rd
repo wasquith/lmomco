@@ -1,6 +1,6 @@
 \name{tlmrray}
 \alias{tlmrray}
-\title{ Compute Select TL-moment ratios of the Rayleigh Distribution }
+\title{Compute Select TL-moment ratios of the Rayleigh Distribution }
 \description{
 This function computes select TL-moment ratios of the Rayleigh distribution for defaults of \eqn{\xi = 0} and \eqn{\alpha = 1}. This function can be useful for plotting the trajectory of the distribution on TL-moment ratio diagrams of \eqn{\tau^{(t_1,t_2)}_2}, \eqn{\tau^{(t_1,t_2)}_3}, \eqn{\tau^{(t_1,t_2)}_4}, \eqn{\tau^{(t_1,t_2)}_5}, and \eqn{\tau^{(t_1,t_2)}_6}.  In reality, \eqn{\tau^{(t_1,t_2)}_2} is  dependent on the values for \eqn{\xi} and \eqn{\alpha}.
 }
@@ -27,7 +27,7 @@ Although \code{NULL} in the argument list, the default is 0---the usual L-moment
 \note{
 The function uses numerical integration of the quantile function of the distribution through the \code{\link{theoTLmoms}} function.
 }
-\author{ W.H. Asquith }
+\author{W.H. Asquith }
 \seealso{\code{\link{quaray}}, \code{\link{theoTLmoms}}}
 \examples{
 \dontrun{

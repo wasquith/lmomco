@@ -39,14 +39,15 @@ tau34sq.normtest(x, alpha=0.05, pvalue.only=FALSE, getlist=TRUE,
   \item{Ztau4}{The Z-value of \eqn{\tau_4}.}
   \item{Tau34sq}{The \eqn{\tau^2_{3,4}} value.}
   \item{ChiSq.2df}{The Chi-squared distribution nonexceedance probability.}
-  \item{pvalue}{The p-value of the test.}
+  \item{pvalue}{The p-value of the test (original notation for package).}
+  \item{p.value}{The p-value of the test (updated to align with many other hypothesis test styles).}
   \item{isSig}{A logical on whether the p-value is \dQuote{statistically significant} based on the \eqn{\alpha} value.}
   \item{source}{The source of the parameters: \dQuote{tau34sq.normtest}.}
 }
 \references{
 Harri, A., and Coble, K.H., 2011, Normality testing---Two new tests using L-moments: Journal of Applied Statistics, v. 38, no. 7, pp. 1369--1379.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{pdfnor}}, \code{\link{plotlmrdia}} }
 \examples{
 HarriCoble <- tau34sq.normtest(rnorm(20), verbose=TRUE)

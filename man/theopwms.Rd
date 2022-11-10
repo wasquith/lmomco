@@ -1,6 +1,6 @@
 \name{theopwms}
 \alias{theopwms}
-\title{ The Theoretical Probability-Weighted Moments using Integration of the Quantile Function }
+\title{The Theoretical Probability-Weighted Moments using Integration of the Quantile Function }
 \description{
 Compute the theoretrical probability-weighted moments (PWMs) for a distribution. A theoretrical PWM in integral form is
 \deqn{ \beta_r = \int^1_0 x(F)\,F^r\,\mathrm{d}F \mbox{,}}
@@ -23,7 +23,7 @@ theopwms(para, nmom=5, verbose=FALSE)
 \references{
 Hosking, J.R.M., 1990, L-moments--Analysis and estimation of distributions using linear combinations of order statistics: Journal of the Royal Statistical Society, Series B, v. 52, p. 105--124.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 
 \seealso{\code{\link{theoLmoms}}, \code{\link{pwm}}, \code{\link{pwm2lmom}}}
 \examples{

@@ -1,6 +1,6 @@
 \name{lmomRCmark}
 \alias{lmomRCmark}
-\title{ Sample L-moment for Right-Tail Censoring by a Marking Variable }
+\title{Sample L-moment for Right-Tail Censoring by a Marking Variable }
 \description{
 Compute the sample L-moments for right-tail censored data set in which censored data values are identified by a marking variable.
 }
@@ -29,7 +29,7 @@ lmomRCmark(x, rcmark=NULL, r=1, sort=TRUE)
 Wang, Dongliang, Hutson, A.D., Miecznikowski, J.C., 2010, L-moment estimation for parametric survival models given censored data: Statistical Methodology, v. 7, no. 6, pp. 655--667.
 }
 \author{W.H. Asquith}
-\seealso{ \code{\link{lmomsRCmark}} }
+\seealso{\code{\link{lmomsRCmark}} }
 \examples{
 # See example under lmomsRCmark
 }

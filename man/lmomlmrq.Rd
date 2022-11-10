@@ -33,8 +33,8 @@ lmomlmrq(para)
 \references{
 Midhu, N.N., Sankaran, P.G., and Nair, N.U., 2013, A class of distributions with linear mean residual quantile function and it's generalizations: Statistical Methodology, v. 15, pp. 1--24.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parlmrq}}, \code{\link{cdflmrq}}, \code{\link{pdflmrq}}, \code{\link{qualmrq}}
+\author{W.H. Asquith}
+\seealso{\code{\link{parlmrq}}, \code{\link{cdflmrq}}, \code{\link{pdflmrq}}, \code{\link{qualmrq}}
 }
 \examples{
 lmr <- lmoms(c(3, 0.05, 1.6, 1.37, 0.57, 0.36, 2.2))

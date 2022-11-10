@@ -1,7 +1,7 @@
 \encoding{utf8}
 \name{disfitqua}
 \alias{disfitqua}
-\title{ Fit a Distribution using Minimization of Available Quantiles }
+\title{Fit a Distribution using Minimization of Available Quantiles }
 \description{
 This function fits a distribution to available quantiles (or irregular quantiles) through \eqn{n}-dimensional minimization using the \code{optim} function. The objective function forms are either root mean-square error (RMSE) or mean absolute deviation (MAD), and the objective functions are expected to result in slightly different estimates of distribution parameters. The RMSE form (\eqn{\sigma_{\mathrm{RMSE}}}) is defined as
 \deqn{\sigma_{\mathrm{RMSE}} = \biggl[ \frac{1}{m}\,\sum_{i=1}^m [x_o(f_i) - \hat{x}(f_i)]^2\biggr]^{1/2}\mbox{,}}
@@ -41,8 +41,8 @@ The \code{disfitqua} function is likely more difficult to apply for \eqn{n > 3} 
 \references{
 Asquith, W.H., and Roussel, M.C., 2009, Regression equations for estimation of annual peak-streamflow frequency for undeveloped watersheds in Texas using an L-moment-based, PRESS-minimized, residual-adjusted approach: U.S. Geological Survey Scientific Investigations Report 2009--5087, 48 p., \doi{10.3133/sir20095087}.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{dist.list}}, \code{\link{lmoms}}, \code{\link{lmom2vec}}, \code{\link{par2lmom}}, \code{\link{par2qua}}, \code{\link{vec2lmom}}, \code{\link{vec2par}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{dist.list}}, \code{\link{lmoms}}, \code{\link{lmom2vec}}, \code{\link{par2lmom}}, \code{\link{par2qua}}, \code{\link{vec2lmom}}, \code{\link{vec2par}} }
 \examples{
 # Suppose the following quantiles are estimated using eight equations provided by
 # Asquith and Roussel (2009) for some watershed in Texas:

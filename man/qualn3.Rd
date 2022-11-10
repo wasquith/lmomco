@@ -24,7 +24,7 @@ qualn3(f, para, paracheck=TRUE)
 \note{
 The parameterization of the Log-Normal3 results in ready support for either a known or unknown lower bounds. More information regarding the parameter fitting and control of the \eqn{\zeta} parameter can be seen in the Details section under \code{\link{parln3}}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 }

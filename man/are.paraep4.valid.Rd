@@ -23,7 +23,7 @@ are.paraep4.valid(para, nowarn=FALSE)
 This function calls \code{\link{is.aep4}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2014, Parameter estimation for the 4-parameter asymmetric exponential power distribution by the method of L-moments using R: Computational Statistics and Data Analysis, v. 71, pp. 955--970.
 
@@ -31,7 +31,7 @@ Delicado, P., and Goria, M.N., 2008, A small sample comparison of maximum likeli
 moments and L-moments methods for the asymmetric exponential power distribution:
 Computational Statistics and Data Analysis, v. 52, no. 3, pp. 1661--1673.
 }
-\seealso{ \code{\link{is.aep4}}, \code{\link{paraep4}} }
+\seealso{\code{\link{is.aep4}}, \code{\link{paraep4}} }
 \examples{
 para <- vec2par(c(0,1, 0.5, 4), type="aep4")
 if(are.paraep4.valid(para)) Q <- quaaep4(0.5,para)

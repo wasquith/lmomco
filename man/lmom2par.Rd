@@ -28,7 +28,7 @@ lmr2par(x, type, ...)
   \item{para}{The parameters of the distribution.}
   \item{source}{Attribute specifying source of the parameters.}
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{par2lmom}}}
 \examples{
 lmr  <- lmoms(rnorm(20))

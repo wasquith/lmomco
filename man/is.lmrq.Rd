@@ -15,8 +15,8 @@ is.lmrq(para)
 
   \item{FALSE}{If the \code{type} is not \code{lmrq}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parlmrq}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parlmrq}} }
 \examples{
 para <- parlmrq(lmoms(c(3, 0.05, 1.6, 1.37, 0.57, 0.36, 2.2)))
 if(is.lmrq(para) == TRUE) {

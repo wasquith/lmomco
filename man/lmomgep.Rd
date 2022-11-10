@@ -34,7 +34,7 @@ source of the L-moments: \dQuote{lmomgep}.}
 \references{
 Barreto-Souza, W., and Cribari-Neto, F., 2009, A generalization of the exponential-Poisson distribution: Statistics and Probability, 79, pp. 2493--2500.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{pargep}}, \code{\link{cdfgep}}, \code{\link{pdfgep}}, \code{\link{quagep}} }
 \examples{
 \dontrun{

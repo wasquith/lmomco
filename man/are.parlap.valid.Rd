@@ -22,8 +22,8 @@ Hosking, J.R.M., 1986, The theory of probability weighted moments: IBM Research 
 This function calls \code{\link{is.lap}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.lap}}, \code{\link{parlap}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.lap}}, \code{\link{parlap}} }
 \examples{
 para <- parlap(lmoms(c(123,34,4,654,37,78)))
 if(are.parlap.valid(para)) Q <- qualap(0.5,para)

@@ -47,7 +47,7 @@ L-moments of residual life \tab \eqn{\lambda_r(u)} \tab \code{\link{reslife.lmom
 L-moments of reversed residual life \tab \eqn{{}_\mathrm{r}\lambda_r(u)} \tab \code{\link{rreslife.lmoms}} \tab NSB[p.211]\cr
 }
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Kupka, J., and Loo, S., 1989, The hazard and vitality measures of ageing: Journal of Applied Probability, v. 26, pp. 532--542.
 

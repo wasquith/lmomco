@@ -28,7 +28,7 @@ Evans, Merran, Hastings, Nicholas, Peacock, J.B., 2000, Statistical distribution
 Gilchrist, W.G., 2000, Statistical modeling with quantile functions:
 Chapman and Hall/CRC, Boca Raton, FL.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{cdfcau}}, \code{\link{quacau}}, \code{\link{lmomcau}}, \code{\link{parcau}}, \code{\link{vec2par}}}
 \examples{
   cau <- vec2par(c(12,12),type='cau')

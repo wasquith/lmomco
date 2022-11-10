@@ -31,8 +31,8 @@ approach based on L-moments: Cambridge University Press.
 This function calls \code{\link{is.nor}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.nor}}, \code{\link{parnor}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.nor}}, \code{\link{parnor}} }
 \examples{
 para <- parnor(lmoms(c(123,34,4,654,37,78)))
 if(are.parnor.valid(para)) Q <- quanor(0.5,para)

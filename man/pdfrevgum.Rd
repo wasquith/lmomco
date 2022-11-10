@@ -29,7 +29,7 @@ of the Royal Statistical Society, Series B, v. 52, pp. 105--124.
 Hosking, J.R.M., 1995, The use of L-moments in the analysis of censored data,
 in Recent Advances in Life-Testing and Reliability, edited by N. Balakrishnan, chapter 29, CRC Press, Boca Raton, Fla., pp. 546--560.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{cdfrevgum}}, \code{\link{quarevgum}}, \code{\link{lmomrevgum}}, \code{\link{parrevgum}}}
 \examples{
 # See p. 553 of Hosking (1995)

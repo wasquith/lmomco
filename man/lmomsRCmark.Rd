@@ -1,6 +1,6 @@
 \name{lmomsRCmark}
 \alias{lmomsRCmark}
-\title{ Sample L-moments Moments for Right-Tail Censoring by a Marking Variable }
+\title{Sample L-moments Moments for Right-Tail Censoring by a Marking Variable }
 \description{
 Compute the sample L-moments for right-tail censored data set in which censored data values are identified by a marking variable. Extension of left-tail censoring can be made using \code{\link{fliplmoms}} and the example therein.
 }
@@ -35,7 +35,7 @@ Wang, Dongliang, Hutson, A.D., Miecznikowski, J.C., 2010, L-moment estimation fo
 Helsel, D.R., 2005, Nondetects and data analysis---Statistics for censored environmental data: Hoboken, New Jersey, John Wiley, 250 p.
 }
 \author{W.H. Asquith}
-\seealso{ \code{\link{lmomRCmark}}, \code{\link{fliplmoms}} }
+\seealso{\code{\link{lmomRCmark}}, \code{\link{fliplmoms}} }
 \examples{
 # Efron, B., 1988, Logistic regression, survival analysis, and the
 # Kaplan-Meier curve: Journal of the American Statistical Association,

@@ -1,7 +1,7 @@
 \name{pwm.beta2alpha}
 \alias{pwm.beta2alpha}
 \alias{pwm.alpha2beta}
-\title{ Conversion of Beta to Alpha Probability-Weighted Moments (PWMs) or Alpha to Beta PWMs }
+\title{Conversion of Beta to Alpha Probability-Weighted Moments (PWMs) or Alpha to Beta PWMs }
 \description{
 Conversion of \dQuote{beta} (the well known ones) to \dQuote{alpha} probability-weighted moments (PWMs) by \code{\link{pwm.beta2alpha}} or alpha to beta PWMs by \code{\link{pwm.alpha2beta}}. The relations between the \eqn{\alpha} and \eqn{\beta} PWMs are
 \deqn{\alpha_r = \sum^r_{k=0} (-1)^k {r \choose k} \beta_k\mbox{,}}
@@ -23,8 +23,8 @@ pwm.alpha2beta(pwm)
 \references{
 # NEED
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{pwm}}, \code{\link{pwm2lmom}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{pwm}}, \code{\link{pwm2lmom}} }
 \examples{
 X <- rnorm(100)
 pwm(X)$betas

@@ -1,6 +1,6 @@
 \name{cdf2lmom}
 \alias{cdf2lmom}
-\title{ Compute an L-moment from Cumulative Distribution Function }
+\title{Compute an L-moment from Cumulative Distribution Function }
 \description{
 Compute a single L-moment from a cumulative distribution function. This function is sequentially called by \code{\link{cdf2lmoms}} to mimic the output structure for multiple L-moments seen by other L-moment computation functions in \pkg{lmomco}.
 
@@ -34,7 +34,7 @@ Hosking, J.R.M., 1996, Some theoretical results concerning L-moments: Research R
 
 Jones, M.C., 2004, On some expressions for variance, covariance, skewness and L-moments: Journal of Statistical Planning and Inference, v. 126, pp. 97--106.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{cdf2lmoms}}}
 \examples{
 para <- vec2par(c(.9,.4), type="nor")

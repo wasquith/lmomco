@@ -15,8 +15,8 @@ is.aep4(para)
 
   \item{FALSE}{If the \code{type} is not \code{aep4}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{paraep4}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{paraep4}} }
 \examples{
 para <- vec2par(c(0,1, 0.5, 4), type="aep4")
 if(is.aep4(para) == TRUE) {

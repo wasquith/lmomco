@@ -14,7 +14,7 @@ qlmomco(f, para)
 \value{
   Quantile value for \eqn{F} for the specified parameters.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{dlmomco}}, \code{\link{plmomco}}, \code{\link{rlmomco}}, \code{\link{slmomco}}, \code{\link{add.lmomco.axis}}, \code{\link{supdist}}
 }
 \examples{

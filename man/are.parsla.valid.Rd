@@ -22,8 +22,8 @@ Rogers, W.H., and Tukey, J.W., 1972, Understanding some long-tailed symmetrical 
 This function calls \code{\link{is.sla}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.sla}}, \code{\link{parsla}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.sla}}, \code{\link{parsla}} }
 \examples{
 para <- vec2par(c(12,1.2),type='sla')
 if(are.parsla.valid(para)) Q <- quasla(0.5,para)

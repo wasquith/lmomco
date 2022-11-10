@@ -1,6 +1,6 @@
 \name{Lcomoment.correlation}
 \alias{Lcomoment.correlation}
-\title{ L-correlation Matrix (L-correlation through Sample L-comoments) }
+\title{L-correlation Matrix (L-correlation through Sample L-comoments) }
 \description{
 Compute the L-correlation from an L-comoment matrix of order \eqn{k = 2}. This function assumes that the 2nd order matrix is already computed by the function \code{\link{Lcomoment.matrix}}.
 }
@@ -23,7 +23,7 @@ L-correlation is computed by \code{Lcomoment.coefficients(L2,L2)} where \code{L2
 \note{
 The function begins with a capital letter. This is intentionally done so that lower case namespace is preserved. By using a capital letter now, then \code{lcomoment.correlation} remains an available name in future releases.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 

@@ -19,8 +19,8 @@ are.parkmu.valid(para, nowarn=FALSE)
 This function calls \code{\link{is.kmu}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.kmu}}, \code{\link{parkmu}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.kmu}}, \code{\link{parkmu}} }
 \examples{
 para <- vec2par(c(0.5, 1.5), type="kmu")
 if(are.parkmu.valid(para)) Q <- quakmu(0.5,para)

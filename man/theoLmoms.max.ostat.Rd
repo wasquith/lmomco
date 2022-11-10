@@ -47,7 +47,7 @@ Perhaps one of the neater capabilities that the \code{theoLmoms.max.ostat} and \
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{theoLmoms}}, \code{\link{expect.min.ostat}}, \code{\link{expect.max.ostat}}}
 \examples{
 \dontrun{

@@ -15,7 +15,7 @@ prob2T(f)
 \value{
    A vector of \eqn{T}-year return periods.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{T2prob}}, \code{\link{nonexceeds}}, \code{\link{add.lmomco.axis}}, \code{\link{prob2grv}}, \code{\link{prob2lrv}}
 }
 \examples{

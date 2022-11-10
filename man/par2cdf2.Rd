@@ -17,7 +17,7 @@ par2cdf2(x, para1, para2, weight=NULL, ...)
 \value{
   Nonexceedance probabilities (\eqn{0 \le F \le 1}) for \code{x} from the two distributions.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{par2cdf}}, \code{\link{lmom2par}}, \code{\link{par2qua2}}
 }
 \examples{

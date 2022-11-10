@@ -26,9 +26,8 @@ Hosking, J.R.M., 1996, FORTRAN routines for use with the method of L-moments: Ve
 
 Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approach based on L-moments: Cambridge University Press.
 }
-\author{ W.H. Asquith}
-\seealso{
-\code{\link{lmomglo}}, \code{\link{cdfglo}},  \code{\link{pdfglo}}, \code{\link{quaglo}}
+\author{W.H. Asquith}
+\seealso{\code{\link{lmomglo}}, \code{\link{cdfglo}},  \code{\link{pdfglo}}, \code{\link{quaglo}}
 }
 \examples{
 lmr <- lmoms(rnorm(20))

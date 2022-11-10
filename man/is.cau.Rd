@@ -15,8 +15,8 @@ is.cau(para)
 
   \item{FALSE}{If the \code{type} is not \code{cau}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parcau}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parcau}} }
 \examples{
 para <- vec2par(c(12,12),type='cau')
 if(is.cau(para) == TRUE) {

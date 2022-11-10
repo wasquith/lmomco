@@ -26,7 +26,7 @@ and Data Analysis, v. 43, pp. 299--314.
 Gilchrist, W.G., 2000, Statistical modeling with quantile functions:
 Chapman and Hall/CRC, Boca Raton, FL.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{pdfcau}}, \code{\link{quacau}}, \code{\link{lmomcau}}, \code{\link{parcau}}
 }
 \examples{

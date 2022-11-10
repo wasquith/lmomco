@@ -15,7 +15,7 @@ grv2prob(grv)
 \value{
    A vector of annual nonexceedance probabilities.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{prob2grv}}, \code{\link{prob2T}}
 }
 \examples{

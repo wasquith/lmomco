@@ -15,8 +15,8 @@ is.gam(para)
 
   \item{FALSE}{If the \code{type} is not \code{gam}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{pargam}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{pargam}} }
 \examples{
 para <- pargam(lmoms(c(123,34,4,654,37,78)))
 if(is.gam(para) == TRUE) {

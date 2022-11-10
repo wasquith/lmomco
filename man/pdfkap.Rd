@@ -23,7 +23,7 @@ approach based on L-moments: Cambridge University Press.
 
 Sourced from written communication with Dr. Hosking in October 2007.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{cdfkap}}, \code{\link{quakap}}, \code{\link{lmomkap}}, \code{\link{parkap}}}
 \examples{
 kap <- vec2par(c(1000,15000,0.5,-0.4),type='kap')

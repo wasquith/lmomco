@@ -26,7 +26,7 @@ The hazard function is numerically solved for the given cumulative distribution 
 \references{
 Ugarte, M.D., Militino, A.F., and Arnholt, A.T., 2008, Probability and statistics with R: CRC Press, Boca Raton, FL.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{plmomco}}, \code{\link{dlmomco}}}
 \examples{
 my.lambda <- 100

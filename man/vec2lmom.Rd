@@ -23,7 +23,7 @@ vec2lmom(vec, lscale=TRUE,
 \value{
   An \R \code{list} is returned.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmoms}}, \code{\link{vec2pwm}}}
 \examples{
 lmr <- vec2lmom(c(12,0.6,0.34,0.20,0.05),lscale=FALSE)

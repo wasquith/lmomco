@@ -1,6 +1,6 @@
 \name{pmoms}
 \alias{pmoms}
-\title{ The Sample Product Moments: Mean, Standard Deviation, Skew, and Excess Kurtosis}
+\title{The Sample Product Moments: Mean, Standard Deviation, Skew, and Excess Kurtosis}
 \description{
 Compute the first four sample product moments. Both classical (theoretical and biased) versions and unbiased (nearly) versions are produced. Readers are directed to the References and the source code for implementation details.
 }
@@ -40,7 +40,7 @@ Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approa
 
 Joanes, D.N., Gill, C.A., 1998, Comparing measures of sample skewness and kurtosis: The Statistician, v. 47, no. 1, pp. 183--189.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmoms}}}
 \examples{
 # A simple example

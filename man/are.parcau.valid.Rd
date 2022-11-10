@@ -26,8 +26,8 @@ Gilchrist, W.G., 2000, Statistical modeling with quantile functions: Chapman and
 This function calls \code{\link{is.cau}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.cau}}, \code{\link{parcau}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.cau}}, \code{\link{parcau}} }
 \examples{
 para <- vec2par(c(12,12),type='cau')
 if(are.parcau.valid(para)) Q <- quacau(0.5,para)

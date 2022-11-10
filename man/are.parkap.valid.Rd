@@ -28,8 +28,8 @@ Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approa
 This function calls \code{\link{is.kap}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.kap}}, \code{\link{parkap}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.kap}}, \code{\link{parkap}} }
 \examples{
 para <- parkap(lmoms(c(123,34,4,654,37,78)))
 if(are.parkap.valid(para)) Q <- quakap(0.5,para)

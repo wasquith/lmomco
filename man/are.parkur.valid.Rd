@@ -27,8 +27,8 @@ some tractability advantages: Statistical Methodology, v. 6, pp. 70--81.
 This function calls \code{\link{is.kur}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.kur}}, \code{\link{parkur}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.kur}}, \code{\link{parkur}} }
 \examples{
 para <- parkur(lmoms(c(0.25, 0.4, 0.6, 0.65, 0.67, 0.9)))
 if(are.parkur.valid(para)) Q <- quakur(0.5,para)

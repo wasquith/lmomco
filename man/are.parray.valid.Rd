@@ -27,8 +27,8 @@ Research Report RC12210, IBM Research Division, Yorkton Heights, N.Y.
 This function calls \code{\link{is.ray}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.ray}}, \code{\link{parray}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.ray}}, \code{\link{parray}} }
 \examples{
 para <- parray(lmoms(c(123,34,4,654,37,78)))
 if(are.parray.valid(para)) Q <- quaray(0.5,para)

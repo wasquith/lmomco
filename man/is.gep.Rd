@@ -15,8 +15,8 @@ is.gep(para)
 
   \item{FALSE}{If the \code{type} is not \code{gep}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{pargep}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{pargep}} }
 \examples{
 #para <- pargep(lmoms(c(123,34,4,654,37,78)))
 #if(is.gep(para) == TRUE) {

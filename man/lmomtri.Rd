@@ -65,7 +65,7 @@ Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the 
 
 Nagaraja, H.N., 2013, Moments of order statistics and L-moments for the symmetric triangular distribution: Statistics and Probability Letters, v. 83, no. 10, pp. 2357--2363.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{partri}}, \code{\link{cdftri}}, \code{\link{pdftri}}, \code{\link{quatri}} }
 \examples{
 lmr <- lmoms(c(46, 70, 59, 36, 71, 48, 46, 63, 35, 52))

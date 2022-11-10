@@ -15,8 +15,8 @@ is.rice(para)
 
   \item{FALSE}{If the \code{type} is not \code{rice}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parrice}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parrice}} }
 \examples{
 para <- vec2par(c(3, 4),type='rice')
 if(is.rice(para)) {

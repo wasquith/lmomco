@@ -47,7 +47,7 @@ An \R \code{list} is returned.
 \item{its}{The number of iterations \eqn{j}.}
 \item{error}{The error of convergence.} 
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Kus, C., 2007, A new lifetime distribution: Computational Statistics and Data Analysis, v. 51, pp. 4497--4509.
 }

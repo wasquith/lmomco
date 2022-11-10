@@ -62,7 +62,7 @@ Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the 
 
 Yacoub, M.D., 2007, The kappa-mu distribution and the eta-mu distribution: IEEE Antennas and Propagation Magazine, v. 49, no. 1, pp. 68--81
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{paremu}}, \code{\link{cdfemu}}, \code{\link{pdfemu}}, \code{\link{quaemu}}  }
 \examples{
 \dontrun{

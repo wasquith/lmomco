@@ -28,7 +28,7 @@ pargep(lmom, checklmom=TRUE, checkdomain=TRUE, maxit=10, verbose=FALSE, ...)
 \note{
 There are various inequalities and polynomials demarcating the \eqn{\tau_2} and \eqn{\tau_3} of the distribution. These were developed during a protracted period of investigation into the numerical limits of the distribution with a specific implementation in \pkg{lmomco}. Some of these bounds may or may not be optimal as empirically-arrived estimates of theoretical bounds. The polynomials where carefully assembled however. The straight inequalities are a bit more ad hoc following supervision of domain exploration.  More research is needed but the domain constraint provided should generally produce parameter solutions.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmomgep}}, \code{\link{cdfgep}}, \code{\link{pdfgep}}, \code{\link{quagep}}
 }
 \examples{

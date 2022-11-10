@@ -1,7 +1,7 @@
 \encoding{utf8}
 \name{dat2bernquaf}
 \alias{dat2bernquaf}
-\title{ Equivalent Nonexceedance Probability for a Given Value through Observed Data to Empirical Quantiles through Bernstein or Kantorovich Polynomials }
+\title{Equivalent Nonexceedance Probability for a Given Value through Observed Data to Empirical Quantiles through Bernstein or Kantorovich Polynomials }
 \description{
 This function computes an equivalent nonexceedance probability \eqn{F} of a single value \eqn{x} for the sample data set (\eqn{\hat{X}}) through inversion of the empricial quantile function as computable through Bernstein or Kantorovich Polynomials by the \code{\link{dat2bernqua}} function.
 }
@@ -36,8 +36,8 @@ The Examples section explores this aspect.
   \item{estim.prec}{Corresponds to the \code{estim.prec} element returned by the \code{uniroot()} function.}
   \item{source}{An attribute identifying the computational source: \dQuote{dat2bernquaf}}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{dat2bernqua}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{dat2bernqua}} }
 \examples{
 dat2bernquaf(6, c(2,10)) # median 1/2 of 2 and 10 is 6 (trivial and fast)
 \dontrun{

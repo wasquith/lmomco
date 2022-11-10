@@ -44,7 +44,7 @@ function(x, alpha=0.05, pvalue.only=FALSE, getlist=TRUE,
    if(getlist) {
       z <- list(SampleTau3=T3, SampleTau4=T4,
                 Ztau3=Zt3, Ztau4=Zt4, Tau34sq=t34sq,
-                ChiSq.2df=chiSQ, pvalue=pvalue, isSig=issig,
+                ChiSq.2df=chiSQ, pvalue=pvalue, p.value=pvalue, isSig=issig,
                 source="tau34sq.normtest")
       return(as.data.frame(z, row.names="Harri-Coble test"))
    }

@@ -14,8 +14,8 @@ is.st3(para)
   \item{TRUE}{If the \code{type} attribute is \code{st3}.}
   \item{FALSE}{If the \code{type} is not \code{st3}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parst3}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parst3}} }
 \examples{
 para <- vec2par(c(3, 4, 5), type='st3')
 if(is.st3(para)) {

@@ -25,7 +25,7 @@ quaaep4kapmix(f, lmom, checklmom=TRUE)
 \value{
   Quantile value for nonexceedance probability \eqn{F}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2014, Parameter estimation for the 4-parameter asymmetric exponential power distribution by the method of L-moments using R: Computational Statistics and Data Analysis, v. 71, pp. 955--970.
 }

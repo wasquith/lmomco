@@ -15,8 +15,8 @@ is.gpa(para)
 
   \item{FALSE}{If the \code{type} is not \code{gpa}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{pargpa}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{pargpa}} }
 \examples{
 para <- pargpa(lmoms(c(123,34,4,654,37,78)))
 if(is.gpa(para) == TRUE) {

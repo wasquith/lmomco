@@ -23,8 +23,8 @@ are.partri.valid(para, nowarn=FALSE)
 This function calls \code{\link{is.tri}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.tri}}, \code{\link{partri}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.tri}}, \code{\link{partri}} }
 \examples{
 para <- partri(lmoms(c(46, 70, 59, 36, 71, 48, 46, 63, 35, 52)))
 if(are.partri.valid(para)) Q <- quatri(0.5,para)

@@ -15,8 +15,8 @@ is.revgum(para)
 
   \item{FALSE}{If the \code{type} is not \code{revgum}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parrevgum}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parrevgum}} }
 \examples{
 para <- vec2par(c(.9252, .1636, .7),type='revgum')
 if(is.revgum(para)) {

@@ -27,7 +27,7 @@ Yorktown Heights, New York.
 Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An
 approach based on L-moments: Cambridge University Press.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{pdfwak}}, \code{\link{quawak}}, \code{\link{lmomwak}}, \code{\link{parwak}}}
 \examples{
   lmr <- lmoms(c(123,34,4,654,37,78))

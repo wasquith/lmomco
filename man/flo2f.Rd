@@ -21,8 +21,8 @@ flo2f(f, pp=NA, xlo=NULL)
 \value{
   A vector of converted nonexceedance probabilities.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{x2xlo}}, \code{\link{f2flo}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{x2xlo}}, \code{\link{f2flo}} }
 \examples{
 flo2f(f2flo(.73,pp=.1),pp=.1)
 # Also see examples for x2xlo().

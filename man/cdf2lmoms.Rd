@@ -1,6 +1,6 @@
 \name{cdf2lmoms}
 \alias{cdf2lmoms}
-\title{ Compute L-moments from Cumulative Distribution Function }
+\title{Compute L-moments from Cumulative Distribution Function }
 \description{
 Compute the L-moments from a cumulative distribution function. For \eqn{r \ge 1}, the L-moments can be computed by sequential calling of \code{\link{cdf2lmom}}. Consult the documentation of that function for mathematical definitions.
 }
@@ -27,7 +27,7 @@ cdf2lmoms(para, nmom=6, fdepth=0, silent=TRUE, lambegr=1, ...)
   \item{rightrim}{Level of right-tail trimming used in the computation, which will equal \code{NULL} is not support for trimming is provided by this function.}
   \item{source}{An attribute identifying the computational source of the L-moments: \dQuote{cdf2lmoms}.}
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{cdf2lmom}}, \code{\link{lmoms}}}
 \examples{
 cdf2lmoms(vec2par(c(10,40), type="ray"))

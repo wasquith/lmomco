@@ -1,6 +1,6 @@
 \name{par2qua2}
 \alias{par2qua2}
-\title{ Equivalent Quantile Function of Two Distributions}
+\title{Equivalent Quantile Function of Two Distributions}
 \description{
 This function computes the nonexceedance probability of a given quantile from a linear weighted combination of two quantile functions---a mixed distribution:
 \deqn{Q_\mathrm{mixed}(F; \Theta_1, \Theta_2, \omega) = (1-\omega)Q_1(F, \Theta_1) + \omega Q_2(F, \Theta2)\mbox{,}}
@@ -30,7 +30,7 @@ par2qua2(f, para1, para2, wfunc=NULL, weight=NULL, as.list=FALSE, ...)
 \value{
   The weighted quantile value for \eqn{F} from the two distributions.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{par2qua}}, \code{\link{par2cdf2}}, \code{\link{par2qua2lo}}
 }
 \examples{

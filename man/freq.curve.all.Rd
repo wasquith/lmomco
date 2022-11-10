@@ -1,6 +1,6 @@
 \name{freq.curve.all}
 \alias{freq.curve.all}
-\title{ Compute Frequency Curve for Almost All Distributions}
+\title{Compute Frequency Curve for Almost All Distributions}
 \description{
 This function is dispatcher on top of a select suite of \code{quaCCC} functions that compute frequency curves for the L-moments. The term \dQuote{frequency curves} is common in hydrology and is a renaming of the more widenly known by statisticians term the \dQuote{quantile function.} The notation \code{CCC} represents the character notation for the distribution: \code{exp}, \code{gam}, \code{gev}, \code{gld}, \code{glo}, \code{gno}, \code{gpa}, \code{gum}, \code{kap}, \code{nor}, \code{pe3}, \code{wak}, and \code{wei}. The nonexceedance probabilities to construct the curves are derived from \code{\link{nonexceeds}}.
 }
@@ -56,9 +56,8 @@ freq.curve.all(lmom, aslog10=FALSE, asprob=TRUE,
 \references{
 Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approach based on L-moments: Cambridge University Press.
 }
-\author{ W.H. Asquith}
-\seealso{
-\code{\link{quaaep4}},
+\author{W.H. Asquith}
+\seealso{\code{\link{quaaep4}},
 \code{\link{quaexp}},
 \code{\link{quagam}},
 \code{\link{quagev}},

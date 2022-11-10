@@ -23,8 +23,8 @@ f2fpds(f, rate=NA)
 \references{
 Stedinger, J.R., Vogel, R.M., Foufoula-Georgiou, E., 1993, Frequency analysis of extreme events: \emph{in} Handbook of Hydrology, ed. Maidment, D.R., McGraw-Hill, Section 18.6 Partial duration series, mixtures, and censored data, pp. 18.37--18.39.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{fpds2f}}, \code{\link{x2xlo}}, \code{\link{f2flo}}, \code{\link{flo2f}}  }
+\author{W.H. Asquith}
+\seealso{\code{\link{fpds2f}}, \code{\link{x2xlo}}, \code{\link{f2flo}}, \code{\link{flo2f}}  }
 \examples{
 # See examples for fpds2f().
 }

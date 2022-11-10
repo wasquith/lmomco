@@ -31,8 +31,8 @@ approach based on L-moments: Cambridge University Press.
 This function calls \code{\link{is.glo}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.glo}}, \code{\link{parglo}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.glo}}, \code{\link{parglo}} }
 \examples{
 para <- parglo(lmoms(c(123,34,4,654,37,78)))
 if(are.parglo.valid(para)) Q <- quaglo(0.5,para)

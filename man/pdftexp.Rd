@@ -22,7 +22,7 @@ pdftexp(x, para)
 \references{
 Vogel, R.M., Hosking, J.R.M., Elphick, C.S., Roberts, D.L., and Reed, J.M., 2008, Goodness of fit of probability distributions for sightings as species approach extinction: Bulletin of Mathematical Biology, DOI 10.1007/s11538-008-9377-3, 19 p.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{cdftexp}}, \code{\link{quatexp}}, \code{\link{lmomtexp}}, \code{\link{partexp}}}
 \examples{
 lmr <- vec2lmom(c(40,0.38), lscale=FALSE)

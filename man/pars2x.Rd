@@ -23,7 +23,7 @@ pars2x(f, paras, na.rm=FALSE, ...)
   \item{sd}{The standard deviation of the unique quantiles (usually three) seen for each probability. Results can be affected by \code{na.rm}.}
   \item{n}{The number of unique quantiles (usually three) seen for each probability and quantiles computed as \code{NA} are not counted.}
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{x2pars}} }
 \examples{
 \dontrun{

@@ -21,7 +21,7 @@ quaray(f, para, paracheck=TRUE)
 Hosking, J.R.M., 1986, The theory of probability weighted moments:
 Research Report RC12210, IBM Research Division, Yorkton Heights, N.Y.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{cdfray}}, \code{\link{pdfray}}, \code{\link{lmomray}}, \code{\link{parray}}}
 \examples{
   lmr <- lmoms(c(123,34,4,654,37,78))

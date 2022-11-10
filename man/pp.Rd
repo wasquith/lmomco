@@ -1,6 +1,6 @@
 \name{pp}
 \alias{pp}
-\title{ Plotting-Position Formula }
+\title{Plotting-Position Formula }
 \description{
 The plotting positions of a data vector (\code{x}) are returned in ascending order. The plotting-position formula is
 \deqn{pp_i = \frac{i-a}{n+1-2a} \mbox{,}}
@@ -41,8 +41,8 @@ The function uses the \R \code{rank} function, which has specific settings to ha
 \references{
 Stedinger, J.R., Vogel, R.M., and Foufoula-Georgiou, E., 1992, Frequency analysis of extreme events, in Handbook of Hydrology, chapter 18, editor-in-chief D. A. Maidment: McGraw-Hill, New York.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{nonexceeds}}, \code{\link{pwm.pp}}, \code{\link{pp.f}}, \code{\link{pp.median}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{nonexceeds}}, \code{\link{pwm.pp}}, \code{\link{pp.f}}, \code{\link{pp.median}} }
 \examples{
 Q <- rnorm(20)
 PP <- pp(Q)

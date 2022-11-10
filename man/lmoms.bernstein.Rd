@@ -1,7 +1,7 @@
 \encoding{utf8}
 \name{lmoms.bernstein}
 \alias{lmoms.bernstein}
-\title{ Numerically Integrated L-moments of Smoothed Quantiles from Bernstein or Kantorovich Polynomials }
+\title{Numerically Integrated L-moments of Smoothed Quantiles from Bernstein or Kantorovich Polynomials }
 \description{
 Compute the L-moment by numerical integration of the smoothed quantiles from Bernstein or Kantorovich polynomials (see \code{\link{dat2bernqua}}). Letting \eqn{\tilde{X}_n(F)} be the smoothed quantile function for nonexceedance probability \eqn{F} for a sample of size \eqn{n}, from Asquith (2011) the first five L-moments in terms of quantile function integration are
  \deqn{\lambda_1 = \int_0^1 \tilde{X}_n(F)\;\mathrm{d}F \mbox{,}}
@@ -29,11 +29,11 @@ values provided as separate arguments.}
 \value{
   An \R \code{vector} is returned.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 }
-\seealso{ \code{\link{dat2bernqua}}, \code{\link{pfactor.bernstein}}, \code{\link{lmoms}} }
+\seealso{\code{\link{dat2bernqua}}, \code{\link{pfactor.bernstein}}, \code{\link{lmoms}} }
 \examples{
 \dontrun{
 X <- exp(rnorm(100))

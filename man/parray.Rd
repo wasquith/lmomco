@@ -28,7 +28,7 @@ parray(lmom, xi=NULL, checklmom=TRUE, ...)
 \references{
 Hosking, J.R.M., 1986, The theory of probability weighted moments: Research Report RC12210, IBM Research Division, Yorkton Heights, N.Y.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmomray}},
 \code{\link{cdfray}}, \code{\link{pdfray}}, \code{\link{quaray}}
 }

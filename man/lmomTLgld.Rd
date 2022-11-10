@@ -97,7 +97,7 @@ Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational statis
 
 Karian, Z.A., and Dudewicz, E.J., 2000, Fitting statistical distributions---The generalized lambda distribution and generalized bootstrap methods: CRC Press, Boca Raton, FL, 438 p.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmomgld}}, \code{\link{parTLgld}}, \code{\link{pargld}}, \code{\link{cdfgld}}, \code{\link{quagld}}}
 \examples{
 

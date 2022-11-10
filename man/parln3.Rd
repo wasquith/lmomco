@@ -23,7 +23,7 @@ Let the L-moments by in variable \code{lmr}, if the \eqn{\zeta} (lower bounds) i
   \item{para}{The parameters of the distribution.}
   \item{source}{The source of the parameters: \dQuote{parln3}.}
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 }

@@ -15,8 +15,8 @@ is.kap(para)
 
   \item{FALSE}{If the \code{type} is not \code{kap}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parkap}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parkap}} }
 \examples{
 para <- parkap(lmoms(c(123,34,4,654,37,78)))
 if(is.kap(para) == TRUE) {

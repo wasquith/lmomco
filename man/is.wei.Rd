@@ -15,8 +15,8 @@ is.wei(para)
 
   \item{FALSE}{If the \code{type} is not \code{wei}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parwei}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parwei}} }
 \examples{
 para <- parwei(lmoms(c(123,34,4,654,37,78)))
 if(is.wei(para) == TRUE) {

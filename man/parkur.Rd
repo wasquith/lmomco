@@ -24,7 +24,7 @@ parkur(lmom, checklmom=TRUE, ...)
 \references{
 Jones, M.C., 2009, Kumaraswamy's distribution---A beta-type distribution with some tractability advantages: Statistical Methodology, v. 6, pp. 70--81.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmomkur}},
 \code{\link{cdfkur}}, \code{\link{pdfkur}}, \code{\link{quakur}}
 }

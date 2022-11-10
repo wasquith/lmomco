@@ -1,6 +1,6 @@
 \name{pwmRC}
 \alias{pwmRC}
-\title{ Sample Probability-Weighted Moments for Right-Tail Censoring }
+\title{Sample Probability-Weighted Moments for Right-Tail Censoring }
 \description{
 Compute the sample Probability-Weighted Moments (PWMs) for right-tail censored data set---that is a data set censored from above. The censoring threshold is denoted as \eqn{T}. The data possess \eqn{m} values that are observed (noncensored, \eqn{< T}) out of a total of \eqn{n} samples. The ratio of \eqn{m} to \eqn{n} is defined as \eqn{\zeta = m/n}, which will play an important role in parameter estimation. The \eqn{\zeta} is interpreted as the probability \eqn{\mathrm{Pr}\lbrace \rbrace} that \eqn{x} is less than the quantile at \eqn{\zeta} nonexceedance probability: (\eqn{\mathrm{Pr}\lbrace x < X(\zeta) \rbrace}). Two types of PWMs are computed for right-tail censored situations. The \dQuote{A}-type PWMs and \dQuote{B}-type PWMs. The A-type PWMs are defined by
 
@@ -57,8 +57,8 @@ Hosking, J.R.M., 1990, L-moments---Analysis and estimation of distributions usin
 
 Hosking, J.R.M., 1995, The use of L-moments in the analysis of censored data, in Recent Advances in Life-Testing and Reliability, edited by N. Balakrishnan, chapter 29, CRC Press, Boca Raton, Fla., pp. 546--560.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{lmoms}}, \code{\link{pwm2lmom}}, \code{\link{pwm}}, \code{\link{pwmLC}}  }
+\author{W.H. Asquith}
+\seealso{\code{\link{lmoms}}, \code{\link{pwm2lmom}}, \code{\link{pwm}}, \code{\link{pwmLC}}  }
 \examples{
 # Data listed in Hosking (1995, table 29.2, p. 551)
 H <- c(3,4,5,6,6,7,8,8,9,9,9,10,10,11,11,11,13,13,13,13,13,

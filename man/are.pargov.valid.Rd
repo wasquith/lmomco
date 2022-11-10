@@ -28,8 +28,8 @@ Nair, N.U., Sankaran, P.G., and Balakrishnan, N., 2013, Quantile-based reliabili
 This function calls \code{\link{is.gov}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.gov}}, \code{\link{pargov}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.gov}}, \code{\link{pargov}} }
 \examples{
 para <- pargov(lmoms(c(123,34,4,654,37,78)))
 if(are.pargov.valid(para)) Q <- quagov(0.5,para)

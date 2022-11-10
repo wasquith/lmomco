@@ -20,7 +20,7 @@ Wang, Dongliang, Hutson, A.D., and Miecznikowski, J.C., 2010,  L-moment estimati
 
 Helsel, D.R., 2005, Nondetects and data analysis---Statistics for censored environmental data: Hoboken, New Jersey, John Wiley, 250 p.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmomsRCmark}}
 }
 \examples{

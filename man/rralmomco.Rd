@@ -20,7 +20,7 @@ rralmomco(f, para, alpha=0)
 \note{
 Technically it seems that Nair et al. (2013) do not explictly define the reversed \eqn{\alpha}-percentile residual quantile but their index points to pp. 69--70 for a derivation involving the Generalized Lambda distribution (GLD) but that derivation (top of p. 70) has incorrect algebra.  A possibilty is that Nair et al. (2013) forgot to include \eqn{R_\alpha(u)} as an explicit definition in juxtaposition to \eqn{P_\alpha(u)} (\code{\link{ralmomco}}) and then apparently made an easy-to-see algebra error in trying to collect terms for the GLD.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Nair, N.U., and Vineshkumar, B., 2011, Reversed percentile residual life and related concepts: Journal of the Korean Statistical Society, v. 40, no. 1, pp. 85--92.
 

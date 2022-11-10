@@ -27,8 +27,8 @@ x2xlo(x, leftout=0, a=0, ghost=NULL)
   \item{n}{Total number of values: \code{nin} + \code{nlo}.}
   \item{source}{The source of the parameters: \dQuote{x2xlo}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{f2flo}}, \code{\link{flo2f}}, \code{\link{par2qua2lo}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{f2flo}}, \code{\link{flo2f}}, \code{\link{par2qua2lo}} }
 \examples{
 \dontrun{
 set.seed(62)

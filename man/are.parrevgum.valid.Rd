@@ -28,8 +28,8 @@ chapter 29, CRC Press, Boca Raton, Fla., pp. 546--560.
 This function calls \code{\link{is.revgum}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.revgum}}, \code{\link{parrevgum}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.revgum}}, \code{\link{parrevgum}} }
 \examples{
 para <- vec2par(c(.9252, .1636, .7),type='revgum')
 if(are.parrevgum.valid(para)) Q <- quarevgum(0.5,para)

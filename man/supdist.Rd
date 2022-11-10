@@ -1,6 +1,6 @@
 \name{supdist}
 \alias{supdist}
-\title{ The Support of a Distribution based on the Parameters }
+\title{The Support of a Distribution based on the Parameters }
 \description{
 This function takes a parameter object, such as that returned by \code{\link{lmom2par}}, and computes the support (the lower and upper bounds, \eqn{\{L, U\}}) of the distribution given by the parameters. The computation is based on two calls to \code{\link{par2qua}} for the parameters in argument \code{para} (\eqn{\Theta}) and nonexceedance probabilities \eqn{F \in \{0, 1\}}:
 \preformatted{lower <- par2qua(0, para)
@@ -42,8 +42,8 @@ On the otherhand, if \code{trapNaN} is \code{TRUE} and if the bounds \eqn{\{L\}}
 
 Thus it should be considered a feature of \code{supdist} that should a quantile function already trap errors at either \eqn{F = 0} or \eqn{F = 1} and return \code{NA}, then \code{trapNaN} is internally set to \code{TRUE} regardless of being originally \code{FALSE} and the preliminary limit is reset to \code{NaN}. The Rice distribution \code{\link{quarice}} is one such example that internally already traps an \eqn{F = 1} by returning \eqn{x(F{=}1) = }\code{NA}.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{lmom2par}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{lmom2par}} }
 \examples{
 lmr <- lmoms(c(33, 37, 41, 54, 78, 91, 100, 120, 124))
 supdist(lmom2par(lmr, type="gov" )) # Lower = 27.41782, Upper = 133.01470

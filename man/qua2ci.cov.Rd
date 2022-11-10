@@ -106,7 +106,7 @@ A quick look at the smoothing. The author is not advocating for this but this tr
   lines((1:n)/(n+1), smth_dat, col=2)
 }
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmoms}}, \code{\link{lmoms.cov}}, \code{\link{qua2ci.simple}}
 }
 \examples{

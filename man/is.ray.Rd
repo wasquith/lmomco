@@ -15,8 +15,8 @@ is.ray(para)
 
   \item{FALSE}{If the \code{type} is not \code{ray}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parray}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parray}} }
 \examples{
 para <- vec2par(c(.9252, .1636, .7),type='ray')
 if(is.ray(para)) {

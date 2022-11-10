@@ -1,6 +1,6 @@
 \name{check.pdf}
 \alias{check.pdf}
-\title{ Check and Potentially Graph Probability Density Functions }
+\title{Check and Potentially Graph Probability Density Functions }
 \description{
 This convenience function checks that a given probability density function (\code{pdf}) from \pkg{lmomco} appears to numerically be valid. By definition a \code{pdf} function must integrate to unity. This function permits some flexibility in the limits of integration and provides a high-level interface from graphical display of the \code{pdf}.
 }
@@ -26,7 +26,7 @@ An \R \code{list} structure is returned
   \item{isunity}{Given the \code{eps} is \code{F} close enough.}
   \item{F}{The numerical integration of \code{pdf} from \code{lowerF} to \code{upperF}.}
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \examples{
 lmrg <- vec2lmom(c( 100, 40, 0.1)) # Arbitrary L-moments
 lmrw <- vec2lmom(c(-100, 40,-0.1)) # Reversed Arbitrary L-moments

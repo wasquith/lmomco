@@ -1,6 +1,6 @@
 \name{Apwm2BpwmRC}
 \alias{Apwm2BpwmRC}
-\title{ Conversion between A- and B-Type Probability-Weighted Moments for Right-Tail Censoring of an Appropriate Distribution}
+\title{Conversion between A- and B-Type Probability-Weighted Moments for Right-Tail Censoring of an Appropriate Distribution}
 \description{
 This function converts \dQuote{A}-type probability-weighted moments (PWMs, \eqn{\beta^A_r}) to the \dQuote{B}-type \eqn{\beta^B_r}. The \eqn{\beta^A_r} are the ordinary PWMs for the \eqn{m} left noncensored or observed values. The \eqn{\beta^B_r} are more complex and use the \eqn{m} observed values and the \eqn{m-n} right-tailed censored values for which the censoring threshold is known. The \dQuote{A}- and \dQuote{B}-type PWMs are described in the documentation for \code{\link{pwmRC}}.
 
@@ -23,8 +23,8 @@ Hosking, J.R.M., 1995, The use of L-moments in the analysis of censored data,
 in Recent Advances in Life-Testing and Reliability, edited by N. Balakrishnan,
 chapter 29, CRC Press, Boca Raton, Fla., pp. 546--560.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{Bpwm2ApwmRC}}, \code{\link{pwmRC}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{Bpwm2ApwmRC}}, \code{\link{pwmRC}} }
 \examples{
 # Data listed in Hosking (1995, table 29.2, p. 551)
 H <- c(3,4,5,6,6,7,8,8,9,9,9,10,10,11,11,11,13,13,13,13,13,

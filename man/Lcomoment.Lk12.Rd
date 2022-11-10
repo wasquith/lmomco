@@ -1,6 +1,6 @@
 \name{Lcomoment.Lk12}
 \alias{Lcomoment.Lk12}
-\title{ Compute a Single Sample L-comoment }
+\title{Compute a Single Sample L-comoment }
 \description{
 Compute the L-comoment (\eqn{\lambda_{k[12]}}) for a given pair of sample of \eqn{n} random variates \eqn{\{(X_i^{(1)}, X_i^{(1)}), 1 \le i \le n \}} from a joint distribution \eqn{H(x^{(1)}, x^{(2)})} with marginal distribution functions \eqn{F_1} and \eqn{F_2}. When the \eqn{X^{(2)}} are sorted to form the sample order statistics \eqn{X^{(2)}_{1:n} \le X^{(2)}_{2:n} \le \cdots \le X^{(2)}_{n:n}}, then the element of \eqn{X^{(1)}} of the unordered (at leasted expected to be) but shuffled set \eqn{\{X^{(1)}_1, \ldots, X^{(1)}_n\}} that is paired with \eqn{X^{(2)}_{r:n}} the \emph{concomitant} \eqn{X^{(12)}_{[r:n]}} of \eqn{X^{(2)}_{r:n}}. (The shuffling occurs by the sorting of \eqn{X^{(2)}}.) The \eqn{k \ge 1}-order L-comoments are defined (Serfling and Xiao, 2007, eq. 26) as
 \deqn{\hat\lambda_{k[12]} = \frac{1}{n}\sum_{r=1}^n w^{(k)}_{r:n} X^{(12)}_{[r:n]}\mbox{,}}
@@ -26,7 +26,7 @@ Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the 
 
 Serfling, R., and Xiao, P., 2007, A contribution to multivariate L-moments---L-comoment matrices: Journal of Multivariate Analysis, v. 98, pp. 1765--1781.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{Lcomoment.matrix}}, \code{\link{Lcomoment.Wk}}}
 \examples{
 X1 <- rnorm(101); X2 <- rnorm(101) + X1

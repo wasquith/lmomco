@@ -63,7 +63,7 @@ The \code{SNV.control} provides
 
 The user is responsible for appropriate construction of the \code{control} lists. Very little error trapping is made to keep the code base tight. The defaults when the function definition are likely good for many types of applications. Lastly, the manipulation of the \code{mgp} parameter in the example is to show how to handle the offset between the numbers and the ticks when the ticks are moved to pointing inward, which is opposite of the default in \R.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{prob2T}}, \code{\link{T2prob}}, \code{\link{add.log.axis}} }
 \examples{
 par(mgp=c(3,0.5,0)) # going to tick to the inside, change some parameters

@@ -1,6 +1,6 @@
 \name{pwm.gev}
 \alias{pwm.gev}
-\title{ Generalized Extreme Value Plotting-Position Probability-Weighted Moments }
+\title{Generalized Extreme Value Plotting-Position Probability-Weighted Moments }
 \description{
 Generalized Extreme Value plotting-position probability-weighted moments (PWMs) are computed from a sample.  The first five \eqn{\beta_r}'s are computed by default. The plotting-position formula for the Generalized Extreme Value distribution is
 \deqn{pp_i = \frac{i-0.35}{n} \mbox{,}}
@@ -30,8 +30,8 @@ Hosking, J.R.M., 1990, L-moments---Analysis and estimation of
 distributions using linear combinations of order statistics: Journal
 of the Royal Statistical Society, Series B, v. 52, pp. 105--124.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{pwm.ub}}, \code{\link{pwm.pp}}, \code{\link{pwm2lmom}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{pwm.ub}}, \code{\link{pwm.pp}}, \code{\link{pwm2lmom}} }
 \examples{
 pwm <- pwm.gev(rnorm(20))
 }

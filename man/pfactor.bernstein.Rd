@@ -1,7 +1,7 @@
 \encoding{utf8}
 \name{pfactor.bernstein}
 \alias{pfactor.bernstein}
-\title{ Estimation of Optimal p-factor of Distributional Support Estimation for Smoothed Quantiles from the Bernstein or Kantorovich Polynomials }
+\title{Estimation of Optimal p-factor of Distributional Support Estimation for Smoothed Quantiles from the Bernstein or Kantorovich Polynomials }
 \description{
 Compute the optimal p-factor through numerical integration of the smoothed empirical quantile function to estimate the L-moments of the distribution. This function attempts to report an optimal \dQuote{p-factor}  (author's term) for the given parent distribution in \code{para} based on estimating the crossing of the origin of an error between the given L-moment ratio \eqn{\tau_r} for 3, 4, and 5 that will come from either the distribution parameter object or given as an argument in \code{lmr.dist}.  The estimated support of the distribution is that shown by  Turnbull and Ghosh (2014) and is computed as follows
 \deqn{\biggl(x_{0:n},\: x_{n+1:n}\biggr) = \biggl(x_{1:n} - \frac{(x_{2:n} - x_{1:n})}{(1 - p)^{-2} - 1},\: x_{n:n} + \frac{(x_{n:n} - x_{n-1:n})}{(1 - p)^{-2} - 1}\biggr)\mbox{,}}
@@ -61,7 +61,7 @@ This function is highly experimental and subject to extreme overhaul. Please con
 \references{
 Turnbull, B.C., and Ghosh, S.K., 2014, Unimodal density estimation using Bernstein polynomials. Computational Statistics and Data Analysis, v. 72, pp. 13--29.
 }
-\seealso{ \code{\link{lmoms.bernstein}}, \code{\link{dat2bernqua}}, \code{\link{lmoms}} }
+\seealso{\code{\link{lmoms.bernstein}}, \code{\link{dat2bernqua}}, \code{\link{lmoms}} }
 \examples{
 \dontrun{
 pdf("pfactor_exampleB.pdf")

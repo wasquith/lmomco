@@ -71,8 +71,7 @@ Nair, N.U., Sankaran, P.G., and Balakrishnan, N., 2013, Quantile-based reliabili
 Serfling, R., and Xiao, P., 2007, A contribution to multivariate L-moments---L-comoment matrices: Journal of Multivariate Analysis, v. 98, pp. 1765--1781, \doi{10.1016/j.jmva.2007.01.008}.
 }
 \author{William Asquith \email{william.asquith@ttu.edu} }
-\seealso{
-   \code{\link{lmoms}}, \code{\link{dlmomco}}, \code{\link{plmomco}}, \code{\link{rlmomco}}, \code{\link{qlmomco}}, \code{\link{lmom2par}},
+\seealso{   \code{\link{lmoms}}, \code{\link{dlmomco}}, \code{\link{plmomco}}, \code{\link{rlmomco}}, \code{\link{qlmomco}}, \code{\link{lmom2par}},
 \code{\link{plotlmrdia}}, \code{\link{lcomoms2}}
 }
 \keyword{distribution}

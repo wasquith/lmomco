@@ -31,7 +31,7 @@ of the Royal Statistical Society, Series B, v. 52, pp. 105--124.
 Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An
 approach based on L-moments: Cambridge University Press.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{pdfgam}}, \code{\link{quagam}}, \code{\link{lmomgam}}, \code{\link{pargam}}}
 \examples{
   lmr <- lmoms(c(123,34,4,654,37,78))

@@ -16,7 +16,7 @@ rrmvarlmomco(f, para)
 \value{
   Reversed residual variance value for \eqn{F}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Nair, N.U., Sankaran, P.G., and Balakrishnan, N., 2013, Quantile-based reliability analysis: Springer, New York.
 }

@@ -22,7 +22,7 @@ qua.ostat(f,j,n,para=NULL)
 \references{
 Gilchrist, W.G., 2000, Statistical modelling with quantile functions: Chapman and Hall/CRC, Boca Raton, Fla.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmom2par}}, \code{\link{vec2par}}}
 \examples{
 gpa <- vec2par(c(100,500,0.5),type='gpa')

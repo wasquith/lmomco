@@ -31,8 +31,8 @@ approach based on L-moments: Cambridge University Press.
 This function calls \code{\link{is.gum}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{is.gum}}, \code{\link{pargum}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{is.gum}}, \code{\link{pargum}} }
 \examples{
 para <- pargum(lmoms(c(123,34,4,654,37,78)))
 if(are.pargum.valid(para)) Q <- quagum(0.5,para)

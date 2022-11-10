@@ -20,7 +20,7 @@ dist.list(type=NULL)
 A vector of distribution identifiers as listed above or the number of parameters for a given distribution type.
 }
 \author{W.H. Asquith}
-\seealso{ \code{\link{prettydist}}
+\seealso{\code{\link{prettydist}}
 }
 \examples{
 dist.list("gpa")

@@ -15,7 +15,7 @@ par2cdf(x, para, ...)
 \value{
   Nonexceedance probability (\eqn{0 \le F \le 1}) for \code{x}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{par2pdf}}, \code{\link{par2qua}} }
 \examples{
 lmr       <- lmoms(rnorm(20))

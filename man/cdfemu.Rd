@@ -28,7 +28,7 @@ cdfemu(x, para, paracheck=TRUE, yacoubsintegral=TRUE)
 \references{
 Yacoub, M.D., 2007, The kappa-mu distribution and the eta-mu distribution: IEEE Antennas and Propagation Magazine, v. 49, no. 1, pp. 68--81
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{pdfemu}}, \code{\link{quaemu}}, \code{\link{lmomemu}}, \code{\link{paremu}}}
 \examples{
 para <- vec2par(c(0.5, 1.4), type="emu")

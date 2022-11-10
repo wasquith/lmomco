@@ -15,8 +15,8 @@ is.ln3(para)
 
   \item{FALSE}{If the \code{type} is not \code{ln3}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{parln3}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{parln3}} }
 \examples{
 para <- vec2par(c(.9252, .1636, .7),type='ln3')
 if(is.ln3(para)) {

@@ -91,7 +91,7 @@ Weinberg, G.V., 2006, Poisson representation and Monte Carlo estimation of gener
 
 Yacoub, M.D., 2007, The kappa-mu distribution and the eta-mu distribution: IEEE Antennas and Propagation Magazine, v. 49, no. 1, pp. 68--81.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{pdfkmu}}, \code{\link{quakmu}}, \code{\link{lmomkmu}}, \code{\link{parkmu}}}
 \examples{
 \dontrun{

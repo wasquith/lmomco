@@ -1,6 +1,6 @@
 \name{lmom.ub}
 \alias{lmom.ub}
-\title{ Unbiased Sample L-moments by Direct Sample Estimators }
+\title{Unbiased Sample L-moments by Direct Sample Estimators }
 \description{
 Unbiased sample L-moments are computed for a vector using the direct sample estimation method as opposed to the use of sample probability-weighted moments. The L-moments are the ordinary L-moments and not the trimmed L-moments (see \code{\link{TLmoms}}). The mean, L-scale, coefficient of L-variation (\eqn{\tau}, LCV, L-scale/mean), L-skew (\eqn{\tau_3}, TAU3, L3/L2), L-kurtosis (\eqn{\tau_4}, TAU4, L4/L2), and \eqn{\tau_5} (TAU5, L5/L2) are computed. In conventional nomenclature, the L-moments are
 \deqn{ \hat{\lambda}_1 = \mbox{L1} = \mbox{mean, }}
@@ -56,7 +56,7 @@ distributions using linear combinations of order statistics: Journal of the Roya
 
 Wang, Q.J., 1996, Direct sample estimators of L-moments: Water Resources Research, v. 32, no. 12., pp. 3617--3619.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmom2pwm}}, \code{\link{pwm.ub}}, \code{\link{pwm2lmom}}, \code{\link{lmoms}}, \code{\link{lmorph}}}
 \examples{
 lmr <- lmom.ub(c(123,34,4,654,37,78))

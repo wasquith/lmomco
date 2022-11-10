@@ -1,6 +1,6 @@
 \name{lmoms.bootbarvar}
 \alias{lmoms.bootbarvar}
-\title{ The Exact Bootstrap Mean and Variance of L-moments }
+\title{The Exact Bootstrap Mean and Variance of L-moments }
 \description{
 This function computes the exact bootstrap mean and variance of L-moments using the exact analytical expressions for the bootstrap mean and variance of any L-estimator described Hutson and Ernst (2000). The approach by those authors is to use the bootstrap distribution of the single order statistic in conjunction with the joint distribution of two order  statistics. The key component is the bootstrap mean vector as well as the variance-covariance matrix of all the order statistics and then performing specific linear combinations of a basic L-estimator combined with the proportion weights used in the computation of L-moments (\code{\link{Lcomoment.Wk}}, see those examples and division by \eqn{n}). Reasonably complex algorithms are used; however, what makes those authors' contribution so interesting is that neither simulation, resampling, or numerical methods are needed as long as the sample size is not too large.
 
@@ -56,8 +56,8 @@ of an L-estimator: Journal Royal Statistical Society B, v. 62, part 1, pp. 89--9
 
 Wang, D., and Hutson, A.D., 2013, Joint confidence region estimation of L-moments with an extension to right censored data: Journal of Applied Statistics, v. 40, no. 2, pp. 368--379.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{lmoms}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{lmoms}} }
 \examples{
 \dontrun{
    para <- vec2par(c(0,1), type="gum") # Parameters of Gumbel

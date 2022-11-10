@@ -1,6 +1,6 @@
 \name{pwm}
 \alias{pwm}
-\title{ Unbiased Sample Probability-Weighted Moments }
+\title{Unbiased Sample Probability-Weighted Moments }
 \description{
 Unbiased sample probability-weighted moments (PWMs) are computed from a sample. The \eqn{\beta_r}'s are computed using
 \deqn{\beta_r = n^{-1}\sum^n_{j=1} {j-1 \choose r} x_{j:n}\mbox{.}}
@@ -26,8 +26,8 @@ Hosking, J.R.M., 1990, L-moments---Analysis and estimation of
 distributions using linear combinations of order statistics: Journal
 of the Royal Statistical Society, Series B, v. 52, pp. 105--124.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{lmoms}}, \code{\link{pwm2lmom}}, \code{\link{pwm}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{lmoms}}, \code{\link{pwm2lmom}}, \code{\link{pwm}} }
 \examples{
 # Data listed in Hosking (1995, table 29.2, p. 551)
 H <- c(3,4,5,6,6,7,8,8,9,9,9,10,10,11,11,11,13,13,13,13,13,

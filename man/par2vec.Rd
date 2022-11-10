@@ -14,7 +14,7 @@ par2vec(para, ...)
 \value{
   An \R \code{vector} is returned in moment order.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{vec2par}}}
 \examples{
 para <- vec2par(c(12,123,0.5), type="gev")

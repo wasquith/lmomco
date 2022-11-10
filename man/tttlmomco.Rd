@@ -33,7 +33,7 @@ Tu <- cmlmomco(f=0, para) - (1-f)*rmlmomco(f, para) # 1st def.
 Tu <- (1-f)*par2qua(f, para) + cmlmomco(f=0, para)*lrzlmomco(f, para) # 3rd def.
 }
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Nair, N.U., Sankaran, P.G., and Balakrishnan, N., 2013, Quantile-based reliability analysis: Springer, New York.
 }

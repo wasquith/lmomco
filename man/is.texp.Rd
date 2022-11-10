@@ -15,8 +15,8 @@ is.texp(para)
 
   \item{FALSE}{If the \code{type} is not \code{texp}.}
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{partexp}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{partexp}} }
 \examples{
 yy <- vec2par(c(123, 2.3, TRUE),  type="texp")
 zz <- vec2par(c(123, 2.3, FALSE), type="texp")

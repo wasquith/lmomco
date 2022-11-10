@@ -135,7 +135,7 @@ Let us conclude with an example for the GEV between \pkg{eva} and \pkg{lmomco} a
        #         100.5407709           13.5385491            0.6106928
 }
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Cheng, R.C.H., Stephens, M.A., 1989, A goodness-of-fit test using Moran's statistic with estimated parameters: Biometrika, v. 76, no. 2, pp. 385--392.
 

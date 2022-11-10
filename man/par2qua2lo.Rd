@@ -1,6 +1,6 @@
 \name{par2qua2lo}
 \alias{par2qua2lo}
-\title{ Equivalent Quantile Function of Two Distributions Stemming from Left-Hand Threshold to Setup Conditional Probability Computations}
+\title{Equivalent Quantile Function of Two Distributions Stemming from Left-Hand Threshold to Setup Conditional Probability Computations}
 \description{
 \bold{EXPERIMENTAL!} This function computes the nonexceedance probability of a given quantile from a linear weighted combination of two quantile functions---a mixed distribution---when the data have been processed through the \code{\link{x2xlo}} function setting up left-hand thresholding and conditional probability compuation. The \code{par2qua2lo} function is a partial generalization of the \code{\link{par2qua2}} function (see there for the basic mathematics). The \bold{Examples} section has an exhaustive demonstration. The resulting weighted- or mixed-quantile function is not rigorously checked for monotonic increase with \eqn{F}, which is a required property of quantile functions. However, a first-order difference on the mixed quantiles with the probabilities is computed and a warning issued if not monotonic increasing.
 }
@@ -30,7 +30,7 @@ par2qua2lo(f, para1, para2, xlo1, xlo2,
 
 Alternatively, the returned value could be a weighting function for subsequent calls as \code{wfunc} to \code{par2qua2lo} (see \bold{Examples}). This alternative operation is triggered by setting \code{wfunc} to an arbitrary character string, and internally the contents of \code{xlo1} and \code{xlo2}, which themselves have to be called as named arguments, are recombined. This means that the \code{xin} and code{xout} are recombined, into their respective samples. Each data point is then categorized with probability zero for the \code{xlo1} values and probability unity for the \code{xlo2} values. A logistic regression is fit using logit-link function for a binomial family using a generalized linear model. The binomial (0 or 1) is regressed as a function of the plotting positions of a sample composed of \code{xlo1} and \code{xlo2}. The coefficients of the regression are extracted, and a function created to predict the probability of event \dQuote{\code{xlo2}}. The \code{attributes} of the computed value inside the function store the coefficients, the regression model, and potentially useful for graphical review, a \code{data.frame} of the data used for the regression. This sounds more complicated than it really is (see source code and \bold{Examples}).
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{par2qua}}, \code{\link{par2cdf2}}, \code{\link{par2qua2}}, \code{\link{x2xlo}}
 }
 \examples{

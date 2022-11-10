@@ -54,7 +54,7 @@ The \code{empdist} element in the returned \code{list} is an \R \code{environmen
 \note{
 This function relies on a \code{while} loop that runs until \code{nsim} have successfully completed. Some reasons for an early \code{next} in the loop include invalid L-moments by \code{\link{are.lmom.valid}} of the simluated data or invalid fitted parameters by \code{\link{are.par.valid}} to simulated L-moments.  See the source code for more details.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmoms}}, \code{\link{pmoms}}, \code{\link{par2qua}}, \code{\link{genci.simple}}, \code{\link{qua2ci.cov}}
 }
 \examples{

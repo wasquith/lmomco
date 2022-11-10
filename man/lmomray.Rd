@@ -30,7 +30,7 @@ source of the L-moments: \dQuote{lmomray}.}
 \references{
 Hosking, J.R.M., 1986, The theory of probability weighted moments: Research Report RC12210, IBM Research Division, Yorkton Heights, N.Y.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{parray}}, \code{\link{cdfray}}, \code{\link{pdfray}}, \code{\link{quaray}} }
 \examples{
 lmr <- lmoms(c(123,34,4,654,37,78))

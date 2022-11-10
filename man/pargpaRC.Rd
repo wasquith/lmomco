@@ -33,7 +33,7 @@ Hosking, J.R.M., 1990, L-moments---Analysis and estimation of distributions usin
 
 Hosking, J.R.M., 1995, The use of L-moments in the analysis of censored data, in Recent Advances in Life-Testing and Reliability, edited by N. Balakrishnan, chapter 29, CRC Press, Boca Raton, Fla., pp. 546--560.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmomgpa}}, \code{\link{lmomgpaRC}}, \code{\link{pargpa}}, \code{\link{cdfgpa}}, \code{\link{pdfgpa}}, \code{\link{quagpa}}
 }
 \examples{

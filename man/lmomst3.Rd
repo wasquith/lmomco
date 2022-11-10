@@ -34,7 +34,7 @@ lmomst3(para, bypoly=TRUE)
   \item{source}{An attribute identifying the computational
 source of the L-moments: \dQuote{lmomst3}.}
 }
-\author{ W.H. Asquith with A.R. Biessen}
+\author{W.H. Asquith with A.R. Biessen}
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 }

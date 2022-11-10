@@ -23,7 +23,7 @@ z.par2cdf(x, p, para, z=0, ...)
 \value{
   Nonexceedance probability (\eqn{0 \le F \le 1}) for \code{x}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 }

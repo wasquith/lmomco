@@ -1,7 +1,7 @@
 \encoding{utf8}
 \name{dat2bernqua}
 \alias{dat2bernqua}
-\title{ Observed Data to Empirical Quantiles through Bernstein or Kantorovich Polynomials }
+\title{Observed Data to Empirical Quantiles through Bernstein or Kantorovich Polynomials }
 \description{
 The empirical quantile function can be \dQuote{smoothed} (\enc{Hernández-Maldonado}{Hernandez-Maldonado} and others, 2012, p. 114) through the Kantorovich polynomial (\enc{Muñoz-Pérez}{Munoz-Perez} and \enc{Fernández-Palacín}{Fernandez-Palacin}, 1987) for the sample order statistics \eqn{x_{k:n}} for a sample of size \eqn{n} by
 \deqn{\tilde{X}_n(F) = \frac{1}{2}\sum_{k=0}^n (x_{k:n} + x_{(k+1):n}) {n \choose k} F^k (1-F)^{n-k}\mbox{,}}
@@ -80,8 +80,8 @@ Parzen, E., 1979, Nonparametric statistical data modeling: Journal American Stat
 \section{Implentation Note}{
 The function makes use of \R functions \code{lchoose} and \code{exp} and logarithmic expressions, such as \eqn{(1-F)^{(n-k)} \rightarrow (n-k)\log(1-F)}, for numerical stability for large sample sizes.
 }
-\author{ W.H. Asquith}
-\seealso{ \code{\link{lmoms.bernstein}}, \code{\link{pfactor.bernstein}}, \code{\link{dat2bernquaf}} }
+\author{W.H. Asquith}
+\seealso{\code{\link{lmoms.bernstein}}, \code{\link{pfactor.bernstein}}, \code{\link{dat2bernquaf}} }
 \examples{
 # Compute smoothed extremes, quartiles, and median
 # The smoothing seems to extend to F=0 and F=1.

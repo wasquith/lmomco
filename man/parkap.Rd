@@ -32,7 +32,7 @@ Hosking, J.R.M., 1994, The four-parameter kappa distribution: IBM Journal of Res
 
 Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approach based on L-moments: Cambridge University Press.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmomkap}},
 \code{\link{cdfkap}}, \code{\link{pdfkap}}, \code{\link{quakap}}
 }

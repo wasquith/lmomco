@@ -1,6 +1,6 @@
 \name{Lcomoment.coefficients}
 \alias{Lcomoment.coefficients}
-\title{ L-comoment Coefficient Matrix }
+\title{L-comoment Coefficient Matrix }
 \description{
 Compute the L-comoment coefficients from an L-comoment matrix of order \eqn{k \ge 2} and the \eqn{k = 2} (2nd order) L-comoment matrix. However, if the first argument is 1st-order then the coefficients of L-covariation are computed. The function requires that each matrix has already been computed by the function \code{\link{Lcomoment.matrix}}.
 }
@@ -34,7 +34,7 @@ Finally, the usual univariate L-moment ratios as seen from \code{\link{lmom.ub}}
 \note{
 The function begins with a capital letter. This is intentionally done so that lower case namespace is preserved. By using a capital letter now, then \code{lcomoment.coefficients} remains an available name in future releases.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
 

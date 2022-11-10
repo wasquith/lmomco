@@ -15,7 +15,7 @@ prob2lrv(f)
 \value{
    A vector of logistic reduced variates.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Bradford, R.B., 2002, Volume-duration growth curves for flood estimation in permeable catchments: Hydrology and Earth System Sciences, v. 6, no. 5, pp. 939--947.
 }

@@ -1,6 +1,6 @@
 \name{theoLmoms}
 \alias{theoLmoms}
-\title{ The Theoretical L-moments and L-moment Ratios using Integration of the Quantile Function}
+\title{The Theoretical L-moments and L-moment Ratios using Integration of the Quantile Function}
 \description{
 Compute the theoretrical L-moments for a vector. A theoretrical L-moment in integral form is
 \deqn{ \lambda_r = \frac{1}{r}
@@ -35,7 +35,7 @@ theoLmoms(para, nmom=5, verbose=FALSE, minF=0, maxF=1)
 \references{
 Hosking, J.R.M., 1990, L-moments---Analysis and estimation of distributions using linear combinations of order statistics: Journal of the Royal Statistical Society, Series B, v. 52, pp. 105--124.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{theoTLmoms}}}
 \examples{
 para <- vec2par(c(0,1),type='nor') # standard normal

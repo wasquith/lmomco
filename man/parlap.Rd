@@ -32,7 +32,7 @@ Hosking, J.R.M., 1986, The theory of probability weighted moments: IBM Research 
 \note{
 The decision to use only one of the two systems of equations for Laplace fitting is largely arbitrary, but it seems most fitting to use four L-moments instead of two.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{lmomlap}},
 \code{\link{cdflap}}, \code{\link{pdflap}}, \code{\link{qualap}}
 }

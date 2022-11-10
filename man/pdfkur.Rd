@@ -22,7 +22,7 @@ pdfkur(x, para)
 Jones, M.C., 2009, Kumaraswamy's distribution---A beta-type distribution with
 some tractability advantages: Statistical Methodology, v. 6, pp. 70--81.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{cdfkur}}, \code{\link{quakur}}, \code{\link{lmomkur}}, \code{\link{parkur}}}
 \examples{
   lmr <- lmoms(c(0.25, 0.4, 0.6, 0.65, 0.67, 0.9))

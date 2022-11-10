@@ -22,7 +22,7 @@ pdftri(x, para)
 \value{
   Probability density (\eqn{f}) for \eqn{x}.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \seealso{\code{\link{pdftri}}, \code{\link{quatri}}, \code{\link{lmomtri}}, \code{\link{partri}}}
 \examples{
   tri <- vec2par(c(-120, 102, 320), type="tri")

@@ -15,7 +15,7 @@ prob2grv(f)
 \value{
    A vector of Gumbel reduced variates.
 }
-\author{ W.H. Asquith}
+\author{W.H. Asquith}
 \references{
 Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approach based on L-moments: Cambridge University Press.
 }

@@ -31,9 +31,8 @@ approach based on L-moments: Cambridge University Press.
 This function calls \code{\link{is.gno}} to verify consistency between
 the distribution parameter object and the intent of the user.
 }
-\author{ W.H. Asquith}
-\seealso{
-\code{\link{is.gno}}, \code{\link{pargno}}
+\author{W.H. Asquith}
+\seealso{\code{\link{is.gno}}, \code{\link{pargno}}
 }
 \examples{
 para <- pargno(lmoms(c(123,34,4,654,37,78)))
