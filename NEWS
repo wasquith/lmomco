@@ -1,6 +1,11 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
+Changes in version 2.4.8 (2023-03-07)
+-  Returned this NEWS.
+-  Added additional mathematical definition to the umvu.sd component in pmoms.Rd.
+
+
 Changes in version 2.4.7 (2022-08-26)
 -  Removed this NEWS.
 
