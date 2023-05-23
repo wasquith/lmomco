@@ -1,9 +1,17 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Changes in version 2.4.8 (2023-03-07)
+Changes in version 2.4.8 (2023-05-23)
 -  Returned this NEWS.
 -  Added additional mathematical definition to the umvu.sd component in pmoms.Rd.
+-  Edits to Examples in mle2par.Rd (color changing from numbers to names)
+-  Added ties.method to pp() to extend its default of "first" to other options so
+     that, in particular, headrick.sheng.lalpha() performance on its covariance
+     pathway can be studied relative to the direct to L-comoments.
+-  Expanded Examples in headrick.sheng.lalpha.Rd with expansion of the technical
+     documentation and extensive critical discussion and numerical comparisons to
+     the originating literature. Special thanks to Adam Pennell for bringing
+     questions about headrick.sheng.lalpha() operation to attention.
 
 
 Changes in version 2.4.7 (2022-08-26)
