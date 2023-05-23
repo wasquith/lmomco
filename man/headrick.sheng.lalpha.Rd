@@ -20,7 +20,6 @@ lalpha(x, bycovFF=FALSE, digits=8, ...)
   \item{x}{An \R \code{data.frame} of the random observations for the \eqn{d} random variables \eqn{X}, which must be suitable for internal dispatch to the \code{\link{Lcomoment.matrix}} function for computation of the 2nd-order L-comoment matrix. Alternatively, \code{x} can be a precomputed 2nd-order L-comoment matrix (L-scale and L-coscale matrix) by \code{lalpha(Lcomoment.matrix(x, k=2)$matrix).}}
   \item{bycovFF}{A logical triggering the covariance pathway for the computation and bypassing the call to the L-comoments. The additional arguments can be used to control the \code{\link{pp}} function that is called internally to estimate nonexceedance probabilities and the \dQuote{covariance pathway} (see \bold{Details}). If \code{bycovFF} is \code{FALSE}, then the direct to L-comoment computation is used.}
   \item{digits}{Number of digits for rounding on the returned value(s).}
-  \item{silent}{A logical switch controlling a simulation count status update, which might be useful for a feel for the computational speed.}
   \item{...}{Additional arguments to pass.}
 }
 \details{
