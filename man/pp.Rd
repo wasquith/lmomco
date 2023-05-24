@@ -42,11 +42,11 @@ The function uses the \R \code{rank} function, which has specific settings to ha
 Stedinger, J.R., Vogel, R.M., and Foufoula-Georgiou, E., 1992, Frequency analysis of extreme events, in Handbook of Hydrology, chapter 18, editor-in-chief D. A. Maidment: McGraw-Hill, New York.
 }
 \author{W.H. Asquith}
-\seealso{\code{\link{nonexceeds}}, \code{\link{pwm.pp}}, \code{\link{pp.f}}, \code{\link{pp.median}} }
+\seealso{\code{\link{nonexceeds}}, \code{\link{pwm.pp}}, \code{\link{pp.f}}, \code{\link{pp.median}}, \code{\link{headrick.sheng.lalpha}} }
 \examples{
-Q <- rnorm(20)
+Q  <- rnorm(20)
 PP <- pp(Q)
-plot(PP,sort(Q))
+plot(PP, sort(Q))
 
 Q <- rweibull(30, 1.4, scale=400)
 WEI <- parwei(lmoms(Q))

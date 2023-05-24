@@ -23,7 +23,7 @@ lalpha(x, bycovFF=FALSE, digits=8, ...)
   \item{...}{Additional arguments to pass.}
 }
 \details{
-Headrick and Sheng (2013) propose \eqn{\alpha_L} to be an alternative estimator of reliability based on L-comoments. They describe its context as follows: \dQuote{Consider [a statistic] alpha (\eqn{\alpha}) in terms of a model that decomposes an observed score into the sum of two independent components: a true unobservable score \eqn{t_i} and a random error component \eqn{\epsilon_{ij}}.}
+Headrick and Sheng (2013) propose \eqn{\alpha_L} to be an alternative estimator of reliability based on L-comoments. Those authors describe its context as follows: \dQuote{Consider [a statistic] alpha (\eqn{\alpha}) in terms of a model that decomposes an observed score into the sum of two independent components: a true unobservable score \eqn{t_i} and a random error component \eqn{\epsilon_{ij}}.}
 
 Those authors continue \dQuote{The model can be summarized as
 \eqn{X_{ij} = t_i + \epsilon_{ij}\mathrm{,}} where \eqn{X_{ij}} is the observed score associated with the \eqn{i}th examinee on the \eqn{j}th test item, and where \eqn{i = 1,...,n} [for sample size \eqn{n}]; \eqn{j = 1,\ldots,d}; and the error terms (\eqn{\epsilon_{ij}}) are independent with a mean of zero.} Those authors comment that \dQuote{inspection of [this model] indicates that this particular model restricts the true score \eqn{t_i} to be the same across all \eqn{d} test items.}
@@ -140,8 +140,7 @@ Let us run through the tie options again using a different plotting position est
   # Ties method     max provides L-Alpha = 0.78296931
 }
 
-We see obviously that the decision on how to treat ties has some influence on the computation involving the covariance pathway. This is not an entirely satisfactory situation but perhaps the distinction does not matter much? The direct L-comoment pathway seems to avoid this though \code{sort()} is stable but like \code{ties.method="first"}.
-
+We see obviously that the decision on how to treat ties has some influence on the computation involving the covariance pathway. This is not an entirely satisfactory situation, but perhaps the distinction does not matter much? The direct L-comoment pathway seems to avoid this issue because \code{sort()} is stable and like \code{ties.method="first"}. Experiments suggest that \code{a=0.5} (Hazen plotting positions) produces the same results as direct L-comoment (see the next section).
 
 \bold{Demonstration of Computational Times}---A considerable amount of documentation and examples are provided here about the two pathways that \eqn{\alpha_L} can be computed: (1) direct by L-comoments or (2) covariance pathway requiring precomputed estimates of the nonexceedance probabilities using a \code{ties.method="first"} (default \code{\link{pp}}). The following example shows numerical congruence between the two pathways if the so-called Hazen plotting positions (\code{a=0.5}, see \code{\link{pp}}) are requested with the implicit default of \code{ties.method="first"}. However, the computational time of the direct method is quite a bit longer because of latencies in the weight factor computations involved in the L-comoments and nested \code{for} loops.
 \preformatted{
