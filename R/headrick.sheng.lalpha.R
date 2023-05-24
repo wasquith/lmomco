@@ -1,4 +1,4 @@
-"headrick.sheng.lalpha" <- function(x, bycovFF=FALSE, digits=8, ...) {
+"headrick.sheng.lalpha" <- function(x, bycovFF=FALSE, a=0.5, digits=8, ...) {
 
    pitems <- n <- NA
    names(pitems) <- "Number of items"
@@ -33,7 +33,7 @@
      zz$n <- n
      lco2  <- matrix(nrow=pitems, ncol=pitems)
      for(i in seq_len(pitems)) {
-       x[, i+pitems] <- pp(x[,i], sort=FALSE, ...)
+       x[, i+pitems] <- pp(x[,i], sort=FALSE, a=a, ...)
        lco2[i, i] <- lmoms(x[,i], nmom=2)$lambdas[2]
      }
      #print(x)
@@ -76,7 +76,7 @@
 }
 
 
-"lalpha" <- function(x, bycovFF=FALSE, digits=8, ...) {
-   return(headrick.sheng.lalpha(x, bycovFF=bycovFF, digits=digits, ...))
+"lalpha" <- function(x, bycovFF=FALSE, a=0.5, digits=8, ...) {
+   return(headrick.sheng.lalpha(x, bycovFF=bycovFF, a=a, digits=digits, ...))
 }
 

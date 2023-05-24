@@ -12,13 +12,14 @@ where \eqn{j = 1,\ldots,d} for dimensions \eqn{d}, the \eqn{\sum_j \lambda^{(j)}
 The \eqn{\alpha_L} is closely related in structural computation as the well-known \dQuote{Cronbach Alpha} (\eqn{\alpha_C}). These are coefficients of reliability, which commonly ranges from 0 to 1, that provide what some methodologists portray as an overall assessment of a measure's reliability. If all of the scale items are entirely independent from one another, meaning that they are not correlated or share no covariance, then \eqn{\alpha_C} is 0, and, if all of the items have high covariances, then \eqn{\alpha_C} will approach 1 as the number of items in the scale approaches infinity. The higher the \eqn{\alpha_C} coefficient, the more the items have shared covariance and probably measure the same underlying concept. Theoretically, there is no lower bounds for \eqn{\alpha_{C,L}}, which can add nuances in bootstrap or simulation study of both \eqn{\alpha_C} and \eqn{\alpha_L}, and negative values are considered a sign of something potentially wrong about the measure caused by items not being positively correlated with each other. (This paragraph in part paraphrases \url{https://data.library.virginia.edu/using-and-interpreting-cronbachs-alpha/}\cr (accessed May 21, 2023).)
 }
 \usage{
-headrick.sheng.lalpha(x, bycovFF=FALSE, digits=8, ...)
+headrick.sheng.lalpha(x, bycovFF=FALSE, a=0.5, digits=8, ...)
 
-lalpha(x, bycovFF=FALSE, digits=8, ...)
+lalpha(x, bycovFF=FALSE, a=0.5, digits=8, ...)
 }
 \arguments{
   \item{x}{An \R \code{data.frame} of the random observations for the \eqn{d} random variables \eqn{X}, which must be suitable for internal dispatch to the \code{\link{Lcomoment.matrix}} function for computation of the 2nd-order L-comoment matrix. Alternatively, \code{x} can be a precomputed 2nd-order L-comoment matrix (L-scale and L-coscale matrix) by \code{lalpha(Lcomoment.matrix(x, k=2)$matrix).}}
   \item{bycovFF}{A logical triggering the covariance pathway for the computation and bypassing the call to the L-comoments. The additional arguments can be used to control the \code{\link{pp}} function that is called internally to estimate nonexceedance probabilities and the \dQuote{covariance pathway} (see \bold{Details}). If \code{bycovFF} is \code{FALSE}, then the direct to L-comoment computation is used.}
+  \item{a}{The plotting position argument \code{a} to the \code{\link{pp}} function that is hardwired here to Hazen in contrast to the default \code{a=0} of \code{\link{pp}} (Weibull) for reasoning shown in this documentation.}
   \item{digits}{Number of digits for rounding on the returned value(s).}
   \item{...}{Additional arguments to pass.}
 }
@@ -140,7 +141,17 @@ Let us run through the tie options again using a different plotting position est
   # Ties method     max provides L-Alpha = 0.78296931
 }
 
-We see obviously that the decision on how to treat ties has some influence on the computation involving the covariance pathway. This is not an entirely satisfactory situation, but perhaps the distinction does not matter much? The direct L-comoment pathway seems to avoid this issue because \code{sort()} is stable and like \code{ties.method="first"}. Experiments suggest that \code{a=0.5} (Hazen plotting positions) produces the same results as direct L-comoment (see the next section).
+We see obviously that the decision on how to treat ties has some influence on the computation involving the covariance pathway. This is not an entirely satisfactory situation, but perhaps the distinction does not matter much? The direct L-comoment pathway seems to avoid this issue because \code{sort()} is stable and like \code{ties.method="first"}. Experiments suggest that \code{a=0.5} (Hazen plotting positions) produces the same results as direct L-comoment (see the next section). However, as the following code set shows:
+\preformatted{
+  for(tie in c("average", "first", "last", "min", "max")) { # random left out
+    Lalpha1 <- lalpha(X, bycovFF=TRUE, a=0.5, ties.method=tie)$alpha
+    Lalpha2 <- lalpha(X, bycovFF=TRUE, a=NULL, A=-0.5, B=0, ties.method=tie)$alpha
+    Lalpha3 <- lalpha(X, bycovFF=TRUE, a=NULL, A=-1  , B=0, ties.method=tie)$alpha
+    Lalpha4 <- lalpha(X, bycovFF=TRUE, a=NULL, A=   0, B=0, ties.method=tie)$alpha
+    print(c(Lalpha1, Lalpha2, Lalpha3, Lalpha4))
+  }
+}
+The \eqn{\alpha_L} for a given tie setting are all equal as long as the demoninator of the plotting position (\eqn{(i + A) / (n + B)}) has \code{B=0}. The \code{a=0.5} produces Hazen, the \code{a=NULL, A=-0.5} produces Hazen, though \code{a=NULL, A=-1} (lower limit of \code{A}) and \code{a=NULL, A=0} (upper limit of \code{A} given \code{B}) also produces the same. This gives us as-implemented-proof that the sensitivity to the \eqn{\alpha_L} computation is in the sorting and the denominator of the plotting position formula. The prudent default settings for when the \code{bycovFF} argument is true seems to have the \eqn{a=-0.5} as nonexceedance probabilities are computed by the well-known Hazen description and with the tie method as first, the computations match direct to L-comoments.
 
 \bold{Demonstration of Computational Times}---A considerable amount of documentation and examples are provided here about the two pathways that \eqn{\alpha_L} can be computed: (1) direct by L-comoments or (2) covariance pathway requiring precomputed estimates of the nonexceedance probabilities using a \code{ties.method="first"} (default \code{\link{pp}}). The following example shows numerical congruence between the two pathways if the so-called Hazen plotting positions (\code{a=0.5}, see \code{\link{pp}}) are requested with the implicit default of \code{ties.method="first"}. However, the computational time of the direct method is quite a bit longer because of latencies in the weight factor computations involved in the L-comoments and nested \code{for} loops.
 \preformatted{
@@ -150,8 +161,8 @@ We see obviously that the decision on how to treat ties has some influence on th
                    I2=sample(R, nsam, replace=TRUE),
                    I3=sample(R, nsam, replace=TRUE),
                    I4=sample(R, nsam, replace=TRUE) )
-  system.time(AnF <- headrick.sheng.lalpha(Z, bycovFF=FALSE, a=NA )$alpha)
-  system.time(AwF <- headrick.sheng.lalpha(Z, bycovFF=TRUE,  a=0.5)$alpha)
+  system.time(AnF <- headrick.sheng.lalpha(Z, bycovFF=FALSE)$alpha)
+  system.time(AwF <- headrick.sheng.lalpha(Z, bycovFF=TRUE )$alpha) # Hazen
   #    user  system elapsed
   #  30.382   0.095  30.501    AnF ---> 0.01370302
   #    user  system elapsed
@@ -187,6 +198,8 @@ headrick.sheng.lalpha(lco2)$alpha     # Headrick and Sheng (2013): alpha = 0.807
 headrick.sheng.lalpha(Lcomoment.matrix(T1[,1:3], k=2)$matrix)$alpha
 # 0.7805825
 headrick.sheng.lalpha(T1[,1:3])$alpha #              FXs not used: alpha = 0.781
+# 0.7805825
+headrick.sheng.lalpha(T1[,1:3], bycovFF=TRUE)$alpha  # a=0.5, Hazen by default
 # 0.7805825
 headrick.sheng.lalpha(T1[,1:3], bycovFF=TRUE, a=0.5)$alpha
 # 0.7805825
