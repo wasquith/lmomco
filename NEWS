@@ -12,6 +12,9 @@ Changes in version 2.4.8 (2023-05-23)
      documentation and extensive critical discussion and numerical comparisons to
      the originating literature. Special thanks to Adam Pennell for bringing
      questions about headrick.sheng.lalpha() operation to attention.
+-  Added assignment to the argument matching in distfitqua.R as in the
+     operation "objfun <- match.arg(objfun)" whereas before objfun was not
+     being "set."
 
 
 Changes in version 2.4.7 (2022-08-26)

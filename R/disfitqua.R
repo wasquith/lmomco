@@ -11,7 +11,7 @@
       return(NULL)
    }
 
-   match.arg(objfun)
+   objfun <- match.arg(objfun)
 
    n.para <- dist.list(type=type) # parameter count of the named distribution
 
