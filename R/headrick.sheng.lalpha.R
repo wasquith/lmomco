@@ -75,10 +75,10 @@
    alpha <- (d / (d-1)) * (1 - A / (A+B))
    if(alpha > 1) {
      alpha <- NA
-     zz$text  <- paste0(zz$text, " and\n", "L-alpha computed as > 1, ",
+     zz$text  <- paste0(zz$text, " and\n", "L-Alpha computed as > 1, ",
                         "pathological issues in 'lco2', small sample size?")
    }
-   names(alpha) <- "L-alpha"
+   names(alpha) <- "L-Alpha"
    zz$alpha <- round(alpha, digits=digits)
    return(zz)
 }
