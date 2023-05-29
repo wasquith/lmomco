@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Changes in version 2.4.8 (2023-05-23)
+Changes in version 2.4.8 (2023-05-29)
 -  Returned this NEWS.
 -  Added additional mathematical definition to the umvu.sd component in pmoms.Rd.
 -  Edits to Examples in mle2par.Rd (color changing from numbers to names)
@@ -15,6 +15,8 @@ Changes in version 2.4.8 (2023-05-23)
 -  Added assignment to the argument matching in distfitqua.R as in the
      operation "objfun <- match.arg(objfun)" whereas before objfun was not
      being "set."
+-  Edits to dat2bernqua.Rd and dat2bernquaf.Rd related to minor gramma and
+     vertical example code alignment with changes of numbered colors to named.
 
 
 Changes in version 2.4.7 (2022-08-26)
