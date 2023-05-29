@@ -46,13 +46,13 @@ where \eqn{(r-1)/n \le F \le (r/n)} for \eqn{r = 1, 2, \ldots, n} and \eqn{x_{0:
 X <- sort(rexp(30))
 P <- dat2bernqua(f=NULL,  X, poly.type="Parzen")
 R <- dat2bernqua(f=NULL, -X, poly.type="Parzen")
-plot(pp(X), X, xlim=c(0,1))
-lines(  P$f,  P$x, col=2)
-lines(1-R$f, -R$x, col=4)
+plot(pp(X, a=0.5), X, xlim=c(0, 1)) # Hazen plotting position to
+lines(  P$f,  P$x, col="red" )      # basically split the horizontal
+lines(1-R$f, -R$x, col="blue")      # differences between blue and red.
 }
 }
 \value{
-  An \R \code{vector} is returned unless the Parzen weighting method is used and in that case an \R \code{list} is returned with elements \code{f} and \code{x}, which respectively are the \eqn{F} values as shown in the formula and the \eqn{\tilde{X}^{\mathrm{Parzen}}_n(F)}.
+An \R \code{vector} is returned unless the Parzen weighting method is used and in that case an \R \code{list} is returned with elements \code{f} and \code{x}, which respectively are the \eqn{F} values as shown in the formula and the \eqn{\tilde{X}^{\mathrm{Parzen}}_n(F)}.
 }
 \note{
 \enc{Muñoz-Pérez}{Munoz-Perez} and \enc{Fernández-Palacín}{Fernandez-Palacin} (1987, p. 391) describe what to do with the condition of \eqn{k = 0} but seemingly do not comment on the condition of \eqn{k = n}. There is no 0th-order statistic nor is there a \eqn{k > n} order statistic. \enc{Muñoz-Pérez}{Munoz-Perez} and \enc{Fernández-Palacín}{Fernandez-Palacin} (1987) bring up the notion of a natural minimum for the data (for example, data that must be positive, \code{fix.lower = 0} could be set). Logic dictates that a similar argument must be made for the maximum to keep a critical error from occurring if one tries to access the not plausible \code{x[n+1]}-order statistic. Lastly, the argument names \code{bound.type}, \code{fix.lower}, and \code{fix.upper} mimic, as revisions were made to this function in December 2013, the nomenclature of software for probability density function smoothing by Turnbull and Ghosh (2014). The \code{dat2bernqua} function was originally added to \pkg{lmomco} in May 2013 prior to the author learning about Turnbull and Ghosh (2014).
@@ -85,74 +85,61 @@ The function makes use of \R functions \code{lchoose} and \code{exp} and logarit
 \examples{
 # Compute smoothed extremes, quartiles, and median
 # The smoothing seems to extend to F=0 and F=1.
-set.seed(1); X <- exp(rnorm(20)); F <- c(0,.25,.50,.75,1)
-dat2bernqua(F, X, bound.type="none", listem=TRUE)$x
-dat2bernqua(F, X, bound.type="Carv", listem=TRUE)$x
-dat2bernqua(F, X, bound.type="sd", listem=TRUE)$x
+set.seed(1); X <- exp(rnorm(20)); F <- c(0, .25, .50, .75, 1)
+dat2bernqua(F, X, bound.type="none",   listem=TRUE)$x
+dat2bernqua(F, X, bound.type="Carv",   listem=TRUE)$x
+dat2bernqua(F, X, bound.type="sd",     listem=TRUE)$x
 dat2bernqua(F, X, bound.type="either", listem=TRUE)$x
-dat2bernqua(F, X, bound.type="sd", fix.lower=0, listem=TRUE)$x
-# Notice that the lower extreme between the last two calls
-# changes from a negative to a positive number when the lower
-# bounds is "known" to be zero.
+dat2bernqua(F, X, bound.type="sd",     listem=TRUE, fix.lower=0)$x
+
 \dontrun{
 X <- sort(10^rnorm(20)); F <- nonexceeds(f01=TRUE)
 plot(qnorm(pp(X)), X, xaxt="n", xlab="", ylab="QUANTILE", log="y")
 add.lmomco.axis(las=2, tcl=0.5, side.type="NPP", twoside=TRUE)
-lines(qnorm(F),     dat2bernqua(F,    X, bound.type="sd"), col=2, lwd=2)
-lines(qnorm(F), exp(dat2bernqua(F,log(X), bound.type="sd")))
-}
+lines(qnorm(F),     dat2bernqua(F,    X,  bound.type="sd"), col="red", lwd=2)
+lines(qnorm(F), exp(dat2bernqua(F,log(X), bound.type="sd"))) # }
+
 \dontrun{
 X <- exp(rnorm(20)); F <- seq(0.001, 0.999, by=.001)
 dat2bernqua(0.9, X, poly.type="Bernstein",   listem=TRUE)$x
 dat2bernqua(0.9, X, poly.type="Kantorovich", listem=TRUE)$x
 dat2bernqua(0.9, X, poly.type="Cheng",       listem=TRUE)$x
 plot(pp(X), sort(X), log="y", xlim=range(F))
-lines(F, dat2bernqua(F, X, poly.type="Bernstein"), col=2)   # red
-lines(F, dat2bernqua(F, X, poly.type="Kantorovich"), col=3) # green
-lines(F, dat2bernqua(F, X, poly.type="Cheng"), col=4)       # blue
-}
+lines(F, dat2bernqua(F, X, poly.type="Bernstein"  ), col="red"  )
+lines(F, dat2bernqua(F, X, poly.type="Kantorovich"), col="green")
+lines(F, dat2bernqua(F, X, poly.type="Cheng"      ), col="blue" ) #}
+
 \dontrun{
 X <- exp(rnorm(20)); F <- nonexceeds()
 plot(pp(X), sort(X))
 lines(F, dat2bernqua(F,X, bound.type="sd", poly.type="Bernstein"))
-lines(F, dat2bernqua(F,X, bound.type="sd", poly.type="Kantorovich"), col=2)
-}
+lines(F, dat2bernqua(F,X, bound.type="sd", poly.type="Kantorovich"), col=2) #}
+
 \dontrun{
 X <- rnorm(25); F <- nonexceeds()
 Q <- dat2bernqua(F, X) # the Bernstein estimates
-plot(F,  dat2bernqua(F, X, bound.type="Carv"), type="l")
-lines(F, dat2bernqua(F, X, bound.type="sd"), col=2)
-lines(F, dat2bernqua(F, X, bound.type="none"), col=3)
-points(pp(X), sort(X), pch=16, cex=.75, col=4)
-}
+plot( F, dat2bernqua(F, X, bound.type="Carv"), type="l"   )
+lines(F, dat2bernqua(F, X, bound.type="sd"),   col="red"  )
+lines(F, dat2bernqua(F, X, bound.type="none"), col="green")
+points(pp(X),      sort(X), pch=16, cex=.75,   col="blue" ) #}
+
 \dontrun{
 set.seed(13)
-par <- parkap(vec2lmom(c(1,.5,.4,.2)))
-F <- seq(0.001,0.999,by=.001)
+par <- parkap(vec2lmom(c(1, .5, .4, .2)))
+F <- seq(0.001, 0.999, by=0.001)
 X <- sort(rlmomco(100, par))
 pp <- pp(X)
 pdf("lmomco_example_dat2bernqua.pdf")
-plot(qnorm(pp(X)), dat2bernqua(pp, X), col=4, pch=1,
+plot(qnorm(pp(X)), dat2bernqua(pp, X), col="blue", pch=1,
      ylim=c(0,qlmomco(0.9999, par)))
-lines(qnorm(F), dat2bernqua(F, sort(X)), col=4)
-lines(qnorm(F), qlmomco(F, par), col=2)
-sampar <- parkap(lmoms(X))
+lines(qnorm(F), dat2bernqua(F, sort(X)), col="blue")
+lines(qnorm(F),     qlmomco(F,     par), col="red" )
+sampar  <- parkap(lmoms(X))
 sampar2 <- parkap(lmoms(dat2bernqua(pp, X)))
-lines(qnorm(pp(F)), qlmomco(F, sampar), col=1)
-lines(qnorm(pp(F)), qlmomco(F, sampar2), col=4, lty=2)
-points(qnorm(pp(X)), X, col=1, pch=16)
-
-plot(qnorm(pp(X)), dat2bernqua(pp, X, altsupport=TRUE), col=4, pch=1,
-     ylim=c(0,qlmomco(0.9999, par)))
-lines(qnorm(F), dat2bernqua(F, sort(X), altsupport=TRUE), col=4)
-lines(qnorm(F), qlmomco(F, par), col=2)
-sampar <- parkap(lmoms(X))
-sampar2 <- parkap(lmoms(dat2bernqua(pp, X, altsupport=TRUE)))
-lines(qnorm(pp(F)), qlmomco(F, sampar), col=1)
-lines(qnorm(pp(F)), qlmomco(F, sampar2), col=4, lty=2)
-points(qnorm(pp(X)), X, col=1, pch=16)
-dev.off()
-}
+lines( qnorm(pp(F)), qlmomco(F, sampar ), col="black")
+lines( qnorm(pp(F)), qlmomco(F, sampar2), col="blue", lty=2)
+points(qnorm(pp(X)), X, col="black", pch=16)
+dev.off() #}
 }
 \keyword{smoothing (Bernstein-Kantorovich)}
 \keyword{smoothing (Bernstein polynomial)}

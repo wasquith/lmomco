@@ -34,7 +34,7 @@ The Examples section explores this aspect.
   \item{afunc.root}{Corresponds to the \code{f.root} element returned by the \code{uniroot()} function.}
   \item{iter}{Corresponds to the \code{iter} element returned by the \code{uniroot()} function.}
   \item{estim.prec}{Corresponds to the \code{estim.prec} element returned by the \code{uniroot()} function.}
-  \item{source}{An attribute identifying the computational source: \dQuote{dat2bernquaf}}
+  \item{source}{An attribute identifying the computational source: \dQuote{dat2bernquaf}.}
 }
 \author{W.H. Asquith}
 \seealso{\code{\link{dat2bernqua}} }
@@ -44,11 +44,11 @@ dat2bernquaf(6, c(2,10)) # median 1/2 of 2 and 10 is 6 (trivial and fast)
 set.seed(5135)
 lmr <- vec2lmom(c(1000, 400, 0.2, 0.3, 0.045))
 par <- lmom2par(lmr, type="wak")
-Q <- rlmomco(83, par) # n = 83 and extremely non-Normal data
+Q   <- rlmomco(83, par) # n = 83 and extremely non-Normal data
 lgQ <- max(Q) # 5551.052 by theory
 dat2bernquaf(median(Q), Q)$f  # returns 0.5100523 (nearly 1/2)
-dat2bernquaf(lgQ, Q)$f                   # unable to root
-dat2bernquaf(lgQ, Q, bound.type="sd")$f  # unable to root
+dat2bernquaf(lgQ,   Q)$f                   # unable to root
+dat2bernquaf(lgQ,   Q, bound.type="sd")$f  # unable to root
 itf <- c(0.5, 0.99999)
 f <- dat2bernquaf(lgQ, Q, interval=itf, bound.type="sd")$f
 print(f) # F=0.9961118
@@ -56,12 +56,10 @@ qlmomco(f, par) # 5045.784 for the estimate F=0.9961118
 # If we were not using the maximum and something more near the center of the
 # distribution then that estimate would be closer to qlmomco(f, par).
 # You might consider lqQ <- qlmomco(0.99, Q) # theoretical 99th percentile and
-# let the random seed wander and see the various results.
-}
+# let the random seed wander and see the various results. }
 }
 \keyword{smoothing (Bernstein-Kantorovich)}
 \keyword{smoothing (Bernstein polynomial)}
 \keyword{smoothing (Kantorovich polynomial)}
 \keyword{smoothing (Parzen weighting)}
 \keyword{quantile function}
-
