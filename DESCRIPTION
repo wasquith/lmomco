@@ -1,7 +1,7 @@
 Package: lmomco
 Type: Package
 Title: L-Moments, Censored L-Moments, Trimmed L-Moments, L-Comoments, and Many Distributions
-Version: 2.4.8
+Version: 2.4.9
 Depends: R (>= 3.3.0), utils
 Imports: goftest, Lmoments, MASS
 Suggests: copBasic

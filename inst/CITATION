@@ -4,9 +4,9 @@ year  <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
 vers  <- paste("R package version",           meta$Version)
 title <- "lmomco---L-moments, censored L-moments, trimmed L-moments, L-comoments, and many distributions"
 
-citEntry(entry="Manual",
+bibentry(bibtype="Manual",
          title  = title,
-         author = personList(as.person("W.H. Asquith")),
+         author = c(person(c("William", "H."), "Asquith")),
          year   = year,
          note   = vers,
          textVersion =

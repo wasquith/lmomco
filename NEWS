@@ -1,7 +1,12 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Changes in version 2.4.8 (2023-05-29)
+Changes in version 2.4.9 (2023-05-29)
+-  Added lmomcohash.Rd to document the .lmomcohash in an attempt to pass CRAN
+     package submission checks.
+
+
+Changes in version 2.4.8 (2023-05-28)
 -  Returned this NEWS.
 -  Added additional mathematical definition to the umvu.sd component in pmoms.Rd.
 -  Edits to Examples in mle2par.Rd (color changing from numbers to names)
