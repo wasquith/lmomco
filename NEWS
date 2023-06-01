@@ -1,6 +1,11 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
+Changes in version 2.4.10 ()
+-  Added more details to lmomcohash.Rd that supports the .lmomcohash.
+-  Grammar and minor changes to spacing in expect.max.ostat.Rd Examples.
+
+
 Changes in version 2.4.9 (2023-05-29)
 -  Added lmomcohash.Rd to document the .lmomcohash in an attempt to pass CRAN
      package submission checks.

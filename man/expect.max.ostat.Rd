@@ -23,7 +23,7 @@ In terms of the probability density function (PDF) \code{\link{dlmomco}} and cum
 \deqn{
 \mathrm{E}[X_{j:n}] = \frac{1}{\mathrm{B}(j,n-j+1)}\int_{-\infty}^{\infty} [F(x)]^{j-1}[1-F(x)]^{n-j} x\, f(x)\;\mathrm{d} x\mbox{,}
 }
-where \eqn{F(x)} is the CDF, \eqn{f(x)} is the PDF, and \eqn{\mathrm{B}(j,n-j+1)} is the complete Beta function, which in \R is \code{beta} with the same argument order as shown above.
+where \eqn{F(x)} is the CDF, \eqn{f(x)} is the PDF, and \eqn{\mathrm{B}(j, n-j+1)} is the complete Beta function, which in \R is \code{beta} with the same argument order as shown above.
 }
 \usage{
 expect.max.ostat(n, para=NULL, cdf=NULL, pdf=NULL, qua=NULL,
@@ -42,7 +42,7 @@ expect.max.ostat(n, para=NULL, cdf=NULL, pdf=NULL, qua=NULL,
   \item{...}{Additional arguments to pass to the three distribution functions.}
 }
 \details{
-If \code{qua != NULL}, then the first order-statistic expectation equation above is used, and any function that might have been set in \code{cdf} and \code{pdf} is \emph{ignored}. If the limits are infinite (default), then the limits of the integration will be set to \eqn{F\!\downarrow = 0} and  \eqn{F\!\uparrow = 1}. The user can replace these by setting the limits to something \dQuote{near} zero and(or) \dQuote{near} 1. Please consult the Note below concerning more information about the limits of integration.
+If \code{qua != NULL}, then the first order-statistic expectation equation above is used, and any function that might have been set in \code{cdf} and \code{pdf} is \emph{ignored}. If the limits are infinite (default), then the limits of the integration will be set to \eqn{F\!\downarrow = 0} and  \eqn{F\!\uparrow = 1}. The user can replace these by setting the limits to something \dQuote{near} zero and(or) \dQuote{near} 1. Please consult the \bold{Note} below concerning more information about the limits of integration.
 
 If \code{qua == NULL}, then the second order-statistic expectation equation above is used and \code{cdf} and \code{pdf} must be set. The default \eqn{\pm\infty} limits are used unless the user \emph{knows} otherwise for the distribution or through supervision provides their meaning of \emph{small} and \emph{large}.
 
@@ -53,16 +53,16 @@ Last comments: This function is built around the idea that either (1) the \code{
 para <- vec2par(c(100, 23, -0.5), type="gev")
 lo <- quagev(0, para) # The value 54
 hi <- quagev(1, para) # Infinity
-E22 <- expect.max.ostat(2, para=para,cdf=cdfgev,pdf=pdfgev,
+E22 <- expect.max.ostat(2, para=para,cdf=cdfgev, pdf=pdfgev,
                            lower=lo, upper=hi)
-E21 <- expect.min.ostat(2, para=para,cdf=cdfgev,pdf=pdfgev,
+E21 <- expect.min.ostat(2, para=para,cdf=cdfgev, pdf=pdfgev,
                            lower=lo, upper=hi)
 L2 <- (E22 - E21)/2 # definition of L-scale
-cat("L-scale: ",L2,"(integration)",
+cat("L-scale: ", L2, "(integration)",
     lmomgev(para)$lambdas[2], "(theory)\n")
 # The results show 33.77202 as L-scale.
 }
-The design intent makes it possible for some arbitrary and(or) new quantile function with difficult \code{cdf} and \code{pdf} expressions (or numerical approximations) to not be needed as the L-moments are explored.  Contrarily, perhaps some new \code{pdf} exists and simple integration of it is made to get the \code{cdf} but the \code{qua} would need more elaborate numerics to invert the \code{cdf}. The user could then still explore the L-moments with supervision on the integration limits or foreknowledge of the support of the distribution.
+The design intent makes it possible for some arbitrary and(or) new quantile function with difficult \code{cdf} and \code{pdf} expressions (or numerical approximations) to not be needed as the L-moments are explored. Contrarily, perhaps some new \code{pdf} exists and simple integration of it is made to get the \code{cdf} but the \code{qua} would need more elaborate numerics to invert the \code{cdf}. The user could then still explore the L-moments with supervision on the integration limits or foreknowledge of the support of the distribution.
 }
 \value{
 The expectation of the maximum order statistic, unless \eqn{j} is specified and then the expectation of that order statistic is returned. This similarly holds if the \code{\link{expect.min.ostat}} function is used except \dQuote{maximum} becomes the \dQuote{minimum}.
@@ -80,7 +80,7 @@ A function such as this might be helpful for computations involving distribution
 
 Last comments: Internally, judicious use of logarithms and exponents for the terms involving the \eqn{F} and \eqn{1-F} and the quantities to the left of the intergrals shown above are made in an attempt to maximize stability of the function without the user having to become too invested in the \code{lower} and \code{upper} limits. For example, \eqn{(1-F)^{n-j} \rightarrow \exp([n-j]\log(1-F))}. Testing indicates that this coding practice is quite useful. But there will undoubtedly be times for which the user needs to be informed enough about the expected value on return to identify that tweaking to the integration limits is needed. Also use of \R functions \code{lbeta} and \code{lchoose} is made to maximize operations in logarithmic space.
 
-For \pkg{lmomco} v.2.1.+: Because of the extensive use of exponents and logarithms as described, enhanced deep tail estimation of the extrema for large \eqn{n} and large or small \eqn{j} results. This has come at the expense that expectations can be computed when the expectations actually do not exist. An error in the integration no longer occurs in \pkg{lmomco}. For example, the Cauchy distribution has infinite extrema but this function (for least for a selected parameter set and \code{n=10}) provides apparent values for the \eqn{\mathrm{E}[X_{1:n}]} and \eqn{\mathrm{E}[X_{n:n}]} when the \code{cdf} and \code{pdf} are used but not when the \code{qua} is used. Users are cautioned to not rely on \code{\link{expect.max.ostat}} \dQuote{knowing} that a given distribution has undefined order statistic extrema. Now for the Cauchy case just described, the extrema for \eqn{j = [1,n]} are hugely(!) greater in magnitude than for \eqn{j = [2,(n-1)]}, so some resemblance of \emph{infinity} remains.
+For \pkg{lmomco} v.2.1.+: Because of the extensive use of exponents and logarithms as described, enhanced deep tail estimation of the extrema for large \eqn{n} and large or small \eqn{j} results. This has come at the expense that expectations can be computed when the expectations actually do not exist. An error in the integration no longer occurs in \pkg{lmomco}. For example, the Cauchy distribution has infinite extrema but this function (for least for a selected parameter set and \code{n=10}) provides apparent values for the \eqn{\mathrm{E}[X_{1:n}]} and \eqn{\mathrm{E}[X_{n:n}]} when the \code{cdf} and \code{pdf} are used but not when the \code{qua} is used. Users are cautioned to not rely on \code{\link{expect.max.ostat}} \dQuote{knowing} that a given distribution has undefined order statistic extrema. Now for the Cauchy case just described, the extrema for \eqn{j = [1, n]} are hugely(!) greater in magnitude than for \eqn{j = [2, (n-1)]}, so some resemblance of \emph{infinity} remains.
 
 The alias \code{\link{eostat}} is a shorter name dispatching to \code{\link{expect.max.ostat}} all of the arguments.
 }
@@ -94,15 +94,16 @@ Hosking, J.R.M., 2006, On the characterization of distributions by their L-momen
 \author{W.H. Asquith}
 \seealso{\code{\link{theoLmoms.max.ostat}}, \code{\link{expect.min.ostat}}, \code{\link{eostat}}}
 \examples{
-para <- vec2par(c(10,100), type="nor")
+para <- vec2par(c(10, 100), type="nor")
 n <- 12
 # The three outputted values from should be similar:
 # (1) theoretical, (2) theoretical, and (3) simulation
 expect.max.ostat(n, para=para, cdf=cdfnor, pdf=pdfnor)
 expect.max.ostat(n, para=para, qua=quanor)
-mean(sapply(1:1000, function(x) { max(rlmomco(n,para))}))
+mean(sapply(seq_len(1000), function(x) { max(rlmomco(n, para))}))
 
-eostat(8, j=5, qua=quagum, para=vec2par(c(1670,1000), type="gum"))
+eostat(8, j=5, qua=quagum, para=vec2par(c(1670, 1000), type="gum"))
+
 \dontrun{
 para <- vec2par(c(1280, 800), type="nor")
 expect.max.ostat(10, j=9, para, qua=quanor)
@@ -112,8 +113,7 @@ expect.max.ostat(10, j=9, para, pdf=pdfnor, cdf=cdfnor,
 [1] 1.662701e-06  # FAILURE ---------------------------
 expect.max.ostat(10, j=9, para, pdf=pdfnor, cdf=cdfnor,
                                 lower=-1E3, upper=1E5)
-[1] 2081.086      # SUCCESS ---------------------------
-}
+[1] 2081.086      # SUCCESS ---------------------------}
 }
 \keyword{order statistics (misc.)}
 
