@@ -4,6 +4,9 @@
 Changes in version 2.4.10 ()
 -  Added more details to lmomcohash.Rd that supports the .lmomcohash.
 -  Grammar and minor changes to spacing in expect.max.ostat.Rd Examples.
+-  Added more references to headrick.sheng.lalpha.Rd.
+-  Added lmrloc() for line of organic correlation (reduced major axis) line
+     fitting by L-moments and product moments.
 
 
 Changes in version 2.4.9 (2023-05-29)
