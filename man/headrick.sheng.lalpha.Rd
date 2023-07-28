@@ -174,7 +174,7 @@ Headrick, T.C., and Sheng, Y., 2013, An alternative to Cronbach's alpha---An L-m
 
 Headrick, T.C., and Sheng, Y., 2013, A proposed measure of internal consistency reliability---Coefficient L-alpha: Behaviormetrika, v. 40, no. 1, pp. 57--68, \doi{10.2333/bhmk.40.57}.
 
-\enc{Béland}{Beland}, S., Cousineau, D., and Loye, N., 2017, Using the McDonald's omega coefficient instead of Cronbach's alpha [French]: McGill Journal of Education, v. 52, no. 3, pp. 791--804, \doi{https://doi.org/10.7202/1050915ar}.
+\enc{Béland}{Beland}, S., Cousineau, D., and Loye, N., 2017, Using the McDonald's omega coefficient instead of Cronbach's alpha [French]: McGill Journal of Education, v. 52, no. 3, pp. 791--804, \doi{https://doi.org/10.7202/1050915ar}.
 }
 \author{W.H. Asquith}
 \seealso{\code{\link{Lcomoment.matrix}}, \code{\link{pp}}}
