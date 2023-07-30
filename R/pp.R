@@ -8,27 +8,28 @@ function(x, A=NULL, B=NULL, a=0, sort=TRUE, ties.method="first", ...) {
       }
       A <- -a
       B <- 1 - 2*a
+   } else {
+     if(is.null(A)) {
+       warnings("Plotting position parameter A is NULL")
+       return(NULL)
+     }
+     if(is.null(B)) {
+       warnings("Plotting position parameter B is NULL")
+       return(NULL)
+     }
+     if(A <= -1) {
+       warnings("Plotting position parameter A <= -1, invalid")
+       return(NULL)
+     }
+     if(B <= -1) {
+       warnings("Plotting position parameter B <= -1, invalid")
+       return(NULL)
+     }
+     if(A >= B) {
+       warnings("Plotting position parameters B < A, invalid")
+       return(NULL)
+     }
    }
-   if(is.null(A)) {
-      warnings("Plotting position parameter A is NULL")
-      return(NULL)
-   }
-   if(is.null(B)) {
-      warnings("Plotting position parameter B is NULL")
-      return(NULL)
-   }
-   if(A < -1) {
-     warnings("Plotting position parameters A < -1, invalid")
-     return(NULL)
-   }
-   if(B < A) {
-     warnings("Plotting position parameters B < A, invalid")
-     return(NULL)
-   }
-   #if(A <= -1 | A > B) {
-   #   warnings("Plotting position parameters A or B are invalid")
-   #   return(NULL)
-   #}
 
    denom <- length(x) + B
    ranks <- rank(x, ties.method=ties.method)
@@ -40,12 +41,12 @@ function(x, A=NULL, B=NULL, a=0, sort=TRUE, ties.method="first", ...) {
    }
 }
 
-#plot(c(-2,2), c(-2,2), type="n")
-#for(A in seq(-2,2,by=.1)) {
-#  for(B in seq(-2,2, by=.1)) {
-#    the.pp <- pp2(1:10, A=A, B=B, a=NULL)
-#    if(is.null(the.pp)) next
-#    suppressWarnings(col <- as.numeric(check.fs(the.pp)))
-#    points(A,B, col=col, pch=16)
-#  }
-#}
+# plot(c(-1,1), c(-1,1), type="n")
+# for(A in seq(-1,1,by=.02)) {
+#   for(B in seq(-1,1, by=.02)) {
+#     the.pp <- pp(1:10, A=A, B=B, a=NULL)
+#     if(is.null(the.pp)) next
+#     suppressWarnings(col <- as.numeric(check.fs(the.pp)))
+#     points(A,B, col=col, pch=16)
+#   }
+# }

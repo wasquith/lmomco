@@ -7,6 +7,8 @@ Changes in version 2.4.10 ()
 -  Added more references to headrick.sheng.lalpha.Rd.
 -  Added lmrloc() for line of organic correlation (reduced major axis) line
      fitting by L-moments and product moments.
+-  Corrected range of the viable A and B parameters for pp() and added the
+     constraints to them with each other in the pp.Rd.
 
 
 Changes in version 2.4.9 (2023-05-29)

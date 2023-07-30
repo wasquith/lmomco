@@ -6,7 +6,7 @@ The plotting positions of a data vector (\code{x}) are returned in ascending ord
 \deqn{pp_i = \frac{i-a}{n+1-2a} \mbox{,}}
 where \eqn{pp_i} is the nonexceedance probability \eqn{F} of the \eqn{i}th ascending data value. The parameter \eqn{a} specifies the plotting-position type, and \eqn{n} is the sample size (\code{length(x)}). Alternatively, the plotting positions can be computed by
 \deqn{pp_i = \frac{i+A}{n+B} \mbox{,}}
-where \eqn{A} and \eqn{B} can obviously be expressed in terms of \eqn{a}.
+where \eqn{A} and \eqn{B} can obviously be expressed in terms of \eqn{a} for \eqn{B > A > -1} (Hosking and Wallis, 1997, sec. 2.8).
 }
 \usage{
 pp(x, A=NULL, B=NULL, a=0, sort=TRUE, ties.method="first", ...)
@@ -39,6 +39,9 @@ Various plotting positions have been suggested in the literature. Stedinger and 
 The function uses the \R \code{rank} function, which has specific settings to handle tied data. For implementation here, the \code{ties.method="first"} method to \code{rank} is used. The user has flexibility in changing this to their own custom purposes.
 }
 \references{
+Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An
+approach based on L-moments: Cambridge University Press.
+
 Stedinger, J.R., Vogel, R.M., and Foufoula-Georgiou, E., 1992, Frequency analysis of extreme events, in Handbook of Hydrology, chapter 18, editor-in-chief D. A. Maidment: McGraw-Hill, New York.
 }
 \author{W.H. Asquith}
