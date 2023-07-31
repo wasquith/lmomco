@@ -1,6 +1,8 @@
 "disfitqua" <-
  function(x, f, objfun=c("rmse", "mad"),
-                init.lmr=NA, init.para=NA, type=NA, verbose=FALSE, ... ) {
+                init.lmr=NULL, init.para=NULL, type=NA,
+                ptransf=  function(t) return(t),
+                pretransf=function(t) return(t), verbose=FALSE, ... ) {
 
    if(length(f) != length(x)) {
       warning("Lengths of arguments 'f' and 'x' are not equal, returning NULL")
@@ -15,7 +17,7 @@
 
    n.para <- dist.list(type=type) # parameter count of the named distribution
 
-   if(! is.na(init.lmr)) {
+   if(! is.null(init.lmr)) {
       if(length(init.lmr$L1) == 1) init.lmr <- lmorph(init.lmr)
       if(length(init.lmr$lambdas) < n.para) {
          warning("Length of the initial L-moments in argument 'init.lmr' is ",
@@ -27,11 +29,11 @@
 
    # Having initial parameters will have priority over having initial L-moments
    # because the optimization is based on the parameters changing not the L-moments
-   if(is.na(init.para)) {
+   if(is.null(init.para)) {
       # The premise of the "guessing" at the parameters is based on the quantiles
       # but for many of intend applications (risk analysis) quantiles below the
       # median are not usually available.
-      if(is.na(init.lmr)) {
+      if(is.null(init.lmr)) {
          if(verbose) {
             message("Starting parameters not given, attempting to setup ",
                     "from the quantiles")
@@ -43,8 +45,8 @@
             return(NULL)
          }
          init.lmr    <- rep(NA, n.para)
-         init.lmr[1] <- x[1] # tread the smallest quantile as the mean, in many
-         # applications, x[1] would be the median
+         init.lmr[1] <- x[1] # treat the smallest quantile as the mean, in many
+         # expected applications, x[1] would be the median
 
          # The mean() will work just fine without the 3rd item being present.
          if(n.para > 1) init.lmr[2] <- mean(x[2:3], na.rm=TRUE) - x[1]
@@ -80,7 +82,7 @@
 
    if(verbose) message("     Initial parameters: ",
                                           paste(init.para, collapse=", "), "\n")
-   para <- init.para.to.archive <- init.para$para
+   para <- init.para$para
 
    fncontrol <- list(f=f, x=x, type=type)
 
@@ -93,15 +95,15 @@
       stop("should not be here in logic")
    }
 
-   "fn" <- function(mypar) {
-      newpar <- NULL
-      try( newpar <- list(para=mypar, type=fncontrol$type) )
-      if(is.null(newpar)) {
+   "fn" <- function(mypara) {
+      newpara <- NULL
+      try( newpara <- list(para=mypara, type=fncontrol$type) )
+      if(is.null(newpara)) {
          warning("FATAL: new parameters could not be estimated, ",
                  "stepping the returning error to optim() to Inf")
          return(Inf)
       }
-      newXs <- par2qua(fncontrol$f, newpar)
+      newXs <- par2qua(fncontrol$f, newpara)
 
       #print(length(fncontrol$x))
       if(length(newXs) != length(fncontrol$x)) {
@@ -115,17 +117,16 @@
    }
 
    rt <- NULL
-   try( rt <- optim(para, fn, ...) )
+   try( rt <- optim(ptransf(para), fn, ...) )
    if(is.null(rt)) {
       message("optim() call returned NULL, try changing the initial ",
               "parameters or L-moments")
       return(NA)
    }
-   para <- rt$par
-   fit.para <- vec2par(para, type=type)
+   fit.para <- vec2par(pretransf(rt$par), type=type)
    if(verbose) message("     Optimized parameters: ",
                                            paste(fit.para, collapse=", "), "\n")
-   fit.para$init.para <- init.para.to.archive
+   fit.para$init.para <- para
    fit.para$source    <- "disfitqua"
    fit.para$disfitqua <- rt # preserve the operations of optim
    return(fit.para)

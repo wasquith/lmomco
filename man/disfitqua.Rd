@@ -14,7 +14,9 @@ The right-tail restriction is the general case in flood-peak hydrology in which 
 }
 \usage{
 disfitqua(x, f, objfun=c("rmse", "mad"),
-                init.lmr=NA, init.para=NA, type=NA, verbose=FALSE, ... )
+                init.lmr=NULL, init.para=NULL, type=NA,
+                ptransf=  function(t) return(t),
+                pretransf=function(t) return(t), verbose=FALSE, ... )
 }
 \arguments{
   \item{x}{The quantiles \eqn{x_o(f)} for the nonexceedance probabilities in \code{f}.}
@@ -23,6 +25,9 @@ disfitqua(x, f, objfun=c("rmse", "mad"),
   \item{init.lmr}{Optional initial values for the L-moments from which the initial starting parameters for the optimization will be determined. The optimizations by this function are not performed on the L-moments during the optimization. The form of \code{init.lmr} is that of an L-moment object from the \pkg{lmomco} package (e.g. \code{\link{lmoms}}).}
   \item{init.para}{Optional initial values for the parameters used for starting values for the \code{optim} function. If this argument is not set nor is \code{init.lmr}, then unrigorous estimates of the mean \eqn{\lambda_1} and L-scale \eqn{\lambda_2} are made from the available quantiles, higher L-moment ratios \eqn{\tau_r} for \eqn{r \ge 3} are set to zero, and the L-moments converted to the initial parameters.}
   \item{type}{The distribution type specified by the abbreviations listed under \code{\link{dist.list}}.}
+  \item{ptransf}{An optional parameter transformation function (see \bold{Examples}) that is useful to guide the optimization run. For example, suppose the first parameter of a three parameter distribution resides in the positive domain, then \cr \code{ptransf(t) = }
+\code{function(t) c(log(t[1]), t[2], t[3])}.}
+  \item{pretransf}{An optional parameter retransformation function (see \bold{Examples}) that is useful to guide the optimization run. For example, suppose the first parameter of a three parameter distribution resides in the positive domain, then \cr \code{pretransf(t) = } \code{function(t) c(exp(t[1]), t[2], t[3])}.}
   \item{verbose}{A logical switch on the verbosity of output.}
   \item{...}{Additional arguments to pass to the \code{optim} function.}
 }
@@ -47,14 +52,14 @@ Asquith, W.H., and Roussel, M.C., 2009, Regression equations for estimation of a
 # Suppose the following quantiles are estimated using eight equations provided by
 # Asquith and Roussel (2009) for some watershed in Texas:
 Q <- c(1480, 3230, 4670, 6750, 8700, 11000, 13600, 17500)
-# These are real estimates from a suite of watershed properties but the watershed
+# These are real estimates from a suite of watershed properties; the watershed
 # itself and location are not germane to demonstrate this function.
 LQ <- log10(Q) # transform to logarithms of cubic feet per second
 # Convert the averge annual return periods for the quantiles into probability
 P <- T2prob(c(2, 5, 10, 25, 50, 100, 200, 500)); qP <- qnorm(P) # std norm variates
-# The log-Pearson Type III (LPIII) is immensely popular for flood-risk computations.
+# The log-Pearson type III (LPIII) is immensely popular for flood-risk computations.
 # Let us compute LPIII parameters to the available quantiles and probabilities for
-# the watershed. The log-Pearson Type III is "pe3" in the lmomco with logarithms.
+# the watershed. The log-Pearson type III is "pe3" in the lmomco with logarithms.
 par1 <- disfitqua(LQ, P, type="pe3", objfun="rmse") # root mean square error
 par2 <- disfitqua(LQ, P, type="pe3", objfun="mad" ) # mean absolute deviation
 # Now express the fitted distributions in forms of an LPIII.
@@ -63,13 +68,13 @@ LQfit1 <- qlmomco(P, par1); LQfit2 <- qlmomco(P, par2)
 plot( qP, LQ, pch=5, xlab="STANDARD NORMAL VARIATES",
                      ylab="FLOOD QUANTILES, CUBIC FEET PER SECOND")
 lines(qP, LQfit1, col=2); lines(qP, LQfit2, col=4) # red and blue lines
+
 \dontrun{
 # Now demonstrate how a Wakeby distribution can be fit. This is an example of how a
-# three parameter distribution might be fit and then the general L-moments secured for
+# three parameter distribution might be fit, and then the general L-moments secured for
 # an alternative fit using a far more complicated distribution. The Wakeby for the
-# above situation does not fit "out of the box." The types "gld", "aep4", and "kap"
-# all with four parameters work with some serious CPUs burned for gld.
-lmr1 <- theoLmoms(par1) # need five L-moments but lmompe3() only gives four,
+# above situation does not fit out of the box.
+lmr1 <- theoLmoms(par1) # We need five L-moments but lmompe3() only gives four,
 # therefore must compute the L-moment by numerical integration provided by theoLmoms().
 par3 <- disfitqua(LQ, P, type="wak", objfun="rmse", init.lmr=lmr1)
 lines(qP, par2qua(P, par3), col=6, lty=2) # dashed line, par2qua alternative to qlmomco
@@ -77,7 +82,7 @@ lines(qP, par2qua(P, par3), col=6, lty=2) # dashed line, par2qua alternative to 
 # Finally, the initial L-moment equivalents and then the L-moments of the fitted
 # distribution can be computed and compared.
 par2lmom(vec2par(par3$init.para, type="wak"))$ratios # initial L-moments
-par2lmom(vec2par(par3$para,      type="wak"))$ratios # final L-moments}
+par2lmom(vec2par(par3$para,      type="wak"))$ratios # final   L-moments}
 }
 \keyword{distribution (parameters)}
 \keyword{quantile function}
