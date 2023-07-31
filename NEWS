@@ -9,6 +9,31 @@ Changes in version 2.4.10 ()
      fitting by L-moments and product moments.
 -  Corrected range of the viable A and B parameters for pp() and added the
      constraints to them with each other in the pp.Rd.
+-  Systematic standardization to "init.para" for initial parameters as the list
+     object throughout the package. Interface changes to distfitqua.R/Rd,
+     mle2par.R/Rd, mps2par.R/Rd, tlmr2par.R/Rd, and x2pars.R (only the .R);
+     examples in pdfgev.Rd and pdfgld.Rd. There is no support for reverse
+     handling previous argument called para.int ir
+-  Changed lmomco-package.Rd example to use initial L-moments for mle2par() and
+     mps2par() from using initial parameters. Related to auditing for the
+     previous listed change.
+-  Added ptransf and pretransf arguments to disfitqua() to align to support
+     already in mle2par() and mps2par().
+-  Added ptransf and pretransf arguments to tlmr2par() to align to support
+     already in mle2par() and mps2par().
+-  Added indexing keywords for the external package(s) involved with the
+     function's code and (or) documentation: cdfgam.Rd (gamlss.dist),
+     cvm.text.lmomco.Rd (goftest), lmomgam.Rd (flexsurv, gamlss.dist),
+     lmomkur.Rd (lattice), lmoms.cov.Rd (Lmoments, MASS, nsRFA),
+     lmom2vec.Rd (lmoms), lmomco-package.Rd (eva, lmoms, lmomRFA, Lmoments),
+     lmrdiscord.Rd (lmomRFA), mlepar.Rd (MASS), mps2par.Rd (eva, fBasics, gld),
+     parrice.Rd (VGAM), pdfgam.Rd (flexsurv, gamlss.dist), pdfpe3.Rd (PearsonDS),
+     pdfgev.Rd (evd), pdfrice.Rd (VGAM), tau34sq.normtest (batch),
+     TX38lgtrmFlow.Rd (lmomRFA), qua2ci.cov.Rd (MASS), quagam.Rd (gamlss.dist),
+     quagev.Rd (evd), quagpd.Rd (evd), and quagpd.Rd (lmom).
+-  Added indexing keywords for external data from packages involved with
+     the function's Examples: lmoms.cov.Rd (MASS::michelson),
+     lmrdiscord.Rd (lmomRFA::Cascades), mle2par.Rd (MASS::cats).
 
 
 Changes in version 2.4.9 (2023-05-29)
