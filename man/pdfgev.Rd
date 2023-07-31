@@ -48,7 +48,7 @@ Hosking, J.R.M. and Wallis, J.R., 1997, Regional frequency analysis---An approac
     x <- rlmomco(1000, gev)
     mu1 <- mean(x); names(mu1) <- "mean"
     cv1 <-      NA; names(cv1) <- "converge"
-    mle <- mle2par(x, type="gev", para.int=pargev(lmoms(x)),
+    mle <- mle2par(x, type="gev", init.para=pargev(lmoms(x)),
              ptransf=function(t) { c(t[1], log(t[2]), t[3]) },
            pretransf=function(t) { c(t[1], exp(t[2]), t[3]) },
                       null.on.not.converge=FALSE)
@@ -61,3 +61,4 @@ Hosking, J.R.M. and Wallis, J.R., 1997, Regional frequency analysis---An approac
 \keyword{distribution}
 \keyword{probability density function}
 \keyword{Distribution: Generalized Extreme Value}
+\keyword{Package: evd}
