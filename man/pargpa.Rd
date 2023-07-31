@@ -41,8 +41,8 @@ P2  <- pargpa(lmr, xi=0.25)
 \dontrun{
 F <- nonexceeds()
 plot(pp(X), sort(X))
-lines(F,quagpa(F,P1))  # black line
-lines(F, quagpa(F,P2), col=2)   # red line
+lines(F, quagpa(F,P1))         # black line
+lines(F, quagpa(F,P2), col=2)  # red line
 }
 }
 \keyword{distribution (parameters)}
