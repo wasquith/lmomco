@@ -69,7 +69,7 @@ if(PDS$convergence != 0) {
   PDS <- vec2par(c(mu,stdev,skew), type="pe3") # lmomco form of parameters
 }
 print(lmrpar$para); print(mpspar$para); print(mlepar$para); print(PDS$para)
-#        mu     sigma     gamma 
+#        mu     sigma     gamma
 # 2.9653380 0.3667651 0.5178592 # L-moments (by lmomco, of course)
 # 2.9678021 0.3858198 0.4238529 # MPS by lmomco
 # 2.9653357 0.3698575 0.4403525 # MLE by lmomco
@@ -79,3 +79,4 @@ print(lmrpar$para); print(mpspar$para); print(mlepar$para); print(PDS$para)
 \keyword{distribution}
 \keyword{probability density function}
 \keyword{Distribution: Pearson Type III}
+\keyword{Package: PearsonDS}

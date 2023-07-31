@@ -63,3 +63,4 @@ contourplot(T4~logA+logB, cuts=10, lwd=0.5, label.style="align",
 }
 \keyword{L-moment (distribution)}
 \keyword{Distribution: Kumaraswamy}
+\keyword{Package: lattice}

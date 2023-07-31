@@ -26,4 +26,4 @@ A vector of the L-moments (\eqn{\lambda_1}, \eqn{\lambda_2}, \eqn{\tau_3}, \eqn{
 \keyword{utility (vector)}
 \keyword{L-moment (utility)}
 \keyword{utility (L-moments to vector of)}
-
+\keyword{Package: lmoms}

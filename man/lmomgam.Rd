@@ -52,3 +52,5 @@ lmoms(flexsurv::rgengamma(50000, log(7.4), 0.2, Q=0.2*14))$lambdas # simulation
 \keyword{L-moment (distribution)}
 \keyword{Distribution: Gamma}
 \keyword{Distribution: Generalized Gamma}
+\keyword{Package: flexsurv}
+\keyword{Package: gamlss.dist}

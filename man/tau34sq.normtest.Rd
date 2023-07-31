@@ -70,4 +70,4 @@ print(c(a, n, p/s))
 }
 }
 \keyword{L-moment (hypothesis)}
-
+\keyword{Package: batch}

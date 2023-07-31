@@ -98,3 +98,5 @@ lines(X, GGb, col=2, lwd=2) #}
 \keyword{probability density function}
 \keyword{Distribution: Gamma}
 \keyword{Distribution: Generalized Gamma}
+\keyword{Package: flexsurv}
+\keyword{Package: gamlss.dist}

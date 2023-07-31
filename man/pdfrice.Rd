@@ -73,3 +73,4 @@ lines(x, pdfrice(x, rice2), lwd=1, col=3) # NORMAL code triggered
 \keyword{distribution}
 \keyword{probability density function}
 \keyword{Distribution: Rice}
+\keyword{Package: VGAM}

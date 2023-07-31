@@ -102,3 +102,4 @@ Q50yeardrought <- ifelse(tmp.quantile < 0, 0, tmp.quantile)
 }
 }
 \keyword{datasets}
+\keyword{Package: lmomRFA}

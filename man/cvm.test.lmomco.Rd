@@ -62,3 +62,4 @@ message("Cramer--von Mises: T1=", round(T1, digits=6), " and T2=", round(T2, dig
 }
 \keyword{goodness-of-fit}
 \keyword{Cramer--von Mises statistic}
+\keyword{Package: goftest}

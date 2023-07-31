@@ -108,4 +108,5 @@ text(D$t3,D$t4,D$site, cex=0.75, pos=3)
 text(D$t3,D$t4,D$D, cex=0.75, pos=1) #}
 }
 \keyword{L-moment (hypothesis)}
-
+\keyword{Package: lmomRFA}
+\keyword{Data: Cascades (lmomRFA)}

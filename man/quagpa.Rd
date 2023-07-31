@@ -49,3 +49,5 @@ Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approa
 \keyword{distribution}
 \keyword{quantile function}
 \keyword{Distribution: Generalized Pareto}
+\keyword{Package: evd}
+\keyword{Package: lmom}

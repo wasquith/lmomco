@@ -158,3 +158,4 @@ set.seed(145); qua2ci.cov(Y, 0.9, type="wei", altlmoms=lmr, nsim=nsim)
 #       0.9   232.2  244.2  255.9    244.3     244.1    51.91   4.0635}
 }
 \keyword{quantile function (confidence limit)}
+\keyword{Package: MASS}

@@ -71,3 +71,4 @@ lines(X, GGb, col=2, lwd=2) #}
 \keyword{cumulative distribution function}
 \keyword{Distribution: Gamma}
 \keyword{Distribution: Generalized Gamma}
+\keyword{Package: gamlss.dist}

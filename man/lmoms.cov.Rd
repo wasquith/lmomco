@@ -87,4 +87,7 @@ Lmoments::Lmomcov(D, rmax=5)[,5]
 \keyword{PWM (sample)}
 \keyword{L-moment (variance-covariance)}
 \keyword{variance-covariance}
-
+\keyword{Package: Lmoments}
+\keyword{Package: MASS}
+\keyword{Package: nsRFA}
+\keyword{Data: michelson (MASS)}

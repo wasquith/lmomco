@@ -59,3 +59,4 @@ lines(qnorm(FF), quagam(FF, gg), col=2, lwd=2) # }
 \keyword{quantile function}
 \keyword{Distribution: Gamma}
 \keyword{Distribution: Generalized Gamma}
+\keyword{Package: gamlss.dist}
