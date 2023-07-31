@@ -58,7 +58,7 @@ function(lmom, p=c("2", "3"), checklmom=TRUE,...) {
     lSIG <- sum(COE*ETA^PWR)
     if(is.nan(lSIG)) lSIG <- 8
     SIG <- exp(lSIG)
-    para.intA <- c(1,.2) # log(MU), NU
+    init.paraA <- c(1,.2) # log(MU), NU
     objfuncA <- function(k) {
        tmp <- vec2par(c(exp(k[1]),SIG,k[2]), type="gam")
        if(is.null(tmp)) return(Inf)
@@ -73,7 +73,7 @@ function(lmom, p=c("2", "3"), checklmom=TRUE,...) {
     }
 
     rtA <- NULL
-    try(rtA <- optim(para.intA, objfuncA), silent=TRUE)
+    try(rtA <- optim(init.paraA, objfuncA), silent=TRUE)
     if(is.null(rtA)) {
        warning("optim() attempt A is NULL"); return(NULL)
     }
@@ -81,9 +81,9 @@ function(lmom, p=c("2", "3"), checklmom=TRUE,...) {
                rtA$value, rtA$counts[1],  rtA$convergence)
     names(paraA) <- c("mu", "sigma", "nu",
                       "optimAvalue", "optimAcounts", "optimAconvergence")
-    para.intB <- c(rtA$par[1], lSIG, rtA$par[2])
+    init.paraB <- c(rtA$par[1], lSIG, rtA$par[2])
     rtB <- NULL
-    try(rtB <- optim(para.intB, objfuncB), silent=TRUE)
+    try(rtB <- optim(init.paraB, objfuncB), silent=TRUE)
     if(is.null(rtB)) {
        warning("optim() attempt B is NULL"); return(NULL)
     }
