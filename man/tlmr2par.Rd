@@ -6,12 +6,12 @@
 Parameter estimation of a distribution given initial estimate of the parameters of the distribution to the sample trimmed L-moment (TL-moment) using numerical optimization. Thought the TL-moments can be used with substantial depth into either tail and need not be symmetrically trimmed, the TL-moments do not appear as useful when substantial tail trimming is needed, say for mix population mitigation. Then censored or truncation methods might be preferred. The \code{\link{x2xlo}} family of operations can be used for conditional left-tail truncation, which is not uncommon in frequency analyses of rail-tail interest water resources phenomena.
 }
 \usage{
-tlmr2par(x, type, para.int=NULL, trim=NULL, leftrim=NULL, rightrim=NULL, ...)
+tlmr2par(x, type, init.para=NULL, trim=NULL, leftrim=NULL, rightrim=NULL, ...)
 }
 \arguments{
   \item{x}{A vector of data values.}
   \item{type}{Three character (minimum) distribution type (for example, \code{type="gev"}, see \code{\link{dist.list}}.}
-  \item{para.int}{Initial parameters as a vector \eqn{\Theta} or as an \pkg{lmomco} parameter \dQuote{object} from say \code{\link{vec2par}}. If a vector is given, then internally \code{\link{vec2par}} is called with distribution equal to \code{type}.}
+  \item{init.para}{Initial parameters as a vector \eqn{\Theta} or as an \pkg{lmomco} parameter \dQuote{object} from say \code{\link{vec2par}}. If a vector is given, then internally \code{\link{vec2par}} is called with distribution equal to \code{type}.}
   \item{trim}{Level of symmetrical trimming to use in the computations. Although \code{NULL} is in the argument list, the default is 0---the usual L-moment is returned.}
   \item{leftrim}{Level of trimming of the left-tail of the sample, which should be left to \code{NULL} if no or symmetrical trimming is used.}
   \item{rightrim}{Level of trimming of the right-tail of the sample, which should be left to \code{NULL} if no or symmetrical trimming is used.}
@@ -25,7 +25,7 @@ tlmr2par(x, type, para.int=NULL, trim=NULL, leftrim=NULL, rightrim=NULL, ...)
   \item{text}{Optional material. If the solution fails but the optimization appears to converge, then this element is inserted into the list and the \code{para} will be all \code{NA}.}
   \item{source}{Attribute specifying source of the parameters.}
   \item{rt}{The list from the \code{optim()} function.}
-  \item{para.int}{A copy of the initial parameters given.}
+  \item{init.para}{A copy of the initial parameters given.}
 }
 \references{
 Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statistics and Data Analysis, v. 43, pp. 299--314.
@@ -38,8 +38,8 @@ Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statis
 the.data <- rlmomco(140, vec2par(c(3, 0.4, -0.1), type="pe3"))
 wild.guess <- vec2par(c(mean(the.data), 1, 0),    type="pe3")
 pe3whole <- lmom2par(lmoms(the.data),             type="pe3")
-pe3trimA  <- tlmr2par(the.data, "pe3", para.int=wild.guess, leftrim=0,  rightrim=0)
-pe3trimB  <- tlmr2par(the.data, "pe3", para.int=wild.guess, leftrim=10, rightrim=3)
+pe3trimA  <- tlmr2par(the.data, "pe3", init.para=wild.guess, leftrim=0,  rightrim=0)
+pe3trimB  <- tlmr2par(the.data, "pe3", init.para=wild.guess, leftrim=10, rightrim=3)
 message("PE3 parent       = ", paste0(pe3whole$para, sep=" "))
 message("PE3 whole sample = ", paste0(pe3whole$para, sep=" "))
 message("PE3 trim( 0, 0)  = ", paste0(pe3trimA$para, sep=" "))
@@ -64,7 +64,7 @@ the.data <- sort(the.data) # though already sorted, backup for plotting needs
 # have some idea that the one very large event is of questionable suitability
 t1 <- 4; t2 <- 1 # see left and right trimming and then estimation parameters
 whole.para <- lmom2par(lmoms(the.data), type=type)
-trim.para  <- tlmr2par(the.data, type, para.int=whole.para, leftrim=t1, rightrim=t2)
+trim.para  <- tlmr2par(the.data, type, init.para=whole.para, leftrim=t1, rightrim=t2)
 
 n <- length(the.data)
 cols <- rep(grey(0.5), n)

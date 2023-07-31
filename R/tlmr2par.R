@@ -1,47 +1,47 @@
 "tlmr2par" <-
-function(x, type, para.int=NULL,
+function(x, type, init.para=NULL,
                   trim=NULL, leftrim=NULL, rightrim=NULL, ...) {
 
    if(is.null(type)) {
      warning("must specify distribution type")
      return(NULL)
    }
-   if(is.null(para.int)) {
+   if(is.null(init.para)) {
      lmr <- lmoms(x)
      if(!are.lmom.valid(lmr)) {
        warning("L-moments of x are not valid for initial parameters, ",
                "try manual initial parameters")
        return(NULL)
      }
-     para.int <- lmom2par(lmr, type=type, ...)
-     if(is.null(para.int)) {
+     init.para <- lmom2par(lmr, type=type, ...)
+     if(is.null(init.para)) {
        warning("could not estimate initial parameters via L-moments")
        return(NULL)
      }
-   } else if(!is.list(para.int) & is.vector(para.int)) {
-     para.int <- vec2par(para.int, type = type)
-     if(is.null(para.int)) {
+   } else if(!is.list(init.para) & is.vector(init.para)) {
+     init.para <- vec2par(init.para, type = type)
+     if(is.null(init.para)) {
        warning("initial parameters given by vector are not valid for initial parameters, ",
                "try other initial parameters")
        return(NULL)
      }
    }
 
-   if(is.null(para.int)) {
+   if(is.null(init.para)) {
      warning(" initial parameters are NULL")
      return(NULL)
    }
-   if(para.int$type != type) {
+   if(init.para$type != type) {
      warning("distribution requested to fit does not match the type of the ",
              "initial parameters")
      return(NULL)
    }
-   if(length(para.int$para) == 1) {
+   if(length(init.para$para) == 1) {
      warning("function is not yet built for single parameter optimization")
      return(NULL)
    }
 
-  nmom <- length(para.int$para)
+  nmom <- length(init.para$para)
 
   if(  is.null(trim) & is.null(leftrim) & is.null(rightrim)) trim <- 0
   if(! is.null(trim)) { # this is setting symmetrical trimming as a shortcut
@@ -77,7 +77,7 @@ function(x, type, para.int=NULL,
   }
 
   rt <- NULL # standard hack around optim() is to try()
-  try(rt <- stats::optim(para.int$para,    afunc, tlmr=tlmr, type=type,
+  try(rt <- stats::optim(init.para$para,    afunc, tlmr=tlmr, type=type,
                                  leftrim=leftrim, rightrim=rightrim, ...))
   if(is.null(rt)) {
     warning("failure, so returning NULL, insert further advice to the user")
@@ -85,10 +85,10 @@ function(x, type, para.int=NULL,
   }
   trim.para <- vec2par(rt$par, type=type) # final the formal lmomco parameter list
   if(is.null(trim.para)) {
-    trim.para <- list(para=rep(NA, nmom), text="invalid parameters, see rt, try a different para.int")
+    trim.para <- list(para=rep(NA, nmom), text="invalid parameters, see rt, try a different init.para")
   }
   trim.para$source <- "tlmr2par"
   trim.para$rt <- rt # store the results for later use by the user if ever needed
-  trim.para$para.int <- para.int
+  trim.para$init.para <- init.para
   return(trim.para)
 }

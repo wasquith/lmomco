@@ -2,7 +2,7 @@
 \alias{x2pars}
 \title{Estimate an Ensemble of Parameters from Three Different Methods}
 \description{
-This function acts as a frontend to estimate an ensemble of parameters from the methods of L-moments (\code{\link{lmr2par}}), maximum likelihood (MLE, \code{\link{mle2par}}), and maximum product of spacings (MPS, \code{\link{mps2par}}). The parameters estimated by the L-moments are used as the \code{para.int} for the subsequent calls to MLE and MPS.
+This function acts as a frontend to estimate an ensemble of parameters from the methods of L-moments (\code{\link{lmr2par}}), maximum likelihood (MLE, \code{\link{mle2par}}), and maximum product of spacings (MPS, \code{\link{mps2par}}). The parameters estimated by the L-moments are used as the initial parameter guesses for the subsequent calls to MLE and MPS.
 }
 \usage{
 x2pars(x, verbose=TRUE, ...)
