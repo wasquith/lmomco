@@ -2,7 +2,7 @@
 \alias{mps2par}
 \title{Use Maximum Product of Spacings to Estimate the Parameters of a Distribution}
 \description{
-This function uses the method of maximum product of spacings (MPS; maximum spacing estimation or maximum product of spacings estimation) to estimate the parameters of a distribution. The method is based on maximization of the \emph{geometric mean} of probability spacings in the data where the spacings are defined as the differences between the values of the cumulative distribution function, \eqn{F(x)}, at sequential data indices.
+This function uses the method of maximum product of spacings (MPS) (maximum spacing estimation or maximum product of spacings estimation) to estimate the parameters of a distribution. MPS is based on maximization of the \emph{geometric mean} of probability spacings in the data where the spacings are defined as the differences between the values of the cumulative distribution function, \eqn{F(x)}, at sequential data indices.
 
 MPS (Dey \emph{et al.}, 2016, pp. 13--14) is an optimization problem formed by maximizing the geometric mean of the spacing between consecutively ordered observations standardized to a U-statistic. Let \eqn{\Theta} represent a vector of parameters for a candidate fit of \eqn{F(x|\Theta)}, and let \eqn{U_i(\Theta) = F(X_{i:n}|\Theta)} be the nonexceedance probabilities of the observed values of the order statistics \eqn{x_{i:n}} for a sample of size \eqn{n}.  Define the differences
 \deqn{D_i(\Theta) = U_i(\Theta) - U_{i-1}(\Theta)\mbox{\ for\ } i = 1, \ldots, n+1\mbox{,}}
@@ -12,7 +12,7 @@ where the \eqn{\Theta} for a maximized \eqn{{-}M_n} represents the parameters fi
 \deqn{S_n(\Theta) = (n+1)^{-1} \sum_{i=1}^{n+1} \log[(n+1)D_i(\Theta)]\mbox{.}}
 So it seems that some care is needed when considering the implementation when the value of \dQuote{the summation of the logarithms} is to be directly interpreted. Wong and Li (2006) provide a salient review of MPS in regards to an investigation of maximum likelihood (MLE), MPS, and probability-weighted moments (\code{\link{pwm}}) for the GEV (\code{\link{quagev}}) and GPA (\code{\link{quagpa}}) distributions. Finally, Soukissian and Tsalis (2015) also study MPS, MLE, L-moments, and several other methods for GEV fitting.
 
-If the initial parameters have a support inside the range of the data, infinity is returned immediately by the optimizer and further action stops and the parameters returned are \code{NULL}. For the implementation here, if \code{check.support} is true, and the initial parameter estimate (if not provided and acceptable by \code{para.int}) by default will be seeded through the method of L-moments (unbiased, \code{\link{lmoms}}), which should be close and convergence will be fairly fast if a solution is possible. If these parameters can not be used for spinup, the implementation will then attempt various probability-weighted moment by plotting position (\code{\link{pwm.pp}}) converted to L-moments (\code{\link{pwm2lmom}}) as part of an extended attempt to find a support of the starting distribution encompass the data. Finally, if that approach fails, a last ditch effort using starting parameters from maximum likelihood computed by a default call to \code{\link{mle2par}} is made. Sometimes data are pathological and user supervision is needed but not always successful---MPS can show failure for certain samples and(or) choice of distribution.
+If the initial parameters have a support inside the range of the data, infinity is returned immediately by the optimizer and further action stops and the parameters returned are \code{NULL}. For the implementation here, if \code{check.support} is true, and the initial parameter estimate (if not provided and acceptable by \code{init.para}) by default will be seeded through the method of L-moments (unbiased, \code{\link{lmoms}}), which should be close and convergence will be fairly fast if a solution is possible. If these parameters can not be used for spinup, the implementation will then attempt various probability-weighted moment by plotting position (\code{\link{pwm.pp}}) converted to L-moments (\code{\link{pwm2lmom}}) as part of an extended attempt to find a support of the starting distribution encompass the data. Finally, if that approach fails, a last ditch effort using starting parameters from maximum likelihood computed by a default call to \code{\link{mle2par}} is made. Sometimes data are pathological and user supervision is needed but not always successful---MPS can show failure for certain samples and(or) choice of distribution.
 
 It is important to remark that the support of a fitted distribution is not checked within the loop for optimization once spun up. The reasons are twofold: (1) The speed hit by repeated calls to \code{\link{supdist}}, but in reality (2) PDFs in \pkg{lmomco} are supposed to report zero density for outside the support of a distribution (see NEWS) and for the \eqn{-\log(D_i(\Theta)\rightarrow 0) \rightarrow \infty} and hence infinity is returned for that state of the optimization loop and alternative solution will be tried.
 
@@ -34,7 +34,7 @@ where the term \eqn{p/2} is a bias correction based on the number of fitted dist
 \bold{Important Remark Concerning Ties}---Ties in the data cause \emph{instant degeneration} with MPS and must be mitigated for and thus attention to this documentation and even the source code itself is required.
 }
 \usage{
-mps2par(x, type, para.int=NULL, ties=c("bernstein", "rounding", "density"),
+mps2par(x, type, init.para=NULL, ties=c("bernstein", "rounding", "density"),
             delta=0, log10offset=3, get.untied=FALSE, check.support=TRUE,
             moran=TRUE, silent=TRUE, null.on.not.converge=TRUE,
             ptransf=  function(t) return(t),
@@ -44,7 +44,7 @@ mps2par(x, type, para.int=NULL, ties=c("bernstein", "rounding", "density"),
 \arguments{
   \item{x}{A vector of data values.}
   \item{type}{Three character (minimum) distribution type (for example, \code{type="gev"}, see \code{\link{dist.list}}).}
-  \item{para.int}{Initial parameters as a vector \eqn{\Theta} or as an \pkg{lmomco} parameter \dQuote{object} from say \code{\link{vec2par}}. If a vector is given, then internally \code{\link{vec2par}} is called with distribution equal to \code{type}.}
+  \item{init.para}{Initial parameters as a vector \eqn{\Theta} or as an \pkg{lmomco} parameter \dQuote{object} from say \code{\link{vec2par}}. If a vector is given, then internally \code{\link{vec2par}} is called with distribution equal to \code{type}.}
   \item{ties}{Ties cause degeneration in the computation of \eqn{M(\Theta)}:\cr
   Option \code{bernstein} triggers a smoothing of only the ties using the \code{\link{dat2bernqua}} function---Bernstein-type smoothing for ties is likely near harmless when ties are near the center of the distribution, but of course caution is advised if ties exist near the extremal values; the settings for \code{log10offset} and \code{delta} are ignored if \code{bernstein} is selected Also for a tie-run having an odd number of elements, the middle tied value is left as original data.\cr
   Option \code{rounding} triggers two types of adjustment: if \code{delta > 0} then a round-off error approach inspired by Cheng and Stephens (1989, eq. 4.1) is used (see \bold{Note}) and \code{log10offset} is ignored, but if \code{delta=0}, then \code{log10offset} is picked up as an order of magnitude offset (see \bold{Note}). Use of options \code{log10offset} and \code{delta} are likely to not keep a middle unmodified in an odd-length, tie-run in contrast to use of \code{bernstein}.\cr
@@ -67,7 +67,7 @@ mps2par(x, type, para.int=NULL, ties=c("bernstein", "rounding", "density"),
   \item{type}{The type of distribution in three character (minimum) format.}
   \item{para}{The parameters of the distribution.}
   \item{source}{Attribute specifying source of the parameters.}
-  \item{para.int}{The initial parameters. Warning to users, when inspecting returned values make sure that one is referencing the MPS parameters in \code{para} and not those shown in \code{para.int}!}
+  \item{init.para}{The initial parameters. Warning to users, when inspecting returned values make sure that one is referencing the MPS parameters in \code{para} and not those shown in \code{init.para}!}
   \item{optim}{An optional \code{list} of returned content from the optimizer if not \code{silent}.}
   \item{ties}{An optional \code{list} of untied-pseudo data and number of iterations required to achieve no ties (usually unity!) if and only if there were ties in the original data, \code{get.untied} is true, and \code{ties != "density"}.}
   \item{MoranTest}{An optional \code{list} of returned values that will include both diagnostics and statistics. The diagnostics are the computed \eqn{\mu_M(n)}, \eqn{\sigma^2_M(n)}, \eqn{C_1}, \eqn{C_2}, and \eqn{n}. The statistics are the minimum value \eqn{I_o} theoretically attainable \eqn{|M_n(\Theta)|} for equally spaced differences, the minimized value \eqn{M_n(\Theta)}, the \eqn{T(\Theta)}, and the corresponding \code{p.value} from the upper tail of the \eqn{\chi^2_n} distribution.}
@@ -83,6 +83,7 @@ More specifically, an MPS solution degenerates when the fitted distribution has 
 
 The Moran test can be quickly checked with highly skewed and somewhat problematic data by
 \preformatted{
+  # CPU intensive experiment
   gev <- vec2par(c(4,0.3,-0.2), type="gev"); nsim <- 5000
   G <- replicate(nsim, mps2par(rlmomco(100, gev), # extract the p-values
                                type="gev")$MoranTest$statistics[4])
@@ -156,7 +157,7 @@ mps2par(X,  type="pe3")$para      # and the user can observe the (minor in this 
 mps2par(Xr, type="pe3")$para      # effect on parameters.
 # Another note on MPS is needed. It is not reflection symmetric.
 mps2par( X, type="pe3")$para
-mps2par(-X, type="pe3")$para}
+mps2par(-X, type="pe3")$para }
 
 \dontrun{
 # Use 1,000 replications for sample size of 75 and estimate the bias and variance of
@@ -176,7 +177,7 @@ for(i in 1:nsim) { # simulate from the parent, compute L-moments
      if(! are.lmom.valid(lmrX)) next
    }
    lmrpar <- lmom2par(lmrX, type=type)                  # Method of L-moments
-   mpspar <-  mps2par(tmpX, type=type, para.int=lmrpar) # Method of MPS
+   mpspar <-  mps2par(tmpX, type=type, init.para=lmrpar) # Method of MPS
    if(! is.null(lmrpar)) {
       Q100lmr[i] <- qlmomco(T2prob(Tyear), lmrpar); lmrlmr <- par2lmom(lmrpar)
       T3lmr[i] <- lmrlmr$ratios[3]; T4lmr[i] <- lmrlmr$ratios[4]
@@ -226,7 +227,7 @@ x <- rlmomco(500, vec2par(c(1,1,3), type="gam")) # 3-p Generalized Gamma
 guess <- lmr2par(x, type="gam", p=3) # By providing a 3-p guess the 3-p
 # Generalized Gamma will be triggered internally. There are problems passing
 # "p" argument to optim() if that function is to pick up the ... argument.
-mps2par(x, type="gam", para.int=guess, silent=FALSE,
+mps2par(x, type="gam", init.para=guess, silent=FALSE,
            ptransf=  function(t) { c(log(t[1]), log(t[2]), t[3])},
            pretransf=function(t) { c(exp(t[1]), exp(t[2]), t[3])})$para
 # Reports:       mu     sigma        nu   for some simulated data.
@@ -243,3 +244,6 @@ mps2par(x, type="gam", para.int=guess, silent=FALSE,
 \keyword{goodness-of-fit}
 \keyword{Moran-Darling statistic}
 \keyword{Ensemble list of major parameter estimation methods}
+\keyword{Package: eva}
+\keyword{Package: fBasics}
+\keyword{Package: gld}

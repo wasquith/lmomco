@@ -1,31 +1,31 @@
 "mle2par" <-
-function(x, type, para.int=NULL, silent=TRUE, null.on.not.converge=TRUE,
+function(x, type, init.para=NULL, silent=TRUE, null.on.not.converge=TRUE,
                   ptransf=  function(t) return(t),
                   pretransf=function(t) return(t), ...) {
 
-  if(is.null(para.int)) {
+  if(is.null(init.para)) {
      lmr <- lmoms(x)
      if(! are.lmom.valid(lmr)) {
         warning("L-moments of x are not valid for initial parameters, ",
                 "try manual initial parameters")
         return(NULL)
      }
-     para.int <- lmom2par(lmr, type=type, ...)
-     if(is.null(para.int)) {
+     init.para <- lmom2par(lmr, type=type, ...)
+     if(is.null(init.para)) {
         warning("L-moments of x are not valid for initial parameters, ",
                 "try manual initial parameters")
         return(NULL)
      }
-  } else if(! is.list(para.int) & is.vector(para.int)) {
-     para.int <- vec2par(para.int, type=type)
-     if(is.null(para.int)) {
+  } else if(! is.list(init.para) & is.vector(init.para)) {
+     init.para <- vec2par(init.para, type=type)
+     if(is.null(init.para)) {
         warning("initial parameters given by vector are not valid for initial parameters, ",
                 "try other initial parameters")
         return(NULL)
      }
   }
 
-  if(length(para.int$para) == 1) {
+  if(length(init.para$para) == 1) {
      warning("function is not yet built for single parameter optimization")
      return(NULL)
   }
@@ -47,8 +47,8 @@ function(x, type, para.int=NULL, silent=TRUE, null.on.not.converge=TRUE,
        return(L)
   }
 
-  #   print(ptransf(para.int$para))
-  #   raw.afunc.call <- afunc(ptransf(para.int$para), x=x)
+  #   print(ptransf(init.para$para))
+  #   raw.afunc.call <- afunc(ptransf(init.para$para), x=x)
   #   print("RAW afunc() CALL WITH INITIAL PARAMETERS")
   #   print(raw.afunc.call)
 
@@ -58,7 +58,7 @@ function(x, type, para.int=NULL, silent=TRUE, null.on.not.converge=TRUE,
   # WHA would instinctively do.
 
   rt <- NULL
-  try(rt <- optim(par=ptransf(para.int$para), fn=afunc, x=x, ...), silent=silent)
+  try(rt <- optim(par=ptransf(init.para$para), fn=afunc, x=x, ...), silent=silent)
   if(is.null(rt)) {
      warning("optim() attempt is NULL")
      return(NULL)

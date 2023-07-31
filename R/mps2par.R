@@ -1,5 +1,5 @@
 "mps2par" <-
-function(x, type, para.int=NULL, ties=c("bernstein", "rounding", "density"),
+function(x, type, init.para=NULL, ties=c("bernstein", "rounding", "density"),
             delta=0, log10offset=3, get.untied=FALSE, check.support=TRUE,
             moran=TRUE, silent=TRUE, null.on.not.converge=TRUE,
             ptransf=  function(t) return(t),
@@ -83,21 +83,21 @@ function(x, type, para.int=NULL, ties=c("bernstein", "rounding", "density"),
   }
   x <- sort(x) # final insurance on the sort
 
-  if(is.null(para.int)) {
+  if(is.null(init.para)) {
      lmr <- lmoms(x)
      if(! are.lmom.valid(lmr)) {
         warning("L-moments of x are not valid for initial parameters, ",
                 "try manual initial parameters")
         return(NULL)
      }
-     para.int <- lmom2par(lmr, type=type, ...)
-     if(is.null(para.int)) {
+     init.para <- lmom2par(lmr, type=type, ...)
+     if(is.null(init.para)) {
         warning("could not estimate initial parameters via L-moments")
         return(NULL)
      }
-  } else if(! is.list(para.int) & is.vector(para.int)) {
-     para.int <- vec2par(para.int, type=type)
-     if(is.null(para.int)) {
+  } else if(! is.list(init.para) & is.vector(init.para)) {
+     init.para <- vec2par(init.para, type=type)
+     if(is.null(init.para)) {
         warning("initial parameters given by vector are not valid for initial parameters, ",
                 "try other initial parameters")
         return(NULL)
@@ -108,7 +108,7 @@ function(x, type, para.int=NULL, ties=c("bernstein", "rounding", "density"),
     # plotting position a must be [0,0.5], the 1 triggers max likelihood
     # and the 2 to trigger a last pass (testing the MLE) and then exit
     for(a.pp.coe in c(seq(0,0.5, by=0.1), 1, 2) ) {
-      support <- supdist(para.int)$support
+      support <- supdist(init.para)$support
       if(min(x) < support[1]) {
          if(! silent) message("minimum x is < than the support of ",
                        "initial parameters, try alternative initial parameters")
@@ -116,12 +116,12 @@ function(x, type, para.int=NULL, ties=c("bernstein", "rounding", "density"),
             if(! silent) message(" trying pwm.pp --> lmom --> a=",a.pp.coe)
             lmr <- pwm2lmom(pwm.pp(x, a=a.pp.coe))
             if(! are.lmom.valid(lmr)) next
-            para.int <- lmom2par(lmr, type=type, ...)
+            init.para <- lmom2par(lmr, type=type, ...)
             next
          } else if(a.pp.coe == 1 & mle2par) {
             if(! silent) message(" trying MLE instead for initial parameters")
-            para.int <- mle2par(x, type=type, ...)
-            if(is.null(para.int)) {
+            init.para <- mle2par(x, type=type, ...)
+            if(is.null(init.para)) {
                warning("attempted final spinup by subordinated call to mle2par()")
                return(NULL)
             }
@@ -138,12 +138,12 @@ function(x, type, para.int=NULL, ties=c("bernstein", "rounding", "density"),
             if(! silent) message(" trying pwm.pp --> lmom --> para for a=",a.pp.coe)
             lmr <- pwm2lmom(pwm.pp(x, a=a.pp.coe))
             if(! are.lmom.valid(lmr)) next
-            para.int <- lmom2par(lmr, type=type, ...)
+            init.para <- lmom2par(lmr, type=type, ...)
             next
          } else if(a.pp.coe == 1 & mle2par) {
             if(! silent) message(" trying MLE instead for initial parameters")
-            para.int <- mle2par(x, type=type, ...)
-            if(is.null(para.int)) {
+            init.para <- mle2par(x, type=type, ...)
+            if(is.null(init.para)) {
                warning("attempted final spinup by subordinated call to mle2par()")
                return(NULL)
             }
@@ -155,16 +155,16 @@ function(x, type, para.int=NULL, ties=c("bernstein", "rounding", "density"),
       }
     }
   }
-  if(is.null(para.int)) { # finally insurance policy for error trapping
+  if(is.null(init.para)) { # finally insurance policy for error trapping
      warning(" initial parameters are NULL")
      return(NULL)
   }
-  if(para.int$type != type) {
+  if(init.para$type != type) {
      warning("distribution requested to fit does not match the type of the ",
              "initial parameters")
      return(NULL)
   }
-  if(length(para.int$para) == 1) {
+  if(length(init.para$para) == 1) {
      warning("function is not yet built for single parameter optimization")
      return(NULL)
   }
@@ -184,8 +184,8 @@ function(x, type, para.int=NULL, ties=c("bernstein", "rounding", "density"),
      return(M)
   }
 
-  #   print(ptransf(para.int$para))
-  #   raw.afunc.call <- afunc(ptransf(para.int$para), x=x, n=n)
+  #   print(ptransf(init.para$para))
+  #   raw.afunc.call <- afunc(ptransf(init.para$para), x=x, n=n)
   #   print("RAW afunc() CALL WITH INITIAL PARAMETERS")
   #   print(raw.afunc.call)
 
@@ -195,7 +195,7 @@ function(x, type, para.int=NULL, ties=c("bernstein", "rounding", "density"),
   # WHA would instinctively do.
 
   rt <- NULL
-  try(rt <- optim(par=ptransf(para.int$para), fn=afunc, x=x, n=n, ...), silent=silent)
+  try(rt <- optim(par=ptransf(init.para$para), fn=afunc, x=x, n=n, ...), silent=silent)
   if(is.null(rt)) {
      warning("optim() attempt is NULL")
      return(NULL)
@@ -204,9 +204,9 @@ function(x, type, para.int=NULL, ties=c("bernstein", "rounding", "density"),
      warning("optim() reports convergence error")
      return(NULL)
   }
-  lmomco.para          <- vec2par(pretransf(rt$par), type=type)
-  lmomco.para$source   <- "mps2par" # override vec2par()
-  lmomco.para$para.int <- para.int  # preserve the initial parameters
+  lmomco.para           <- vec2par(pretransf(rt$par), type=type)
+  lmomco.para$source    <- "mps2par" # override vec2par()
+  lmomco.para$init.para <- init.para  # preserve the initial parameters
   M <- rt$value
   if(! silent) lmomco.para$optim <- rt
 

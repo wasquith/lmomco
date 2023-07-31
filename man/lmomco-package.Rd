@@ -13,10 +13,10 @@ How does \pkg{lmomco} basically work? The design of \pkg{lmomco} is to fit distr
   Q <- rlmomco(63, lmom2par(parent.lmoments, type=ty)) # random sample
   init <- lmoms(Q); init$ratios[3] <- 0 # failure rates for mps and mle are
   # substantially lowered if starting from the middle of the distribution's
-  # shape to form the initial parameters for para.int
-  lmr  <- lmr2par(Q, type=ty)                 # method of L-moments
-  mle  <- mle2par(Q, type=ty, para.init=init) # method of MLE
-  mps  <- mps2par(Q, type=ty, para.init=init) # method of MPS
+  # shape to form the initial parameters for init.para
+  lmr  <- lmr2par(Q, type=ty)                # method of L-moments
+  mle  <- mle2par(Q, type=ty, init.lmr=init) # method of MLE
+  mps  <- mps2par(Q, type=ty, init.lmr=init) # method of MPS
   lmr1 <- lmr$para; mle1 <- mle$para; mps1 <- mps$para
 }
 The \code{lmr1}, \code{mle1}, and \code{mps1} variables each contain distribution parameter estimates, but before they are inspected, how about quick comparison to another \R package (\pkg{eva})?
@@ -60,7 +60,7 @@ Dey, D.K., Roy, Dooti, Yan, Jun, 2016, Univariate extreme value analysis, chapte
 Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational statistics and data analysis, vol. 43, pp. 299-314, \doi{10.1016/S0167-9473(02)00250-5}.
 
 Hosking, J.R.M., 1990, L-moments---Analysis and estimation of
-distributions using linear combinations of order statistics: Journal of the Royal Statistical Society, Series B, v. 52, pp. 105--124.
+distributions using linear combinations of order statistics: Journal of the Royal Statistical Society, Series B, v. 52, pp. 105--124, \doi{10.1111/j.2517-6161.1990.tb01775.x}.
 
 Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints on their L-moments or expected order statistics: Journal of Statistical Planning and Inference, v. 137, no. 9, pp. 2870--2891, \doi{10.1016/j.jspi.2006.10.010}.
 
@@ -88,3 +88,7 @@ Serfling, R., and Xiao, P., 2007, A contribution to multivariate L-moments---L-c
 \concept{method of maximum likelihood}
 \concept{method of maximum of product spacings}
 \concept{maximum product estimation}
+\keyword{Package: eva}
+\keyword{Package: lmoms}
+\keyword{Package: lmomRFA}
+\keyword{Package: Lmoments}
