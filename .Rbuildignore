@@ -5,6 +5,8 @@
 .Rhistory
 inst/legacy
 
+srcall.R
+
 man/lmomcoBook.Rd
 man/lmomcoNews.Rd
 R/lmomcoNewsBook.R
