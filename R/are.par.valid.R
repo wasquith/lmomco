@@ -93,6 +93,9 @@ function(para, paracheck=TRUE, ...) {
     else if(type == 'sla') {
       return(are.parsla.valid(para,...))
     }
+    else if(type == 'smd') {
+      return(are.parsmd.valid(para,...))
+    }
     else if(type == 'st3') {
       return(are.parst3.valid(para,...))
     }
