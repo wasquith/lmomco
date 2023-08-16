@@ -82,6 +82,9 @@ function(f,para,...) {
     else if(type == 'sla') {
       return(quasla(f,para,...))
     }
+    else if(type == 'smd') {
+      return(quasmd(f,para,...))
+    }
     else if(type == 'st3') {
       return(quast3(f,para,...))
     }

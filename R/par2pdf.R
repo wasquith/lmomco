@@ -82,6 +82,9 @@ function(x,para,...) {
     else if(type == 'sla') {
       return(pdfsla(x,para))
     }
+    else if(type == 'smd') {
+      return(pdfsla(x,para))
+    }
     else if(type == 'st3') {
       return(pdfst3(x,para))
     }

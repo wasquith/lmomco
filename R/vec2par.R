@@ -1,5 +1,5 @@
 "vec2par" <-
-function(vec,type,nowarn=FALSE,paracheck=TRUE,...) {
+function(vec, type, nowarn=FALSE, paracheck=TRUE, ...) {
     if(type == 'aep4') {
       z <- list(type = 'aep4', para = vec, source = "vec2par")
       names(z$para) <- c("xi","alpha", "kappa", "h")
@@ -122,6 +122,10 @@ function(vec,type,nowarn=FALSE,paracheck=TRUE,...) {
     else if(type == 'sla') {
       z <- list(type = 'sla', para = vec, source = "vec2par")
       names(z$para) <- c("xi","alpha")
+    }
+    else if(type == 'smd') {
+      z <- list(type = 'smd', para = vec, source = "vec2par")
+      names(z$para) <- c("xi", "a", "b", "q")
     }
     else if(type == 'st3') {
       z <- list(type = 'st3', para = vec, source = "vec2par")
