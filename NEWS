@@ -13,7 +13,7 @@ Changes in version 2.4.10 ()
      object throughout the package. Interface changes to distfitqua.R/Rd,
      mle2par.R/Rd, mps2par.R/Rd, tlmr2par.R/Rd, and x2pars.R (only the .R);
      examples in pdfgev.Rd and pdfgld.Rd. There is no support for reverse
-     handling previous argument called para.int ir
+     handling previous argument called para.int.
 -  Changed lmomco-package.Rd example to use initial L-moments for mle2par() and
      mps2par() from using initial parameters. Related to auditing for the
      previous listed change.
@@ -34,6 +34,16 @@ Changes in version 2.4.10 ()
 -  Added indexing keywords for external data from packages involved with
      the function's Examples: lmoms.cov.Rd (MASS::michelson),
      lmrdiscord.Rd (lmomRFA::Cascades), mle2par.Rd (MASS::cats).
+-  Added srcall.R as a developer helper but named inside .Rbuildignore.
+-  Added the Singh--Maddala distribution that has explicity formula for the
+     cdfsmd.R, pdfsmd.R, quasmd.R. The L-moments are in lmomsmd.R and the
+     parameter estimation by numerical methods is in parsmd.R. The utility
+     functions are.smd.valid.R and is.smd.R were also added.
+-  Added Singh--Maddala distribution to dist.list.R/Rd and added it as a four
+     parameter distribution to prettydist.R/Rd.
+-  Added Sigh--Maddala (smd) distribution to par2cdf.R, par2lmom.R, par2pdf.R,
+     par2qua.R, vec2par.R, and are.par.valid.R.
+-  Enhanced are.lmom.valid.R to return FALSE if the lmom argument is NULL.
 
 
 Changes in version 2.4.9 (2023-05-29)
