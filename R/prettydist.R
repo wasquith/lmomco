@@ -26,6 +26,7 @@ function(x) {
      if(x == "pdq4") return("Polynomial Density-Quantile4")
      if(x == "pe3" ) return("Pearson Type III")
      if(x == "sla" ) return("Slash")
+     if(x == "smd" ) return("Singh Maddala")
      if(x == "st3" ) return("Student t (3-parameter)")
      if(x == "ray" ) return("Rayleigh")
      if(x == "rice") return("Rice")
@@ -35,5 +36,5 @@ function(x) {
      if(x == "wak" ) return("Wakeby")
      if(x == "wei" ) return("Weibull")
   }
-  return(sapply(x,getdist))
+  return(sapply(x, getdist))
 }

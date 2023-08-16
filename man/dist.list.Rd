@@ -7,7 +7,7 @@ Return a list of the three character syntax identifying distributions supported 
 \code{gev}, \code{gld}, \code{glo}, \code{gno}, \code{gov},
 \code{gpa}, \code{gum}, \code{kap}, \code{kmu}, \code{kur},
 \code{lap}, \code{lmrq}, \code{ln3}, \code{nor}, \code{pdq3}, \code{pdq4},
-\code{pe3}, \code{ray}, \code{revgum}, \code{rice}, \code{sla}, \code{st3},
+\code{pe3}, \code{ray}, \code{revgum}, \code{rice}, \code{sla}, \code{smd}, \code{st3},
 \code{texp}, \code{tri}, \code{wak}, and \code{wei}. These abbreviations and only these are used in routing logic within \pkg{lmomco}. There is no provision for fuzzy matching. The full distributions names are available in \code{\link{prettydist}}.
 }
 \usage{
