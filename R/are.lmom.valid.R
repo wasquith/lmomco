@@ -1,9 +1,10 @@
 "are.lmom.valid" <-
 function(lmom, checkt3t4=TRUE) {
-
+   if(is.null(lmom)) return(FALSE)
    if(length(lmom$L1) == 0) { # convert to named L-moments
      lmom <- lmorph(lmom)     # nondestructive conversion!
    }
+
    # It was a design mistake to use named L-moments. Can not query the length
    # say of lambdas to ascertain which L-moments are being pursued by the
    # user.   Late (2017) additions are finiteness check on the mean and L2. The
