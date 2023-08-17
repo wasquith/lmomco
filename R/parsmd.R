@@ -18,7 +18,7 @@ function(lmom, checklmom=TRUE, emplims=TRUE, ...) {
 
     # Mean zero with L2 of the LCV
     plmom <- list(L1=MU, L2=lmom$L2, L3=lmom$L3, L4=lmom$L4)
- #  print(plmom)
+    #  print(plmom)
     L1 <- plmom$L1
     L2 <- plmom$L2
     L3 <- plmom$L3
@@ -31,10 +31,10 @@ function(lmom, checklmom=TRUE, emplims=TRUE, ...) {
     bndtxt <- ""
     if(emplims) {
       Tau3 <- L3 / L2; Tau4 <- L4 / L2
-      #if(Tau3  <= -0.170) {
-      #  Tau3   <- -0.170
-      #  bndtxt <- "Tau3 <= -0.170, snapped to -0.170; "
-      #}
+      if(Tau3  <= -0.170) {
+        Tau3   <- -0.170
+        bndtxt <- "Tau3 <= -0.170, snapped to -0.170; "
+      }
       if(Tau3  >=  0.999) {
         Tau3   <-  0.999
         bndtxt <- "Tau3 <= +0.999, snapped to +0.999; "
@@ -102,7 +102,8 @@ function(lmom, checklmom=TRUE, emplims=TRUE, ...) {
       #errt2 <- abs( L2/L1 - lmrsmd$ratios[ 2] )
       errt3 <- abs( L3/L2 - lmrsmd$ratios[ 3] )
       errt4 <- abs( L4/L2 - lmrsmd$ratios[ 4] )
-      #print(c(errt3, errt4))
+      #print(c(              errt3, errt4))
+      #print(c(errt1, errt2, errt3, errt4))
       if(errt3 < 0.001 & errt4 < 0.001) {
         broken <- TRUE
         break
