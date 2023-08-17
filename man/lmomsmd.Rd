@@ -64,9 +64,43 @@ Shahzad, M.N., and Zahid, A., 2013, Parameter estimation of Singh Maddala distri
 \author{W.H. Asquith}
 \seealso{\code{\link{parsmd}}, \code{\link{cdfsmd}}, \code{\link{pdfsmd}}, \code{\link{quasmd}} }
 \examples{
-#lmr <- lmoms(c(123, 34, 4, 654, 37, 78))
-#lmr
-#lmomsmd(parsmd(lmr))
+lmr <- lmoms(c(123, 34, 4, 654, 37, 78), nmom=6)
+lmr$source <- lmr$trim <- lmr$leftrim <- lmr$rightrim <-NULL
+# The parsmd() reports Tau4 is too big and snaps it to an empirical boundary.
+# "Tau4(~Tau3) snapped to upper limit, Tau4=0.65483 for Tau3=0.75126"
+bmr <- lmomsmd(parsmd(lmr)); dmr <- data.frame(bmr$lambdas, bmr$ratios)
+cbind(as.data.frame(lmr), dmr) # See in table that row 4 has different Tau4s
+#  lambdas    ratios bmr.lambdas bmr.ratios
+# 1   155.0        NA   155.00000         NA
+# 2   118.6 0.7651613   118.60000  0.7651613
+# 3    89.1 0.7512648    89.18356  0.7519693
+# 4    82.1 0.6922428    77.59435  0.6542525 # see different Tau4s (snapping)
+# 5    69.5 0.5860034    68.39578  0.5766929 # We are not fitting to these
+# 6   102.5 0.8642496    62.58192  0.5276721 # higher L-moments.
+
+# T3 and T4 of the Gumbel distribution, which is inside the SMD domain.
+gumt3t4 <- c(log(9/8)/log(2), (16 * log(2) - 10 * log(3))/log(2))
+lmr <- theoLmoms(pargum(vec2lmom(c(155, 118.6, gumt3t4))), nmom=6)
+lmr$source <- lmr$trim <- lmr$leftrim <- lmr$rightrim <-NULL
+bmr <- lmomsmd(parsmd(lmr)); dmr <- data.frame(bmr$lambdas, bmr$ratios)
+cbind(as.data.frame(lmr), dmr)
+#      lambdas     ratios bmr.lambdas bmr.ratios
+# 1 155.000000         NA  155.000000         NA
+# 2 118.600005 0.76516132  118.600005  0.7651613
+# 3  20.153103 0.16992498   20.153104  0.1699250
+# 4  17.834464 0.15037490   17.834464  0.1503749 # see same Tau4s (no snapping)
+# 5   6.625972 0.05586823    7.688957  0.0648310 # We are not fitting to these
+# 6   6.891842 0.05810997    7.213039  0.0608182 # higher L-moments.
+
+\dontrun{
+  # T3 and T4 of the Gumbel distribution, which is inside the SMD domain.
+  gumt3t4 <- c(log(9/8)/log(2), (16 * log(2) - 10 * log(3))/log(2))
+  FF <- nonexceeds(); qFF <- qnorm(FF)
+  gumx <- qlmomco(FF, pargum(vec2lmom(c(155, 118.6, gumt3t4))))
+  smdx <- qlmomco(FF, parsmd(lmr))
+  plot( qFF, gumx, col="blue", type="l",
+       xlab="Standard normal variate", ylab="Quantile")
+  lines(qFF, smdx, col="red") # }
 }
 \keyword{L-moment (distribution)}
 \keyword{Distribution: Singh-Maddala}

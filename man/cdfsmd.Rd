@@ -23,7 +23,21 @@ Shahzad, M.N., and Zahid, A., 2013, Parameter estimation of Singh Maddala distri
 \author{W.H. Asquith}
 \seealso{\code{\link{pdfsmd}}, \code{\link{quasmd}}, \code{\link{lmomsmd}}, \code{\link{parsmd}}}
 \examples{
+# The SMD approximating the normal and use x=0
+tau4_of_normal <- 30 * pi^-1 * atan(sqrt(2)) - 9 # from theory
+cdfsmd(0, parsmd( vec2lmom( c( -pi, pi, 0,tau4_of_normal ) ) ) ) # 0.7138779
+pnorm( 0, mean=-pi, sd=pi*sqrt(pi))                              # 0.7136874
 
+\dontrun{
+t3 <- 0.6
+t4 <- (t3 * (1 + 5 * t3))/(5 + t3) # L-kurtosis of GPA from lmrdia()
+paraA <- parsmd( vec2lmom( c( -1000, 200, t3, t4-0.02 ) ) )
+paraB <- parsmd( vec2lmom( c( -1000, 200, t3, t4      ) ) )
+paraC <- parsmd( vec2lmom( c( -1000, 200, t3, t4+0.02 ) ) )
+FF <- nonexceeds(); x <- quasmd2(FF, paraA)
+plot( x, cdfsmd(x, paraA), col="red", type="l")
+lines(x, cdfsmd(x, paraB), col="green")
+lines(x, cdfsmd(x, paraC), col="blue" ) # }
 }
 \keyword{distribution}
 \keyword{cumulative distribution function}

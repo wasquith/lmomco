@@ -25,7 +25,8 @@ Shahzad, M.N., and Zahid, A., 2013, Parameter estimation of Singh Maddala distri
 \author{W.H. Asquith}
 \seealso{\code{\link{cdfsmd}}, \code{\link{pdfsmd}}, \code{\link{lmomsmd}}, \code{\link{parsmd}}}
 \examples{
- }
+quasmd(0.99, parsmd(vec2lmom(c(155, 118.6, 0.6, 0.45)))) # 1547.337 99th percentile
+}
 \keyword{distribution}
 \keyword{quantile function}
 \keyword{Distribution: Singh-Maddala}
