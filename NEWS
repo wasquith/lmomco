@@ -44,6 +44,9 @@ Changes in version 2.4.10 ()
 -  Added Sigh--Maddala (smd) distribution to par2cdf.R, par2lmom.R, par2pdf.R,
      par2qua.R, vec2par.R, and are.par.valid.R.
 -  Enhanced are.lmom.valid.R to return FALSE if the lmom argument is NULL.
+-  Enhanced vec2lmom(checklmom=TRUE) to still issue warning but to add the
+     lambdas and ratios in the warning message. This might help some users
+     working through large-scale automation excercises.
 
 
 Changes in version 2.4.9 (2023-05-29)
