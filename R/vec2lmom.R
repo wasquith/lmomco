@@ -22,7 +22,9 @@ function(vec, lscale=TRUE, trim=NULL, leftrim=NULL, rightrim=NULL, checklmom=TRU
        z$lambdas[3:n] <- z$ratios[3:n]*z$lambdas[2]
        if(checklmom) {
           if(! are.lmom.valid(z)) {
-             warning("L-moments are invalid, but still returning the values")
+             warning("L-moments are invalid, but still returning the values\n",
+                     "   Lambdas ", paste(round(z$lambdas, digits=6), collapse=", "), "\n",
+                     "    Ratios ", paste(round(z$ratios,  digits=6), collapse=", "))
           }
        }
     }
