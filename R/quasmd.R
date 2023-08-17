@@ -11,7 +11,6 @@ function(f, para, paracheck=TRUE) {
    # 0 <= x <= +Inf
 
    x <- U + A * ( (1-f)^(-1/Q) - 1 )^(1/B)
-   x[x < 0] <- 0
    names(x) <- NULL
    return(x)
 }
