@@ -13,9 +13,9 @@ for(f in list.files("./R", pattern="\\.R")) source(paste0("./R/", f))
 
 
 MU <- 1
-t3s <- sort(unique(c(-0.17, -0.168, -0.166, -0.164, -0.162,
-                 seq(-0.16, +1, by=0.005), 0.999)))
-t4s <- sort(unique(seq(0.1, +1, by=0.001) ))
+t3s <- sort(unique(c(-0.18, -0.178, -0.176, -0.174, -0.172,
+                 seq(-0.17, +1, by=0.005), 0.999)))
+t4s <- sort(unique(seq(0.1, +1, by=0.0005) ))
 eT3s <- eT4s <- tT3s <- tT4s <- Bs <- Qs <- Iters <- NULL
 plot(c(-0.25,1), c(0.1,1), type="n")
 for(t3 in t3s) {
@@ -65,10 +65,15 @@ tmp <- SMD[SMD$Iters == 1,]
 x <- c(-0.188546284, -0.072683616, -0.047221860, -0.026665580,  0.006271186)
 y <- c(0.1500420, 0.1158318, 0.1103633, 0.1078197, 0.1034958)
 tmp <- tmp[tmp$TAU4 > approx(x, y, xout=tmp$TAU3, rule=2)$y,]
-tmp <- tmp[sqrt((-0.12033681-tmp$TAU3)^2+(0.1782749-tmp$TAU4)^2) > 0.001, ]
-tmp <- tmp[sqrt((-0.12033681-tmp$TAU3)^2+(0.1720434-tmp$TAU4)^2) > 0.001, ]
-tmp <- tmp[sqrt((-0.11029226-tmp$TAU3)^2+(0.1611063-tmp$TAU4)^2) > 0.001, ]
-tmp <- tmp[sqrt((-0.03063668-tmp$TAU3)^2+(0.1681009-tmp$TAU4)^2) > 0.001, ]
+x <- c(-0.12033681, -0.12033681, -0.11029226, -0.03063668,
+       0.1499298, -0.1679737, -0.1679737, -0.1679737, -0.1682314, -0.1700358,
+       -0.1700358, -0.1677159, -0.1700358, -0.1679737, -0.1617872, -0.1195131)
+y <- c(0.1782749, 0.1720434, 0.1611063, 0.1681009,
+       0.1538342, 0.1538342, 0.1548486, 0.1560658, 0.1570802, 0.1538342,
+       0.1461252, 0.1461252, 0.1449080, 0.1438936, 0.1438936, 0.163572)
+for(i in 1:length(x)) {
+  tmp <- tmp[sqrt((x[i]-tmp$TAU3)^2+(y[i]-tmp$TAU4)^2) > 0.001, ]
+}
 plot(tmp$TAU3, tmp$TAU4, cex=0.2, pch=16)
 SMDmax <- aggregate(tmp, by=list(tmp$TAU3), max)
 SMDmin <- aggregate(tmp, by=list(tmp$TAU3), min)
@@ -93,11 +98,11 @@ message("LWR:")
 print(h, digits=8)
 lines(SMDmin$Group.1, fitted.values(LWR), col="red", lwd=2)
 
-plot(tmp$TAU3, tmp$TAU4, cex=0.2, pch=16, xlim=c(-.2,0), ylim=c(0.1, 0.2))
+plot(tmp$TAU3, tmp$TAU4, cex=0.4, pch=16, xlim=c(-.2,0), ylim=c(0.1, 0.2))
 lines(SMDmax$Group.1, fitted.values(UPR), col="red", lwd=2)
 lines(SMDmin$Group.1, fitted.values(LWR), col="red", lwd=2)
 
-plot(tmp$TAU3, tmp$TAU4, cex=0.2, pch=16, xlim=c(.9,1), ylim=c(0.9, 1))
+plot(tmp$TAU3, tmp$TAU4, cex=0.4, pch=16, xlim=c(.9,1), ylim=c(0.9, 1))
 lines(SMDmax$Group.1, fitted.values(UPR), col="red", lwd=2)
 lines(SMDmin$Group.1, fitted.values(LWR), col="red", lwd=2)
 
