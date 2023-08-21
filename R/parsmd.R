@@ -24,28 +24,31 @@ function(lmom, checklmom=TRUE, emplims=TRUE, ...) {
     L3 <- plmom$L3
     L4 <- plmom$L4
 
-    uprc <- c( 0.16671543,   0.11557176,   0.20893429, 1.32041983,  2.47233842,
-             -15.12456880,  25.35431762, -18.79907819, 5.28751723)
-    lwrc <- c( 0.10656731, -0.11309214,    0.79568189,  0.21782161, 0.89035383,
-              -5.29350157, 10.89100150,   -9.83133796,  3.33573949)
+    uprc <- c(  0.16635578,   0.11404732,    0.21485583,  1.39842572,  1.93768515,
+              -13.75534437,  23.59646444,  -17.66250301,  4.99172608)
+    lwrc <- c( 0.10706342,   -0.11187055,    0.78710977,  0.14461194,  1.53490921,
+              -7.24744751,   13.80312653,  -11.97768647,  3.96017326)
+    # minTau3=-0.170900678885457 has Tau4=0.150808409913302
+    smallT3 <- -0.1709; smallT4 <- 0.103
+    largeT3 <-  0.999; largeT4 <- 0.999
     bndtxt <- ""
     if(emplims) {
       Tau3 <- L3 / L2; Tau4 <- L4 / L2
-      if(Tau3  <= -0.170) {
-        Tau3   <- -0.170
-        bndtxt <- "Tau3 <= -0.170, snapped to -0.170; "
+      if(Tau3   <= smallT3) {
+         Tau3   <- smallT3
+         bndtxt <- paste0("Tau3 <= ", smallT3, " snapped to that value; ")
       }
-      if(Tau3  >=  0.999) {
-        Tau3   <-  0.999
-        bndtxt <- "Tau3 <= +0.999, snapped to +0.999; "
+      if(Tau3   >=  0.999) {
+         Tau3   <-  0.999
+         bndtxt <- paste0("Tau3 <= ", largeT3, " snapped to that value; ")
       }
-      if(Tau4  <= 0.104) {  # double assurance knowing that polynomials are to come
-        Tau4   <- 0.104
-        bndtxt <- "Tau4 <= +0.104, snapped to +0.104; "
+      if(Tau4   <=  0.104) {  # double assurance knowing that polynomials are to come
+         Tau4   <-  0.104
+         bndtxt <- paste0("Tau4 <= ", smallT4, " snapped to that value; ")
       }
-      if(Tau4  >=  0.999) { # double assurance knowing that polynomials are to come
-        Tau4   <-  0.999
-        bndtxt <- "Tau4 <= +0.999, snapped to +0.999; "
+      if(Tau4   >=  0.999) {  # double assurance knowing that polynomials are to come
+         Tau4   <-  0.999
+         bndtxt <- paste0("Tau4 <= ", largeT4, " snapped to that value; ")
       }
       upr <- sum( c( uprc[1], sapply(2:9, function(i) uprc[i] * Tau3^(i-1) ) ) )
       lwr <- sum( c( lwrc[1], sapply(2:9, function(i) lwrc[i] * Tau3^(i-1) ) ) )
@@ -112,8 +115,8 @@ function(lmom, checklmom=TRUE, emplims=TRUE, ...) {
       }
       para.init <- 10^runif(2, min=-2, max=4)
     }
-    para$iter <- i
-    para$rt   <- rt
+    para$iter   <- i
+    para$rt     <- rt
     para$bndtxt <- bndtxt
     ifelse(broken, para$ifail <- 0, para$ifail <- 1)
     return(para)
