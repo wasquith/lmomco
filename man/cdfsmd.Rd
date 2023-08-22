@@ -18,6 +18,8 @@ cdfsmd(x, para)
   Nonexceedance probability (\eqn{F}) for \eqn{x}.
 }
 \references{
+Kumar, D., 2017, The Singh–Maddala distribution---Properties and estimation: International Journal of System Assurance Engineering and Management, v. 8, no. S2, 15 p., \doi{10.1007/s13198-017-0600-1}.
+
 Shahzad, M.N., and Zahid, A., 2013, Parameter estimation of Singh Maddala distribution by moments: International Journal of Advanced Statistics and Probability, v. 1, no. 3, pp. 121--131, \doi{10.14419/ijasp.v1i3.1206}.
 }
 \author{W.H. Asquith}
