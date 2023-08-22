@@ -83,7 +83,7 @@ function(para,...) {
       return(lmomsla(para))
     }
     else if(type == 'smd') {
-      return(lmomsla(para))
+      return(lmomsmd(para))
     }
     else if(type == 'st3') {
       return(lmomst3(para))

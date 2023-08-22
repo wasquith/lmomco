@@ -86,6 +86,9 @@ function(lmom,type,...) {
     else if(type == 'sla') {
       return(parsla(lmom, ...))
     }
+    else if(type == 'smd') {
+      return(parsmd(lmom, ...))
+    }
     else if(type == 'st3') {
       return(parst3(lmom, ...))
     }
