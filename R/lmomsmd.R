@@ -37,6 +37,7 @@ function(para) {
 
   z <- list(lambdas=c(L1, L2,    L3,    L4,    L5,    L6),
             ratios= c(NA, L2/L1, L3/L2, L4/L2, L5/L2, L6/L2),
+            trim=0, leftrim=0, rightrim=0,
             source="lmomsmd")
   return(z)
 }
