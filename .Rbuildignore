@@ -7,6 +7,9 @@ inst/legacy
 
 srcall.R
 
+doc/inst/domain_of_smd.R
 man/lmomcoBook.Rd
 man/lmomcoNews.Rd
 R/lmomcoNewsBook.R
+
+SMD.RData
