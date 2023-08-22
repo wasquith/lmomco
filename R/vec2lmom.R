@@ -1,7 +1,7 @@
 "vec2lmom" <-
 function(vec, lscale=TRUE, trim=NULL, leftrim=NULL, rightrim=NULL, checklmom=TRUE) {
     z <- list(lambdas=vector(mode="numeric", length=length(vec)),
-              ratios=vector(mode="numeric", length=length(vec)),
+              ratios= vector(mode="numeric", length=length(vec)),
               trim=trim,
               leftrim=leftrim,
               rightrim=rightrim,
