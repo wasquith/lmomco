@@ -12,10 +12,6 @@ function(para,nowarn=FALSE) {
     op <- options()
     GO <- TRUE
     if(nowarn == TRUE) options(warn=-1)
-    #if(U < 0) {
-    #  warning("Parameter U is not >= 0, invalid")
-    #  GO <- FALSE
-    #}
     if(A <= 0) {
       warning("Parameter A is not > 0, invalid")
       GO <- FALSE
