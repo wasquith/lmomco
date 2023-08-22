@@ -30,7 +30,7 @@ function(lmom, checklmom=TRUE, emplims=TRUE, ...) {
               -7.24744751,   13.80312653,  -11.97768647,  3.96017326)
     # minTau3=-0.170900678885457 has Tau4=0.150808409913302
     smallT3 <- -0.1709; smallT4 <- 0.103
-    largeT3 <-  0.999; largeT4 <- 0.999
+    largeT3 <-  0.999;  largeT4 <- 0.999
     bndtxt <- ""
     if(emplims) {
       Tau3 <- L3 / L2; Tau4 <- L4 / L2
