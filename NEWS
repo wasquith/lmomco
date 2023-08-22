@@ -1,7 +1,11 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Changes in version 2.4.10 ((2023-08-21)
+Changes in version 2.4.11 
+-  BUG FIX: par2cdf() had improper routing of the new "smd" distribution.
+
+
+Changes in version 2.4.10 (2023-08-21)
 -  Added more details to lmomcohash.Rd that supports the .lmomcohash.
 -  Grammar and minor changes to spacing in expect.max.ostat.Rd Examples.
 -  Added more references to headrick.sheng.lalpha.Rd.
