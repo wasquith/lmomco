@@ -2,10 +2,8 @@
 \alias{lmomsmd}
 \title{L-moments of the Singh--Maddala Distribution}
 \description{
-This function computes the L-moments of the Singh--Maddala (Burr Type XII) distribution given the parameters (\eqn{\xi}, \eqn{a}, \eqn{b}, and \eqn{q}) from \code{\link{parsmd}}.
-
-The first L-moment (\eqn{\lambda_1}) for \eqn{b' = 1/b} and \eqn{R = a\Gamma(1 + b')} is
-\deqn{\lambda_1 = R\times\biggl[\frac{a\Gamma(1q-b')}{\Gamma(q)}\biggr] + \xi\mbox{.}}
+This function computes the L-moments of the Singh--Maddala (Burr Type XII) distribution given the parameters (\eqn{\xi}, \eqn{a}, \eqn{b}, and \eqn{q}) from \code{\link{parsmd}}. The first L-moment (\eqn{\lambda_1}) for \eqn{b' = 1/b} and \eqn{R = a\Gamma(1 + b')} is
+\deqn{\lambda_1 = R\times\biggl[\frac{a\Gamma(1q-b')}{\Gamma(1q)}\biggr] + \xi\mbox{.}}
 
 The second L-moment (\eqn{\lambda_2}) is
 \deqn{\lambda_2 = R\times\biggl[\frac{1\Gamma(1q - b')}{\Gamma(1q)} -

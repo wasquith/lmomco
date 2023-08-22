@@ -3,7 +3,7 @@
 \title{Cumulative Distribution Function of the Singh--Maddala Distribution}
 \description{
 This function computes the cumulative probability or nonexceedance probability of the Singh--Maddala (Burr Type XII) distribution given parameters (\eqn{a}, \eqn{b}, and \eqn{q}) of the distribution computed by \code{\link{parsmd}}. The cumulative distribution function is
-\deqn{F(x) = 1 - \biggl(1 + ((x-\xi)/a)^b \biggl)^{-q}\mbox{,}}
+\deqn{F(x) = 1 - \biggl(1 + \bigl[ (x - \xi) / a \bigr]^b \biggl)^{-q}\mbox{,}}
 where \eqn{F(x)} is the nonexceedance probability for quantile \eqn{x} with \eqn{0 \le x \le \infty}, \eqn{\xi} is a location parameter, \eqn{a} is a scale parameter (\eqn{a > 0}), \eqn{b} is a shape parameter (\eqn{b > 0}), and \eqn{q} is another shape parameter (\eqn{q > 0}).
 }
 \usage{
@@ -25,8 +25,8 @@ Shahzad, M.N., and Zahid, A., 2013, Parameter estimation of Singh Maddala distri
 \examples{
 # The SMD approximating the normal and use x=0
 tau4_of_normal <- 30 * pi^-1 * atan(sqrt(2)) - 9 # from theory
-cdfsmd(0, parsmd( vec2lmom( c( -pi, pi, 0,tau4_of_normal ) ) ) ) # 0.7138779
-pnorm( 0, mean=-pi, sd=pi*sqrt(pi))                              # 0.7136874
+cdfsmd(0, parsmd( vec2lmom( c( -pi, pi, 0, tau4_of_normal ) ) ) ) # 0.7138779
+pnorm( 0, mean=-pi, sd=pi*sqrt(pi))                               # 0.7136874
 
 \dontrun{
 t3 <- 0.6
@@ -34,7 +34,7 @@ t4 <- (t3 * (1 + 5 * t3))/(5 + t3) # L-kurtosis of GPA from lmrdia()
 paraA <- parsmd( vec2lmom( c( -1000, 200, t3, t4-0.02 ) ) )
 paraB <- parsmd( vec2lmom( c( -1000, 200, t3, t4      ) ) )
 paraC <- parsmd( vec2lmom( c( -1000, 200, t3, t4+0.02 ) ) )
-FF <- nonexceeds(); x <- quasmd2(FF, paraA)
+FF <- nonexceeds(); x <- quasmd(FF, paraA)
 plot( x, cdfsmd(x, paraA), col="red", type="l")
 lines(x, cdfsmd(x, paraB), col="green")
 lines(x, cdfsmd(x, paraC), col="blue" ) # }

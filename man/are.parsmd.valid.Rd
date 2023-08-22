@@ -2,7 +2,7 @@
 \alias{are.parsmd.valid}
 \title{Are the Distribution Parameters Consistent with the Singh--Maddala Distribution}
 \description{
-Is the distribution parameter object consistent with the corresponding distribution?  The distribution functions (\code{\link{cdfsmd}}, \code{\link{pdfsmd}}, \code{\link{quasmd}}, and \code{\link{lmomsmd}}) require consistent parameters to return the cumulative probability (nonexceedance), density, quantile, and L-moments of the distribution, respectively. These functions internally use the \code{\link{are.parsmd.valid}} function. The parameter constraints are simple \eqn{\xi >= 0)}, \eqn{a > 0} (scale), \eqn{b > 0} (shape), and \eqn{q > 0} (shape).
+Is the distribution parameter object consistent with the corresponding distribution?  The distribution functions (\code{\link{cdfsmd}}, \code{\link{pdfsmd}}, \code{\link{quasmd}}, and \code{\link{lmomsmd}}) require consistent parameters to return the cumulative probability (nonexceedance), density, quantile, and L-moments of the distribution, respectively. These functions internally use the \code{are.parsmd.valid} function. The parameter constraints are simple \eqn{a > 0} (scale), \eqn{b > 0} (shape), and \eqn{q > 0} (shape).
 }
 \usage{
 are.parsmd.valid(para, nowarn=FALSE)

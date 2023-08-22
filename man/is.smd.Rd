@@ -18,10 +18,10 @@ is.smd(para)
 \author{W.H. Asquith}
 \seealso{\code{\link{parsmd}} }
 \examples{
-#para <- parsmd(lmoms(c(123, 34, 4, 654, 37, 78)))
-#if(is.smd(para) == TRUE) {
-#  Q <- quasmd(0.5, para)
-#}
+para <- parsmd(lmoms(c(123, 34, 4, 654, 37, 78)))
+if(is.smd(para) == TRUE) {
+  Q <- quasmd(0.5, para)
+}
 }
 \keyword{utility (distribution/type check)}
 \keyword{Distribution: Singh-Maddala}

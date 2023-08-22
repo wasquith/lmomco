@@ -4,7 +4,7 @@
 \description{
 This function computes the quantiles of the Singh--Maddala (Burr Type XII) distribution given parameters (\eqn{\xi}, \eqn{a}, \eqn{b}, and \eqn{q}) computed by \code{\link{parsmd}}. The quantile function  is
 
-\deqn{x(F) = \xi + \frac{a\Gamma(1+1/b)\Gamma(q-1/b)}{\Gamma(q)}\mbox{,}}
+\deqn{x(F) = \xi + a\biggl((1-F)^{-1/q} - 1 \biggr)^{1/b}\mbox{,}}
 
 where \eqn{x(F)} with \eqn{0 \le x \le \infty} is the quantile for nonexceedance probability \eqn{F}, \eqn{\xi} is a location parameter, \eqn{a} is a scale parameter (\eqn{a > 0}), \eqn{b} is a shape parameter (\eqn{b > 0}), and \eqn{q} is another shape parameter (\eqn{q > 0}).
 }

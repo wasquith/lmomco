@@ -4,7 +4,7 @@
 \description{
 This function computes the probability density of the Singh--Maddala (Burr Type XII) distribution given parameters (\eqn{a}, \eqn{b}, and \eqn{q})  computed by \code{\link{parsmd}}. The probability density function is
 
-\deqn{f(x) = \frac{bqx^{b-1}}{a^b \biggl(1 + \bigl((x-\xi)/a\bigr)^b \biggr)^{q+1}}\mbox{,}}
+\deqn{f(x) = \frac{b \cdot q \cdot x^{b-1}}{a^b \biggl(1 + \bigl[(x-\xi)/a\bigr]^b \biggr)^{q+1}}\mbox{,}}
 
 where \eqn{f(x)} is the probability density for quantile \eqn{x} with \eqn{0 \le x \le \infty}, \eqn{\xi} is a location parameter, \eqn{a} is a scale parameter (\eqn{a > 0}), \eqn{b} is a shape parameter (\eqn{b > 0}), and \eqn{q} is another shape parameter (\eqn{q > 0}).
 }
@@ -26,8 +26,8 @@ Shahzad, M.N., and Zahid, A., 2013, Parameter estimation of Singh Maddala distri
 \examples{
 # The SMD approximating the normal and use x=0
 tau4_of_normal <- 30 * pi^-1 * atan(sqrt(2)) - 9 # from theory
-pdfsmd(0, parsmd( vec2lmom( c( -pi, pi, 0,tau4_of_normal ) ) ) ) # 0.061953
-dnorm( 0, mean=-pi, sd=pi*sqrt(pi))                              # 0.061103
+pdfsmd(0, parsmd( vec2lmom( c( -pi, pi, 0, tau4_of_normal ) ) ) ) # 0.061953
+dnorm( 0, mean=-pi, sd=pi*sqrt(pi))                               # 0.061103
 }
 \keyword{distribution}
 \keyword{probability density function}
