@@ -4,7 +4,7 @@
 \description{
 This function estimates the L-moments of the Log-Normal3 distribution given the parameters (\eqn{\zeta}, lower bounds; \eqn{\mu_{\mathrm{log}}}, location; and \eqn{\sigma_{\mathrm{log}}}, scale) from \code{\link{parln3}}.  The distribution is the same as the Generalized Normal with algebraic manipulation of the parameters, and \pkg{lmomco} does not have truly separate algorithms for the Log-Normal3 but uses those of the Generalized Normal. The discussion begins with the later distribution.
 
-The two L-moments in terms of the Geneneralized Normal  distribution parameters (\code{\link{lmomgno}}) are
+The two L-moments in terms of the Generalized Normal distribution parameters (\code{\link{lmomgno}}) are
 \deqn{\lambda_1 = \xi + \frac{\alpha}{\kappa}[1-\mathrm{exp}(\kappa^2/2)] \mbox{, and}}
 \deqn{\lambda_2 = \frac{\alpha}{\kappa}(\mathrm{exp}(\kappa^2/2)(1-2\Phi(-\kappa/\sqrt{2})) \mbox{,}}
 where \eqn{\Phi} is the cumulative distribution of the Standard Normal distribution. There are no simple expressions for \eqn{\tau_3}, \eqn{\tau_4}, and \eqn{\tau_5}, and numerical methods are used.
