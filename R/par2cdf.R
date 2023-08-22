@@ -83,7 +83,7 @@ function(x,para,...) {
       return(cdfsla(x,para))
     }
     else if(type == 'smd') {
-      return(cdfsla(x,para))
+      return(cdfsmd(x,para))
     }
     else if(type == 'st3') {
       return(cdfst3(x,para))
