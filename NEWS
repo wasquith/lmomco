@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Changes in version 2.4.10 ()
+Changes in version 2.4.10 ((2023-08-21)
 -  Added more details to lmomcohash.Rd that supports the .lmomcohash.
 -  Grammar and minor changes to spacing in expect.max.ostat.Rd Examples.
 -  Added more references to headrick.sheng.lalpha.Rd.
@@ -41,12 +41,16 @@ Changes in version 2.4.10 ()
      functions are.smd.valid.R and is.smd.R were also added.
 -  Added Singh--Maddala distribution to dist.list.R/Rd and added it as a four
      parameter distribution to prettydist.R/Rd.
--  Added Sigh--Maddala (smd) distribution to par2cdf.R, par2lmom.R, par2pdf.R,
+-  Added the algorithmic sweep of the L-skew and L-kurtosis limits of the
+     Singh--Maddala distribution using the lmomco/inst/doc/domain_of_smd.R
+     script and the results embedded into the parsmd.R function.
+-  Added Singh--Maddala (smd) distribution to par2cdf.R, par2lmom.R, par2pdf.R,
      par2qua.R, vec2par.R, and are.par.valid.R.
 -  Enhanced are.lmom.valid.R to return FALSE if the lmom argument is NULL.
 -  Enhanced vec2lmom(checklmom=TRUE) to still issue warning but to add the
      lambdas and ratios in the warning message. This might help some users
      working through large-scale automation excercises.
+-  Spelling correction in lmomln3.Rd.
 
 
 Changes in version 2.4.9 (2023-05-29)
