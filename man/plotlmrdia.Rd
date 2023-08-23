@@ -18,7 +18,7 @@ plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
   \item{nopoints}{If \code{TRUE} then point distributions are not drawn.}
   \item{nolines}{If \code{TRUE} then line distributions are not drawn.}
   \item{nolimits}{If \code{TRUE} then theoretical limits of L-moments are not drawn.}
-  \item{noaep4}{If \code{TRUE} then line of Asymmetric Exponential Power distribution is not drawn.}
+  \item{noaep4}{If \code{TRUE} then the lower bounds line of Asymmetric Exponential Power distribution is not drawn.}
   \item{nogev}{If \code{TRUE} then line of Generalized Extreme Value distribution is not drawn.}
   \item{noglo}{If \code{TRUE} then line of Generalized Logistic distribution is not drawn.}
   \item{nogno}{If \code{TRUE} then line of Generalized Normal (Log-Normal3) distribution is not drawn.}
@@ -72,14 +72,11 @@ Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the 
 
 Asquith, W.H., 2014, Parameter estimation for the 4-parameter asymmetric exponential power distribution by the method of L-moments using R: Computational Statistics and Data Analysis, v. 71, pp. 955--970.
 
-Hosking, J.R.M., 1986, The theory of probability weighted moments:
-Research Report RC12210, IBM Research Division, Yorkton Heights, N.Y.
+Hosking, J.R.M., 1986, The theory of probability weighted moments: Research Report RC12210, IBM Research Division, Yorkton Heights, N.Y.
 
-Hosking, J.R.M., 1990, L-moments---Analysis and estimation of
-distributions using linear combinations of order statistics: Journal of the Royal Statistical Society, Series B, v. 52, pp. 105--124.
+Hosking, J.R.M., 1990, L-moments---Analysis and estimation of distributions using linear combinations of order statistics: Journal of the Royal Statistical Society, Series B, v. 52, pp. 105--124.
 
-Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis--An
-approach based on L-moments: Cambridge University Press.
+Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis--An approach based on L-moments: Cambridge University Press.
 
 Vogel, R.M., and Fennessey, N.M., 1993, L moment diagrams should replace product moment diagrams: Water Resources Research, v. 29, no. 6, pp. 1745--1752.
 }
@@ -107,8 +104,8 @@ for(i in 1:nsim) {
 
 # Next, plot the diagram with a legend at a specified location, and "zoom"
 # into the diagram by manually setting the axis limits.
-plotlmrdia(lmrdia(), autolegend=TRUE, xleg=0.1, yleg=.41,
-        xlim=c(-.1, .5), ylim=c(-.1, .4), nopoints=TRUE, empty=TRUE)
+plotlmrdia(lmrdia(), autolegend=TRUE, xleg=0.1, yleg=0.41,
+        xlim=c(-0.1, 0.5), ylim=c(-0.1, 0.4), nopoints=TRUE, empty=TRUE)
 
 # Follow up by plotting the {t3, t4} values and the mean of these.
 points(t3, t4)

@@ -52,7 +52,7 @@ function(lmr=NULL,
      if(! noaep4) {
         lines(lmr$aep4, col="red", lty=4)
         entryi <- entryi + 1
-        entries[entryi] <- "AEP4"
+        entries[entryi] <- "AEP4 lower bounds"
         Elwd[entryi] <- 1
         Ecol[entryi] <- "red"
         Epch[entryi] <- NA
