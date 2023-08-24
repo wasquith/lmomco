@@ -20,7 +20,7 @@ if(SECOND_PASS) {
   Tau4 <- sum( c( uprc[1], sapply(2:9, function(i) uprc[i] * Tau3^(i-1) ) ) )
   message("Tau3=", Tau3, " has Tau4=", Tau4)
   farleft <- parsmd(vec2lmom(c(1000, 10, -0.1709, 0.1508084),
-               lscale=TRUE, checklmom=FALSE), emplims=FALSE)
+               lscale=TRUE, checklmom=FALSE), snap.tau4=FALSE)
   lmoms(rlmomco(100000, farleft))
 
   InBounds <- function(Tau3, Tau4) {
@@ -44,7 +44,7 @@ for(t3 in t3s) {
     if(SECOND_PASS) { if(! InBounds(t3, t4)) next }
     lmr <- vec2lmom(c(1000, 10, t3, t4), lscale=TRUE, checklmom=FALSE)
     if(! are.lmom.valid(lmr)) next
-    para   <- parsmd(lmr, emplims=TRUE)
+    para   <- parsmd(lmr, snap.tau4=TRUE)
     lmrsmd <- lmomsmd(para)
     if(! are.lmom.valid(lmrsmd)) next
     #if(! is.finite(lmrsmd$lambdas[1])) next
