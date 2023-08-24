@@ -18,6 +18,7 @@ function(lmr=NULL,
       noray=FALSE,
       nosla=TRUE,
       nouni=FALSE,
+      ncol=1, text.width=NULL,
          xlab="L-SKEW",
          ylab="L-KURTOSIS",
          add=FALSE, empty=FALSE,
@@ -210,7 +211,7 @@ function(lmr=NULL,
               col=Ecol,
               pch=Epch,
               lty=Elty,
-              pt.cex=Ecex,
+              pt.cex=Ecex, ncol=ncol, text.width=text.width,
               xjust=0.5, bty="n", cex=legendcex)
      } else {
        if(is.null(xleg)) warning("xleg is NULL, but needed")
@@ -221,7 +222,7 @@ function(lmr=NULL,
               col=Ecol,
               pch=Epch,
               lty=Elty,
-              pt.cex=Ecex,
+              pt.cex=Ecex, ncol=ncol, text.width=text.width,
               xjust=0.5, bty="n", cex=legendcex)
      }
    }

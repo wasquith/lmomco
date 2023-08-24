@@ -8,6 +8,7 @@ Changes in version 2.4.11 (2023-NN-NN)
      (author of extremeStat package).
 -  Converted the emplims argument of parsmd() to snap.tau4, which aligns to the
      nomenclature of the asymmetric exponential power4 distribution use.
+-  Added ncol and text.width as arguments to plotlmrdia() call to legend().
 
 
 Changes in version 2.4.10 (2023-08-21)

@@ -9,7 +9,7 @@ plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
            noaep4=FALSE, nogev=FALSE, noglo=FALSE, nogpa=FALSE,
            nope3=FALSE,  nopdq3=FALSE, nogno=FALSE, nogov=FALSE, nocau=TRUE,
            noexp=FALSE,  nonor=FALSE, nogum=FALSE, noray=FALSE,
-           nosla=TRUE,  nouni=FALSE,
+           nosla=TRUE,  nouni=FALSE, ncol=1, text.width=NULL,
            xlab="L-SKEW", ylab="L-KURTOSIS", add=FALSE, empty=FALSE,
            autolegend=FALSE, xleg=NULL, yleg=NULL, legendcex=0.9, ...)
 }
@@ -33,6 +33,8 @@ plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
   \item{noray}{If \code{TRUE} then point of Rayleigh distribution is not drawn.}
   \item{nouni}{If \code{TRUE} then point of Uniform distribution is not drawn.}
   \item{nosla}{If \code{TRUE} then point (limiting, TL-moment [trim=1]) of the Slash distribution is not drawn.}
+  \item{ncol}{The number of columns in which to set the legend items (default is 1, which differs from \code{legend()} default of 1).}
+  \item{text.width}{Argument of the same name for \code{legend}. Setting to 0.1 for \code{ncol} set to 2 seems to work pretty well when two columns are desired.}
   \item{xlab}{Horizonal axis label passed to \code{xlab} of the \code{plot} function.}
   \item{ylab}{Vertical axis label passed to \code{ylab} of the \code{plot} function.}
   \item{add}{A logical to toggle a call to \code{plot} to start a new plot, otherwise, just the trajectories are otherwise plotted.}
