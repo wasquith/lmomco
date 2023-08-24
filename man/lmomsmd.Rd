@@ -66,7 +66,8 @@ lmr <- lmoms(c(123, 34, 4, 654, 37, 78), nmom=6)
 lmr$source <- lmr$trim <- lmr$leftrim <- lmr$rightrim <-NULL
 # The parsmd() reports Tau4 is too big and snaps it to an empirical boundary.
 # "Tau4(~Tau3) snapped to upper limit, Tau4=0.65483 for Tau3=0.75126"
-bmr <- lmomsmd(parsmd(lmr)); dmr <- data.frame(bmr$lambdas, bmr$ratios)
+bmr <- lmomsmd(parsmd(lmr, snap.tau4=TRUE))
+dmr <- data.frame(bmr$lambdas, bmr$ratios)
 cbind(as.data.frame(lmr), dmr) # See in table that row 4 has different Tau4s
 #  lambdas    ratios bmr.lambdas bmr.ratios
 # 1   155.0        NA   155.00000         NA
@@ -80,7 +81,8 @@ cbind(as.data.frame(lmr), dmr) # See in table that row 4 has different Tau4s
 gumt3t4 <- c(log(9/8)/log(2), (16 * log(2) - 10 * log(3))/log(2))
 lmr <- theoLmoms(pargum(vec2lmom(c(155, 118.6, gumt3t4))), nmom=6)
 lmr$source <- lmr$trim <- lmr$leftrim <- lmr$rightrim <-NULL
-bmr <- lmomsmd(parsmd(lmr)); dmr <- data.frame(bmr$lambdas, bmr$ratios)
+bmr <- lmomsmd(parsmd(lmr, snap.tau4=TRUE))
+dmr <- data.frame(bmr$lambdas, bmr$ratios)
 cbind(as.data.frame(lmr), dmr)
 #      lambdas     ratios bmr.lambdas bmr.ratios
 # 1 155.000000         NA  155.000000         NA
@@ -95,7 +97,7 @@ cbind(as.data.frame(lmr), dmr)
   gumt3t4 <- c(log(9/8)/log(2), (16 * log(2) - 10 * log(3))/log(2))
   FF <- nonexceeds(); qFF <- qnorm(FF)
   gumx <- qlmomco(FF, pargum(vec2lmom(c(155, 118.6, gumt3t4))))
-  smdx <- qlmomco(FF, parsmd(lmr))
+  smdx <- qlmomco(FF, parsmd(lmr, snap.tau4=TRUE))
   plot( qFF, gumx, col="blue", type="l",
        xlab="Standard normal variate", ylab="Quantile")
   lines(qFF, smdx, col="red") # }
