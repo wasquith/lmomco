@@ -18,7 +18,7 @@ cdfsmd(x, para)
   Nonexceedance probability (\eqn{F}) for \eqn{x}.
 }
 \references{
-Kumar, D., 2017, The Singh–Maddala distribution---Properties and estimation: International Journal of System Assurance Engineering and Management, v. 8, no. S2, 15 p., \doi{10.1007/s13198-017-0600-1}.
+Kumar, D., 2017, The Singh--Maddala distribution---Properties and estimation: International Journal of System Assurance Engineering and Management, v. 8, no. S2, 15 p., \doi{10.1007/s13198-017-0600-1}.
 
 Shahzad, M.N., and Zahid, A., 2013, Parameter estimation of Singh Maddala distribution by moments: International Journal of Advanced Statistics and Probability, v. 1, no. 3, pp. 121--131, \doi{10.14419/ijasp.v1i3.1206}.
 }
@@ -37,9 +37,10 @@ paraA <- parsmd( vec2lmom( c( -1000, 200, t3, t4-0.02 ) ) )
 paraB <- parsmd( vec2lmom( c( -1000, 200, t3, t4      ) ) )
 paraC <- parsmd( vec2lmom( c( -1000, 200, t3, t4+0.02 ) ) )
 FF <- nonexceeds(); x <- quasmd(FF, paraA)
-plot( x, cdfsmd(x, paraA), col="red", type="l")
-lines(x, cdfsmd(x, paraB), col="green")
-lines(x, cdfsmd(x, paraC), col="blue" ) # }
+plot( x, prob2grv(cdfsmd(x, paraA)), col="red", type="l",
+      xlab="Quantile", ylab="Gumbel Reduced Variate, prob2grv()")
+lines(x, prob2grv(cdfsmd(x, paraB)), col="green")
+lines(x, prob2grv(cdfsmd(x, paraC)), col="blue" ) # }
 }
 \keyword{distribution}
 \keyword{cumulative distribution function}
