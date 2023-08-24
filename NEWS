@@ -6,6 +6,8 @@ Changes in version 2.4.11 (2023-NN-NN)
 -  Added "lower bounds" to the AEP4 in the autolegend of plotlmrdia().
 -  Coordination with strong reverse depends with Berry Boessenkool
      (author of extremeStat package).
+-  Converted the emplims argument of parsmd() to snap.tau4, which aligns to the
+     nomenclature of the asymmetric exponential power4 distribution use.
 
 
 Changes in version 2.4.10 (2023-08-21)
