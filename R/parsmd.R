@@ -1,15 +1,28 @@
 "parsmd" <-
-function(lmom, checklmom=TRUE, emplims=TRUE, ...) {
+function(lmom, checklmom=TRUE, checkbounds=TRUE, snap.tau4=FALSE, ...) {
     para <- rep(NA, 4)
     names(para) <- c("xi", "a", "b", "q")
+
+    z <- list(type   = 'smd',    para    = para,
+              source = "parsmd", message = "",
+              iter   = 0, rt=NA, ifail   = NA)
 
     if(length(lmom$L1) == 0) { # convert to named L-moments
       lmom <- lmorph(lmom)     # nondestructive conversion!
     }
 
-    if(checklmom & ! are.lmom.valid(lmom)) {
-      warning("L-moments are invalid")
-      return()
+    if(checklmom) {
+      if(! are.lmom.valid(lmom)) {
+        warning("L-moments are invalid")
+        z$message <- "L-moments are invalid"
+        z$ifail   <- -1
+        return(z)
+      } else {
+        z$message <- ""
+        z$ifail   <- NA # let rest of the function figure out what is needed here
+      }
+    } else {
+      z$message <- "L-moments not checked by are.lmom.valid()"
     }
 
     # Real world L-moments
@@ -24,46 +37,50 @@ function(lmom, checklmom=TRUE, emplims=TRUE, ...) {
     L3 <- plmom$L3
     L4 <- plmom$L4
 
-    uprc <- c(  0.16635578,   0.11404732,    0.21485583,  1.39842572,  1.93768515,
-              -13.75534437,  23.59646444,  -17.66250301,  4.99172608)
-    lwrc <- c( 0.10706342,   -0.11187055,    0.78710977,  0.14461194,  1.53490921,
-              -7.24744751,   13.80312653,  -11.97768647,  3.96017326)
-    # minTau3=-0.170900678885457 has Tau4=0.150808409913302
-    smallT3 <- -0.1709; smallT4 <- 0.103
-    largeT3 <-  0.999;  largeT4 <- 0.999
-    bndtxt <- ""
-    if(emplims) {
-      Tau3 <- L3 / L2; Tau4 <- L4 / L2
-      if(Tau3   <= smallT3) {
-         Tau3   <- smallT3
-         bndtxt <- paste0("Tau3 <= ", smallT3, " snapped to that value; ")
-      }
-      if(Tau3   >=  0.999) {
-         Tau3   <-  0.999
-         bndtxt <- paste0("Tau3 <= ", largeT3, " snapped to that value; ")
-      }
-      if(Tau4   <=  0.104) {  # double assurance knowing that polynomials are to come
-         Tau4   <-  0.104
-         bndtxt <- paste0("Tau4 <= ", smallT4, " snapped to that value; ")
-      }
-      if(Tau4   >=  0.999) {  # double assurance knowing that polynomials are to come
-         Tau4   <-  0.999
-         bndtxt <- paste0("Tau4 <= ", largeT4, " snapped to that value; ")
-      }
-      upr <- sum( c( uprc[1], sapply(2:9, function(i) uprc[i] * Tau3^(i-1) ) ) )
-      lwr <- sum( c( lwrc[1], sapply(2:9, function(i) lwrc[i] * Tau3^(i-1) ) ) )
-      if(Tau4 > upr) {
-        L4 <- upr * L2
-        bndtxt <- paste0(bndtxt, "Tau4(~Tau3) snapped to upper limit, Tau4=",
-                    round(upr, digits=5), " for Tau3=", round(L3/L2, digits=5) )
-      }
-      #print(c(Tau3, lwr, upr, Tau4))
-      if(Tau4 < lwr) {
-        L4 <- lwr * L2
-        bndtxt <- paste0(bndtxt, "Tau4(~Tau3) snapped to lower limit, Tau4=",
-                    round(lwr, digits=5), " for Tau3=", round(L3/L2, digits=5) )
+
+    if(checkbounds) {
+      uprc <- c(  0.16635578,   0.11404732,    0.21485583,  1.39842572,  1.93768515,
+                -13.75534437,  23.59646444,  -17.66250301,  4.99172608)
+      lwrc <- c( 0.10706342,   -0.11187055,    0.78710977,  0.14461194,  1.53490921,
+                -7.24744751,   13.80312653,  -11.97768647,  3.96017326)
+      # minTau3=-0.170900678885457 has Tau4=0.150808409913302
+      smallT3 <- -0.1709; smallT4 <- 0.103
+      largeT3 <-  0.999;  largeT4 <- 0.999
+      bndtxt <- ""
+      if(snap.tau4) {
+        Tau3 <- L3 / L2; Tau4 <- L4 / L2
+        if(Tau3  <= smallT3) {
+          Tau3   <- smallT3
+          bndtxt <- paste0("Tau3 <= ", smallT3, " snapped to that value; ")
+        }
+        if(Tau3  >=  0.999) {
+          Tau3   <-  0.999
+          bndtxt <- paste0("Tau3 <= ", largeT3, " snapped to that value; ")
+        }
+        if(Tau4  <=  0.104) {  # double assurance knowing that polynomials are to come
+          Tau4   <-  0.104
+          bndtxt <- paste0("Tau4 <= ", smallT4, " snapped to that value; ")
+        }
+        if(Tau4  >=  0.999) {  # double assurance knowing that polynomials are to come
+          Tau4   <-  0.999
+          bndtxt <- paste0("Tau4 <= ", largeT4, " snapped to that value; ")
+        }
+        upr <- sum( c( uprc[1], sapply(2:9, function(i) uprc[i] * Tau3^(i-1) ) ) )
+        lwr <- sum( c( lwrc[1], sapply(2:9, function(i) lwrc[i] * Tau3^(i-1) ) ) )
+        if(Tau4 > upr) {
+          L4 <- upr * L2
+          bndtxt <- paste0(bndtxt, "Tau4(~Tau3) snapped to upper limit, Tau4=",
+                      round(upr, digits=5), " for Tau3=", round(L3/L2, digits=5) )
+        }
+        #print(c(Tau3, lwr, upr, Tau4))
+        if(Tau4 < lwr) {
+          L4 <- lwr * L2
+          bndtxt <- paste0(bndtxt, "Tau4(~Tau3) snapped to lower limit, Tau4=",
+                      round(lwr, digits=5), " for Tau3=", round(L3/L2, digits=5) )
+        }
       }
     }
+
 
     ofunc <- function(par, L2=NA, L3=NA) {
        B <- exp(par[1]); Q <- exp(par[2])
@@ -79,11 +96,10 @@ function(lmom, checklmom=TRUE, emplims=TRUE, ...) {
        return(err)
     }
 
-    para <- rep(NA, 4); names(para) <- c("xi", "a", "b", "q")
-    para <- list(type="smd", para=para, source="parsmd")
+
     para.init <- c(1.5, 2.5)
     maxit <- 7
-    broken <- NA
+    loop_broken <- NA
     for(i in seq_len(maxit)) {
       rt <- NULL
       try(rt <- optim(log( para.init ), ofunc, L2=L2, L3=L3,
@@ -97,9 +113,9 @@ function(lmom, checklmom=TRUE, emplims=TRUE, ...) {
       A  <- L2 / ( gamma(1+IB) * (t1 - t2) )
       mu <- A * exp(lgamma(1 + IB) + log(t1))
       #print(c(OF, mu-1))
-      para <- list(type="smd", para=c(OF - (mu-1), A, B, Q), source="parsmd")
-      if(! are.parsmd.valid(para)) break
-      lmrsmd <- lmomsmd(para)
+      z$para <- c(OF - (mu-1), A, B, Q)
+      if(! are.parsmd.valid(  z )) break
+      lmrsmd <- lmomsmd(z)
       if(! are.lmom.valid(lmrsmd)) break
       #errt1 <- abs(    L1 - lmrsmd$lambdas[1] )
       #errt2 <- abs( L2/L1 - lmrsmd$ratios[ 2] )
@@ -108,16 +124,20 @@ function(lmom, checklmom=TRUE, emplims=TRUE, ...) {
       #print(c(              errt3, errt4))
       #print(c(errt1, errt2, errt3, errt4))
       if(errt3 < 0.001 & errt4 < 0.001) {
-        broken <- TRUE
+        loop_broken <- TRUE
         break
       } else {
-        broken <- FALSE
+        loop_broken <- FALSE
       }
       para.init <- 10^runif(2, min=-2, max=4)
     }
-    para$iter   <- i
-    para$rt     <- rt
-    para$bndtxt <- bndtxt
-    ifelse(broken, para$ifail <- 0, para$ifail <- 1)
-    return(para)
+    z$iter    <- i
+    z$rt      <- rt
+    if(z$message != "") {
+      z$message <- paste0(z$message, "; ", bndtxt)
+    } else {
+      z$message <- bndtxt
+    }
+    ifelse(loop_broken, z$ifail <- 0, z$ifail <- 1)
+    return(z)
 }
