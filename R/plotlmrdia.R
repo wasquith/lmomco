@@ -18,11 +18,11 @@ function(lmr=NULL,
       noray=FALSE,
       nosla=TRUE,
       nouni=FALSE,
-      ncol=1, text.width=NULL,
          xlab="L-SKEW",
          ylab="L-KURTOSIS",
          add=FALSE, empty=FALSE,
          autolegend=FALSE, xleg=NULL, yleg=NULL, legendcex=0.9,
+         ncol=1, text.width=NULL,
          ...) {
 
    entries <- vector(mode = "character")
