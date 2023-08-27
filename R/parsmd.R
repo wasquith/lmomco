@@ -43,9 +43,26 @@ function(lmom, checklmom=TRUE, checkbounds=TRUE, snap.tau4=FALSE, ...) {
                 -13.75534437,  23.59646444,  -17.66250301,  4.99172608)
       lwrc <- c( 0.10706342,   -0.11187055,    0.78710977,  0.14461194,  1.53490921,
                 -7.24744751,   13.80312653,  -11.97768647,  3.96017326)
-      # minTau3=-0.170900678885457 has Tau4=0.150808409913302
-      smallT3 <- -0.1709; smallT4 <- 0.103
-      largeT3 <-  0.999;  largeT4 <- 0.999
+
+      # xfunc <- function(t3) {
+      #   upr <- sum( c( uprc[1], sapply(2:9, function(i) uprc[i] * t3^(i-1) ) ) )
+      #   lwr <- sum( c( lwrc[1], sapply(2:9, function(i) lwrc[i] * t3^(i-1) ) ) )
+      #   upr - lwr
+      # }
+      # uniroot(xfunc, interval=c(-.20, -0.1))$root # -0.1693994 is the crossing of the polys
+      # points(-0.1694, 0.1505499)
+      #xfunc <- function(t3) {
+      #  1 - sum( c( uprc[1], sapply(2:9, function(i) uprc[i] * t3^(i-1) ) ) )
+      #}
+      #uniroot(xfunc, interval=c(0.9, 1.1))$root # 0.9989202 is the Tau3 wherein Tau4 goes to 1
+      # xfunc <- function(t3) {
+      #   sum( c( lwrc[1], sapply(2:9, function(i) lwrc[i] * t3^(i-1) ) ) )
+      # }
+      # optim(0, fn=xfunc)$par # 0.06894531 is the Tau3 wherein Tau4 (0.1031641) goes to it minimum
+
+
+      smallT3 <- -0.1694; smallT4 <- 0.1032
+      largeT3 <-  0.9989; largeT4 <- 0.999
       bndtxt <- ""
       if(snap.tau4) {
         Tau3 <- L3 / L2; Tau4 <- L4 / L2
