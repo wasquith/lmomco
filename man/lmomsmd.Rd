@@ -72,10 +72,10 @@ cbind(as.data.frame(lmr), dmr) # See in table that row 4 has different Tau4s
 #  lambdas    ratios bmr.lambdas bmr.ratios
 # 1   155.0        NA   155.00000         NA
 # 2   118.6 0.7651613   118.60000  0.7651613
-# 3    89.1 0.7512648    89.18356  0.7519693
-# 4    82.1 0.6922428    77.59435  0.6542525 # see different Tau4s (snapping)
-# 5    69.5 0.5860034    68.39578  0.5766929 # We are not fitting to these
-# 6   102.5 0.8642496    62.58192  0.5276721 # higher L-moments.
+# 3    89.1 0.7512648    89.18739  0.7520016
+# 4    82.1 0.6922428    77.59904  0.6542921 # see different Tau4s (snapping)
+# 5    69.5 0.5860034    68.40150  0.5767411 # We are not fitting to these
+# 6   102.5 0.8642496    62.58792  0.5277228 # higher L-moments.
 
 # T3 and T4 of the Gumbel distribution, which is inside the SMD domain.
 gumt3t4 <- c(log(9/8)/log(2), (16 * log(2) - 10 * log(3))/log(2))

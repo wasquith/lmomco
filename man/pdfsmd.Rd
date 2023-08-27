@@ -29,7 +29,7 @@ Shahzad, M.N., and Zahid, A., 2013, Parameter estimation of Singh Maddala distri
 # The SMD approximating the normal and use x=0
 tau4_of_normal <- 30 * pi^-1 * atan(sqrt(2)) - 9 # from theory
 pdfsmd(0, parsmd( vec2lmom( c( -pi, pi, 0, tau4_of_normal ) ) ) ) # 0.061953
-dnorm( 0, mean=-pi, sd=pi*sqrt(pi))                               # 0.061103
+dnorm( 0, mean=-pi, sd=pi*sqrt(pi))                               # 0.06110337
 }
 \keyword{distribution}
 \keyword{probability density function}
