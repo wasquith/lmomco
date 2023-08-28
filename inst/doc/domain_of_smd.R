@@ -1,6 +1,7 @@
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 
-SECOND_PASS <- TRUE
+SAVE_SMD    <- TRUE
+SECOND_PASS <- FALSE
 
 if(SECOND_PASS) {
   # The first pass produces these bounds. Second refines them partly by
@@ -19,9 +20,9 @@ if(SECOND_PASS) {
   Tau3 <- uniroot(ofunc, interval=c(-0.2, 0.999))$root
   Tau4 <- sum( c( uprc[1], sapply(2:9, function(i) uprc[i] * Tau3^(i-1) ) ) )
   message("Tau3=", Tau3, " has Tau4=", Tau4)
-  farleft <- parsmd(vec2lmom(c(1000, 10, -0.1709, 0.1508084),
-               lscale=TRUE, checklmom=FALSE), snap.tau4=FALSE)
-  lmoms(rlmomco(100000, farleft))
+  #farleft <- parsmd(vec2lmom(c(1000, 10, -0.1709, 0.1508084),
+  #             lscale=TRUE, checklmom=FALSE), snap.tau4=FALSE)
+  #lmoms(rlmomco(100000, farleft))
 
   InBounds <- function(Tau3, Tau4) {
     upr <- sum( c( uprc[1], sapply(2:9, function(i) uprc[i] * Tau3^(i-1) ) ) )
@@ -44,7 +45,7 @@ for(t3 in t3s) {
     if(SECOND_PASS) { if(! InBounds(t3, t4)) next }
     lmr <- vec2lmom(c(1000, 10, t3, t4), lscale=TRUE, checklmom=FALSE)
     if(! are.lmom.valid(lmr)) next
-    para   <- parsmd(lmr, snap.tau4=TRUE)
+    para   <- parsmd(lmr, snap.tau4=FALSE)
     lmrsmd <- lmomsmd(para)
     if(! are.lmom.valid(lmrsmd)) next
     #if(! is.finite(lmrsmd$lambdas[1])) next
@@ -78,7 +79,7 @@ lines(lmrdia$gpa[,1], lmrdia$gpa[,2], col="blue")
 
 SMD <- data.frame(TAU3=tT3s, TAU4=tT4s, eTAU3=eT3s, eTAU4=eT4s,
                   B=Bs, Q=Qs, Iters=Iters)
-save(SMD, file="SMD.RData")
+if(SAVE_SMD) save(SMD, file="SMD.RData")
 
 Cols <- Iters
 Cols[Cols == 1] <- grey(0.9)
@@ -137,6 +138,11 @@ lines(SMDmin$Group.1, fitted.values(LWR), col="red", lwd=2)
 plot(tmp$TAU3, tmp$TAU4, cex=0.4, pch=16, xlim=c(-.2,0.2), ylim=c(0.1, 0.2))
 lines(SMDmax$Group.1, fitted.values(UPR), col="red", lwd=2)
 lines(SMDmin$Group.1, fitted.values(LWR), col="red", lwd=2)
+
+plot(tmp$TAU3, tmp$TAU4, cex=0.4, pch=16, xlim=c(-.2,-.1), ylim=c(0.1, 0.16))
+lines(SMDmax$Group.1, fitted.values(UPR), col="red", lwd=2)
+lines(SMDmin$Group.1, fitted.values(LWR), col="red", lwd=2)
+
 
 plot(tmp$TAU3, tmp$TAU4, cex=0.4, pch=16, xlim=c(.9,1), ylim=c(0.9, 1))
 lines(SMDmax$Group.1, fitted.values(UPR), col="red", lwd=2)
