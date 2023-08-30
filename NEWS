@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Changes in version 2.4.11 (2023-NN-NN)
+Changes in version 2.4.11 (2023-08-30)
 -  BUG FIX: par2cdf() had improper routing of the new "smd" distribution.
 -  Added "lower bounds" to the AEP4 in the autolegend of plotlmrdia().
 -  Coordination with strong reverse depends with Berry Boessenkool
