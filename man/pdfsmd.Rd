@@ -30,6 +30,16 @@ Shahzad, M.N., and Zahid, A., 2013, Parameter estimation of Singh Maddala distri
 tau4_of_normal <- 30 * pi^-1 * atan(sqrt(2)) - 9 # from theory
 pdfsmd(0, parsmd( vec2lmom( c( -pi, pi, 0, tau4_of_normal ) ) ) ) # 0.061953
 dnorm( 0, mean=-pi, sd=pi*sqrt(pi))                               # 0.06110337
+
+\dontrun{
+LMlo <- vec2lmom(c(10000, 1500, 0.3, 0.1))
+LMhi <- vec2lmom(c(10000, 1500, 0.3, 0.6))
+SMDlo <- parsmd(LMlo, snap.tau4=TRUE) # Tau4 snapped to 0.15077
+SMDhi <- parsmd(LMhi, snap.tau4=TRUE) # Tau4 snapped to 0.25360
+FF <- pnorm(seq(-6, 3, by=.01))
+x <- sort(c(quasmd(FF, SMDlo), quasmd(FF, SMDhi)))
+plot( x, pdfsmd(x, SMDlo), col="red", xlim=range(x), type="l")
+lines(x, pdfsmd(x, SMDhi), col="blue") #}
 }
 \keyword{distribution}
 \keyword{probability density function}
