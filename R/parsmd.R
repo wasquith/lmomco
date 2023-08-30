@@ -1,9 +1,9 @@
 "parsmd" <-
-function(lmom, checklmom=TRUE, checkbounds=TRUE, snap.tau4=FALSE, ...) {
+function(lmom, checklmom=TRUE, checkbounds=TRUE, snap.tau4=TRUE, ...) {
     para <- rep(NA, 4)
     names(para) <- c("xi", "a", "b", "q")
 
-    z <- list(type   = 'smd',    para    = para,
+    z <- list(type   = 'smd',    para    = para, last_para = para,
               source = "parsmd", message = "",
               iter   = 0, rt=NA, ifail   = NA)
 
@@ -131,7 +131,8 @@ function(lmom, checklmom=TRUE, checkbounds=TRUE, snap.tau4=FALSE, ...) {
       mu <- A * exp(lgamma(1 + IB) + log(t1))
       #print(c(OF, mu-1))
       z$para <- c(OF - (mu-1), A, B, Q)
-      if(! are.parsmd.valid(  z )) break
+      #print(z$para)
+      if(! are.parsmd.valid(  z, nowarn=TRUE )) break
       lmrsmd <- lmomsmd(z)
       if(! are.lmom.valid(lmrsmd)) break
       #errt1 <- abs(    L1 - lmrsmd$lambdas[1] )
@@ -155,6 +156,11 @@ function(lmom, checklmom=TRUE, checkbounds=TRUE, snap.tau4=FALSE, ...) {
     } else {
       z$message <- bndtxt
     }
+    z$last_para <- z$para
     ifelse(loop_broken, z$ifail <- 0, z$ifail <- 1)
+    if(z$ifail != 0) z$para <- c(NA, NA, NA, NA)
+    if(! are.parsmd.valid(z, nowarn=TRUE)) {
+      z$para <- c(NA, NA, NA, NA)
+    }
     return(z)
 }

@@ -5,7 +5,7 @@
 This function estimates the parameters of the Singh--Maddala (Burr Type XII) distribution given the L-moments of the data in an L-moment object such as that returned by \code{\link{lmoms}}. The L-moments in terms of the parameters are complicated and solved numerically. Extensive study of the computational limits of the \R implementation are incorporated within the source code of the function. The file \code{lmomco/inst/doc/domain_of_smd.R} contains the algorithmic sweep used to compute the L-skew and L-kurtosis attainable domain of the distribution.
 }
 \usage{
-parsmd(lmom, checklmom=TRUE, checkbounds=TRUE, snap.tau4=FALSE, ...)
+parsmd(lmom, checklmom=TRUE, checkbounds=TRUE, snap.tau4=TRUE, ...)
 }
 \arguments{
   \item{lmom}{An L-moment object created by \code{\link{lmoms}} or \code{\link{vec2lmom}}.}
@@ -19,6 +19,7 @@ parsmd(lmom, checklmom=TRUE, checkbounds=TRUE, snap.tau4=FALSE, ...)
 
   \item{type}{The type of distribution: \code{smd}.}
   \item{para}{The parameters of the distribution.}
+  \item{last_para}{The last or final iteration of the parameters that are the same as \code{para} if \code{ifail} is zero. This provides a way to preserve where the parameter left off or gave up.}
   \item{source}{The source of the parameters: \dQuote{parsmd}.}
   \item{iter}{The number of iteration attempts looping on the \code{optim()} call.}
   \item{rt}{The output of the \code{optim()} call.}
