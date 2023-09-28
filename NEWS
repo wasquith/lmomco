@@ -1,6 +1,10 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
+Changes in version 2.4.12 (2023-NN-NN)
+-  Spelling corrections within this NEWS.
+ 
+
 Changes in version 2.4.11 (2023-08-30)
 -  BUG FIX: par2cdf() had improper routing of the new "smd" distribution.
 -  Added "lower bounds" to the AEP4 in the autolegend of plotlmrdia().
@@ -59,7 +63,7 @@ Changes in version 2.4.10 (2023-08-21)
 -  Enhanced are.lmom.valid.R to return FALSE if the lmom argument is NULL.
 -  Enhanced vec2lmom(checklmom=TRUE) to still issue warning but to add the
      lambdas and ratios in the warning message. This might help some users
-     working through large-scale automation excercises.
+     working through large-scale automation exercises.
 -  Spelling correction in lmomln3.Rd.
 
 
