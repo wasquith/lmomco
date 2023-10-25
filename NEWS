@@ -3,7 +3,11 @@
 --------------------------------------------------------------------------------
 Changes in version 2.4.12 (2023-NN-NN)
 -  Spelling corrections within this NEWS.
- 
+-  Added the disfitgovloc() function for parameter estimation of distribution
+     Govindarajulu to specific lower and upper bounds in conjunction with a
+     measure of location (mean or median).
+-  Minor grammar changes to disfitqua.Rd.
+
 
 Changes in version 2.4.11 (2023-08-30)
 -  BUG FIX: par2cdf() had improper routing of the new "smd" distribution.
