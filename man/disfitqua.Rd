@@ -3,7 +3,7 @@
 \alias{disfitqua}
 \title{Fit a Distribution using Minimization of Available Quantiles }
 \description{
-This function fits a distribution to available quantiles (or irregular quantiles) through \eqn{n}-dimensional minimization using the \code{optim} function. The objective function forms are either root mean-square error (RMSE) or mean absolute deviation (MAD), and the objective functions are expected to result in slightly different estimates of distribution parameters. The RMSE form (\eqn{\sigma_{\mathrm{RMSE}}}) is defined as
+This function fits a distribution to available quantiles (or irregular quantiles) through \eqn{n}-dimensional minimization using the \code{optim} function. Objective function forms are either root mean-square error (RMSE) or mean absolute deviation (MAD), and the objective functions are expected to result in slightly different estimates of distribution parameters. The RMSE form (\eqn{\sigma_{\mathrm{RMSE}}}) is defined as
 \deqn{\sigma_{\mathrm{RMSE}} = \biggl[ \frac{1}{m}\,\sum_{i=1}^m [x_o(f_i) - \hat{x}(f_i)]^2\biggr]^{1/2}\mbox{,}}
 where \eqn{m} is the length of the vector of \eqn{o}bserved quantiles \eqn{x_o(f_i)} for nonexceedance probability \eqn{f_i} for \eqn{i \in 1, 2, \cdots, m}, and \eqn{\hat{x}(f_i)} for \eqn{i \in 1, 2, \cdots, m} are quantile estimates based on the \dQuote{current} iteration of the parameters for the selected distribution having \eqn{n} parameters for \eqn{n \le m}. Similarly, the MAD form (\eqn{\sigma_{\mathrm{MAD}}}) is defined as
 \deqn{\sigma_{\mathrm{MAD}} = \frac{1}{m}\,\sum_{i=1}^m | x_o(f_i) - \hat{x}(f_i) | \mbox{.}}
