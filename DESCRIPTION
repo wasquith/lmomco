@@ -1,11 +1,11 @@
 Package: lmomco
 Type: Package
 Title: L-Moments, Censored L-Moments, Trimmed L-Moments, L-Comoments, and Many Distributions
-Version: 2.4.11
+Version: 2.4.12
 Depends: R (>= 3.3.0), utils
 Imports: goftest, Lmoments, MASS
 Suggests: copBasic
-Date: 2023-08-30
+Date: 2023-10-30
 Author: William Asquith
 Description: Extensive functions for Lmoments (LMs) and probability-weighted moments (PWMs),
   distribution parameter estimation, LMs for distributions, LM ratio diagrams, multivariate
