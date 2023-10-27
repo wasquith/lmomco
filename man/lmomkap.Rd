@@ -14,7 +14,7 @@ where \eqn{r} is L-moment order, \eqn{\gamma} is Euler's constant, and for \eqn{
 
 The probability-weighted moments (\eqn{\beta_r}; \code{\link{pwm2lmom}}) for \eqn{k = 0} (is small or near zero) are
 \deqn{r\beta_{r-1} = \xi + (\alpha/\kappa)[1 - d_r]}
-or if \eqn{k > -1} (nonzero) then 
+or if \eqn{k > -1} (nonzero) then
 \deqn{r\beta_{r-1} = \xi + (\alpha/\kappa)[1 - g_r]}
 
 }
@@ -46,7 +46,7 @@ Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approa
 \author{W.H. Asquith}
 \seealso{\code{\link{parkap}}, \code{\link{cdfkap}}, \code{\link{pdfkap}}, \code{\link{quakap}} }
 \examples{
-lmr <- lmoms(c(123,34,4,654,37,78))
+lmr <- lmoms(c(123, 34, 4,78, 45, 234, 65, 2, 3, 5, 76, 7, 80))
 lmomkap(parkap(lmr))
 }
 \keyword{L-moment (distribution)}

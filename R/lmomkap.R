@@ -52,6 +52,7 @@ function(para, nmom=5) {
       SUM <- Zo*(BETA[j]-BETA[1])/ALAM2-Z # to get into L-moment ratios. Testing
       if(j == 3) {          # of a process in R idiom (like above caseN's) shows
         z$ratios[j] <- SUM     # concerns in computing the full PWM ensemble and
+        z$lambdas[j] <- z$ratios[j] * z$lambdas[2]
       } else {                 # the swapping to L-moments via pwm2lmom() as h
         for(i in 2:(j-2)) {    # because "large". WHA finds by full PWM ensemble
           Z <- Z*(i+i+1)*(j-i)/((i+i-1)*(j+i)) # that about 36 lines are needed

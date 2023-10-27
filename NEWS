@@ -7,6 +7,9 @@ Changes in version 2.4.12 (2023-NN-NN)
      Govindarajulu to specific lower and upper bounds in conjunction with a
      measure of location (mean or median).
 -  Minor grammar changes to disfitqua.Rd.
+-  BUG FIX: lmomkap() was not returning the lambda[3] of the distribution.
+     Simple fix but amazing the bug has existed since very beginning of lmomco.
+     Minor update in lmomkap.Rd with a non-NULL example data set for Kappa.
 
 
 Changes in version 2.4.11 (2023-08-30)
