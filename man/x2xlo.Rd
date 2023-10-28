@@ -28,7 +28,7 @@ x2xlo(x, leftout=0, a=0, ghost=NULL)
   \item{source}{The source of the parameters: \dQuote{x2xlo}.}
 }
 \author{W.H. Asquith}
-\seealso{\code{\link{f2flo}}, \code{\link{flo2f}}, \code{\link{par2qua2lo}} }
+\seealso{\code{\link{f2flo}}, \code{\link{flo2f}}, \code{\link{f2f}}, \code{\link{xlo2qua}}, \code{\link{par2qua2lo}} }
 \examples{
 \dontrun{
 set.seed(62)
