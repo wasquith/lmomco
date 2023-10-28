@@ -13,9 +13,9 @@ function(f, pp=NA, xlo=NULL, type=c("ge", "gt")) {
    }
    type <- match.arg(type)
    if(type == "gt") {
-     f <- f[f >  pp] # see identifical subsetting in f2f
+     f <- f[f >  pp] # see identical subsetting in f2f
    } else {
-     f <- f[f >= pp] # see identifical subsetting in f2f
+     f <- f[f >= pp] # see identical subsetting in f2f
    }
    zs <- (f-pp)/(1-pp)
    if(any(zs < 0) || any(zs > 1)) {
