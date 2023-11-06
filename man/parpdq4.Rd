@@ -59,9 +59,8 @@ and this snapping produces an operational lower bounds of \eqn{\kappa} of -65455
   T4s <- seq(0.8, 0.9, by=0.001) # sweeping through very high Tau4
   unit_std <- 1/sqrt(pi)
   FF <- pnorm(seq(-6, 6, by=0.01))
-  plot(0,0, type="n", xlim=range(qnorm(FF)),
-            xlim=range(FF), ylim=c(-6, 6),
-            xlab="Standard Normal Variate", "Quantile")
+  plot(0,0, type="n", xlim=range(qnorm(FF)), ylim=c(-6, 6),
+            xlab="Standard Normal Variate", ylab="Quantile")
   for(i in 1:length(T4s)) {
     lmr  <- vec2lmom(c(0, unit_std, 0, T4s[i]))
     pdq4 <- parpdq4(lmr, snapt4uplimit=FALSE)
@@ -88,7 +87,7 @@ The problem geometrically is, as the \eqn{\tau_4} becomes very \dQuote{large}, t
     print(c(T4s[i], errs[i], para$para[3]))
   }
   plot(T4s, errs, ylab="abs(Lambda4 - EstLambda4)/Lambda4", col="red")
-  abline(v=0.845, type=2) # so use 0.845 as a lower margin
+  abline(v=0.845) # so use 0.845 as a lower margin
 }
 The \eqn{\tau_4 >= 0.845} is therefore a more defensive upper limit for operational purposes of the \pkg{lmomco} package.
 
