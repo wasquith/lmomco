@@ -8,7 +8,7 @@ importFrom("stats", "approx", "binomial", "coefficients", "complete.cases",
            "qbeta", "qcauchy", "qexp", "qf", "qgamma", "qnorm", "qt",
            "quantile", "runif",
            "sd", "uniroot", "var")
-importFrom("utils", "packageDescription")
+importFrom("utils", "packageDescription", "str")
 importFrom("goftest", "pCvM")
 importFrom("Lmoments", "Lmomcov")
 importFrom("MASS", "mvrnorm")
