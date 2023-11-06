@@ -63,8 +63,7 @@ plotradarlmr(theoLmoms(gev, nmom=6), plot=FALSE,
              poly.control=poly, minrat=-0.6, maxrat=0.6)
 poly <- list(col=NA, border=6, lty=1, lwd=2) # make the zeros purple to standout.
 plotradarlmr(NULL, make.zero.axis=TRUE, plot=FALSE,
-             poly.control=poly, minrat=-0.6, maxrat=0.6)
-}
+             poly.control=poly, minrat=-0.6, maxrat=0.6) # }
 }
 \keyword{L-moment radar plot}
 \keyword{Graphics}
