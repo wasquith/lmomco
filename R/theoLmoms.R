@@ -1,11 +1,13 @@
 "theoLmoms" <-
-function(para,nmom=5,verbose=FALSE,minF=0,maxF=1) {
+function(para, nmom=5, minF=0, maxF=1, quafunc=NULL,
+               nsim=50000, fold=5,
+               silent=TRUE, verbose=FALSE, ...) {
   if(nmom < 1) {
     warning("Number of L-moments requested is less than 1")
     return()
   }
-  TL <- theoTLmoms(para,nmom=nmom,trim=0,verbose=verbose,minF=minF,maxF=maxF)
-  z <- list(lambdas = TL$lambdas, ratios = TL$ratios, trim=0,
-            source="theoLmoms")
-  return(z)
+  zz <- theoTLmoms(para, nmom=nmom, trim=0, minF=minF, maxF=maxF, quafunc=quafunc,
+                         nsim=nsim, fold=fold, silent=silent, verbose=verbose, ...)
+  zz$source="theoLmoms"
+  return(zz)
 }

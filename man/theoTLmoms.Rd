@@ -23,8 +23,10 @@ As of version 1.5.2 of \pkg{lmomco}, there exists enhanced error trapping on int
 \code{\link{theoTLmoms}}. The function now abandons operations should any of the integrations for the \eqn{r}th L-moment fail for reasons such as divergent integral or round off problems. The function returns NAs for all L-moments in \code{lambdas} and \code{ratios}.
 }
 \usage{
-theoTLmoms(para, nmom=5, trim=NULL, leftrim=NULL,
-           rightrim=NULL, verbose=FALSE, minF=0, maxF=1, quafunc=NULL)
+theoTLmoms(para, nmom=5, trim=NULL, leftrim=NULL, rightrim=NULL,
+                 minF=0, maxF=1, quafunc=NULL,
+                 nsim=50000, fold=5,
+                 silent=TRUE, verbose=FALSE, ...)
 }
 \arguments{
   \item{para}{A distribution parameter object of this package such as by \code{\link{vec2par}}.}
@@ -33,10 +35,14 @@ theoTLmoms(para, nmom=5, trim=NULL, leftrim=NULL,
 Although \code{NULL} in the argument list, the default is 0---the usual L-moment is returned.}
   \item{leftrim}{Level of trimming of the left-tail of the sample.}
   \item{rightrim}{Level of trimming of the right-tail of the sample.}
-  \item{verbose}{Toggle verbose output. Because the \R function \code{integrate} is used to perform the numerical integration, it might be useful to see selected messages regarding the numerical integration.}
   \item{minF}{The end point of nonexceedance probability in which to perform the integration. Try setting to non-zero (but small) if you have a divergent integral.}
   \item{maxF}{The end point of nonexceedance probability in which to perform the integration. Try setting to non-unity (but close) if you have a divergent integral.}
   \item{quafunc}{An optional and arbitrary quantile function that simply needs to except a nonexceedance probability and the parameter object in \code{para}. This is a feature that permits computation of the L-moments of a quantile function that does not have to be implemented in the greater overhead hassles of the \pkg{lmomco} style. This feature might be useful for estimation of quantile function mixtures or those distributions not otherwise implemented in this package.}
+   \item{nsim}{Simulation size for Monte Carlo integration is such is internally deemed necessary (see \code{silent} argument).}
+   \item{fold}{The number of fractions or number of folds of \code{nsim}, which in other words, means that \code{nsim} is divided by \code{folds} and a loop creating \code{folds} integrations of \code{nsim/folds} is used from which the mean and mean absolute error of the integrand are computed. This is to try to recover similar output as \code{integrate()}.}
+   \item{silent}{The argument of \code{silent} for the \code{try()} operation wrapped on \code{integrate()}. If set true and the integral is probability divergent, Monte Carlo integration is triggered using \code{nsim} and \code{folds}. The user would have to set \code{verbose=TRUE} to then acquire the returned table in \code{integrations} of the integration passes including those are or are not Monte Carlo.}
+   \item{verbose}{Toggle verbose output. Because the \R function \code{integrate} is used to perform the numerical integration, it might be useful to see selected messages regarding the numerical integration.}
+   \item{...}{Additional arguments to pass.}
 }
 \value{
   An \R \code{list} is returned.
@@ -48,7 +54,11 @@ Although \code{NULL} in the argument list, the default is 0---the usual L-moment
   \item{trim}{Level of symmetrical trimming used in the computation, which will equal \code{NULL} if asymmetrical trimming was used.}
   \item{leftrim}{Level of left-tail trimming used in the computation.}
   \item{rightrim}{Level of right-tail trimming used in the computation.}
-  \item{source}{An attribute identifying the computational source of the L-moments: \dQuote{theoTLmoms}.}
+  \item{nsim}{Echo of the \code{nsim} argument if and only if at least one Monte Carlo integration was required, otherwise this is set to \dQuote{not needed} on the return.}
+  \item{folds}{Echo of the \code{folds} argument if and only if at least one Monte Carlo integration was required, otherwise this is set to \dQuote{not needed} on the return.}
+  \item{monte_carlo}{A logical vector of whether one or more Monte Carlo integrations was needed for the \code{r}-th index of the vector during the integrations for the \eqn{r}-th L-moment.}
+  \item{source}{An attribute identifying the computational source of the L-moments: \dQuote{theoTLmoms} or switched to \dQuote{theoLmoms} if this function was dispatched from \code{\link{theoLmoms}}.}
+  \item{integrations}{If \code{verbose=TRUE}, then the results of the integrations are a data frame stored here. Otherwise, \code{integrations} is not present in the list.}
 }
 \note{
 An extended example of a \emph{unique application} of the TL-moments is useful to demonstrate capabilities of the \pkg{lmomco} package API.  Consider the following example in which the analyst has 21 years of data for a given spatial location. Based on regional analysis, the highest value (the \code{outlier} = 21.12) is known to be exotically high but also documentable as not representing say a transcription error in the source database. The regional analysis also shows that the Generalized Extreme Value (GEV) distribution is appropriate.
@@ -104,6 +114,7 @@ Now that the target L-moments (not TL-moments) are known (\code{last.lmr}), it i
 
   message("# Resulting new L-moment lambdas: ",
           paste(round(final.lmr$lambdas[1:3], digits=4), collapse=" "))
+  # Resulting new L-moment lambdas: 5.5914 1.6499 0.5221
 
   message("# Pseudo-value for highest value: ", round(outlier.rt$par, digits=2))
   # Pseudo-value for highest value: 16.78
@@ -116,36 +127,49 @@ Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statis
 \author{W.H. Asquith}
 \seealso{\code{\link{theoLmoms}}, \code{\link{TLmoms}}, \code{\link{tlmr2par}}}
 \examples{
-para <- vec2par(c(0,1),type='nor') # standard normal
+para <- vec2par(c(0, 1), type='nor') # standard normal
 TL00 <- theoTLmoms(para) # compute ordinary L-moments
-TL30 <- theoTLmoms(para,leftrim=3,rightrim=0) # trim 3 smallest samples
+TL30 <- theoTLmoms(para, leftrim=3, rightrim=0) # trim 3 smallest samples
 
-# Lets look at the difference from simulation to theoretrical using
+# Let us look at the difference from simulation to theoretrical using
 # L-kurtosis and asymmetrical trimming for generalized Lambda dist.
-P <- vec2par(c(10000,10000,6,.4),type='gld')
-Lkurt <- TLmoms(quagld(runif(100),P),rightrim=3,leftrim=0)$ratios[4]
-theoLkurt <- theoTLmoms(P,rightrim=3,leftrim=0)$ratios[4]
+n     <- 100 # really a much larger sample should be used---for speed
+P     <- vec2par(c(10000, 10000, 6, 0.4),type='gld')
+Lkurt <- TLmoms(quagld(runif(n),P), rightrim=3, leftrim=0)$ratios[4]
+theoLkurt <- theoTLmoms(P, rightrim=3, leftrim=0)$ratios[4]
 Lkurt - theoLkurt # as the number for runif goes up, this
                   # difference goes to zero
 
 # Example using the Generalized Pareto Distribution
 # to verify computations from theoretical and sample stand point.
 n      <- 100 # really a much larger sample should be used---for speed
-P      <- vec2par(c(12,34,4),type='gpa')
-theoTL <- theoTLmoms(P,rightrim=2,leftrim=4)
-samTL  <- TLmoms(quagpa(runif(n),P),rightrim=2,leftrim=4)
+P      <- vec2par(c(12, 34, 4),type='gpa')
+theoTL <- theoTLmoms(P, rightrim=2, leftrim=4)
+samTL  <- TLmoms(quagpa(runif(n),P), rightrim=2, leftrim=4)
 del    <- samTL$ratios[3] - theoTL$ratios[3] # if n is large difference
                                              # is small
 str(del)
 
 \dontrun{
-"cusquaf" <- function(f, para, ...) { # Gumbel-Normal product
-   g <- vec2par(c(para[1:2]), type="gum")
-   n <- vec2par(c(para[3:4]), type="nor")
-   return(par2qua(f,g)*par2qua(f,n))
-}
-para <- c(5.6, .45, 3, .3)
-theoTLmoms(para, quafunc=cusquaf) # L-skew = 0.13038711}
+  "cusquaf" <- function(f, para, ...) { # Gumbel-Normal product
+     g <- vec2par(c(para[1:2]), type="gum")
+     n <- vec2par(c(para[3:4]), type="nor")
+     return(par2qua(f,g)*par2qua(f,n))
+  }
+  para <- c(5.6, .45, 3, .3)
+  theoTLmoms(para, quafunc=cusquaf) # L-skew = 0.13038711}
+
+\dontrun{
+  # This example has a divergent integral triggered on the last of the inner
+  # loop of the 4th L-moment call. Monte Carlo (MC) integration is thus triggered.
+  # The verbose=TRUE saves numerical or MC integration result table to the return.
+  para   <-  vec2par(c(2.00,  2.00, -0.20, -0.55), type="kap")
+  lmrbck <- lmomkap(   para, nmom=5)
+  # print(lmrbck$lambdas) 3.1189568 1.9562688 0.4700229 0.4078741 0.1974055
+  lmrthe <- theoTLmoms2(para, nmom=5, verbose=TRUE)              # seed dependent
+  # print(lmrthe$lambdas) 3.1189569 1.9562686 0.4700227 0.4068539 0.1974049
+  parkap(lmrbck)$para # 2.00       2.00     -0.20      -0.55
+  parkap(lmrthe)$para # 2.018883  1.986761  -0.202422  -0.570451 # seed dependent}
 }
 \keyword{L-moment (theoretical)}
 \keyword{L-moment (trimmed theoretical)}

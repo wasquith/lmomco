@@ -1,6 +1,8 @@
 "theoTLmoms" <-
 function(para, nmom=5, trim=NULL, leftrim=NULL, rightrim=NULL,
-               verbose=FALSE, minF=0, maxF=1, quafunc=NULL) {
+               minF=0, maxF=1, quafunc=NULL,
+               nsim=50000, fold=5,
+               silent=TRUE, verbose=FALSE, ...) {
   if(nmom < 1) {
     warning("Number of TL-moments requested is less than 1")
     return()
@@ -26,10 +28,8 @@ function(para, nmom=5, trim=NULL, leftrim=NULL, rightrim=NULL,
   t1  <- NULL
   t2  <- NULL
   if(length(trim) == 1 && trim >= 0) {
-    t1 <- trim
-    t2 <- trim
-    leftrim <- NULL
-    rightrim <- NULL
+    t1 <- t2 <- trim
+    leftrim  <- rightrim <- NULL
   }
   else {
     trim <- NULL
@@ -42,60 +42,75 @@ function(para, nmom=5, trim=NULL, leftrim=NULL, rightrim=NULL,
   if(is.null(t1) || is.null(t2)) {
     warning("Ambiguous asymmetrical trimming values--use explicit leftrim ",
             "and rightrim arguments")
-    return()
+    return(NULL)
   }
 
-  z <- list(lambdas = rep(NA, nmom), ratios = rep(NA, nmom), trim=trim,
-            leftrim=leftrim, rightrim=rightrim, source="theoTLmoms")
+  VR <- NULL # data frame built from verbose=TRUE on the numerical integration
+  MC <- rep(NA, length=nmom)
+  zz <- list(lambdas=rep(NA, nmom), ratios=rep(NA, nmom), trim=trim,
+             leftrim=leftrim, rightrim=rightrim, monte_carlo=MC, source="theoTLmoms")
 
-  L <- vector(mode="numeric",length=nmom)
-  R <- vector(mode="numeric",length=nmom)
-  for(r in seq(1,nmom)) { # for each  order of moment
+  L <- vector(mode="numeric", length=nmom)
+  R <- vector(mode="numeric", length=nmom)
+  for(r in seq_len(nmom)) { # for each  order of moment
     sum <- 0
-    for(k in seq(0,r-1)) {
+    for(k in seq(0, r-1, by=1) ) {
       tmp <- (-1)^k*choose(r-1,k)
-      tmp <- tmp*exp(lgamma(r+t1+t2+1) - lgamma(r+t1-k-1+1) - lgamma(t2+k+1))
+      tmp <- tmp * exp( lgamma(r+t1+t2+1) - lgamma(r+t1-k-1+1) - lgamma(t2+k+1) )
       # Quantile function X(F), which will require numerical integration
       XofF <- NULL
       if(is.null(quafunc)) {
-         XofF <- function(F) {
-            par2qua(F,para,paracheck=FALSE)*F^(r+t1-k-1)*(1-F)^(t2+k)
-         }
+         XofF <- function(FF) par2qua(FF, para, paracheck=FALSE) * FF^(r+t1-k-1) * (1-FF)^(t2+k)
       } else {
-         XofF <- function(F) {
-            quafunc(F, para)*F^(r+t1-k-1)*(1-F)^(t2+k)
-         }
+         XofF <- function(FF) quafunc(FF, para)                  * FF^(r+t1-k-1) * (1-FF)^(t2+k)
       }
       # Perform the numerical integration
-      int <- NULL
-      try( int <- integrate(XofF,minF,maxF) )
-      if(is.null(int)) {
-         warning("some type of error detected in integration on the r=",r,
-                 " L-moment, abandoning and returning all NA")
-         return(z)
+      int <- NULL; used_monte <- FALSE
+      try( int <- integrate(XofF, minF, maxF), silent=silent )
+      # Error in integrate(XofF, minF, maxF) : the integral is probably divergent
+      if(is.null(int)) { # Perform Monte Carlo integration
+        used_monte <- TRUE
+        folds <- rep(NA, fold )
+        for(f in seq_len(fold )) folds[f] <- mean(XofF(runif(nsim)))
+        muc <- mean(     folds               )
+        mad <- mean( abs(folds - mean(folds)))
+        int <- list(lmr.order=r, k.order=k, value=muc, abs.error=mad,
+                    subdivisions="--", message="--", monte_carlo=used_monte)
+        if(! silent) {
+          print(str(int))
+        }
+      } else {
+        int$lmr.order   <- r
+        int$k.order     <- k
+        int$monte_carlo <- used_monte
       }
-      # Sum up
-      sum <- sum + tmp*int$value
-      if(verbose == TRUE) { # Handy messages
-        cat(c("abs.error=",int$abs.error,
-              "  subdivisions=",int$subdivisions,
-              "  message=",int$message,"\n"),sep="")
+      MC[r] <- used_monte
+      sum <- sum + tmp * int$value # Sum up
+      if(verbose) { # Handy messages
+        ni <- c(int$lmr.order, int$k.order, round(int$value, digits=8), round(int$abs.error, digits=8), int$subdivisions, int$message, int$monte_carlo)
+        names(ni) <- c("lmr.order", "k.order", "value", "abs.error", "subdivisions", "message", "monte_carlo")
+        VR <- rbind(VR, ni) # if(verbose) print(ni)
       }
     }
-    L[r] <- sum/r  # don't forget to divide by the order of the L-moment
+    L[r] <- sum / r  # do not forget to divide by the order of the L-moment!
   }
 
-  if(nmom >= 2) {
-    R[2] <- L[2]/L[1]
-  }
-  if(nmom >= 3) {
-    for(r in seq(3,nmom)) {
-      R[r] <- L[r]/L[2]
-    }
-  }
-  R[1] <- NA
+  R[1] <- NA # because the first L-moment ratio is always and forevermore NA
+  if(nmom >= 2)                       R[2] <- L[2] / L[1]
+  if(nmom >= 3) for(r in seq(3,nmom)) R[r] <- L[r] / L[2]
 
-  z <- list(lambdas = L, ratios = R, trim=trim,
-            leftrim=leftrim, rightrim=rightrim, source="theoTLmoms")
-  return(z)
+  if(! any(MC == TRUE)) {
+    nsim <- folds <- "not needed"
+  }
+
+  zz <- list(lambdas=L, ratios=R, trim=trim,
+             leftrim=leftrim, rightrim=rightrim,
+             nsim=nsim, folds=folds,
+             monte_carlo=MC, source="theoTLmoms")
+
+  VR <- as.data.frame(VR)
+  row.names(VR) <- NULL
+  if(verbose) zz$integrations <- VR
+
+  return(zz)
 }
