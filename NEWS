@@ -10,11 +10,11 @@ Changes in version 2.4.12 (2023-NN-NN)
 -  BUG FIX: lmomkap() was not returning the lambda[3] of the distribution.
      Simple fix but amazing the bug has existed since very beginning of lmomco.
      Minor update in lmomkap.Rd with a non-NULL example data set for Kappa.
-- Added the xlo2qua() function to help reform the quantiles stemming from an
+-  Added the xlo2qua() function to help reform the quantiles stemming from an
      f2flo() call on the nonexceedances and augmentation of the quantiles with
      the threshold. This helps to streamline lines of code used in for blipped
      or conditional truncated distribution modeling.
-- Extended theoLmoms(), theoTLmoms(), and theopwms() to detect failure in the
+-  Extended theoLmoms(), theoTLmoms(), and theopwms() to detect failure in the
      numerical integration and switch over to Monte Carlo integration. Within
      Examples of theoTLmoms.Rd, and theopwms.Rd added demonstration of places
      in Kappa (k,h)-space for which numerical integration is triggered for at
@@ -24,11 +24,11 @@ Changes in version 2.4.12 (2023-NN-NN)
      *** that either the L-moments or parameter estimation of the Kappa is a
      *** problem. Potentially, these additions might be used for backstopping
      *** certain "failures" of extant Kappa algorithms. *********************
-- Added export("utils", "str") to NAMESPACE because a print(str()) is used in
+-  Added export("utils", "str") to NAMESPACE because a print(str()) is used in
      theoTLmoms() and theopwms().
-- Adjusted preformatted code demonstration in the parpdq4.Rd for simple bugs
+-  Adjusted preformatted code demonstration in the parpdq4.Rd for simple bugs
      in the plotting operations.
-     
+
 
 Changes in version 2.4.11 (2023-08-30)
 -  BUG FIX: par2cdf() had improper routing of the new "smd" distribution.
