@@ -28,6 +28,10 @@ Changes in version 2.4.12 (2023-NN-NN)
      theoTLmoms() and theopwms().
 -  Adjusted preformatted code demonstration in the parpdq4.Rd for simple bugs
      in the plotting operations.
+-  Changed choose()'s to exp(lchoose()'s) in TLmom.R to support very large
+     trimming. Truncation errors were adding up in some tests; so, the change to
+     using logarithms. Also, changed the nexted for() loops to nested sapply().
+-  Grammar edits in lmoms.bootbarvar.Rd.
 
 
 Changes in version 2.4.11 (2023-08-30)
