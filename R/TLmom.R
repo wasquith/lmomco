@@ -39,19 +39,15 @@ function(x, order=1, trim=NULL, leftrim=NULL, rightrim=NULL, sortdata=TRUE) {
   }
 
   if(sortdata == TRUE) x <- sort(x)
-  lambda <- 0
-  for(i in seq(t1+1,n-t2)) {
-    wk <- 0
-    for(k in seq(0,r-1)) {
-       wk <- wk + (-1)^k * choose(r-1,k) * choose(i-1,r+t1-1-k) * choose(n-i,t2+k)
-    }
-    wk <- wk / choose(n,r+t1+t2)
-    lambda <- lambda + wk * x[i]
-  }
+  denom  <- lchoose(n, r+t1+t2)
+  lambda <- sum(sapply(seq(t1+1, n-t2), function(i) {
+                        wk <- sapply(seq(0, r-1), function(k) {
+                 (-1)^k * exp(lchoose(r-1, k) + lchoose(i-1, r+t1-1-k) + lchoose(n-i, t2+k) - denom)
+                         })
+                   wk * x[i] }) )
   lambda <- lambda/r
 
-  z <- list(lambda = lambda, order = r,
-            trim = trim, leftrim = t1, rightrim = t2)
+  z <- list(lambda = lambda, order = r, trim = trim, leftrim = t1, rightrim = t2)
   return(z)
 }
 
