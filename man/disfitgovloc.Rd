@@ -5,11 +5,11 @@
 \description{
 Fits a \emph{Govindarajulu} distribution to specified lower and upper bounds and a given location measure (either mean and median). Fitting occurs through \eqn{3}-dimensional minimization using the \code{optim} function. Objective function forms are either root mean-square error (RMSE) or mean absolute deviation (MAD), and the objective functions are expected to result in slightly different estimates of distribution parameters. The RMSE form (\eqn{\sigma_{\mathrm{RMSE}}}) is defined as
 
-\deqn{\sigma_{\mathrm{RMSE}} = \biggl[ \frac{1}{3}\,\sum_{i=1}^3 [x_i - \hat{x}_i]^2\biggr]^{1/2}\mbox{,}}
+\deqn{\sigma_{\mathrm{RMSE}} = \biggl[ \frac{1}{3}\,\sum_{i=1}^3 \bigl[x_i - \hat{x}_i\bigr]^2\biggr]^{1/2}\mbox{,}}
 
 where \eqn{x_i} is a vector of the targeted lower bounds (\code{lwr} argument), location measure (\code{loc} argument), and upper bounds (\code{upr} argument), and \eqn{\hat{x}_i} is a similar vector of Govindarajulu properties for \dQuote{current} iteration of the optimization. Similarly, the MAD form (\eqn{\sigma_{\mathrm{MAD}}}) is defined as
 
-\deqn{\sigma_{\mathrm{MAD}} = \frac{1}{3}\,\sum_{i=1}^3 | x_i - \hat{x}_i | \mbox{.}}
+\deqn{\sigma_{\mathrm{MAD}} = \frac{1}{3}\,\sum_{i=1}^3 \mid x_i - \hat{x}_i \mid  \mbox{.}}
 
 The premise of this function is that situations might exist in practical applications wherein the user has an understanding or commitment to certain bounding conditions of a distribution. The user also has knowledge of a particular location measure (the mean or median) of a distribution. The bounded nature of the Govindarajulu might be particularly of interest because the quantile function (\code{\link{quagov}}) is explicit. The curvatures that the distribution can attain also provide it more flexibility to fitting to a given location measure than say the \emph{Triangular} distribution (\code{\link{quatri}}).
 }

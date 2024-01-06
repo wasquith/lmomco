@@ -4,9 +4,9 @@
 \title{Fit a Distribution using Minimization of Available Quantiles }
 \description{
 This function fits a distribution to available quantiles (or irregular quantiles) through \eqn{n}-dimensional minimization using the \code{optim} function. Objective function forms are either root mean-square error (RMSE) or mean absolute deviation (MAD), and the objective functions are expected to result in slightly different estimates of distribution parameters. The RMSE form (\eqn{\sigma_{\mathrm{RMSE}}}) is defined as
-\deqn{\sigma_{\mathrm{RMSE}} = \biggl[ \frac{1}{m}\,\sum_{i=1}^m [x_o(f_i) - \hat{x}(f_i)]^2\biggr]^{1/2}\mbox{,}}
+\deqn{\sigma_{\mathrm{RMSE}} = \biggl[ \frac{1}{m}\,\sum_{i=1}^m \bigl[x_o(f_i) - \hat{x}(f_i)\bigr]^2\biggr]^{1/2}\mbox{,}}
 where \eqn{m} is the length of the vector of \eqn{o}bserved quantiles \eqn{x_o(f_i)} for nonexceedance probability \eqn{f_i} for \eqn{i \in 1, 2, \cdots, m}, and \eqn{\hat{x}(f_i)} for \eqn{i \in 1, 2, \cdots, m} are quantile estimates based on the \dQuote{current} iteration of the parameters for the selected distribution having \eqn{n} parameters for \eqn{n \le m}. Similarly, the MAD form (\eqn{\sigma_{\mathrm{MAD}}}) is defined as
-\deqn{\sigma_{\mathrm{MAD}} = \frac{1}{m}\,\sum_{i=1}^m | x_o(f_i) - \hat{x}(f_i) | \mbox{.}}
+\deqn{\sigma_{\mathrm{MAD}} = \frac{1}{m}\,\sum_{i=1}^m \mid x_o(f_i) - \hat{x}(f_i) \mid \mbox{.}}
 
 The \code{disfitqua} function is not intended to be an implementation of the \emph{method of percentiles} but rather is intended for circumstances in which the available quantiles are restricted to either the left or right tails of the distribution. It is evident that a form of the method of percentiles however could be pursued by \code{disfitqua} when the length of \eqn{x(f)} is equal to the number of distribution parameters (\eqn{n = m}).  The situation of \eqn{n < m} however is thought to be the most common application.
 
