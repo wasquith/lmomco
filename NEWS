@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Changes in version 2.4.12 (2023-NN-NN)
+Changes in version 2.4.12 (2024-01-08)
 -  Spelling corrections within this NEWS.
 -  Added the disfitgovloc() function for parameter estimation of distribution
      Govindarajulu to specific lower and upper bounds in conjunction with a
@@ -29,8 +29,9 @@ Changes in version 2.4.12 (2023-NN-NN)
 -  Adjusted preformatted code demonstration in the parpdq4.Rd for simple bugs
      in the plotting operations.
 -  Changed choose()'s to exp(lchoose()'s) in TLmom.R to support very large
-     trimming. Truncation errors were adding up in some tests; so, the change to
-     using logarithms. Also, changed the nexted for() loops to nested sapply().
+     trimming. Truncation errors were adding up in some tests; so, the change
+     to using logarithms. Also, changed the nexted for() loops to nested
+     sapply() calls.
 -  Grammar edits in lmoms.bootbarvar.Rd.
 
 
