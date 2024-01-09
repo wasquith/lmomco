@@ -1,10 +1,14 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Changes in version 2.4.12 (2024-01-08)
+Changes in version 2.4.13 (2024-01-08)
+-  Brace edits to par2qua2lo.Rd wherein devel-R picked up Rd format note.
+
+
+Changes in version 2.4.12 (2024-01-07)
 -  Spelling corrections within this NEWS.
 -  Added the disfitgovloc() function for parameter estimation of distribution
-     Govindarajulu to specific lower and upper bounds in conjunction with a
+     Govindarajulu to specified lower and upper bounds in conjunction with a
      measure of location (mean or median).
 -  Minor grammar changes to disfitqua.Rd.
 -  BUG FIX: lmomkap() was not returning the lambda[3] of the distribution.
