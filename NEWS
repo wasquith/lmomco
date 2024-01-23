@@ -1,6 +1,19 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
+Changes in version 2.4.14 (2024-02-10)
+-  Added the sort=TRUE argument to xlo2qua(). The need was that the original
+     vision of the xlo family of operation was tied to sorted data sets and or
+     truncation of vector lengths tied to the needs of plotting frequency
+     curves. However, there became a need for order preservation and vector
+     length preservation when the xlo2qua() were to be used for joint
+     probability problems. As a result, the sort=FALSE triggers a new block of
+     code (in order to preserve previous behavior by default) and within this
+     block the f2flo()-like probability mapping is done.
+-  Added the fillthres=TRUE argument to xlo2qua() to fill the NAs and quantiles
+     below the threshold with the threshold held in the xlo argument.
+
+
 Changes in version 2.4.13 (2024-01-08)
 -  Brace edits to par2qua2lo.Rd wherein devel-R picked up Rd format note.
 
