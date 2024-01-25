@@ -66,20 +66,20 @@ A     <- AB$Asite_no[AB$Asite_no$appearsSystematic == TRUE, ] # only record when
 B     <- AB$Bsite_no[AB$Bsite_no$appearsSystematic == TRUE, ] # monitoring occurring
 QA    <- A$peak_va; Alot <- 0 # cfs (just protection from zeros, more sophisticated)
 QB    <- B$peak_va; Blot <- 0 # cfs (work might be needed for better thresholds)
-Alo   <- lmomco::x2xlo(QA, leftout=Alot) # A xlo object
-Blo   <- lmomco::x2xlo(QB, leftout=Blot) # B xlo object
-Apara <- lmomco::lmr2par(log10(Alo$xin), type=dtype) # note log10
-Bpara <- lmomco::lmr2par(log10(Blo$xin), type=dtype) # note log10
-Aupr  <- 10^lmomco::supdist(Apara)$support[2]
-Bupr  <- 10^lmomco::supdist(Bpara)$support[2]
+Alo   <- x2xlo(QA, leftout=Alot) # A xlo object
+Blo   <- x2xlo(QB, leftout=Blot) # B xlo object
+Apara <- lmr2par(log10(Alo$xin), type=dtype) # note log10
+Bpara <- lmr2par(log10(Blo$xin), type=dtype) # note log10
+Aupr  <- 10^supdist(Apara)$support[2]
+Bupr  <- 10^supdist(Bpara)$support[2]
 UVsS  <- AB$AB[, c("U", "V")] # isolate paired empirical probabilities
 rhoS  <- copBasic::rhoCOP(as.sample=TRUE,     para=UVsS) # Spearman rho
 infS  <- copBasic::LzCOPpermsym(cop=EMPIRcop, para=UVsS, as.vec=TRUE)
 # a vector of permutation (variable exchangability) distances
 
-tparf <- function(par) { c(log(par[1]  - 1), log(par[2]),  # transform optimization space
+tparf <- function(par) { c(log(par[1] -1), log(par[2]),  # transform for optimization
                    qnorm(punif(par[3],  min=-1, max=1))) }
-rparf <- function(par) { c(exp(par[1]) + 1,  exp(par[2]),  # re-transformation to copula
+rparf <- function(par) { c(exp(par[1])+1,  exp(par[2]),  # re-transformation to copula
                    qunif(pnorm(par[3]), min=-1, max=1)) }
 
 ofunc <- function(par) { # objective function
@@ -119,23 +119,25 @@ mx <- min(c(AS, AF), na.rm=TRUE); my <- min(c(BS, BF), na.rm=TRUE)
 
 # finally plot the bivariate relation
 plot(AB$AB$Apeak_va, AB$AB$Bpeak_va, log="xy", type="n",
-     xlim=range(c(mx, Aupr, QA, AS), na.rm=TRUE),
-     ylim=range(c(my, Bupr, QB, BS), na.rm=TRUE),
+     xlim=range(c(mx, QA, AS, ifelse(is.finite(Aupr), Aupr, NA)), na.rm=TRUE),
+     ylim=range(c(my, QB, BS, ifelse(is.finite(Bupr), Bupr, NA)), na.rm=TRUE),
      xlab=paste0("Paired water-year peak streamflow for streamgage ", Asite),
      ylab=paste0("Paired water-year peak streamflow for streamgage ", Bsite))
 cr <- 10^par()$usr[c(1, 3)]             # finish forming the region in the lower-left
 px <- c(cr[1], mx, mx, cr[1], cr[1])    # corner that is truncated away; we do this
 py <- c(cr[2], cr[2], my, my, cr[2])    # this because log10() used and in practical
 polygon(px, py, col="wheat", border=NA) # applications at best zeros might be data
-abline(v=mx,   lty=2, lwd=0.8); abline(h=my,   lty=2, lwd=0.8) # further demarcation
-abline(v=Aupr, lty=2, lwd=0.8); abline(h=Bupr, lty=2, lwd=0.8) # upper limits (if)
+abline(v=mx, lty=2, lwd=0.8); abline(h=my, lty=2, lwd=0.8) # further demarcation
+if( is.finite(Aupr) ) abline(v=Aupr, lty=2, lwd=1.5, col="purple") # upper limit
+if( is.finite(Bupr) ) abline(h=Bupr, lty=2, lwd=1.5, col="purple") # upper limit
 points(AS, BS, pch=21, col="red", bg="white") # now plot the simulations
 points(AB$AB$Apeak_va, AB$AB$Bpeak_va, cex=AB$AB$cex, # now plot the observed data that
        col="black", bg=grey(AB$AB$cex/2), pch=21) # defined the parameter estimation of
 legend("bottomright",                             # the copula then draw a legend.
-     c("Paired streamflow (fill lightens as days apart increases)",
+     c("Paired streamflow (fill lightens/size increases as days apart increases)",
        paste0(ns, " years simulated by copula and GEV margins")), bty="o", cex=0.8,
-       pch=c(21,21), col=c("black","red"), pt.cex=c(1.5,1), pt.bg=c(grey(0.5),"white"))
+       pch=c(21,21), col=c("black","red"), pt.cex=c(1.3,1), pt.bg=c(grey(0.7),"white"))
+
 ST <- round(1/(1-kfuncCOP(0.99, cop=breveCOP, para=cpara)), digits=0)
 message("Super-critical return period for ",
                "primary return period of 100 years is ", ST, " years.")
@@ -144,24 +146,26 @@ message("Super-critical return period for ",
 plot(qnorm(pp(QA)), sort(QA), log="y", pch=21, bg="white", main=Asite,
      ylim=range(c(QA, AF, Aupr), na.rm=TRUE),
      xlab="Standard normal variate", ylab="Peak streamflow, in cfs")
-abline(h=Aupr, lty=2, lwd=0.8); lines(qFF, AF, lwd=3, col="seagreen")
+abline(h=Aupr, lty=2, lwd=1.5, col="purple")
+lines(qFF, AF, lwd=3, col="seagreen")
 legend("bottomright",
      c(paste0("Marginal distribution by ", toupper(dtype)),
        "Upper bounds of fitted distribution",
-       "Systematic peaks by Weibull plotting position"), bty="o", cex=0.8,
-       pch=c(NA, NA, 21), col=c("seagreen", "black", "black"), bg="white",
-       lty=c(1, 2, NA), lwd=c(3, 0.8, NA), pt.bg=c(NA, NA, "white"))
+       "Systematic peaks by Weibull plotting position"), bty="o", seg.len=3,
+       pch=c(NA,NA,21), col=c("seagreen","purple","black"), bg="white", cex=0.8,
+       lty=c(1, 2, NA), lwd=c(3, 1.5, NA), pt.bg=c(NA, NA, "white"))
 
 plot(qnorm(pp(QB)), sort(QB), log="y", pch=21, bg="white", main=Bsite,
      ylim=range(c(QB, BF, Bupr), na.rm=TRUE),
      xlab="Standard normal variate", ylab="Peak streamflow, in cfs")
-abline(h=Bupr, lty=2, lwd=0.8); lines(qFF, BF, lwd=3, col="seagreen")
+abline(h=Bupr, lty=2, lwd=1.5, col="purple")
+lines(qFF, BF, lwd=3, col="seagreen")
 legend("bottomright",
      c(paste0("Marginal distribution by ", toupper(dtype)),
        "Upper bounds of fitted distribution",
-       "Systematic peaks by Weibull plotting position"), bty="o", cex=0.8,
-       pch=c(NA, NA, 21), col=c("seagreen", "black", "black"), bg="white",
-       lty=c(1, 2, NA), lwd=c(3, 0.8, NA), pt.bg=c(NA, NA, "white")) # }
+       "Systematic peaks by Weibull plotting position"), bty="o", seg.len=3,
+       pch=c(NA,NA,21), col=c("seagreen","purple","black"), bg="white", cex=0.8,
+       lty=c(1, 2, NA), lwd=c(3, 1.5, NA), pt.bg=c(NA, NA, "white")) # }
 }
 \keyword{utility (probability)}
 \keyword{conditional probability}
