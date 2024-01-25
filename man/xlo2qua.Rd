@@ -90,7 +90,7 @@ ofunc <- function(par) { # objective function
   err    <- mean( (infT - infS)^2 ) + (rhoT - rhoS)^2 # sum of square-like errors
   return(err)
 }
-init.par <- tparf(c(2, 1,  0)); rt <- NULL # init parameters and root
+init.par <- tparf(c(2, 1, 0)); rt <- NULL # init parameters and root
 try( rt <- optim(init.par, ofunc) )
 cpara <- rparf(rt$par) # re-transformation
 cpara <- list(cop=GHcop, para=cpara[1:2], breve=cpara[3]) # copula parameters for
