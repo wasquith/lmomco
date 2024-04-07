@@ -33,6 +33,8 @@ Changes in version 2.5.1  (2024-05-01)
      its first presence to the SysDataBuilder02.R (Step 2).
 -  Name change to SysDataBuilder01.R required updates to lmomrice.Rd,
      paraep4.Rd, and parrice.Rd.
+-  Minor corrections for Slash: cdfsla.Rd, is.sla.Rd, lmomsla.Rd, and pdfsla.Rd.
+ 
 
 
 Changes in version 2.4.14 (2024-02-19)
