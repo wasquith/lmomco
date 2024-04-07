@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Changes in version 2.5.1  (2024-05-01)
+Changes in version 2.5.0  (2024-05-01)
 -  Added lwd.cex and expand.names arguments to plotlmrdia().
 -  Added opposite axis ticking in plotlmrdia() with axTicks added to NAMESPACE.
 -  Audited coloring and lines in plotlmrdia.R/Rd.
@@ -34,7 +34,11 @@ Changes in version 2.5.1  (2024-05-01)
 -  Name change to SysDataBuilder01.R required updates to lmomrice.Rd,
      paraep4.Rd, and parrice.Rd.
 -  Minor corrections for Slash: cdfsla.Rd, is.sla.Rd, lmomsla.Rd, and pdfsla.Rd.
- 
+-  Extended lmrdia46() to the Cauchy and the Slash by theoTLmom() integration.
+-  Revised lmrdia() for the Cauchy from not limited Tau4 but its Tau4^(1) so
+     conceptually the Cauchy displays as the Slash does with trim=1 TL-moments.
+-  Revised color of the Cauchy and Slash as "turquoise4" for plotlmrdia() and
+     that same color used in plotlmrdia46().
 
 
 Changes in version 2.4.14 (2024-02-19)
