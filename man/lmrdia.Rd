@@ -53,3 +53,4 @@ Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approa
 lratios <- lmrdia()
 }
 \keyword{L-moment ratio diagram}
+\keyword{L-moment ratio diagram (Tau3 and Tau4)}
