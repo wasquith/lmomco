@@ -97,7 +97,7 @@ TukeyT6 <- TukeyL6 / TukeyL2
 # Exponential is the AEP4 from lmomco with Tau3 = 0.
 Stable  <- read.table("t4t6/StableDistribution.txt",   sep="|", header=TRUE)
 Student <- read.table("t4t6/StudentT.txt",             sep="|", header=TRUE)
-Tukey   <- read.table("t4t6/SymmetricTukeyLambda.txt", sep="|", header=TRUE)
+Tukey   <- read.table("t4t6/SymTukeyLambda.txt",       sep="|", header=TRUE)
 PowExp  <- read.table("t4t6/PowerExponential.txt",     sep="|", header=TRUE)
 
 plot(                                      T6df$tau6[T6df$type == "aep4"],
