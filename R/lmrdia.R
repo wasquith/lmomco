@@ -103,15 +103,15 @@
    ray <- matrix(nrow = 1, ncol = 2)
    ray[1,] <- c(0.1139671, 0.1053695)
    cau <- matrix(nrow = 1, ncol = 2)
-   cau[1,] <- c(0, 1)
+   cau[1,] <- c(0, 0.34280842) # see lmomsla.Rd :: Examples
    sla <- matrix(nrow = 1, ncol = 2)
-   sla[1,] <- c(0, 0.3042045)
+   sla[1,] <- c(0, 0.30420472) # see lmomsla.Rd :: Examples
 
    z <- list(limits=lim, aep4=aep4, cau=cau, exp=exp,
              gev=gev, glo=glo, gpa=gpa, gum=gum, gno=ln, gov=gov,
              nor=nor, pe3=pIII, pdq3=pdq3,
              ray=ray, rgov=rgov, rgpa=rgpa,
-             slash=sla, uniform=uni, wei=wei)
+             sla=sla, uniform=uni, wei=wei)
    return(z)
 }
 
