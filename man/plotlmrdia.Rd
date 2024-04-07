@@ -1,17 +1,18 @@
 \name{plotlmrdia}
 \alias{plotlmrdia}
-\title{Plot L-moment Ratio Diagram}
+\title{Plot L-moment Ratio Diagram (Tau3 and Tau4)}
 \description{
-Plot the L-moment ratio diagram of L-skew and L-kurtosis from an L-moment ratio diagram object returned by \code{\link{lmrdia}}.  This diagram is useful for selecting a distribution to model the data. The application of L-moment diagrams is well documented in the literature. This function is intended to function as a demonstration of L-moment ratio diagram plotting.
+Plot the Tau3-Tau4 L-moment ratio diagram of L-skew and L-kurtosis from a Tau3-Tau4 L-moment ratio diagram object returned by \code{\link{lmrdia}}. This diagram is useful for selecting a distribution to model the data. The application of L-moment diagrams is well documented in the literature. This function is intended to function as a demonstration of L-moment ratio diagram plotting with enough user settings for many practical applications.
 }
 \usage{
 plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
            noaep4=FALSE, nogev=FALSE, noglo=FALSE, nogpa=FALSE, nope3=FALSE,
            nopdq3=FALSE, nogno=FALSE, nogov=FALSE, nocau=TRUE,  noexp=FALSE,
            nonor=FALSE,  nogum=FALSE, noray=FALSE, nosla=TRUE,  nouni=FALSE,
-           xlab="L-SKEW", ylab="L-KURTOSIS", add=FALSE, empty=FALSE,
+           xlab="L-skew, Tau3, dimensionless",
+           ylab="L-kurtosis, Tau4, dimensionless", add=FALSE, empty=FALSE,
            autolegend=FALSE, xleg=NULL, yleg=NULL, legendcex=0.9,
-           ncol=1, text.width=NULL, ...)
+           ncol=1, text.width=NULL, lwd.cex=1, expand.names=FALSE, ...)
 }
 \arguments{
   \item{lmr}{L-moment diagram object from \code{\link{lmrdia}}, if \code{NULL}, then \code{empty} is internally set to \code{TRUE}.}
@@ -43,6 +44,8 @@ plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
   \item{legendcex}{The \code{cex} to pass to \code{graphics::legend()}.}
     \item{ncol}{The number of columns in which to set the legend items (default is 1, which differs from \code{legend()} default of 1).}
   \item{text.width}{Argument of the same name for \code{legend}. Setting to 0.1 for \code{ncol} set to 2 seems to work pretty well when two columns are desired.}
+  \item{lwd.cex}{Expansion factor on the line widths.}
+  \item{expand.names}{Expand the distribution names in the legend.}
   \item{...}{Additional arguments passed onto the \code{plot} function.}
 }
 \note{
@@ -51,14 +54,14 @@ theoretical L-moment limits on the bottom. The Asymmetric Exponential Power dema
 
 \tabular{cl}{
   \bold{GRAPHIC TYPE} \tab \bold{GRAPHIC NATURE} \cr
-  L-moment Limits \tab line width 2 and color 8 (grey) \cr
+  L-moment Limits \tab line width 2 and color a medium grey \cr
   Asymmetric Exponential Power (4-p) \tab line width 1, line type 4 (dot), and color red \cr
   Generalized Extreme Value \tab line width 1, line type 2 (dash), and color red \cr
   Generalized Logistic \tab line width 1 and color green \cr
   Generalized Normal \tab line width 1, line type 2 (dash), and color blue \cr
-  Govindarajulu \tab line width 1, line type 2 (dash), and color 6 (purple) \cr
-  Generalized Pareto \tab line width 1 and color blue \cr
-  Pearson Type III \tab line width 1 and color 6 (purple) \cr
+  Govindarajulu \tab line width 1, line type 2 (dash), and color 6 (magenta) \cr
+  Generalized Pareto \tab line width 1, line type 1 (solid), and color blue \cr
+  Pearson Type III \tab line width 1, line type 1 (solid), and color 6 (purple) \cr
   Polynomial Density-Quantile3 \tab line width 1.3, line type 2 (dash), and color darkgreen \cr
   Exponential \tab symbol 16 (filled circle) and color red \cr
   Normal \tab symbol 15 (filled square) and color red \cr
@@ -83,7 +86,7 @@ Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis--An approac
 Vogel, R.M., and Fennessey, N.M., 1993, L moment diagrams should replace product moment diagrams: Water Resources Research, v. 29, no. 6, pp. 1745--1752.
 }
 \author{W.H. Asquith}
-\seealso{\code{\link{lmrdia}}, \code{\link{plotradarlmr}}}
+\seealso{\code{\link{lmrdia}}, \code{\link{plotlmrdia46}}, \code{\link{plotradarlmr}}}
 \examples{
 plotlmrdia(lmrdia()) # simplest of all uses
 
