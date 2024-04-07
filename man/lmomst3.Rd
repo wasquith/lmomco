@@ -8,7 +8,7 @@ This function estimates the first six L-moments of the 3-parameter Student t dis
 \deqn{\tau_4 = \frac{15}{2} \frac{\Gamma(\nu)}{\Gamma(\frac{1}{2})\Gamma(\nu - \frac{1}{2})} \int_0^1 \! \frac{(1-x)^{\nu - 3/2}[I_x(\frac{1}{2},\frac{1}{2}\nu)]^2}{\sqrt{x}}\; \mathrm{d} x - \frac{3}{2}\mbox{,}}
 where \eqn{I_x(\frac{1}{2}, \frac{1}{2}\nu)} is the cumulative distribution function of the Beta distribution.  The distribution is symmetrical so that \eqn{\tau_r = 0} for odd values of \eqn{r: r \ge 3}.
 
-Numerical integration of is made to estimate \eqn{\tau_4}. The other two parameters are readily solved for when \eqn{\nu} is available. A polynomial approximation is used to estimate the \eqn{\tau_6} as a function of \eqn{\tau_4}; the polynomial was based on the \code{\link{theoLmoms}} estimating \eqn{\tau_4} and \eqn{\tau_6}. The \eqn{\tau_6} polynomial has nine coefficients with a maximum absolute residual value of 2.065e-06 for 4000 degrees of freedom (see \code{inst/doc/t4t6/studyST3.R}).
+Numerical integration of is made to estimate \eqn{\tau_4}. The other two parameters are readily solved for when \eqn{\nu} is available. A polynomial approximation is used to estimate the \eqn{\tau_6} as a function of \eqn{\tau_4}; the polynomial was based on the \code{\link{theoLmoms}} estimating \eqn{\tau_4} and \eqn{\tau_6}. The \eqn{\tau_6} polynomial has nine coefficients with a maximum absolute residual value of 2.065e-06 for 4,000 degrees of freedom (see \code{inst/doc/t4t6/studyST3.R}).
 }
 \usage{
 lmomst3(para, ...)
