@@ -6,7 +6,7 @@ This function computes the cumulative probability or nonexceedance probability o
 \deqn{F(x) = \Phi(Y) - [\phi(0) - \phi(Y)]/Y \mbox{,}}
 for \eqn{Y \ne 0} and
 \deqn{F(x) = 1/2 \mbox{,}}
-for \eqn{Y = 0}, where \eqn{f(x)} is the probability density for quantile \eqn{x}, \eqn{Y = (x - \xi)/\alpha}, \eqn{\xi} is a location parameter, and \eqn{\alpha} is a scale parameter. The function \eqn{\Phi(Y)} is the cumulative distribution function of the Standard Normal distribution function, and \eqn{\phi(Y)} is the probability density function of the Standard Normal distribution.
+for \eqn{Y = 0}, where \eqn{F(x)} is the nonexceedance probability for quantile \eqn{x}, \eqn{Y = (x - \xi)/\alpha}, \eqn{\xi} is a location parameter, and \eqn{\alpha} is a scale parameter. The function \eqn{\Phi(Y)} is the cumulative distribution function of the Standard Normal distribution, and \eqn{\phi(Y)} is the probability density function of the Standard Normal distribution.
 }
 \usage{
 cdfsla(x, para)
@@ -25,8 +25,8 @@ Rogers, W.H., and Tukey, J.W., 1972, Understanding some long-tailed symmetrical 
 \author{W.H. Asquith}
 \seealso{\code{\link{pdfsla}}, \code{\link{quasla}}, \code{\link{lmomsla}}, \code{\link{parsla}}}
 \examples{
-  para <- c(12,1.2)
-  cdfsla(50,vec2par(para,type='sla'))
+  para <- c(12, 1.2)
+  cdfsla(50, vec2par(para, type="sla"))
 }
 \keyword{distribution}
 \keyword{cumulative distribution function}
