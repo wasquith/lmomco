@@ -8,7 +8,7 @@ function(lmr=NULL,
       nost3=FALSE,
       nosymstable=FALSE,
       notukey=FALSE,
-      nonor=FALSE,
+      nocau=TRUE, nonor=FALSE, nosla=TRUE,
       trucate.tau4.to.gtzero=TRUE,
          xlab="L-kurtosis, Tau4, dimensionless",
          ylab="Sixth L-moment ratio, Tau6, dimensionless",
@@ -116,6 +116,26 @@ function(lmr=NULL,
         Epch[entryi] <- 15
         Elty[entryi] <- NA
         Ecex[entryi] <- 1.5
+     }
+     if(! nocau) {
+        points(lmr$cau, pch=13, col="turquoise4", cex=1.25)
+        entryi <- entryi + 1
+        entries[entryi] <- ifelse(expand.names, "Cauchy (TL1)", "Cauchy (TL1)")
+        Elwd[entryi] <- NA
+        Ecol[entryi] <- "turquoise4"
+        Epch[entryi] <- 13
+        Elty[entryi] <- NA
+        Ecex[entryi] <- 1.25
+     }
+     if(! nosla) {
+        points(lmr$sla, pch=10, cex=1.25, col="turquoise4")
+        entryi <- entryi + 1
+        entries[entryi] <- ifelse(expand.names, "Slash (TL1)", "SLA (TL1)")
+        Elwd[entryi] <- NA
+        Ecol[entryi] <- "turquoise4"
+        Epch[entryi] <- 10
+        Elty[entryi] <- NA
+        Ecex[entryi] <- 1.25
      }
    }
 
