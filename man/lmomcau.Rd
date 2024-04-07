@@ -2,8 +2,8 @@
 \alias{lmomcau}
 \title{Trimmed L-moments of the Cauchy Distribution}
 \description{
-This function estimates the trimmed L-moments of the Cauchy distribution given the parameters (\eqn{\xi} and \eqn{\alpha}) from \code{\link{parcau}}. The trimmed L-moments in terms of the parameters are \eqn{\lambda^{(1)}_1 = \xi}, 
-\eqn{\lambda^{(1)}_2 = 0.698\alpha}, \eqn{\tau^{(1)}_3 = 0}, and \eqn{\tau^{(1)}_4 = 0.343}. These TL-moments (trim=1) are symmetrical for the first L-moments defined because \eqn{\mathrm{E}[X_{1:n}]} and \eqn{\mathrm{E}[X_{n:n}]} undefined expectations for the Cauchy.
+This function estimates the trimmed L-moments of the Cauchy distribution given the parameters (\eqn{\xi} and \eqn{\alpha}) from \code{\link{parcau}}. The trimmed L-moments in terms of the parameters are \eqn{\lambda^{(1)}_1 = \xi},
+\eqn{\lambda^{(1)}_2 = 0.69782723\alpha}, \eqn{\tau^{(1)}_{3, 5, \cdots} = 0}, \eqn{\tau^{(1)}_4 = 0.34280842}, and \eqn{\tau^{(1)}_6 = 0.20274358}. These TL-moments (trim=1) are symmetrical for the first L-moments defined because \eqn{\mathrm{E}[X_{1:n}]} and \eqn{\mathrm{E}[X_{n:n}]} undefined expectations for the Cauchy.
 }
 \usage{
 lmomcau(para)
@@ -33,7 +33,11 @@ Elamir, E.A.H., and Seheult, A.H., 2003, Trimmed L-moments: Computational Statis
 \seealso{\code{\link{parcau}}, \code{\link{cdfcau}}, \code{\link{pdfcau}}, \code{\link{quacau}} }
 \examples{
 X1 <- rcauchy(20)
-lmomcau(parcau(TLmoms(X1,trim=1)))
+lmomcau( parcau( TLmoms(X1, trim=1) ) )
+
+alpha <- 30
+tlmr <- theoTLmoms(vec2par(c(100, alpha), type="cau"), nmom=6, trim=1)
+print( c(tlmr$lambdas[2] / alpha, tlmr$ratios[c(4,6)]), 8 )
 }
 \keyword{L-moment (distribution)}
 \keyword{Distribution: Cauchy}
