@@ -1,6 +1,40 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
+Changes in version 2.5.1  (2024-05-01)
+-  Added lwd.cex and expand.names arguments to plotlmrdia().
+-  Added opposite axis ticking in plotlmrdia() with axTicks added to NAMESPACE.
+-  Audited coloring and lines in plotlmrdia.R/Rd.
+-  Added lmrdia46() and plotlmrdia46() along with addition of another step in
+     building the sysdata.rda for support of Tau4-Tau6 diagrams in
+     inst/doc/SystemBuilder02.R. This results in the expansion of the
+     .lmomcohash to include a new entry tau46list with the tables of Tau4 and
+     Tau6 for the distributions supported by plotlmrdia46().
+-  Added new auxiliary information in inst/doc/t4t6 related to lookup tables
+     of Tau4-Tau6 for the symmetrical distributions. There is a another script
+     inst/doc/t4t6/studyST3.R that documents some of the testing and revisions
+     to tau6 polynomial approximation in lmomst3.R.
+-  Audited the family of Student 3t functions and in particular the lmomst3.R
+     and parst3.R with re-evaluation of computational range and numerical
+     integration testing for new values of small and large NU parameter.
+     This means also an overhaul on the root finding for parameter estimation
+     and now rely on theoTLmoms() and not previous polynomial assistance.
+-  Removed ST3 moving to the [dpq]norm() functions for large NU and relying
+     entirely on the [dpq]t() functions.
+-  Updated man/lmomcohash.Rd accordingly with the new Tau4-Tau6 business.
+-  Migrated DESCRIPTION to require R >3.5.0 so that new serialization on the
+     R/sysdata.rda is supported.
+-  Ran inst/doc/SysDataBuilder.R for the first time in many years and had
+     errors in incomplete change of variable naming associated with Rice
+     distribution that must have happened about version 1.2.1 (2010-11-20).
+     Ran the updated script and checked its sysdata.rda rendering to that
+     already in lmomco/sysdata.rda and not change in Rice distribution content
+     observed. Renamed SysDataBuilder.R to SysDataBuilder01.R (Step 1) to show
+     its first presence to the SysDataBuilder02.R (Step 2).
+-  Name change to SysDataBuilder01.R required updates to lmomrice.Rd,
+     paraep4.Rd, and parrice.Rd.
+
+
 Changes in version 2.4.14 (2024-02-19)
 -  Added the sort=TRUE argument to xlo2qua(). The need was that the original
      vision of the xlo family of operation was tied to sorted data sets and or
