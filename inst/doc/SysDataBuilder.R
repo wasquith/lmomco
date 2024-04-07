@@ -84,13 +84,13 @@ T4       <- c(try1$t4, try2$t4, try3$t4)
 LCVray <- (.5*(sqrt(2)-1)*sqrt(pi))/(sqrt(pi/2))
 raylmr <- lmomray(vec2par(c(0,1), type="ray"))
 norlmr <- lmomnor(vec2par(c(0,1), type="nor"))
-norT3 <- norlmr$TAU3
-norT4 <- norlmr$TAU4
-LCV      <- c(LCV, ray)
+norT3 <- norlmr$ratios[3]
+norT4 <- norlmr$ratios[4]
+LCV      <- c(LCV, LCVray)
 SNR      <- c(SNR, 0)
 G.of.LCV <- c(G.of.LCV, sqrt(pi/2)*1)
-T3       <- c(T3, raylmr$TAU3)
-T4       <- c(T4, raylmr$TAU4)
+T3       <- c(T3, raylmr$ratios[3])
+T4       <- c(T4, raylmr$ratios[4])
 
 xlim <- range(LCV)
 ylim <- range(SNR)
@@ -112,7 +112,7 @@ RiceNomo <- data.frame(LCV=LCV, SNR=SNR, G=G.of.LCV, TAU3=T3, TAU4=T4)
 row.names(RiceNomo) <- NULL
 idx <- order(RiceNomo$LCV)
 RiceNomo <- RiceNomo[idx,]
-RiceNomo <- RiceNomo[RiceNomo$LCV <= ray,] # insure numerically <= Rayleigh
+RiceNomo <- RiceNomo[RiceNomo$LCV <= LCVray,] # insure numerically <= Rayleigh
 with(RiceNomo, plot(TAU3,TAU4))
 RiceNomo <- RiceNomo[RiceNomo$TAU3 >= norT3,] # insure numerically >= Normal
 with(RiceNomo, plot(TAU3,TAU4))
@@ -124,8 +124,8 @@ with(RiceNomo, plot(TAU3,TAU4)) # inspect plot!
 
 
 LCVest <- seq(as.numeric(sprintf("%0.4f",min(RiceNomo$LCV))),
-                                         ray, by=.0001)
-LCVest <- c(LCVest,ray)
+                                         LCVray, by=.0001)
+LCVest <- c(LCVest,LCVray)
 SNRest <- approx(RiceNomo$LCV, RiceNomo$SNR,  xout=LCVest, rule=2)$y
 Gest   <- approx(RiceNomo$LCV, RiceNomo$G,    xout=LCVest, rule=2)$y
 T3est  <- approx(RiceNomo$LCV, RiceNomo$TAU3, xout=LCVest, rule=2)$y
@@ -136,10 +136,10 @@ with(RiceNomoEst, plot(TAU3,TAU4)) # inspect plot!
 with(RiceNomoEst, plot(LCV,SNR))
 with(RiceNomoEst, plot(LCV,G))
 
-#T3seq <- seq(norT3, raylmr$TAU3,by=0.001)
+#T3seq <- seq(norT3, raylmr$ratios[3],by=0.001)
 #T4seq <- approx(T3,T4, xout=T3seq)$y
-#T3seq <- c(T3seq, raylmr$TAU3)
-#T4seq <- c(T4seq, raylmr$TAU4)
+#T3seq <- c(T3seq, raylmr$ratios[3])
+#T4seq <- c(T4seq, raylmr$ratios[4])
 #.RiceT3T4 <- data.frame(TAU3=T3seq, TAU4=T4seq)
 #assign("RiceT3T4", .RiceT3T4, .lmomcohash)
 
@@ -203,6 +203,6 @@ save(AEPD_kh2lmrTheo, file="AEPD_kh2lmrTheo.RData");
 assign("AEPkh2lmrTable", AEPD_kh2lmrTheo, .lmomcohash)
 ################# AEP DISTRIBUTION #######################
 
-save(.lmomcohash, file="sysdata.rda");
+save(.lmomcohash, file="sysdata.rda")
 
 
