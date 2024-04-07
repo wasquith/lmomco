@@ -10,7 +10,8 @@ plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
              nopdq4=FALSE, nost3=FALSE, nosymstable=FALSE, notukey=FALSE,
              nonor=FALSE, trucate.tau4.to.gtzero=TRUE,
              xlab="L-kurtosis, Tau4, dimensionless",
-             ylab="Sixth L-moment ratio, Tau6, dimensionless", add=FALSE, empty=FALSE,
+             ylab="Sixth L-moment ratio, Tau6, dimensionless",
+             add=FALSE, empty=FALSE,
              autolegend=FALSE, xleg=NULL, yleg=NULL, legendcex=0.9,
              ncol=1, text.width=NULL, lwd.cex=1, expand.names=FALSE, ...)
 }
