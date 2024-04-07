@@ -99,7 +99,7 @@ function(lmr=NULL,
         lines(lmr$gov, col="magenta", lwd=1*lwd.cex, lty=2)
         entryi <- entryi + 1
         entries[entryi] <- ifelse(expand.names, "Govindarajulu", "GOV")
-        Elwd[entryi] <- 1
+        Elwd[entryi] <- 1*lwd.cex
         Ecol[entryi] <- "magenta"
         Epch[entryi] <- NA
         Elty[entryi] <- 2
@@ -137,16 +137,6 @@ function(lmr=NULL,
      }
    }
    if(! nopoints) {
-     if(! nocau) {
-        points(lmr$cau, pch=13, col="green", cex=1.25)
-        entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "CAU (limiting TL1)", "Cauchy (limiting TL1)")
-        Elwd[entryi] <- NA
-        Ecol[entryi] <- "green"
-        Epch[entryi] <- 13
-        Elty[entryi] <- NA
-        Ecex[entryi] <- 1.25
-     }
      if(! noexp) {
         points(lmr$exp, pch=16, col="red", cex=1.5)
         entryi <- entryi + 1
@@ -187,16 +177,6 @@ function(lmr=NULL,
         Elty[entryi] <- NA
         Ecex[entryi] <- 1.5
      }
-     if(! nosla) {
-        points(lmr$sla, pch=10, cex=1.25, col="green")
-        entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Slash (TL1)", "SLA (TL1)")
-        Elwd[entryi] <- NA
-        Ecol[entryi] <- "green"
-        Epch[entryi] <- 10
-        Elty[entryi] <- NA
-        Ecex[entryi] <- 1.25
-     }
      if(! nouni) {
         points(lmr$uniform, pch=12, cex=1.25, col="red")
         entryi <- entryi + 1
@@ -204,6 +184,26 @@ function(lmr=NULL,
         Elwd[entryi] <- NA
         Ecol[entryi] <- "red"
         Epch[entryi] <- 12
+        Elty[entryi] <- NA
+        Ecex[entryi] <- 1.25
+     }
+     if(! nocau) {
+        points(lmr$cau, pch=13, col="turquoise4", cex=1.25)
+        entryi <- entryi + 1
+        entries[entryi] <- ifelse(expand.names, "CAU (TL1)", "Cauchy (TL1)")
+        Elwd[entryi] <- NA
+        Ecol[entryi] <- "turquoise4"
+        Epch[entryi] <- 13
+        Elty[entryi] <- NA
+        Ecex[entryi] <- 1.25
+     }
+     if(! nosla) {
+        points(lmr$sla, pch=10, cex=1.25, col="turquoise4")
+        entryi <- entryi + 1
+        entries[entryi] <- ifelse(expand.names, "Slash (TL1)", "SLA (TL1)")
+        Elwd[entryi] <- NA
+        Ecol[entryi] <- "turquoise4"
+        Epch[entryi] <- 10
         Elty[entryi] <- NA
         Ecex[entryi] <- 1.25
      }
