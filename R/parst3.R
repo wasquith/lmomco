@@ -1,7 +1,7 @@
 "parst3" <-
-function(lmom, checklmom=TRUE,...) {
-    para <- rep(NA,3)
-    names(para) <- c("xi","alpha","nu")
+function(lmom, checklmom=TRUE, ...) {
+    para <- rep(NA, 3)
+    names(para) <- c("xi", "alpha", "nu")
 
     if(length(lmom$lambdas) == 0) { # convert to named L-moments
       lmom <- lmorph(lmom)     # nondestructive conversion!
@@ -17,50 +17,51 @@ function(lmom, checklmom=TRUE,...) {
       return()
     }
 
-    SMALL.NU <- 1.000001 # arrived from manual experiments
-    LARGE.NU <- 1000     # upper limit of experiments
+    # theoLmoms(list(para=c(0,1,1.001), type="st3"), nmom=6, verbose=TRUE)$ratios[4]
+    # Tau4 with integration is 0.998167
+
+
+    SMALL.NU <- 1.001  # arrived from manual experiments involving theoLmoms() testing
+    LARGE.NU <- 10^5.5 # arrived from manual experiments involving theoLmoms() testing
+    NUDGE <- 0.0000002 # to ensure that parst3(vec2lmom(c(10, 2, 0, 0.1226)))$para or
+    # otherwise Tau4 near to exactly the normal still uniroots()
+    HIGHEST.TAU4 <- 0.998
+
     TAU4.NORMAL <- 30/pi * atan(sqrt(2)) - 9
-    EPS <- 1E-5
 
     TAU4 <- lmom$ratios[4]
-    N <- NA
-    if(abs(TAU4-TAU4.NORMAL) <= EPS) {
-        N <- LARGE.NU
-    } else {
-       "polyt4" <- function(nu) {
-          lnu <- log(nu)
-            b <- -7.166829e-04
-           ce <- c(-1.812102e+00,  6.295700e-01, -6.831520e-02, -2.278440e-02,
-                    9.951977e-03, -1.656195e-03,  1.346481e-04, -4.410424e-06)
-          lgt4 <- b + ce[1]*lnu^1 + ce[2]*lnu^2 + ce[3]*lnu^3 + ce[4]*lnu^4 +
-                      ce[5]*lnu^5 + ce[6]*lnu^6 + ce[7]*lnu^7 + ce[8]*lnu^8
-          tau4 <- exp(lgt4)
-          return(tau4)
-       }
-
-       "afunc" <- function(nu) return(polyt4(nu) - TAU4)
-       tmp <- NULL; N <- NA
-       try( tmp <- uniroot(afunc, c(SMALL.NU, 1000)), silent=TRUE)
-       #print(tmp)
-       if(is.null(tmp)) {
-          if(TAU4 > 0.999) {
-             N <- SMALL.NU
-          } else {
-             warning("Could not root the polynomial solution of Tau4 as a function of Nu")
-             return()
-          }
-       } else {
-          N <- tmp$root
-       }
+    if(TAU4 >= 0.1226 & TAU4 <= TAU4.NORMAL) TAU4 <- TAU4.NORMAL + NUDGE
+    if(TAU4 <  0.1226) {
+      warning("TAU4 is less than the lowest shorthand TAU4 '0.1226' for the normal distribution")
+      return(NULL)
     }
+    if(TAU4 >= HIGHEST.TAU4) TAU4 <- HIGHEST.TAU4
+
+    # This is just a bit expensive to waste CPU on the r != 2,4 L-moments for the distribution.
+    # But presumably more accurate and simpler code to uniroot for the Tau4 and then back-
+    # substitution for the rest of the parameters in lieu of using optim().
+    "ofunc" <- function(nu, tau4=NA) {
+       val <- theoTLmoms(list(para=c(0, 1, nu), type="st3"), nmom=4)$ratios[4]
+       return(val - tau4)
+    }
+    rt <- NULL; N <- NA
+    try( rt <- uniroot(ofunc, interval=c(SMALL.NU, LARGE.NU), tau4=TAU4), silent=TRUE)
+    #print(rt)
+    if(is.null(rt)) {
+      warning("Could not root solution of Tau4 as a function of Nu")
+      return(NULL)
+    } else {
+      N <- rt$root
+    }
+
     denom <- 2^(6-4*N) * pi * sqrt(N) * exp(lgamma(2*N-2) - 4*lgamma(N/2))
     if(! is.finite(denom) | is.nan(denom)) {
       denom <- 1/sqrt(pi) # from experiments and limiting arguments
     }
 
-    A <- lmom$lambdas[2]/denom
+    A <- lmom$lambdas[2] / denom
     U <- lmom$lambdas[1]
     para[1:3] <- c(U, A, N)
-    return(list(type = 'st3', para = para, source="parst3"))
+    return(list(type='st3', para=para, rt=rt, source="parst3"))
 }
 

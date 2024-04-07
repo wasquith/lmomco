@@ -2,13 +2,13 @@
 \alias{pdfst3}
 \title{Probability Density Function of the 3-Parameter Student t Distribution}
 \description{
-This function computes the probability density of the 3-parameter Student t distribution given parameters (\eqn{\xi}, \eqn{\alpha}, \eqn{\nu})  computed by \code{\link{parst3}}.  The probability density function is
+This function computes the probability density of the 3-parameter Student t distribution given parameters (\eqn{\xi}, \eqn{\alpha}, \eqn{\nu})  computed by \code{\link{parst3}}. The probability density function is
 \deqn{
 f(x) = \frac{\Gamma(\frac{1}{2} + \frac{1}{2}\nu)}{\alpha\nu^{1/2}\,\Gamma(\frac{1}{2})\Gamma(\frac{1}{2}\nu)}(1+t^2/\nu)^{-(\nu+1)/2}\mbox{,}
 }
 where \eqn{f(x)} is the probability density for quantile \eqn{x}, \eqn{t} is defined as \eqn{t = (x - \xi)/\alpha}, \eqn{\xi} is a location parameter, \eqn{\alpha} is a scale parameter, and \eqn{\nu} is a shape parameter in terms of the degrees of freedom as for the more familiar Student t distribution in \R.
 
- For value \code{X}, the built-in \R functions can be used. For \eqn{\nu \ge 1000}, one can use \code{dnorm(X, mean=U,} \code{sd=A)} and for \code{U} = \eqn{\xi} and \code{A}=\eqn{\alpha} for \eqn{1.000001 \le \nu \le 1000}, one can use \code{dt((X-U)/A, N)/A} for \code{N}=\eqn{\nu}. The \R function \code{dnorm} is used for the Normal distribution and the \R function \code{dt} is used for the 1-parameter Student t distribution.
+ For value \code{X}, the built-in \R functions can be used. For \code{U} = \eqn{\xi} and \code{A}=\eqn{\alpha} for \eqn{1.001 \le \nu \le 10^5.5}, one can use \code{dt((X-U)/A, N)/A} for \code{N}=\eqn{\nu}. The \R function \code{dt} is used for the 1-parameter Student t density. The limits for \eqn{\nu} stem from study of ability for theoretical integration of the quantile function to produce viable \eqn{\tau_4} and \eqn{\tau_6} (see \code{inst/doc/t4t6/studyST3.R}).
 }
 \usage{
 pdfst3(x, para, paracheck=TRUE)
