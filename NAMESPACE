@@ -1,5 +1,5 @@
-importFrom("grDevices", "rgb")
-importFrom("graphics", "Axis", "arrows", "axis", "legend", "lines", "mtext",
+importFrom("grDevices", "grey", "rgb")
+importFrom("graphics", "Axis", "arrows", "axis", "axTicks", "legend", "lines", "mtext",
            "par", "plot", "points", "polygon", "text")
 importFrom("stats", "approx", "binomial", "coefficients", "complete.cases",
            "cov", "dcauchy", "dexp", "dgamma", "dnorm", "dt", "glm",
@@ -209,6 +209,7 @@ export(lmomwak)
 export(lmomwei)
 export(lmorph)
 export(lmrdia)
+export(lmrdia46)
 export(lmrdiscord)
 export(lmrloc)
 export(lrv2prob)
@@ -297,6 +298,7 @@ export(pdfwak)
 export(pdfwei)
 export(plmomco)
 export(plotlmrdia)
+export(plotlmrdia46)
 export(plotradarlmr)
 export(pmoms)
 export(pp)
