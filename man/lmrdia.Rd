@@ -13,7 +13,7 @@ lmrdia()
   \item{limits}{The theoretical limits of \eqn{\tau_3} and \eqn{\tau_4}; below \eqn{\tau_4} of the theoretical limits are theoretically
   not possible.}
   \item{aep4}{\eqn{\tau_3} and \eqn{\tau_4} lower limits of the Asymmetric Exponential Power distribution.}
-  \item{cau}{\eqn{\tau^{(1)}_3} and \eqn{\tau^{(1)}_4} of the Cauchy distribution  (TL-moment [trim=1]).}
+  \item{cau}{\eqn{\tau^{(1)}_3 = 0} and \eqn{\tau^{(1)}_4 = 0.34280842} of the Cauchy distribution (TL-moment [trim=1])  (see \bold{Examples} \code{\link{lmomcau}} for source).}
   \item{exp}{\eqn{\tau_3} and \eqn{\tau_4} of the Exponential distribution.}
   \item{gev}{\eqn{\tau_3} and \eqn{\tau_4} of the Generalized Extreme Value distribution.}
   \item{glo}{\eqn{\tau_3} and \eqn{\tau_4} of the Generalized Logistic distribution.}
@@ -28,7 +28,7 @@ lmrdia()
   \item{pdq3}{\eqn{\tau_3} and \eqn{\tau_4} of the Polynomial Density-Quantile3 distribution.}
   \item{rgov}{\eqn{\tau_3} and \eqn{\tau_4} of the reversed Govindarajulu.}
   \item{rgpa}{\eqn{\tau_3} and \eqn{\tau_4} of the reversed Generalized Pareto.}
-  \item{slash}{\eqn{\tau^{(1)}_3} and \eqn{\tau^{(1)}_4} of the Slash distribution (TL-moment [trim=1]).}
+  \item{sla}{\eqn{\tau^{(1)}_3 = 0} and \eqn{\tau^{(1)}_4 = 0.30420472} of the Slash distribution (TL-moment [trim=1]) (see \bold{Examples} \code{\link{lmomsla}} for source).}
   \item{uniform}{\eqn{\tau_3} and \eqn{\tau_4} of the uniform distribution.}
   \item{wei}{\eqn{\tau_3} and \eqn{\tau_4} of the Weibull distribution (reversed Generalized Extreme Value).}
 }

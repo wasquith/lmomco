@@ -8,7 +8,7 @@ Plot the Tau4-Tau6 L-moment ratio diagram showing trajectories of \eqn{\tau_4} a
 plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
              noaep4=FALSE, nogld=FALSE,
              nopdq4=FALSE, nost3=FALSE, nosymstable=FALSE, notukey=FALSE,
-             nonor=FALSE, trucate.tau4.to.gtzero=TRUE,
+             nocau=TRUE, nonor=FALSE, nosla=TRUE, trucate.tau4.to.gtzero=TRUE,
              xlab="L-kurtosis, Tau4, dimensionless",
              ylab="Sixth L-moment ratio, Tau6, dimensionless",
              add=FALSE, empty=FALSE,
@@ -25,7 +25,9 @@ plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
   \item{nost3}{If \code{TRUE} then line of Student 3t distribution is not drawn.}
   \item{nosymstable}{If \code{TRUE} then line of Symmetric Stable distribution is not drawn.}
   \item{notukey}{If \code{TRUE} then line of Tukey Lambda distribution is not drawn.}
+  \item{nocau}{If \code{TRUE} then point of Cauchy distribution (trim=1 L-moments) is not drawn.}
   \item{nonor}{If \code{TRUE} then point of Normal distribution is not drawn.}
+  \item{nosla}{If \code{TRUE} then point of Slash distribution (trim=1 L-moments) is not drawn.}
   \item{trucate.tau4.to.gtzero}{Truncate the distributions that can extend to negative \eqn{\tau_4} to zero. This is a reasonable default and prevents line drawing to the left into a clipping region for easier handling of post processing of a graphic in vector editing software.}
   \item{xlab}{Horizonal axis label passed to \code{xlab} of the \code{plot} function.}
   \item{ylab}{Vertical axis label passed to \code{ylab} of the \code{plot} function.}
@@ -53,6 +55,9 @@ This function provides hardwired calls to \code{lines} and \code{points} to prod
   Symmetric Stable \tab line width 2, line type 1 (solid), and color a medium grey\cr
   Tukey Lambda (1-p) \tab line width 1, line type 2 (dash), and color purple\cr
   Normal \tab symbol 15 (filled square) and color red \cr
+  Cauchy \tab symbol 13 (circle with over lapping \eqn{\times}) and color turquoise4 \cr
+  Slash  \tab symbol 10 (cicle containing \eqn{+}) and color turquoise4 \cr
+
 }
 }
 \references{

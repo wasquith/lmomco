@@ -68,8 +68,8 @@ theoretical L-moment limits on the bottom. The Asymmetric Exponential Power dema
   Gumbel \tab symbol 17 (filled triangle) and color red) \cr
   Rayleigh \tab symbol 18 (filled diamond) and color red \cr
   Uniform \tab symbol 12 (square and a plus sign) and color red \cr
-  Cauchy \tab symbol 13 (circle with over lapping \eqn{\times}) and color green \cr
-  Slash  \tab symbol 10 (cicle containing \eqn{+}) and color green \cr
+  Cauchy \tab symbol 13 (circle with over lapping \eqn{\times}) and color turquoise4 \cr
+  Slash  \tab symbol 10 (cicle containing \eqn{+}) and color turquoise4 \cr
 }
 }
 \references{
