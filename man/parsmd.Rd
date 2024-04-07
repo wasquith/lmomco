@@ -23,7 +23,7 @@ parsmd(lmom, checklmom=TRUE, checkbounds=TRUE, snap.tau4=TRUE, ...)
   \item{source}{The source of the parameters: \dQuote{parsmd}.}
   \item{iter}{The number of iteration attempts looping on the \code{optim()} call.}
   \item{rt}{The output of the \code{optim()} call.}
-  \item{message}{A message from \code{parsmd}, which generally involves \code{checkbounds=TRUE} and \code{snap.tau4=TRUE} on the resetting or snapping of the \eqn{\tau_3} and \eqn{\tau_4} to the computational bounds for the distribution.}
+  \item{message}{A message from \code{parsmd}, which generally involves \code{checkbounds=TRUE} and \cr\code{snap.tau4=TRUE} on the resetting or snapping of the \eqn{\tau_3} and \eqn{\tau_4} to the computational bounds for the distribution.}
   \item{ifail}{A interger flag to status of the operations: -1 means that the L-moments are invalid (if they are checked), 0 means that the parameter estimation appears successful, and 1 means that the parameter estimation appears to have failed.}
 }
 \references{
