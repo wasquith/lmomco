@@ -8,7 +8,7 @@ The \eqn{\lambda_1} (mean) is most straightforward
 \deqn{
 \lambda_1 = \alpha \times \sqrt{\pi/2} \times L_{1/2}(-\nu^2/[2\alpha^2])\mbox{,}
 }
-for which the terms to the right of the multiplication symbol are uniquely a function of \eqn{\tau} and precomputed for tabular lookup and interpolation from \file{sysdata.rdb} (\env{.lmomcohash$RiceTable}). Parameter estimation also relies directly on tabular lookup and interpolation to convert \eqn{\tau} to \eqn{\mathrm{SNR}}. The file \file{SysDataBuilder.R} provides additional technical details.
+for which the terms to the right of the multiplication symbol are uniquely a function of \eqn{\tau} and precomputed for tabular lookup and interpolation from \file{sysdata.rdb} (\env{.lmomcohash$RiceTable}). Parameter estimation also relies directly on tabular lookup and interpolation to convert \eqn{\tau} to \eqn{\mathrm{SNR}}. The file \file{SysDataBuilder01.R} provides additional technical details.
 }
 \usage{
 parrice(lmom, checklmom=TRUE, ...)

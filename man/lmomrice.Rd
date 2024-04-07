@@ -2,7 +2,7 @@
 \alias{lmomrice}
 \title{L-moments of the Rice Distribution}
 \description{
-This function estimates the L-moments of the Rice distribution given the parameters (\eqn{\nu} and \eqn{\alpha}) from \code{\link{parrice}}. The L-moments in terms of the parameters are complex. They are computed here by the system of maximum order statistic expectations from \code{\link{theoLmoms.max.ostat}}, which uses \code{\link{expect.max.ostat}}. The connection between \eqn{\tau_2} and \eqn{\nu/\alpha} and a special function (the Laguerre polynomial, \code{\link{LaguerreHalf}}) of \eqn{\nu^2/\alpha^2} and additional algebraic terms is tabulated in the \R \code{data.frame} located within \env{.lmomcohash$RiceTable}. The file \file{SysDataBuilder.R} provides additional details.
+This function estimates the L-moments of the Rice distribution given the parameters (\eqn{\nu} and \eqn{\alpha}) from \code{\link{parrice}}. The L-moments in terms of the parameters are complex. They are computed here by the system of maximum order statistic expectations from \code{\link{theoLmoms.max.ostat}}, which uses \code{\link{expect.max.ostat}}. The connection between \eqn{\tau_2} and \eqn{\nu/\alpha} and a special function (the Laguerre polynomial, \code{\link{LaguerreHalf}}) of \eqn{\nu^2/\alpha^2} and additional algebraic terms is tabulated in the \R \code{data.frame} located within \env{.lmomcohash$RiceTable}. The file \file{SysDataBuilder01.R} provides additional details.
 }
 \usage{
 lmomrice(para, ...)
@@ -56,7 +56,7 @@ lmomrice(vec2par(c(65,34), type="rice"))
   text(0.15,1.5, "More signal than noise")
 }
 \dontrun{
-# A polynomial expression for the relation between L-skew and 
+# A polynomial expression for the relation between L-skew and
 # L-kurtosis for the Rice distribution can be readily constructed.
 T3 <- .lmomcohash$RiceTable$TAU3
 T4 <- .lmomcohash$RiceTable$TAU4
