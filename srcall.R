@@ -5,3 +5,5 @@ setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 # This utility is strictly for the core developer to test things
 # without ever having to actually install the package!
 for(f in list.files("./R", pattern="\\.R")) source(paste0("./R/", f))
+
+load("R/sysdata.rda")
