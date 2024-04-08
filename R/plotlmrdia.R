@@ -18,8 +18,8 @@ function(lmr=NULL,
       noray=FALSE,
       nosla=TRUE,
       nouni=FALSE,
-         xlab="L-skew, Tau3, dimensionless",
-         ylab="L-kurtosis, Tau4, dimensionless",
+         xlab="L-skew (Tau3), dimensionless",
+         ylab="L-kurtosis (Tau4), dimensionless",
          add=FALSE, empty=FALSE,
          autolegend=FALSE, xleg=NULL, yleg=NULL, legendcex=0.9,
          ncol=1, text.width=NULL, lwd.cex=1, expand.names=FALSE,
@@ -41,7 +41,7 @@ function(lmr=NULL,
       axis(3, at=axTicks(1), labels=NA, lwd=0, lwd.ticks=1, ...)
       axis(4, at=axTicks(2), labels=NA, lwd=0, lwd.ticks=1, ...)
    }
-   if(empty) return("empty")
+   if(empty) return(invisible())
 
    if(! nolimits) {
      lines(lmr$limits, lwd=2*lwd.cex, col=grey(0.7))
@@ -218,7 +218,7 @@ function(lmr=NULL,
               pch=Epch,
               lty=Elty,
               pt.cex=Ecex, ncol=ncol, text.width=text.width,
-              xjust=0.5, bty="n", cex=legendcex)
+              xjust=0.5, bty="n", cex=legendcex, ...)
        par(lopts)
      } else {
        if(is.null(xleg)) warning("xleg is NULL, but needed")
@@ -230,7 +230,7 @@ function(lmr=NULL,
               pch=Epch,
               lty=Elty,
               pt.cex=Ecex, ncol=ncol, text.width=text.width,
-              xjust=0.5, bty="n", cex=legendcex)
+              xjust=0.5, bty="n", cex=legendcex, ...)
        par(lopts)
      }
    }

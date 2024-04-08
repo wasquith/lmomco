@@ -66,3 +66,5 @@ lratios <- lmrdia46()
 }
 \keyword{L-moment ratio diagram}
 \keyword{L-moment ratio diagram (Tau4 and Tau6)}
+\keyword{Distribution: Tukey Lambda}
+\keyword{Distribution: Stable}

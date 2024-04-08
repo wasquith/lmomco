@@ -9,8 +9,8 @@ plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
              noaep4=FALSE, nogld=FALSE,
              nopdq4=FALSE, nost3=FALSE, nosymstable=FALSE, notukey=FALSE,
              nocau=TRUE, nonor=FALSE, nosla=TRUE, trucate.tau4.to.gtzero=TRUE,
-             xlab="L-kurtosis, Tau4, dimensionless",
-             ylab="Sixth L-moment ratio, Tau6, dimensionless",
+             xlab="L-kurtosis (Tau4), dimensionless",
+             ylab="Sixth L-moment ratio (Tau6), dimensionless",
              add=FALSE, empty=FALSE,
              autolegend=FALSE, xleg=NULL, yleg=NULL, legendcex=0.9,
              ncol=1, text.width=NULL, lwd.cex=1, expand.names=FALSE, ...)
@@ -32,7 +32,7 @@ plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
   \item{xlab}{Horizonal axis label passed to \code{xlab} of the \code{plot} function.}
   \item{ylab}{Vertical axis label passed to \code{ylab} of the \code{plot} function.}
   \item{add}{A logical to toggle a call to \code{plot} to start a new plot, otherwise, just the trajectories are otherwise plotted.}
-  \item{empty}{A logical to return before any trajectories are plotted but after the condition of the \code{add} has been evaluated, and \dQuote{empty} character string is returned.}
+  \item{empty}{A logical to return before any trajectories are plotted but after the condition of the \code{add} has been evaluated.}
   \item{autolegend}{Generate the legend by built-in algorithm.}
   \item{xleg}{X-coordinate of the legend. This argument is checked for being a character versus a numeric. If it is a character, then \code{yleg} is not needed and \code{xleg} and take on \dQuote{location may also be specified by setting x to a single keyword} as per the functionality of \code{graphics::legend()} itself.}
   \item{yleg}{Y-coordinate of the legend.}
@@ -41,7 +41,7 @@ plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
   \item{text.width}{Argument of the same name for \code{legend}. Setting to 0.1 for \code{ncol} set to 2 seems to work pretty well when two columns are desired.}
   \item{lwd.cex}{Expansion factor on the line widths.}
   \item{expand.names}{Expand the distribution names in the legend.}
-  \item{...}{Additional arguments passed onto the \code{plot} function.}
+  \item{...}{Additional arguments passed into the \code{plot()} and \code{legend()} functions.}
 }
 \note{
 This function provides hardwired calls to \code{lines} and \code{points} to produce the diagram. The plot symbology for the shown distributions is summarized here.
@@ -67,7 +67,44 @@ Asquith, W.H., 2014, Parameter estimation for the 4-parameter asymmetric exponen
 \seealso{\code{\link{lmrdia46}}, \code{\link{plotlmrdia}}}
 \examples{
 plotlmrdia46(lmrdia46()) # simplest of all uses
+
+\dontrun{
+# A more complex example follows: for a given mean, L-scale, L-skew = 0 (symmetry), and
+# L-kurtosis, use sample size of 30, use 500 simulations, set L-moments,
+# fit the Asymmetric Exponential Power4 distribution, which is symmetrical when the
+# L-skew is zero and thus the distribution is the Exponential Power.
+T3 <- 0; T4 <- 0.21; n <- 30; nsim <- 500
+lmr <- vec2lmom(c(10000, 7500, 0, T4, 0)); aep4 <- paraep4(lmr)
+T6 <- theoLmoms(aep4, nmom=6)$ratios[6]
+
+# Next, create vectors for storing simulated L-kurtosis (t4) and Tau6 (t6)
+t4 <- t6 <- vector(mode="numeric")
+
+# Next, perform nsim simulations by randomly drawing from the AEP4 distribution
+# and compute the L-moments in sim.lmr and store the t4 and t6 of each sample
+for(i in 1:nsim) {
+  sim.lmr <- lmoms(rlmomco(n, aep4), nmom=6)
+  t4[i] <- sim.lmr$ratios[4]; t6[i] <- sim.lmr$ratios[6]
+}
+
+# Next, plot the diagram and "zoom" by manually setting the axis limits
+plotlmrdia46(xlim=c(-0.05, 0.5), ylim=c(-0.1, 0.35), las=1, empty=TRUE)
+
+# Follow up by plotting the {t3, t4} values and the mean of the values
+points(t4, t6, lwd=0.8)                   # plot each simulation
+points(mean(t4), mean(t6), pch=16, cex=3) # mean of simulations and
+# should plot reasonably close to the salmon4-colored crossing lines
+
+# Now plot the trajectories of the distributions.
+plotlmrdia46(lmrdia46(), add=TRUE, nopoints=TRUE, inset=0.01,
+             autolegend=TRUE, xleg="topleft", lwd.cex=1.5)
+
+# Finally, plot crossing dashed lines at true values of L-skew and L-kurtosis
+abline(v=T4, col="salmon4", lty=2, lwd=2) # Theoretical values for the
+abline(h=T6, col="salmon4", lty=2, lwd=2) # distribution as fit. }
 }
 \keyword{L-moment ratio diagram}
 \keyword{L-moment ratio diagram (Tau4 and Tau6)}
+\keyword{Distribution: Tukey Lambda}
+\keyword{Distribution: Stable}
 \keyword{Graphics}

@@ -10,8 +10,8 @@ function(lmr=NULL,
       notukey=FALSE,
       nocau=TRUE, nonor=FALSE, nosla=TRUE,
       trucate.tau4.to.gtzero=TRUE,
-         xlab="L-kurtosis, Tau4, dimensionless",
-         ylab="Sixth L-moment ratio, Tau6, dimensionless",
+         xlab="L-kurtosis (Tau4), dimensionless",
+         ylab="Sixth L-moment ratio (Tau6), dimensionless",
          add=FALSE, empty=FALSE,
          autolegend=FALSE, xleg=NULL, yleg=NULL, legendcex=0.9,
          ncol=1, text.width=NULL, lwd.cex=1, expand.names=FALSE,
@@ -35,7 +35,7 @@ function(lmr=NULL,
       axis(3, at=axTicks(1), labels=NA, lwd=0, lwd.ticks=1, ...)
       axis(4, at=axTicks(2), labels=NA, lwd=0, lwd.ticks=1, ...)
    }
-   if(empty) return("empty")
+   if(empty) return(invisible())
 
    if(! nolines) {
      if(! noaep4) {
@@ -148,7 +148,7 @@ function(lmr=NULL,
               pch=Epch,
               lty=Elty,
               pt.cex=Ecex, ncol=ncol, text.width=text.width,
-              xjust=0.5, bty="n", cex=legendcex)
+              xjust=0.5, bty="n", cex=legendcex, ...)
        par(lopts)
      } else {
        if(is.null(xleg)) warning("xleg is NULL, but needed")
@@ -160,7 +160,7 @@ function(lmr=NULL,
               pch=Epch,
               lty=Elty,
               pt.cex=Ecex, ncol=ncol, text.width=text.width,
-              xjust=0.5, bty="n", cex=legendcex)
+              xjust=0.5, bty="n", cex=legendcex, ...)
        par(lopts)
      }
    }

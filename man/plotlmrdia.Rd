@@ -9,8 +9,8 @@ plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
            noaep4=FALSE, nogev=FALSE, noglo=FALSE, nogpa=FALSE, nope3=FALSE,
            nopdq3=FALSE, nogno=FALSE, nogov=FALSE, nocau=TRUE,  noexp=FALSE,
            nonor=FALSE,  nogum=FALSE, noray=FALSE, nosla=TRUE,  nouni=FALSE,
-           xlab="L-skew, Tau3, dimensionless",
-           ylab="L-kurtosis, Tau4, dimensionless", add=FALSE, empty=FALSE,
+           xlab="L-skew (Tau3), dimensionless",
+           ylab="L-kurtosis (Tau4), dimensionless", add=FALSE, empty=FALSE,
            autolegend=FALSE, xleg=NULL, yleg=NULL, legendcex=0.9,
            ncol=1, text.width=NULL, lwd.cex=1, expand.names=FALSE, ...)
 }
@@ -27,17 +27,17 @@ plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
   \item{nogpa}{If \code{TRUE} then line of Generalized Pareto distribution is not drawn.}
   \item{nope3}{If \code{TRUE} then line of Pearson Type III distribution is not drawn.}
   \item{nopdq3}{If \code{TRUE} then line of Polynomial Density-Quantile3 distribution is not drawn.}
-  \item{nocau}{If \code{TRUE} then point (limiting, TL-moment [trim=1]) of the Cauchy distribution is not drawn.}
+  \item{nocau}{If \code{TRUE} then point (TL-moment [trim=1]) of the Cauchy distribution is not drawn.}
   \item{noexp}{If \code{TRUE} then point of Exponential distribution is not drawn.}
   \item{nonor}{If \code{TRUE} then point of Normal distribution is not drawn.}
   \item{nogum}{If \code{TRUE} then point of Gumbel distribution is not drawn.}
   \item{noray}{If \code{TRUE} then point of Rayleigh distribution is not drawn.}
   \item{nouni}{If \code{TRUE} then point of Uniform distribution is not drawn.}
-  \item{nosla}{If \code{TRUE} then point (limiting, TL-moment [trim=1]) of the Slash distribution is not drawn.}
+  \item{nosla}{If \code{TRUE} then point (TL-moment [trim=1]) of the Slash distribution is not drawn.}
   \item{xlab}{Horizonal axis label passed to \code{xlab} of the \code{plot} function.}
   \item{ylab}{Vertical axis label passed to \code{ylab} of the \code{plot} function.}
   \item{add}{A logical to toggle a call to \code{plot} to start a new plot, otherwise, just the trajectories are otherwise plotted.}
-  \item{empty}{A logical to return before any trajectories are plotted but after the condition of the \code{add} has been evaluated, and \dQuote{empty} character string is returned.}
+  \item{empty}{A logical to return before any trajectories are plotted but after the condition of the \code{add} has been evaluated.}
   \item{autolegend}{Generate the legend by built-in algorithm.}
   \item{xleg}{X-coordinate of the legend. This argument is checked for being a character versus a numeric. If it is a character, then \code{yleg} is not needed and \code{xleg} and take on \dQuote{location may also be specified by setting x to a single keyword} as per the functionality of \code{graphics::legend()} itself.}
   \item{yleg}{Y-coordinate of the legend.}
@@ -46,7 +46,7 @@ plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
   \item{text.width}{Argument of the same name for \code{legend}. Setting to 0.1 for \code{ncol} set to 2 seems to work pretty well when two columns are desired.}
   \item{lwd.cex}{Expansion factor on the line widths.}
   \item{expand.names}{Expand the distribution names in the legend.}
-  \item{...}{Additional arguments passed onto the \code{plot} function.}
+  \item{...}{Additional arguments passed into \code{plot()} and \code{legend()} functions..}
 }
 \note{
 This function provides hardwired calls to \code{lines} and \code{points} to produce the diagram. The plot symbology for the shown distributions is summarized here. The Asymmetric Exponential Power and Kappa (four parameter) and Wakeby (five parameter) distributions are not well represented on the diagram as each constitute an area (Kappa) or hyperplane (Wakeby) and not a line (3-parameter distributions) or a point (2-parameter distributions). However, the Kappa demarks the area bounded by the Generalized Logistic (\code{glo}) on the top and the
@@ -91,37 +91,36 @@ Vogel, R.M., and Fennessey, N.M., 1993, L moment diagrams should replace product
 plotlmrdia(lmrdia()) # simplest of all uses
 
 \dontrun{
-# A more complex example follows.
-# For a given mean, L-scale, L-skew, and L-kurtosis, let us use a sample size
-# of 30 and using 500 simulations, set the L-moments in lmr and fit the Kappa.
+# A more complex example follows: for a given mean, L-scale, L-skew, and L-kurtosis,
+# use sample size of 30, use 500 simulations, set L-moments, fit the Kappa distribution
 T3 <- 0.34; T4 <- 0.21; n <- 30; nsim <- 500
 lmr <- vec2lmom(c(10000, 7500, T3, T4)); kap <- parkap(lmr)
 
 # Next, create vectors for storing simulated L-skew (t3) and L-kurtosis (t4)
-t3 <- t4 <- vector(mode = "numeric")
+t3 <- t4 <- vector(mode="numeric")
 
 # Next, perform nsim simulations by randomly drawing from the Kappa distribution
-# and compute the L-moments in sim.lmr and store the t3 and t4 of each sample.
+# and compute the L-moments in sim.lmr and store the t3 and t4 of each sample
 for(i in 1:nsim) {
-  sim.lmr <- lmoms(rlmomco(n,kap))
+  sim.lmr <- lmoms(rlmomco(n, kap))
   t3[i] <- sim.lmr$ratios[3]; t4[i] <- sim.lmr$ratios[4]
 }
 
-# Next, plot the diagram with a legend at a specified location, and "zoom"
-# into the diagram by manually setting the axis limits.
-plotlmrdia(lmrdia(), autolegend=TRUE, xleg=0.1, yleg=0.41,
-        xlim=c(-0.1, 0.5), ylim=c(-0.1, 0.4), nopoints=TRUE, empty=TRUE)
+# Next, plot the diagram and "zoom" by manually setting the axis limits
+plotlmrdia(xlim=c(-0.1, 0.5), ylim=c(-0.1, 0.4), las=1, empty=TRUE)
 
-# Follow up by plotting the {t3, t4} values and the mean of these.
-points(t3, t4)
-points(mean(t3), mean(t4), pch=16, cex=3)
+# Follow up by plotting the {t3, t4} values and the mean of the values
+points(t3, t4, lwd=0.8)                   # plot each simulation
+points(mean(t3), mean(t4), pch=16, cex=3) # mean of simulations and
+# should plot reasonably close to the salmon4-colored crossing lines
 
-# Now plot the trajectories of the distributions.
-plotlmrdia(lmrdia(), add=TRUE)
+# Now plot the trajectories of the distributions
+plotlmrdia(lmrdia(), add=TRUE, nopoints=TRUE, inset=0.01,
+           autolegend=TRUE, xleg="topleft", lwd.cex=1.5)
 
-# Finally, plot crossing dashed lines at true values of L-skew and L-kurtosis.
-lines(c(T3, T3), c(-1,  1), col=8, lty=2)
-lines(c(-1, 1 ), c(T4, T4), col=8, lty=2) #}
+# Finally, plot crossing dashed lines at true values of L-skew and L-kurtosis
+abline(v=T3, col="salmon4", lty=2, lwd=2) # Theoretical values for the
+abline(h=T4, col="salmon4", lty=2, lwd=2) # distribution as fit. }
 }
 \keyword{L-moment ratio diagram}
 \keyword{Graphics}
