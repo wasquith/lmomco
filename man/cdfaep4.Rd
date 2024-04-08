@@ -8,6 +8,8 @@ for \eqn{x < \xi} and
 \deqn{F(x) = 1 - \frac{1}{(1+\kappa^2)} \; \gamma([\kappa(x - \xi)/\alpha]^h,\; 1/h)\mbox{,} }
 for \eqn{x \ge \xi}, where \eqn{F(x)} is the nonexceedance probability for quantile \eqn{x}, \eqn{\xi} is a location parameter, \eqn{\alpha} is a scale parameter, \eqn{\kappa} is a shape parameter, \eqn{h} is another shape parameter, and \eqn{\gamma(Z, s)} is the upper tail of the incomplete gamma function for the two arguments. The upper tail of the incomplete gamma function is \code{pgamma(Z, shape, lower.tail=FALSE)} in \R and mathematically is
 \deqn{\gamma(Z, a) = \int_Z^\infty y^{a-1} \exp(-y)\, \mathrm{d}y \, /\, \Gamma(a)\mbox{.}}
+
+If the \eqn{\tau_3} of the distribution is zero (symmetrical), then the distribution is known as the Exponential Power.
 }
 \usage{
 cdfaep4(x, para, paracheck=TRUE)
@@ -57,3 +59,4 @@ lines(quaaep4(cdfaep4(x,PAR),PAR), cdfaep4(x,PAR), col=2)}
 \keyword{distribution}
 \keyword{cumulative distribution function}
 \keyword{Distribution: Asymmetric Exponential Power}
+\keyword{Distribution: Exponential Power}

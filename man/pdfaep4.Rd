@@ -8,7 +8,7 @@ This function computes the probability density of the 4-parameter Asymmetric Exp
     \mathrm{exp}\left( -\left[\kappa^{ \mathrm{sign}(x-\xi)}\left(\frac{|x-\xi|}{\alpha}\right)\,\right]^h \right)  }
 where \eqn{f(x)} is the probability density for quantile \eqn{x},
 \eqn{\xi} is a location parameter, \eqn{\alpha} is a scale parameter,
-\eqn{\kappa} is a shape parameter, and \eqn{h} is another shape parameter. The range  is \eqn{-\infty < x < \infty}.
+\eqn{\kappa} is a shape parameter, and \eqn{h} is another shape parameter. The range  is \eqn{-\infty < x < \infty}. If the \eqn{\tau_3} of the distribution is zero (symmetrical), then the distribution is known as the Exponential Power (see \code{\link{lmrdia46}}).
 }
 \usage{
 pdfaep4(x, para, paracheck=TRUE)
@@ -58,3 +58,4 @@ lines(x,pdfaep4(x, PAR), lty=4, lwd=2);
 \keyword{distribution}
 \keyword{probability density function}
 \keyword{Distribution: Asymmetric Exponential Power}
+\keyword{Distribution: Exponential Power}

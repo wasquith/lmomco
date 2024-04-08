@@ -43,7 +43,7 @@ and where \eqn{\Delta_1} is
 \deqn{\Delta_1 =  \frac{\int_0^{1/2}  \int_0^{(1-y)/(2-y)}   y^{1/h - 1} (1-y)^{2/h - 1}
                        z^{1/h - 1} (1-z)^{3/h - 1}
         \;I'\; \mathrm{d}z\,\mathrm{d}y}{\beta(1/h, 2/h)\beta(1/h, 3/h)}\mbox{,}}
-for which \eqn{I' = I_{(1-z)(1-y)/(1+(1-z)(1-y))}(1/h, 2/h)} is the cumulative distribution function of the beta distribution (\eqn{I_x(a,b)}) or \code{pbeta((1-z)(1-y)/(1+(1-z)(1-y)), shape1=1/h, shape2=2/h)} in \R.
+for which \eqn{I' = I_{(1-z)(1-y)/(1+(1-z)(1-y))}(1/h, 2/h)} is the cumulative distribution function of the beta distribution (\eqn{I_x(a,b)}) or \code{pbeta((1-z)(1-y)/(1+(1-z)(1-y)), shape1=1/h, shape2=2/h)} in \R. Finally, if the \eqn{\tau_3} of the distribution is zero (symmetrical), then the distribution is known as the Exponential Power (see \code{\link{lmrdia46}}).
 }
 \usage{
 lmomaep4(para, paracheck=TRUE, t3t4only=FALSE)
@@ -88,3 +88,5 @@ lmomaep4(para)
 }
 \keyword{L-moment (distribution)}
 \keyword{Distribution: Asymmetric Exponential Power}
+\keyword{Distribution: Exponential Power}
+

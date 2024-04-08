@@ -2,7 +2,7 @@
 \alias{paraep4}
 \title{Estimate the Parameters of the 4-Parameter Asymmetric Exponential Power Distribution}
 \description{
-This function estimates the parameters of the 4-parameter Asymmetric Exponential Power distribution given the L-moments of the data in an L-moment object such as that returned by \code{\link{lmoms}}. The relation between distribution parameters and L-moments is seen under \code{\link{lmomaep4}}. Relatively straightforward, but difficult to numerically achieve, optimization is needed to extract the parameters from the L-moments.
+This function estimates the parameters of the 4-parameter Asymmetric Exponential Power distribution given the L-moments of the data in an L-moment object such as that returned by \code{\link{lmoms}}. The relation between distribution parameters and L-moments is seen under \code{\link{lmomaep4}}. Relatively straightforward, but difficult to numerically achieve, optimization is needed to extract the parameters from the L-moments. If the \eqn{\tau_3} of the distribution is zero (symmetrical), then the distribution is known as the Exponential Power (see \code{\link{lmrdia46}}).
 
 Delicado and Goria (2008) argue for numerical methods to use the following objective function
 \deqn{\epsilon(\alpha, \kappa, h) = \log(1 + \sum_{r=2}^4 (\hat\lambda_r - \lambda_r)^2)\mbox{,}}
@@ -133,3 +133,4 @@ print(MADasq)
 }
 \keyword{distribution (parameters)}
 \keyword{Distribution: Asymmetric Exponential Power}
+\keyword{Distribution: Exponential Power}

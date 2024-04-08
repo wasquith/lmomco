@@ -25,3 +25,4 @@ if(is.aep4(para) == TRUE) {
 }
 \keyword{utility (distribution/type check)}
 \keyword{Distribution: Asymmetric Exponential Power}
+\keyword{Distribution: Exponential Power}

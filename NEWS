@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Changes in version 2.5.0  (2024-05-01)
+Changes in version 2.5.0 (2024-05-01)
 -  Added lwd.cex and expand.names arguments to plotlmrdia().
 -  Added opposite axis ticking in plotlmrdia() with axTicks added to NAMESPACE.
 -  Audited coloring and lines in plotlmrdia.R/Rd.
@@ -39,6 +39,8 @@ Changes in version 2.5.0  (2024-05-01)
      conceptually the Cauchy displays as the Slash does with trim=1 TL-moments.
 -  Revised color of the Cauchy and Slash as "turquoise4" for plotlmrdia() and
      that same color used in plotlmrdia46().
+-  For *aep*.Rd files, added note, keyword, and cross-link to lmr46.Rd that the
+     AEP4 for Tau3 = zero is the Exponential Power distribution.
 
 
 Changes in version 2.4.14 (2024-02-19)

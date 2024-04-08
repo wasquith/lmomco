@@ -8,7 +8,7 @@ and for \eqn{F \ge F(\xi)} is
 \deqn{x(F) = \xi + \frac{\alpha}{\kappa}[\gamma^{(-1)}((1+\kappa^2)(1-F),\; 1/h)]^{1/h} \mbox{,}}
 where \eqn{x(F)} is the quantile \eqn{x} for nonexceedance probability \eqn{F},
 \eqn{\xi} is a location parameter, \eqn{\alpha} is a scale parameter,
-\eqn{\kappa} is a shape parameter, \eqn{h} is another shape parameter, \eqn{\gamma^{(-1)}(Z, shape)} is the inverse of the upper tail of the incomplete gamma function. The range of the distribution is \eqn{-\infty < x < \infty}. The inverse upper tail of the incomplete gamma function is \code{qgamma(Z, shape, lower.tail=FALSE)} in \R. The mathematical definition of the upper tail of the incomplete gamma function shown in documentation for \code{\link{cdfaep4}}.
+\eqn{\kappa} is a shape parameter, \eqn{h} is another shape parameter, \eqn{\gamma^{(-1)}(Z, shape)} is the inverse of the upper tail of the incomplete gamma function. The range of the distribution is \eqn{-\infty < x < \infty}. The inverse upper tail of the incomplete gamma function is \code{qgamma(Z, shape, lower.tail=FALSE)} in \R. The mathematical definition of the upper tail of the incomplete gamma function shown in documentation for \code{\link{cdfaep4}}. If the \eqn{\tau_3} of the distribution is zero (symmetrical), then the distribution is known as the Exponential Power (see \code{\link{lmrdia46}}).
 }
 \usage{
 quaaep4(f, para, paracheck=TRUE)
@@ -65,3 +65,4 @@ lines(quaaep4(F, PAR), F, col=4, lty=4);
 \keyword{distribution}
 \keyword{quantile function}
 \keyword{Distribution: Asymmetric Exponential Power}
+\keyword{Distribution: Exponential Power}
