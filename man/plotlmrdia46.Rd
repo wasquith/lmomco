@@ -8,7 +8,7 @@ Plot the Tau4-Tau6 L-moment ratio diagram showing trajectories of \eqn{\tau_4} a
 plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
              noaep4=FALSE, nogld=FALSE,
              nopdq4=FALSE, nost3=FALSE, nosymstable=FALSE, notukey=FALSE,
-             nocau=TRUE, nonor=FALSE, nosla=TRUE, trucate.tau4.to.gtzero=TRUE,
+             nocau=TRUE,   nonor=FALSE, nosla=TRUE, trucate.tau4.to.gtzero=TRUE,
              xlab="L-kurtosis (Tau4), dimensionless",
              ylab="Sixth L-moment ratio (Tau6), dimensionless",
              add=FALSE, empty=FALSE,
@@ -73,35 +73,36 @@ plotlmrdia46(lmrdia46()) # simplest of all uses
 # L-kurtosis, use sample size of 30, use 500 simulations, set L-moments,
 # fit the Asymmetric Exponential Power4 distribution, which is symmetrical when the
 # L-skew is zero and thus the distribution is the Exponential Power.
-T3 <- 0; T4 <- 0.21; n <- 30; nsim <- 500
-lmr <- vec2lmom(c(10000, 7500, 0, T4, 0)); aep4 <- paraep4(lmr)
-T6 <- theoLmoms(aep4, nmom=6)$ratios[6]
+T3  <- 0; T4 <- 0.21; n <- 30; nsim <- 500
+lmr <- vec2lmom(c(10000, 7500, T3, T4, 0)); aep4 <- paraep4(lmr)
+T6  <- theoLmoms(aep4, nmom=6)$ratios[6]
 
-# Next, create vectors for storing simulated L-kurtosis (t4) and Tau6 (t6)
+# create vectors for storing simulated L-kurtosis (t4) and Tau6 (t6)
 t4 <- t6 <- vector(mode="numeric")
 
-# Next, perform nsim simulations by randomly drawing from the AEP4 distribution
+# perform nsim simulations by randomly drawing from the AEP4 distribution
 # and compute the L-moments in sim.lmr and store the t4 and t6 of each sample
 for(i in 1:nsim) {
   sim.lmr <- lmoms(rlmomco(n, aep4), nmom=6)
   t4[i] <- sim.lmr$ratios[4]; t6[i] <- sim.lmr$ratios[6]
 }
 
-# Next, plot the diagram and "zoom" by manually setting the axis limits
+# plot the diagram and "zoom" by manually setting the axis limits
 plotlmrdia46(xlim=c(-0.05, 0.5), ylim=c(-0.1, 0.35), las=1, empty=TRUE)
 
-# Follow up by plotting the {t3, t4} values and the mean of the values
-points(t4, t6, lwd=0.8)                   # plot each simulation
+# follow up by plotting the {t3, t4} values and the mean of the values
+points(t4, t6, pch=21, bg="white", lwd=0.8) # plot each simulation
+
+# plot crossing dashed lines at true values of L-skew and L-kurtosis
+abline(v=T4, col="salmon4", lty=2, lwd=3) # Theoretical values for the
+abline(h=T6, col="salmon4", lty=2, lwd=3) # distribution as fit
+
 points(mean(t4), mean(t6), pch=16, cex=3) # mean of simulations and
 # should plot reasonably close to the salmon4-colored crossing lines
 
-# Now plot the trajectories of the distributions.
+# plot the trajectories of the distributions
 plotlmrdia46(lmrdia46(), add=TRUE, nopoints=TRUE, inset=0.01,
-             autolegend=TRUE, xleg="topleft", lwd.cex=1.5)
-
-# Finally, plot crossing dashed lines at true values of L-skew and L-kurtosis
-abline(v=T4, col="salmon4", lty=2, lwd=2) # Theoretical values for the
-abline(h=T6, col="salmon4", lty=2, lwd=2) # distribution as fit. }
+             autolegend=TRUE, xleg="topleft", lwd.cex=1.5) # }
 }
 \keyword{L-moment ratio diagram}
 \keyword{L-moment ratio diagram (Tau4 and Tau6)}

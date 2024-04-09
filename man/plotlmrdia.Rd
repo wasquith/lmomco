@@ -96,31 +96,32 @@ plotlmrdia(lmrdia()) # simplest of all uses
 T3 <- 0.34; T4 <- 0.21; n <- 30; nsim <- 500
 lmr <- vec2lmom(c(10000, 7500, T3, T4)); kap <- parkap(lmr)
 
-# Next, create vectors for storing simulated L-skew (t3) and L-kurtosis (t4)
+# create vectors for storing simulated L-skew (t3) and L-kurtosis (t4)
 t3 <- t4 <- vector(mode="numeric")
 
-# Next, perform nsim simulations by randomly drawing from the Kappa distribution
+# perform nsim simulations by randomly drawing from the Kappa distribution
 # and compute the L-moments in sim.lmr and store the t3 and t4 of each sample
 for(i in 1:nsim) {
   sim.lmr <- lmoms(rlmomco(n, kap))
   t3[i] <- sim.lmr$ratios[3]; t4[i] <- sim.lmr$ratios[4]
 }
 
-# Next, plot the diagram and "zoom" by manually setting the axis limits
+# plot the diagram and "zoom" by manually setting the axis limits
 plotlmrdia(xlim=c(-0.1, 0.5), ylim=c(-0.1, 0.4), las=1, empty=TRUE)
 
 # Follow up by plotting the {t3, t4} values and the mean of the values
-points(t3, t4, lwd=0.8)                   # plot each simulation
+points(t3, t4, pch=21, bg="white", lwd=0.8) # plot each simulation
+
+# plot crossing dashed lines at true values of L-skew and L-kurtosis
+abline(v=T3, col="salmon4", lty=2, lwd=3) # Theoretical values for the
+abline(h=T4, col="salmon4", lty=2, lwd=3) # distribution as fit
+
 points(mean(t3), mean(t4), pch=16, cex=3) # mean of simulations and
 # should plot reasonably close to the salmon4-colored crossing lines
 
-# Now plot the trajectories of the distributions
+# plot the trajectories of the distributions
 plotlmrdia(lmrdia(), add=TRUE, nopoints=TRUE, inset=0.01,
-           autolegend=TRUE, xleg="topleft", lwd.cex=1.5)
-
-# Finally, plot crossing dashed lines at true values of L-skew and L-kurtosis
-abline(v=T3, col="salmon4", lty=2, lwd=2) # Theoretical values for the
-abline(h=T4, col="salmon4", lty=2, lwd=2) # distribution as fit. }
+           autolegend=TRUE, xleg="topleft", lwd.cex=1.5) # }
 }
 \keyword{L-moment ratio diagram}
 \keyword{Graphics}
