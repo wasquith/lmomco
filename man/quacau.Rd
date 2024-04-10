@@ -3,7 +3,7 @@
 \title{Quantile Function of the Cauchy Distribution}
 \description{
 This function computes the quantiles of the Cauchy distribution given parameters (\eqn{\xi} and \eqn{\alpha}) of the distribution provided by \code{\link{parcau}}. The quantile function of the distribution is
-\deqn{x(F) = \xi + \alpha \times \tan(\pi(F-0.5)) \mbox{,}} 
+\deqn{x(F) = \xi + \alpha \times \tan\bigl(\pi(F-0.5)\bigr) \mbox{,}}
 where \eqn{x(F)} is the quantile for nonexceedance probability \eqn{F}, \eqn{\xi} is a location parameter and \eqn{\alpha} is a scale parameter. The quantile function of the Cauchy distribution is supported by \R function \code{qcauchy}. This function does not use \code{qcauchy} because \code{qcauchy} does not return \code{Inf} for \eqn{F = 1} although it
 returns \code{-Inf} for \eqn{F = 0}.
 }

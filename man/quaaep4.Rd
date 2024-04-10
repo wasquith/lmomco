@@ -3,9 +3,9 @@
 \title{Quantile Function of the 4-Parameter Asymmetric Exponential Power Distribution}
 \description{
 This function computes the quantiles of the 4-parameter Asymmetric Exponential Power distribution given parameters (\eqn{\xi}, \eqn{\alpha}, \eqn{\kappa}, and \eqn{h}) of the distribution computed by \code{\link{paraep4}}. The quantile function of the distribution given the cumulative distribution function \eqn{F(x)} for \eqn{F < F(\xi)} is
-\deqn{x(F) = \xi - \alpha\kappa[\gamma^{(-1)}((1+\kappa^2)F/\kappa^2,\; 1/h)]^{1/h}\mbox{,}}
+\deqn{x(F) = \xi - \alpha\kappa\biggl[\gamma^{(-1)}\bigl((1+\kappa^2)F/\kappa^2,\; 1/h\bigr)\biggr]^{1/h}\mbox{,}}
 and for \eqn{F \ge F(\xi)} is
-\deqn{x(F) = \xi + \frac{\alpha}{\kappa}[\gamma^{(-1)}((1+\kappa^2)(1-F),\; 1/h)]^{1/h} \mbox{,}}
+\deqn{x(F) = \xi + \frac{\alpha}{\kappa}\biggl[\gamma^{(-1)}\bigl((1+\kappa^2)(1-F),\; 1/h\bigr)\biggr]^{1/h} \mbox{,}}
 where \eqn{x(F)} is the quantile \eqn{x} for nonexceedance probability \eqn{F},
 \eqn{\xi} is a location parameter, \eqn{\alpha} is a scale parameter,
 \eqn{\kappa} is a shape parameter, \eqn{h} is another shape parameter, \eqn{\gamma^{(-1)}(Z, shape)} is the inverse of the upper tail of the incomplete gamma function. The range of the distribution is \eqn{-\infty < x < \infty}. The inverse upper tail of the incomplete gamma function is \code{qgamma(Z, shape, lower.tail=FALSE)} in \R. The mathematical definition of the upper tail of the incomplete gamma function shown in documentation for \code{\link{cdfaep4}}. If the \eqn{\tau_3} of the distribution is zero (symmetrical), then the distribution is known as the Exponential Power (see \code{\link{lmrdia46}}).
