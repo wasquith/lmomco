@@ -25,7 +25,7 @@ function(lmr=NULL,
    Ecex    <- vector(mode = "numeric")
    entryi  <- 0
 
-   popts <- par(lend=2, no.readonly=TRUE)
+   popts <- par(lend=2, mgp=c(2.5, 0.9, 0), no.readonly=TRUE)
 
    if(is.null(lmr)) empty <- TRUE
    if(! add) {
@@ -85,11 +85,11 @@ function(lmr=NULL,
         Ecex[entryi] <- 1
      }
      if(! nosymstable) {
-        lines(lmr$symstable[,3:4], col=grey(0.7), lwd=2*lwd.cex, lty=1)
+        lines(lmr$symstable[,3:4], col=grey(0.4), lwd=2*lwd.cex, lty=1)
         entryi <- entryi + 1
         entries[entryi] <- ifelse(expand.names, "Symmetric Stable", "Stable")
         Elwd[entryi] <- 2*lwd.cex
-        Ecol[entryi] <- grey(0.7)
+        Ecol[entryi] <- grey(0.4)
         Epch[entryi] <- NA
         Elty[entryi] <- 1
         Ecex[entryi] <- 1

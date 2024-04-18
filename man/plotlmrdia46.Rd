@@ -52,7 +52,7 @@ This function provides hardwired calls to \code{lines} and \code{points} to prod
   Generalized Lambda \tab line width 1, line type 1 (solid), and color purple \cr
   Polynomial Density-Quantile4 \tab line width 1, line type 1 (solid), and color darkgreen \cr
   Student t \tab line width 1, line type 1 (solid), and color blue\cr
-  Symmetric Stable \tab line width 2, line type 1 (solid), and color a medium grey\cr
+  Symmetric Stable \tab line width 2, line type 1 (solid), and color a medium-dark grey\cr
   Tukey Lambda (1-p) \tab line width 1, line type 2 (dash), and color purple\cr
   Normal \tab symbol 15 (filled square) and color red \cr
   Cauchy \tab symbol 13 (circle with over lapping \eqn{\times}) and color turquoise4 \cr
@@ -91,7 +91,7 @@ for(i in 1:nsim) {
 plotlmrdia46(xlim=c(-0.05, 0.5), ylim=c(-0.1, 0.35), las=1, empty=TRUE)
 
 # follow up by plotting the {t3, t4} values and the mean of the values
-points(t4, t6, pch=21, bg="white", lwd=0.8) # plot each simulation
+points(t4, t6, cex=0.8, pch=21, bg="white", lwd=0.8) # plot each simulation
 
 # plot crossing dashed lines at true values of L-skew and L-kurtosis
 abline(v=T4, col="salmon4", lty=2, lwd=3) # Theoretical values for the
