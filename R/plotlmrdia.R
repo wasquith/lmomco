@@ -6,11 +6,12 @@ function(lmr=NULL,
       noaep4=FALSE,
       nogev=FALSE,
       noglo=FALSE,
+      nogno=FALSE,
+      nogov=FALSE,
       nogpa=FALSE,
       nope3=FALSE,
       nopdq3=FALSE,
-      nogno=FALSE,
-      nogov=FALSE,
+      nowei=TRUE,
       nocau=TRUE,
       noexp=FALSE,
       nonor=FALSE,
@@ -44,11 +45,11 @@ function(lmr=NULL,
    if(empty) return(invisible())
 
    if(! nolimits) {
-     lines(lmr$limits, lwd=2*lwd.cex, col=grey(0.7))
+     lines(lmr$limits, lwd=2*lwd.cex, col=grey(0.4))
      entryi <- entryi + 1
      entries[entryi] <- "Theoretical limits"
      Elwd[entryi] <- 2*lwd.cex
-     Ecol[entryi] <- grey(0.7)
+     Ecol[entryi] <- grey(0.4)
      Epch[entryi] <- NA
      Elty[entryi] <- 1
      Ecex[entryi] <- 1
@@ -66,13 +67,13 @@ function(lmr=NULL,
         Ecex[entryi] <- 1
      }
      if(! nogev) {
-        lines(lmr$gev, col="red", lwd=1*lwd.cex, lty=2)
+        lines(lmr$gev, col="darkred", lwd=1*lwd.cex, lty=1)
         entryi <- entryi + 1
         entries[entryi] <- ifelse(expand.names, "Generalized Extreme Value", "GEV")
         Elwd[entryi] <- 1*lwd.cex
-        Ecol[entryi] <- "red"
+        Ecol[entryi] <- "darkred"
         Epch[entryi] <- NA
-        Elty[entryi] <- 2
+        Elty[entryi] <- 1
         Ecex[entryi] <- 1
      }
      if(! noglo) {
@@ -133,6 +134,16 @@ function(lmr=NULL,
         Ecol[entryi] <- "darkgreen"
         Epch[entryi] <- NA
         Elty[entryi] <- 2
+        Ecex[entryi] <- 1
+     }
+     if(! nowei) {
+        lines(lmr$wei, col="darkorange", lwd=1*lwd.cex, lty=1)
+        entryi <- entryi + 1
+        entries[entryi] <- ifelse(expand.names, "Weibull", "WEI")
+        Elwd[entryi] <- 1*lwd.cex
+        Ecol[entryi] <- "darkorange"
+        Epch[entryi] <- NA
+        Elty[entryi] <- 1
         Ecex[entryi] <- 1
      }
    }
