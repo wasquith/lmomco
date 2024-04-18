@@ -6,9 +6,10 @@ Plot the Tau3-Tau4 L-moment ratio diagram of L-skew and L-kurtosis from a Tau3-T
 }
 \usage{
 plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
-           noaep4=FALSE, nogev=FALSE, noglo=FALSE, nogpa=FALSE, nope3=FALSE,
-           nopdq3=FALSE, nogno=FALSE, nogov=FALSE, nocau=TRUE,  noexp=FALSE,
-           nonor=FALSE,  nogum=FALSE, noray=FALSE, nosla=TRUE,  nouni=FALSE,
+           noaep4=FALSE, nogev=FALSE, noglo=FALSE,  nogno=FALSE, nogov=FALSE,
+           nogpa=FALSE,  nope3=FALSE, nopdq3=FALSE, nowei=TRUE,
+           nocau=TRUE,   noexp=FALSE, nonor=FALSE,  nogum=FALSE,
+           noray=FALSE, nosla=TRUE, nouni=FALSE,
            xlab="L-skew (Tau3), dimensionless",
            ylab="L-kurtosis (Tau4), dimensionless", add=FALSE, empty=FALSE,
            autolegend=FALSE, xleg=NULL, yleg=NULL, legendcex=0.9,
@@ -27,6 +28,7 @@ plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
   \item{nogpa}{If \code{TRUE} then line of Generalized Pareto distribution is not drawn.}
   \item{nope3}{If \code{TRUE} then line of Pearson Type III distribution is not drawn.}
   \item{nopdq3}{If \code{TRUE} then line of Polynomial Density-Quantile3 distribution is not drawn.}
+ \item{nowei}{If \code{TRUE} then line of the Weibull distribution is not drawn. The Weibull is a reverse of the Generalized Extreme Value. Traditionally in the literature, the Tau3-Tau4 L-moment ratio diagram have usually included the Weibull distribution and therefore the default setting of this argument is to not plot the Weibull.}
   \item{nocau}{If \code{TRUE} then point (TL-moment [trim=1]) of the Cauchy distribution is not drawn.}
   \item{noexp}{If \code{TRUE} then point of Exponential distribution is not drawn.}
   \item{nonor}{If \code{TRUE} then point of Normal distribution is not drawn.}
@@ -54,15 +56,16 @@ theoretical L-moment limits on the bottom. The Asymmetric Exponential Power dema
 
 \tabular{cl}{
   \bold{GRAPHIC TYPE} \tab \bold{GRAPHIC NATURE} \cr
-  L-moment Limits \tab line width 2 and color a medium grey \cr
+  L-moment Limits \tab line width 2 and color a medium-dark grey \cr
   Asymmetric Exponential Power (4-p) \tab line width 1, line type 4 (dot), and color red \cr
-  Generalized Extreme Value \tab line width 1, line type 2 (dash), and color red \cr
+  Generalized Extreme Value (GEV) \tab line width 1, line type 1 (solid), and color darkred \cr
   Generalized Logistic \tab line width 1 and color green \cr
   Generalized Normal \tab line width 1, line type 2 (dash), and color blue \cr
   Govindarajulu \tab line width 1, line type 2 (dash), and color 6 (magenta) \cr
   Generalized Pareto \tab line width 1, line type 1 (solid), and color blue \cr
   Pearson Type III \tab line width 1, line type 1 (solid), and color 6 (purple) \cr
   Polynomial Density-Quantile3 \tab line width 1.3, line type 2 (dash), and color darkgreen \cr
+  Weibull (reversed GEV) \tab line width 1, line type 1 (solid), and color darkorange \cr
   Exponential \tab symbol 16 (filled circle) and color red \cr
   Normal \tab symbol 15 (filled square) and color red \cr
   Gumbel \tab symbol 17 (filled triangle) and color red) \cr
