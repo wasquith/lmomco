@@ -51,6 +51,7 @@ for(T4 in T4s) {
     tlmr <- lmomco::theoTLmoms(para, nmom=6) # theoretical, num. integration of quantile function
     #print(c(dtype, blmr$ratios[c(4,6)], tlmr$ratios[c(4,6)]))
     df <- data.frame(tau4=T4, type=dtype, special_parameter=NA,
+                     lam2bak=blmr$lambdas[2], lam2int=tlmr$lambdas[2],
                      tau4bak=blmr$ratios[4], tau6bak=blmr$ratios[6],
                      tau4int=tlmr$ratios[4], tau6int=tlmr$ratios[6])
     if(dtype == "gld") {
@@ -67,7 +68,8 @@ for(T4 in T4s) {
 T6df$tau6 <- T6df$tau6bak # store into a canonical column
 T6df$tau6[is.na(T6df$tau6)] <- T6df$tau6int[is.na(T6df$tau6)] # back file if lmomco does not have
 # native parameter ---> to 6 L-moment return, so must use the numerical integration versions
-T6df <- T6df[ , c("type", "special_parameter", "tau4", "tau6", "tau4bak", "tau6bak", "tau4int", "tau6int")] # re-order
+T6df <- T6df[ , c("type", "lam2bak", "lam2int", "special_parameter",
+                  "tau4", "tau6", "tau4bak", "tau6bak", "tau4int", "tau6int")] # re-order
 T6df$tau6err <- abs(T6df$tau6bak - T6df$tau6int) # compute an error for later study, if needed
 T6df <- T6df[order(T6df$tau4), ]  # sort the table by L-kurtosis
 
