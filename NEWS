@@ -39,8 +39,13 @@ Changes in version 2.5.0 (2024-05-01)
      conceptually the Cauchy displays as the Slash does with trim=1 TL-moments.
 -  Revised color of the Cauchy and Slash as "turquoise4" for plotlmrdia() and
      that same color used in plotlmrdia46().
+-  Revised color of the GEV as "darkred" for plotlmrdia() as part of adding the
+     nondefault plotting of the Weibull distribution in darkorange. Both line
+     types are now solid.
 -  For *aep*.Rd files, added note, keyword, and cross-link to lmr46.Rd that the
      AEP4 for Tau3 = zero is the Exponential Power distribution.
+-  Disabled a url to University of Virginia in headrick.sheng.lalpha.Rd as it
+     was not resolving and hence CRAN checks would not pass.
 
 
 Changes in version 2.4.14 (2024-02-19)
