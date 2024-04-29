@@ -3,7 +3,7 @@ function(lmr=NULL,
       nopoints=FALSE,
       nolines=FALSE,
       noaep4=FALSE,
-      nogld=FALSE,
+      nogld_byt5opt=TRUE,
       nopdq4=FALSE,
       nost3=FALSE,
       nosymstable=FALSE,
@@ -49,13 +49,13 @@ function(lmr=NULL,
         Elty[entryi] <- 4
         Ecex[entryi] <- 1
      }
-     if(! nogld) {
-        tmp <- lmr$gld[, 2:3]
+     if(! nogld_byt5opt) {
+        tmp <- lmr$gld_byt5opt[, 2:3]
         if(trucate.tau4.to.gtzero) tmp <- tmp[tmp[,1] >= 0, ]
         lines(tmp, col="purple", lwd=1*lwd.cex)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Generalized Lambda  (L-scale constant, L-skew = 0)",
-                                                "GLD (L-scale constant, L-skew = 0)")
+        entries[entryi] <- ifelse(expand.names, "Generalized Lambda (L2 = constant, Tau3 = Tau5 = 0)",
+                                                "GLD (L2 = constant, Tau3 = Tau5 = 0)")
         Elwd[entryi] <- 1*lwd.cex
         Ecol[entryi] <- "purple"
         Epch[entryi] <- NA
@@ -95,10 +95,10 @@ function(lmr=NULL,
         Ecex[entryi] <- 1
      }
      if(! notukey) {
-        lines(lmr$tukey[, 3:4], col="purple", lwd=1*lwd.cex, lty=2)
+        lines(lmr$gld_byt6tukeylam[, 3:4], col="purple", lwd=1*lwd.cex, lty=2)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Tukey Lambda (L-scale not constant)",
-                                                "Tukey Lambda")
+        entries[entryi] <- ifelse(expand.names, "Tukey Lambda (L2 = not constant, Tau3 = Tau5 = 0)",
+                                                "Tukey Lambda (L2 = not constant, Tau3 = Tau5 = 0) ")
         Elwd[entryi] <- 1*lwd.cex
         Ecol[entryi] <- "purple"
         Epch[entryi] <- NA

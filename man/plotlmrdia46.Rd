@@ -6,7 +6,7 @@ Plot the Tau4-Tau6 L-moment ratio diagram showing trajectories of \eqn{\tau_4} a
 }
 \usage{
 plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
-             noaep4=FALSE, nogld=FALSE,
+             noaep4=FALSE, nogld_byt5opt=TRUE,
              nopdq4=FALSE, nost3=FALSE, nosymstable=FALSE, notukey=FALSE,
              nocau=TRUE,   nonor=FALSE, nosla=TRUE, trucate.tau4.to.gtzero=TRUE,
              xlab="L-kurtosis (Tau4), dimensionless",
@@ -20,7 +20,7 @@ plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
   \item{nopoints}{If \code{TRUE} then point distributions are not drawn.}
   \item{nolines}{If \code{TRUE} then line distributions are not drawn.}
   \item{noaep4}{If \code{TRUE} then the Symmetric Exponential Power distribution is not drawn.}
-  \item{nogld}{If \code{TRUE} then line of Generalized Lambda distribution is not drawn.}
+  \item{nogld_byt5opt}{If \code{TRUE} then line of Generalized Lambda distribution through it solution optimization on \eqn{\tau_5 = 0} is not drawn.}
   \item{nopdq4}{If \code{TRUE} then line of Polynomial Density-Quantile4 distribution is not drawn.}
   \item{nost3}{If \code{TRUE} then line of Student 3t distribution is not drawn.}
   \item{nosymstable}{If \code{TRUE} then line of Symmetric Stable distribution is not drawn.}
@@ -66,7 +66,9 @@ Asquith, W.H., 2014, Parameter estimation for the 4-parameter asymmetric exponen
 \author{W.H. Asquith}
 \seealso{\code{\link{lmrdia46}}, \code{\link{plotlmrdia}}}
 \examples{
-plotlmrdia46(lmrdia46()) # simplest of all uses
+plotlmrdia46(lmrdia46(), nogld_byt5opt=FALSE, autolegend=TRUE,
+             xleg="topleft")
+
 
 \dontrun{
 # A more complex example follows: for a given mean, L-scale, L-skew = 0 (symmetry), and
