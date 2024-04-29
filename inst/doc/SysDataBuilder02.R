@@ -140,10 +140,11 @@ tau46list$symstable$tau4[tau46list$symstable$lambda2 == 1] <- # this is precise 
 tau46list$symstable$tau6[tau46list$symstable$lambda2 == 1] <- # this is precise unity
                   approx( tau46list$symstable$lambda2, y=tau46list$symstable$tau6, xout=1)$y
 
+tau46list$gld_byt6tukeylam <- tau46list$tukeylam
 
-tau46list$gld  <- data.frame(khparas=T6df$special_parameter[T6df$type == "gld" ],
-                              tau4=T6df$tau4[T6df$type == "gld" ],
-                              tau6=T6df$tau6[T6df$type == "gld" ])
+tau46list$gld_byt5opt <- data.frame(khparas=T6df$special_parameter[T6df$type == "gld" ],
+                                       tau4=T6df$tau4[T6df$type == "gld" ],
+                                       tau6=T6df$tau6[T6df$type == "gld" ])
 tau46list$pdq4 <- data.frame(kappa=T6df$special_parameter[T6df$type == "pdq4" ],
                               tau4=T6df$tau4[T6df$type == "pdq4"],
                               tau6=T6df$tau6[T6df$type == "pdq4"])
