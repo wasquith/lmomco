@@ -46,6 +46,8 @@ Changes in version 2.5.0 (2024-05-01)
      AEP4 for Tau3 = zero is the Exponential Power distribution.
 -  Disabled a url to University of Virginia in headrick.sheng.lalpha.Rd as it
      was not resolving and hence CRAN checks would not pass.
+-  Revised some pargld.Rd text related to Tukey Lambda and cleaned up the
+     Examples section.
 
 
 Changes in version 2.4.14 (2024-02-19)
