@@ -45,3 +45,5 @@ misc/.DS_Store
 data/.DS_Store
 
 .\#NEWS
+inst/doc/AEPD_kh2lmrTheo.RData
+inst/doc/AEPD_kh2lmrTheo.txt

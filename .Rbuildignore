@@ -4,6 +4,9 @@
 .Rapp.history
 .Rhistory
 inst/legacy
+inst/doc/AEPD_kh2lmrTheo.RData
+inst/doc/AEPD_kh2lmrTheo.txt
+
 
 srcall.R
 
