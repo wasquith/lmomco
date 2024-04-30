@@ -12,7 +12,7 @@ lmrdia46()
 
   \item{aep4}{\eqn{\tau_4} and \eqn{\tau_6} of the 4-parameter Asymmetric Exponential Power (AEP4) distribution given L-skew set as \eqn{\tau_3 = 0}. This becomes then the (Symmetrical) Exponential Power. The complementary entry \code{pwrexp} are the effectively the same curve for the power exponential distribution based on lookup table archived in the \pkg{lmomco} package. The table stems from \code{inst/doc/SysDataBuilder02.R}. The \code{aep4} and not \code{pwrexp} is used in the line drawing by \code{\link{plotlmrdia46}}.}
   \item{gld_byt5opt}{\eqn{\tau_4} and \eqn{\tau_6} of the Generalized Lambda (GLD) distribution given L-skew set as \eqn{\tau_3 = 0} and optimized by \code{\link{pargld}} with \code{pargld(..., aux="tau5")} with \eqn{\tau_5 = 0}. The table stems from \code{inst/doc/SysDataBuilder02.R}. The table \code{gld_byt5opt} is used in the line drawing by \code{\link{plotlmrdia46}} in relation to the argument therein of \code{nogld_byt5opt}. This is the trajectory of the symmetrical GLD having constant L-scale (\eqn{\lambda_2}); this is different than the structurally similar by not identical Tukey Lambda distribution.}
-  \item{gld_byt6tukeylam}{\eqn{\tau_4} and \eqn{\tau_6} of the Generalized Lambda distribution given L-skew set as \eqn{\tau_3 = 0} and optimized by \code{\link{pargld}} with \code{pargld(..., aux="tau6")} with \eqn{\tau_6(\tau_4)} (\eqn{\tau_6} and function of \eqn{\tau_4} (see \code{gld_byt6tukeylam} table). The table stems from \code{inst/}\code{doc/}\cr\code{SysDataBuilder02.R}. The \code{gld_byt6tukeylam} is used in the line drawing by \code{\link{plotlmrdia46}} in relation to the argument therein of \code{notukey}. This relation between \eqn{\tau_4, \tau_6} is that of the Tukey Lambda distribution; this is the trajectory of the symmetrical GLD having nonconstant L-scale (\eqn{\lambda_2}).}
+  \item{gld_byt6tukeylam}{\eqn{\tau_4} and \eqn{\tau_6} of the Generalized Lambda distribution given L-skew set as \eqn{\tau_3 = 0} and optimized by \code{\link{pargld}} with \code{pargld(..., aux="tau6")} with \eqn{\tau_6(\tau_4)} (\eqn{\tau_6} as a function of \eqn{\tau_4}, see \code{gld_byt6tukeylam} table). The table stems from \code{inst/}\code{doc/}\cr\code{SysDataBuilder02.R}. The \code{gld_byt6tukeylam} is used in the line drawing by \code{\link{plotlmrdia46}} in relation to the argument therein of \code{notukey}. This relation between \eqn{\{\tau_4, \tau_6\}} is that of the Tukey Lambda distribution; this is the trajectory of the symmetrical GLD having nonconstant L-scale (\eqn{\lambda_2}).}
   \item{nor}{\eqn{\tau_4} and \eqn{\tau_6} of the Normal distribution. The table stems from \code{inst/doc/}\cr\code{SysDataBuilder02.R}. The \code{nor} is used in the point drawing by \cr\code{\link{plotlmrdia46}}.}
   \item{pdq4}{\eqn{\tau_4} and \eqn{\tau_6} of the Polynomial Density-Quantile4 distribution, which implicitly is symmetrical, and therefore L-skew set as \eqn{\tau_3 = 0}. The table stems from \code{inst/doc/SysDataBuilder02.R}. The \code{pdq4} is used in the line drawing by\cr\code{\link{plotlmrdia46}}.}
   \item{pwrexp}{\eqn{\tau_4} and \eqn{\tau_6} of the Power Exponential distribution of which the Asymmetric Exponential Power distribution (see also \code{\link{lmomaep4}}). The lookup table archive in the \pkg{lmomco} package for the Power Exponential (\code{PowerExponential.txt}) is confirmed to match the computation in \code{aep4} based on the AEP4 instead. The table stems from \code{inst/doc/}\cr\code{SysDataBuilder02.R}.}
@@ -75,7 +75,24 @@ the fourth and sixth L-moments are
   message("EPS should be very close to zero, eps = ", eps, " !!!!!")
   tuk2 <- vec2par(c(0, 1/lambda, lambda, lambda), type="gld") # now Tukey Lambda
   lmr2 <- lmomgld(tuk2)
-  print(lmr1$lambdas - lmr2$lambdas)
+
+  "ofunc" <- function(lambda, lambda2=NA) {
+    tukeyL2 <- ( 2 / lambda ) * ( -1 / (1+lambda) + 2 / (2+lambda) )
+    return(lambda2 - tukeyL2)
+  }
+  lam  <- uniroot(ofunc, interval=c(-1, 1), lambda2=1)$root
+  tuk3 <- vec2par(c(0, 20/lam, lam, lam), type="gld")
+  lmr3 <- lmomgld(tuk3)
+
+  gld5 <- pargld(lmr3, aux="tau5"); gldlmr5 <- theoLmoms(gld5, nmom=6)
+  gld6 <- pargld(lmr3, aux="tau6"); gldlmr6 <- theoLmoms(gld6, nmom=6)
+  plotlmrdia46(lmrdia46(), nogld_byt5opt=FALSE)
+  points(gldlmr5$ratios[4], gldlmr5$ratios[6], pch=16, col="purple")
+  points(gldlmr6$ratios[4], gldlmr6$ratios[6], pch=21, col="purple", bg="white")
+  # See how GLD by tau5 optimization, which leaves Tau6 to float plots on the
+  # "gld_byt5opt" trajectory, but GLD by tau6 optimization, plots on the Tukey
+  # Lambda line, and gld6$para[2] / (1/gld6$para[3]) is equal to the 20 in the
+  # parameter setting for tuk3.
 }
 The finally differences in the L-moments between the two \code{lmr} objects are all are reasonably close to zero with the recognition that \code{optim()} has been involved getting us close to the Tukey Lambda that we desire as a GLD with fixed shape parameters and scale factor equal to the inverse of the shape parameter. The demonstration to how to thus acquire a Tukey Lambda from GLD implementation in the \pkg{lmomco} package is thus shown.
 }
