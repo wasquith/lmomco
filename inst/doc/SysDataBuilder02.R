@@ -93,7 +93,7 @@ TukeyL6 <- (2/Lambdas) * (- 1/(1+Lambdas) + 30/(2+Lambdas) - 210/(3+Lambdas) + 5
 TukeyT4 <- TukeyL4 / TukeyL2
 TukeyT6 <- TukeyL6 / TukeyL2
 
-# Symmetrical L-moment Ratio Tables from Richard Vogel (March 25, 2025)
+# Symmetrical L-moment Ratio Tables from Richard Vogel (March 25, 2024)
 # We will see that the Stable is "new" per se to the lmomco infrastructure, the Student t with
 # df matches the Student 3t from lmomco, the Tukey matches Wikipedia entry, and the Power
 # Exponential is the AEP4 from lmomco with Tau3 = 0.

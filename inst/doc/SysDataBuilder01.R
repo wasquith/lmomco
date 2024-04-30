@@ -1,3 +1,5 @@
+setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+
 .lmomcohash <- new.env(hash=TRUE)
 
 
@@ -155,8 +157,6 @@ save(.lmomcohash, file="sysdata.rda");
 
 ################# AEP DISTRIBUTION #######################
 load(file.choose()) # go find the sysdata.rda
-
-library(lmomco);
 
 L1 <- L2 <- T3 <- T4 <- T5 <- vector(mode="numeric");
 L1t <- L2t <- T3t <- T4t <- T5t <- L1;
