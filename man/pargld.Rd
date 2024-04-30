@@ -49,7 +49,7 @@ The rest of the solutions have the following:
   \item{lowerror}{Logical on whether error was less than \code{eps}---\code{TRUE} by this point.}
 }
 \note{
-This function is a cumbersome method of parameter solution, but years of testing suggest that with supervision and the available options regarding the optimization that reliable parameter estimations result.
+This function is a cumbersome method of parameter solution, but years of testing suggest that with supervision and the available options regarding the optimization that reliable parameter estimations result. The Tukey Lambda distribution is a special form of the GLD, see \bold{Tukey Lambda Notes} section in \bold{Details} of \code{\link{lmrdia46}} for more details.
 }
 \source{
 W.H. Asquith in Feb. 2006 with a copy of Karian and Dudewicz (2000) and again Feb. 2011.
@@ -66,48 +66,31 @@ Karian, Z.A., and Dudewicz, E.J., 2000, Fitting statistical distributions---The 
 }
 \examples{
 \dontrun{
-X <- rgamma(202,2) # simulate a skewed distribution
-lmr <- lmoms(X) # compute trimmed L-moments
-PARgld <- pargld(lmr) # fit the GLD
-F <- pp(X)
-plot(F,sort(X), col=8, cex=0.25)
-lines(F, qlmomco(F,PARgld)) # show the best estimate
-if(! is.null(PARgld$rest)) { #$
-  n <- length(PARgld$rest$xi)
-  other <- unlist(PARgld$rest[n,1:4]) #$ # show alternative
-  lines(F, qlmomco(F,vec2par(other, type="gld")), col=2)
-}
-# Note in the extraction of other solutions that no testing for whether
-# additional solutions were found is made. Also, it is quite possible
-# that the other solutions "[n,1:4]" is effectively another numerical
-# convergence on the primary solution. Some users of this example thus
-# might not see two separate lines. Users are encouraged to inspect the
-# rest of the solutions: print(PARgld$rest); #$
+  X      <- sort( rgamma(202, 2) ) # simulate a skewed distribution
+  lmr    <- lmoms(X)               # compute trimmed L-moments
+  PARgld <- pargld(lmr)            # fit the GLD
+  FF     <- pp(X)
+  plot( FF,    X, col=8, cex=0.25)
+  lines(FF, qlmomco(FF, PARgld)) # show the best estimate
+  if(! is.null(PARgld$rest)) { #$
+    n <- length(PARgld$rest$xi)
+    other <- unlist(PARgld$rest[n, 1:4]) #$ # show alternative
+    lines(FF, qlmomco(FF, vec2par(other, type="gld")), col="red")
+  }
+  # Note in the extraction of other solutions that no testing for whether
+  # additional solutions were found is made. Also, it is quite possible
+  # that the other solutions "[n,1:4]" is effectively another numerical
+  # convergence on the primary solution. Some users of this example thus
+  # might not see two separate lines. Users are encouraged to inspect the
+  # rest of the solutions: print(PARgld$rest) # }
 
-# For one run of the above example, the GLD results follow
-#print(PARgld)
-#$type
-#[1] "gld"
-#$para
-#      xi    alpha    kappa        h
-#3.144379 2.943327 7.420334 1.050792
-#$delTau5
-#[1] -0.0367435
-#$error
-#[1] 5.448016e-10
-#$source
-#[1] "pargld"
-#$rest
-#         xi    alpha       kappa         h attempt     delTau5        error
-#1 3.1446434 2.943469 7.421131671 1.0505370      14 -0.03675376 6.394270e-10
-#2 0.4962471 8.794038 0.008295796 0.2283519       4 -0.04602541 8.921139e-10
-}
 \dontrun{
-F <- seq(.01,.99,.01)
-plot(F, qlmomco(F, vec2par(c(3.1446434, 2.943469, 7.4211316, 1.050537), type="gld")),
-     type="l")
-lines(F,qlmomco(F, vec2par(c(0.4962471, 8.794038, 0.0082958, 0.228352), type="gld")))
-}
+  FF <- seq(0.01, 0.99, 0.01)
+  plot(FF,  qlmomco(FF, vec2par(c(3.1446434, 2.943469, 7.4211316, 1.050537),
+                                type="gld")), col="blue", type="l")
+  lines(FF, qlmomco(FF, vec2par(c(0.4962471, 8.794038, 0.0082958, 0.228352),
+                                type="gld")), col="red"           ) # }
 }
 \keyword{distribution (parameters)}
 \keyword{Distribution: Generalized Lambda}
+\keyword{Distribution: Tukey Lambda (in relation to Generalized Lambda)}
