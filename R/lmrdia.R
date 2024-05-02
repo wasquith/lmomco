@@ -50,16 +50,16 @@
    }
 
    n <- 1
-   pIII <- matrix(nrow = 361, ncol = 2)
-   for(t3 in seq(-.9, .9, step)) {
+   pIII <- matrix(nrow = 401, ncol = 2)
+   for(t3 in seq(-1, 1, step)) {
      pIII[n,1] <- t3
      pIII[n,2] <- 0.1224 + 0.30115*t3^2 + 0.95812*t3^4 - 0.57488*t3^6 + 0.19383*t3^8
      n <- n + 1
    }
 
    n <- 1
-   ln <- matrix(nrow = 361, ncol = 2)
-   for(t3 in seq(-.9, .9, step)) {
+   ln <- matrix(nrow = 401, ncol = 2)
+   for(t3 in seq(-1, 1, step)) {
      ln[n,1] <- t3
      ln[n,2] <- 0.12282 + 0.77518*t3^2 + 0.12279*t3^4 - 0.13638*t3^6 + 0.11368*t3^8
      n <- n + 1
