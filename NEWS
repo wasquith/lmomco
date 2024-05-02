@@ -1,7 +1,16 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
+Changes in version 2.5.1 (2024-05-02)
+-  Added trajectory of PE3 and GNO to extend beyond Tau3 -0.9 and +0.9 in
+     lmrdia(). I do not recall why these two distributions were stopped at these
+     limits of Tau3; trajectory now canvases to abs(Tau3_ --> 1 and Tau4 --> 1.
+-  Removed \url{} declaration headrick.sheng.lalpha.Rd and converted to \code{}
+     to disable URL that in spring 2024 points to a "non-private connection."
+
+
 Changes in version 2.5.0 (2024-05-01)
+-  Aborted release to CRAN.
 -  Added lwd.cex and expand.names arguments to plotlmrdia().
 -  Added opposite axis ticking in plotlmrdia() with axTicks added to NAMESPACE.
 -  Audited coloring and lines in plotlmrdia.R/Rd.
