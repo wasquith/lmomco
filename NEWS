@@ -19,7 +19,7 @@ Changes in version 2.5.0 (2024-05-01)
      integration testing for new values of small and large NU parameter.
      This means also an overhaul on the root finding for parameter estimation
      and now rely on theoTLmoms() and not previous polynomial assistance.
--  Removed ST3 moving to the [dpq]norm() functions for large NU and relying
+-  Removed ST3 moving to the [dpq]norm() functions for large NU and now relying
      entirely on the [dpq]t() functions.
 -  Updated man/lmomcohash.Rd accordingly with the new Tau4-Tau6 business.
 -  Migrated DESCRIPTION to require R >3.5.0 so that new serialization on the
