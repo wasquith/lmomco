@@ -1,6 +1,9 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
+Changes in version 2.5.2 (2024-NN-NN)
+-
+
 Changes in version 2.5.1 (2024-05-02)
 -  Added trajectory of PE3 and GNO to extend beyond Tau3 -0.9 and +0.9 in
      lmrdia(). I do not recall why these two distributions were stopped at these
