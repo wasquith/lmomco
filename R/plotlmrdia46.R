@@ -139,10 +139,20 @@ function(lmr=NULL,
      }
    }
 
+   # plotlmrdia46(lmrdia46(), autolegend=TRUE, xleg="topright", xlim=c(0,1))
+   # Error in legend(xleg, entries, lwd = Elwd, col = Ecol, pch = Epch, lty = Elty,  :
+   #   unused argument (xlim = c(0, 1))
+   mylegend <- function(...) { # we scoop up the arguments that we would pass to legend() and
+     dots <- list(...) # the sweep means we sweep too the ... from plotlmrdia46(), so now we can
+     dots$xlim <- dots$ylim <- NULL # remove the arguments that legend() does not like and then
+     do.call(legend, dots) # use do.call() to then call legend() with our regular arguments and the
+   }  # potential for incoming arguments on the ... from the plotlmrdia46() call.
+
+
    if(autolegend == TRUE & length(entries) > 0) {
      if(is.character(xleg)) {
        lopts <- par(lend=2, no.readonly=TRUE)
-       legend(xleg, entries,
+       mylegend(xleg, entries,
               lwd=Elwd,
               col=Ecol,
               pch=Epch,
@@ -154,7 +164,7 @@ function(lmr=NULL,
        if(is.null(xleg)) warning("xleg is NULL, but needed")
        if(is.null(yleg)) warning("yleg is NULL, but needed")
        lopts <- par(lend=2, no.readonly=TRUE)
-       legend(xleg, yleg, entries,
+       mylegend(xleg, yleg, entries,
               lwd=Elwd,
               col=Ecol,
               pch=Epch,

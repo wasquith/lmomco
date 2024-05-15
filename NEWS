@@ -2,7 +2,11 @@
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
 Changes in version 2.5.2 (2024-NN-NN)
--
+-  Added the interal mylegend() hack to plotlmrdia() to silence certain
+     combinations of ... arguments that make legend() therein stop with Error.
+-  Added the interal mylegend() hack to plotlmrdia46() to silence certain
+     combinations of ... arguments that make legend() therein stop with Error.
+
 
 Changes in version 2.5.1 (2024-05-02)
 -  Added trajectory of PE3 and GNO to extend beyond Tau3 -0.9 and +0.9 in
