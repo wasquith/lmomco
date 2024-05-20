@@ -6,9 +6,9 @@ Plot the Tau4-Tau6 L-moment ratio diagram showing trajectories of \eqn{\tau_4} a
 }
 \usage{
 plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
-             noaep4=FALSE, nogld_byt5opt=TRUE,
-             nopdq4=FALSE, nost3=FALSE, nosymstable=FALSE, notukey=FALSE,
-             nocau=TRUE,   nonor=FALSE, nosla=TRUE, trucate.tau4.to.gtzero=TRUE,
+             noaep4=FALSE,  nogld_byt5opt=TRUE, nopdq4=FALSE,  nost3=FALSE,
+             nosymgdd=TRUE, nosymstable=FALSE,  notukey=FALSE,
+             nocau=TRUE,    nonor=FALSE, nosla=TRUE, trucate.tau4.to.gtzero=TRUE,
              xlab="L-kurtosis (Tau4), dimensionless",
              ylab="Sixth L-moment ratio (Tau6), dimensionless",
              add=FALSE, empty=FALSE,
@@ -23,6 +23,7 @@ plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
   \item{nogld_byt5opt}{If \code{TRUE} then line of Generalized Lambda distribution through it solution optimization on \eqn{\tau_5 = 0} is not drawn.}
   \item{nopdq4}{If \code{TRUE} then line of Polynomial Density-Quantile4 distribution is not drawn.}
   \item{nost3}{If \code{TRUE} then line of Student 3t distribution is not drawn.}
+  \item{nosymgdd}{If \code{TRUE} then line of a symmetrical Gamma Difference distribution is not drawn.}
   \item{nosymstable}{If \code{TRUE} then line of Symmetric Stable distribution is not drawn.}
   \item{notukey}{If \code{TRUE} then line of Tukey Lambda distribution is not drawn.}
   \item{nocau}{If \code{TRUE} then point of Cauchy distribution (trim=1 L-moments) is not drawn.}
@@ -52,6 +53,7 @@ This function provides hardwired calls to \code{lines} and \code{points} to prod
   Generalized Lambda \tab line width 1, line type 1 (solid), and color purple \cr
   Polynomial Density-Quantile4 \tab line width 1, line type 1 (solid), and color darkgreen \cr
   Student t \tab line width 1, line type 1 (solid), and color blue\cr
+  Symmetric Gamma Difference \tab line width 2, line type 1 (solid), and color a darkorange2\cr
   Symmetric Stable \tab line width 2, line type 1 (solid), and color a medium-dark grey\cr
   Tukey Lambda (1-p) \tab line width 1, line type 2 (dash), and color purple\cr
   Normal \tab symbol 15 (filled square) and color red \cr
@@ -66,9 +68,8 @@ Asquith, W.H., 2014, Parameter estimation for the 4-parameter asymmetric exponen
 \author{W.H. Asquith}
 \seealso{\code{\link{lmrdia46}}, \code{\link{plotlmrdia}}}
 \examples{
-plotlmrdia46(lmrdia46(), nogld_byt5opt=FALSE, autolegend=TRUE,
-             xleg="topleft")
-
+plotlmrdia46(lmrdia46(), nogld_byt5opt=FALSE, nosymgdd=FALSE,
+             autolegend=TRUE, xleg="topleft")
 
 \dontrun{
 # A more complex example follows: for a given mean, L-scale, L-skew = 0 (symmetry), and

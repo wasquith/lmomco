@@ -6,6 +6,7 @@ function(lmr=NULL,
       nogld_byt5opt=TRUE,
       nopdq4=FALSE,
       nost3=FALSE,
+      nosymgdd=TRUE,
       nosymstable=FALSE,
       notukey=FALSE,
       nocau=TRUE, nonor=FALSE, nosla=TRUE,
@@ -80,6 +81,16 @@ function(lmr=NULL,
         entries[entryi] <- ifelse(expand.names, "Student t", "ST3")
         Elwd[entryi] <- 1*lwd.cex
         Ecol[entryi] <- "blue"
+        Epch[entryi] <- NA
+        Elty[entryi] <- 1
+        Ecex[entryi] <- 1
+     }
+     if(! nosymgdd) {
+        lines(lmr$symgdd, col="darkorange2", lwd=2*lwd.cex, lty=1)
+        entryi <- entryi + 1
+        entries[entryi] <- ifelse(expand.names, "Symmetric Gamma Difference", "GDD (L-skew = 0")
+        Elwd[entryi] <- 2*lwd.cex
+        Ecol[entryi] <- "darkorange2"
         Epch[entryi] <- NA
         Elty[entryi] <- 1
         Ecex[entryi] <- 1
