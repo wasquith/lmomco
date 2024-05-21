@@ -32,6 +32,7 @@ Klar, B., 2015, A note on gamma difference distributions: Journal of Statistical
 }
 \seealso{\code{\link{pdfgdd}}, \code{\link{quagdd}}, \code{\link{lmomgdd}}, \code{\link{pargdd}}}
 \examples{
+\dontrun{
 x <- seq(-5, 7, by=0.01)
 para <- list(para=c(3,   1, 1, 1), type="gdd")
 plot(x, cdfgdd(x, para), type="l", xlim=c(-5,7), ylim=c(0, 1),
@@ -41,7 +42,7 @@ lines(x, cdfgdd(x, para), lty=2)
 para <- list(para=c(1,   1, 1, 1), type="gdd")
 lines(x, cdfgdd(x, para), lty=3)
 para <- list(para=c(0.5, 1, 1, 1), type="gdd")
-lines(x, cdfgdd(x, para), lty=4)
+lines(x, cdfgdd(x, para), lty=4) # }
 }
 \keyword{distribution}
 \keyword{cumulative distribution function}

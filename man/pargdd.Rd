@@ -5,15 +5,17 @@
 This function estimates the parameters of the Gamma Difference distribution given the L-moments of the data in an ordinary L-moment object (\code{\link{lmoms}}). The relations between distribution parameters and L-moments are complex (see \code{\link{lmomgdd}}). The distribution has four parameters. The vector \code{para} in the parameter object with a fifth parameter uses that as a trigger between a symmetrical distribution with \code{para[3:4]} equals \code{para[1:2]} if \code{para[5] = 1}. If \code{para[5]} is not present, then the distribution can be asymmetrical, or if \code{para[5]} is present and set to any value that is not 1, then the distribution can be asymmetrical.
 }
 \usage{
-pargdd(lmom, checklmom=TRUE, symgdd=FALSE, init.para=NULL,
-             silent=FALSE,  trace=FALSE, control=list(abstol=0.001, maxit=1000), ...)
+pargdd(lmom, checklmom=TRUE, symgdd=FALSE, init.para=NULL, snap.tau4=FALSE,
+             silent=FALSE, trace=FALSE, control=list(abstol=0.0001, maxit=1000), ...)
 }
 \arguments{
   \item{lmom}{An L-moment object created by \code{\link{lmoms}} or \code{\link{vec2lmom}}.}
   \item{checklmom}{Should the \code{lmom} be checked for validity using the \code{\link{are.lmom.valid}} function.}
   \item{symgdd}{A logical to trigger a symmetrical distribution by \eqn{\alpha_2 = \alpha_1} and \eqn{\beta_1 = \beta_1} and the fifth element of \code{para} on the return will be set to 1.}
   \item{init.para}{Optional initial values for the parameters used for starting values for the \code{optim} function. If this argument is not set, then an unrigorous attempt is made to guess at the initial parameters using some poor admittedly heuristics. The fifth element, if present, and set to 1, then the \code{symdd} is internally set to true.}
+  \item{snap.tau4}{A logical to trigger snapping \eqn{\tau_4} to a nudge above the \eqn{\{\tau_3, \tau_4\}} trajectory of the Pearson Type III distribution. The Gamma Difference only has solution in \eqn{\{\tau_3, \tau_4\}} domain above the Pearson.}
   \item{silent}{The argument \code{silent} for \code{try()}.}
+  \item{trace}{A logical to trigger a message in the main objective function.}
   \item{control}{The argument \code{control} for \code{optim()}.}
   \item{...}{Other arguments to pass.}
 }
@@ -41,7 +43,7 @@ lines(x, fit,   col="red") # }
 # Example of the asymmetrical case, and as of Summer 2024 experiments, it seems
 # the author does not quite have limits of GDD implementation known. Though this
 # example works, we do not always L-moment recreation from fitted parameters.
-x <- seq(-10, 30, by=0.1); para <- list(para=c(3, 0.95, 1, 1), type="gdd")
+x <- seq(-5, 15, by=0.1); para <- list(para=c(3, 1, 1, 3), type="gdd")
 slmr  <- lmomgdd(  para);  nara <- pargdd(slmr)
 given <- pdfgdd(x, para);  fit  <- pdfgdd(x, nara)
 plot( x, given, type="l", col=8, lwd=4, ylim=range(c(a, fit)))
