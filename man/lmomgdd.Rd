@@ -16,10 +16,11 @@ and
                      {\bigl(\alpha_2{\beta_1^2} + \alpha_2{\beta_1^2}\bigr)^{3/2}}\mbox{.}}
 }
 \usage{
-lmomgdd(para, paracheck=TRUE, silent=TRUE, ...)
+lmomgdd(para, nmom=6, paracheck=TRUE, silent=TRUE, ...)
 }
 \arguments{
   \item{para}{The parameters of the distribution.}
+  \item{nmom}{The number of L-moment to numerically compute for the distribution.}
   \item{paracheck}{A logical controlling whether the parameters are checked for validity.}
   \item{silent}{The argument of \code{silent} for the \code{try()} operation wrapped on \code{integrate()}.}
   \item{...}{Additional argument to pass.}

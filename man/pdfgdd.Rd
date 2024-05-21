@@ -37,17 +37,17 @@ Klar, B., 2015, A note on gamma difference distributions: Journal of Statistical
 \author{W.H. Asquith}
 \seealso{\code{\link{cdfgdd}}, \code{\link{quagdd}}, \code{\link{lmomgdd}}, \code{\link{pargdd}}}
 \examples{
+\dontrun{
 x <- seq(-8, 8, by=0.01) # the operations on x are to center
 para <- list(para=c(3,   1, 1, 1), type="gdd")
-plot(x-(3  /1 - 1/1), pdfgdd(x, para), type="l",
-     xlim=c(-6,6), ylim=c(0, 0.7),
+plot(x-(3  /1 - 1/1), pdfgdd(x, para), type="l", xlim=c(-6,6), ylim=c(0, 0.7),
      xlab="x", ylab="density of gamma difference distribution")
 para <- list(para=c(2,   1, 1, 1), type="gdd")
 lines(x-(2  /1 - 1/1), pdfgdd(x, para), lty=2)
 para <- list(para=c(1,   1, 1, 1), type="gdd")
 lines(x-(1  /1 - 1/1), pdfgdd(x, para), lty=3)
 para <- list(para=c(0.5, 1, 1, 1), type="gdd")
-lines(x-(0.5/1 - 1/1), pdfgdd(x, para), lty=4)
+lines(x-(0.5/1 - 1/1), pdfgdd(x, para), lty=4) # }
 }
 \keyword{distribution}
 \keyword{probability density function}
