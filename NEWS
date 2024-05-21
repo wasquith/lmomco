@@ -6,6 +6,7 @@ Changes in version 2.5.2 (2024-NN-NN)
      combinations of ... arguments that make legend() therein stop with Error.
 -  Added the interal mylegend() hack to plotlmrdia46() to silence certain
      combinations of ... arguments that make legend() therein stop with Error.
+-  Added the Gamma Difference distribution as "gdd."
 
 
 Changes in version 2.5.1 (2024-05-02)
