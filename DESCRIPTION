@@ -6,7 +6,7 @@ Version: 2.5.2
 Depends: R (>= 3.5.0), utils
 Imports: goftest, Lmoments, MASS
 Suggests: copBasic
-Date: 2024-05-05
+Date: 2024-07-20
 Author: William Asquith
 Description: Extensive functions for Lmoments (LMs) and probability-weighted moments (PWMs),
   distribution parameter estimation, LMs for distributions, LM ratio diagrams, multivariate
