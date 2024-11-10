@@ -27,6 +27,8 @@ Goodman, W., 2016, The promises and pitfalls of Benford’s law: Significance (M
 \examples{
 para <- list(para=c(2, 10))
 cdfben(c(15, 25), para=para) # 0.2041200 0.4149733
+
+sum(diff(cdfben(seq(10,99,0.1), para=para))) + cdfben(10, para=para) # 1
 }
 \keyword{distribution (discrete)}
 \keyword{cumulative distribution function}
