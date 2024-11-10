@@ -406,6 +406,7 @@ export(dat2bernquaf)
 export(lmoms.bernstein)
 export(pfactor.bernstein)
 export(cdfben)
+export(lmomben)
 export(pmfben)
 export(quaben)
-export(lmomben)
+
