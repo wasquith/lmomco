@@ -20,7 +20,7 @@ cdfpdq4(x, para, paracheck=TRUE)
 Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints on their L-moments or expected order statistics: Journal of Statistical Planning and Inference, v. 137, no. 9, pp. 2870--2891, \doi{10.1016/j.jspi.2006.10.010}.
 }
 \author{W.H. Asquith}
-\seealso{\code{\link{pdfpdq4}}, \code{\link{quapdq4}}, \code{\link{lmompdq4}}, \code{\link{parpdq4}}}
+\seealso{\code{\link{pdfpdq4}}, \code{\link{quapdq4}}, \code{\link{lmompdq4}}, \code{\link{parpdq4}}, \code{\link{cdfpdq3}}}
 \examples{
 \dontrun{
   FF <- seq(0.001, 0.999, by=0.001)

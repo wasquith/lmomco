@@ -8,9 +8,9 @@ distribution (PDQ4) given parameters (\eqn{\xi}, \eqn{\alpha}, and
 \eqn{\kappa}) computed by \code{\link{parpdq4}}. The quantile function
 for \eqn{0 < \kappa < 1} is
 \deqn{x(F) = \xi + \alpha \biggl[\log\biggl(\frac{F}{1-F}\biggr) -
-  2\kappa\;\mathrm{atanh}(\kappa[2F-1])\biggr] \mbox{\ and}}
+  2\kappa\;\mathrm{atanh}\bigl(\kappa[2F-1]\bigr)\biggr] \mbox{\ and}}
 for \eqn{-\infty < \kappa < 0} is
-\deqn{x(F) = \xi + \alpha \biggl[\log\biggl(\frac{F}{1-F}\biggr) + 2\kappa\;\mathrm{atan}(\kappa[2F-1])\biggr] \mbox{,}}
+\deqn{x(F) = \xi + \alpha \biggl[\log\biggl(\frac{F}{1-F}\biggr) + 2\kappa\;\mathrm{atan}\bigl(\kappa[2F-1]\bigr)\biggr] \mbox{,}}
 where \eqn{x(F)} is the quantile for nonexceedance probability \eqn{F},
 \eqn{\xi} is a location parameter, \eqn{\alpha} is a scale parameter,
 and \eqn{\kappa} is a shape parameter. The range of the distribution is \eqn{-\infty < x < \infty}.
@@ -35,7 +35,7 @@ The PDQ4 is a symmetrical distribution (\eqn{\tau_3 = 0} everywhere) that has ma
 Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints on their L-moments or expected order statistics: Journal of Statistical Planning and Inference, v. 137, no. 9, pp. 2,870--2891, \doi{10.1016/j.jspi.2006.10.010}.
 }
 \author{W.H. Asquith}
-\seealso{\code{\link{cdfpdq4}}, \code{\link{pdfpdq4}}, \code{\link{lmompdq4}}, \code{\link{parpdq4}}}
+\seealso{\code{\link{cdfpdq4}}, \code{\link{pdfpdq4}}, \code{\link{lmompdq4}}, \code{\link{parpdq4}}, \code{\link{quapdq3}}}
 \examples{
   lmr <- lmoms(c(123, 34, 4, 654, 37, 78))
   quapdq4(0.5, parpdq4(lmr)) # [1] 155

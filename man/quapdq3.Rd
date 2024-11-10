@@ -5,7 +5,7 @@
 \description{
 This function computes the quantiles of the Polynomial Density-Quantile3 distribution (PDQ3) given parameters (\eqn{\xi}, \eqn{\alpha}, and \eqn{\kappa}) computed by \code{\link{parpdq3}}. The quantile function is
 
-\deqn{x(F) = \xi + \alpha \biggl[\log\biggl(\frac{F}{1-F}\biggr) + \kappa \log\bigg(\frac{[1-\kappa(2F-1)]^2}{4F(1-F)}\biggr)\biggr]\mbox{,}}
+\deqn{x(F) = \xi + \alpha \biggl[\log\biggl(\frac{F}{1-F}\biggr) + \kappa \log\biggl(\frac{\bigl[1-\kappa(2F-1)\bigr]^2}{4F(1-F)}\biggr)\biggr]\mbox{,}}
 
 where \eqn{x(F)} is the quantile for nonexceedance probability \eqn{F},
 \eqn{\xi} is a location parameter, \eqn{\alpha} is a scale parameter,
@@ -31,7 +31,7 @@ The PDQ3 has maximum entropy conditional on having specified values for the L-mo
 Hosking, J.R.M., 2007, Distributions with maximum entropy subject to constraints on their L-moments or expected order statistics: Journal of Statistical Planning and Inference, v. 137, no. 9, pp. 2870--2891, \doi{10.1016/j.jspi.2006.10.010}.
 }
 \author{W.H. Asquith}
-\seealso{\code{\link{cdfpdq3}}, \code{\link{pdfpdq3}}, \code{\link{lmompdq3}}, \code{\link{parpdq3}}}
+\seealso{\code{\link{cdfpdq3}}, \code{\link{pdfpdq3}}, \code{\link{lmompdq3}}, \code{\link{parpdq3}}, \code{\link{quapdq4}}}
 \examples{
 lmr <- lmoms(c(123, 34, 4, 654, 37, 78))
 quapdq3(0.5, parpdq3(lmr)) # [1] 51.22802
