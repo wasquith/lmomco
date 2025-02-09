@@ -1,4 +1,4 @@
-"quagdd" <- function(f, para, paracheck=TRUE, ...) {
+"quagdd" <- function(f, para, paracheck=TRUE, silent=TRUE, ...) {
   if(! check.fs(f)) return()
   if(paracheck) if(! are.pargdd.valid(para)) return()
 
@@ -57,7 +57,7 @@
   upper <- +1000
   x <- sapply(seq_len(length(f)), function(i) {
                  rt <- NULL
-                 try( rt <- uniroot(afunc, c(lower, upper), Fx=f[i], ...), silent=TRUE)
+                 try( rt <- uniroot(afunc, c(lower, upper), Fx=f[i], ...), silent=silent)
                  #print(rt)
                  ifelse(is.null(rt), return(NA), return(rt$root)) })
   return(x)

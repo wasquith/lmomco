@@ -66,7 +66,7 @@ lmomben(para=list(para=c(3, 10)))
   # the Benford distribution as the true parent or alternative
   # distributions fit to the the L-moments of the Benford for the
   # first significant digit.
-  # https://en.wikipedia.org/wiki/Benford%27s_law#Statistical_tests
+  # https://en.wikipedia.org/wiki/Benford\%27s_law#Statistical_tests
   ChoGainesD <- function(x) {
     n <- length(x)
     d <- sapply(1:9, function(d) (length(x[x == d])/n - log10(1+1/d))^2)
@@ -107,7 +107,7 @@ lmomben(para=list(para=c(3, 10)))
       x <- sample(bens, n, replace=TRUE, prob=pmf)
     } else {
       x <- rlmomco(n, parent) # simulate from the parent
-      x <- unlist(strsplit(sprintf("%2.0E", x), "E"))[ix]
+      x <- unlist(strsplit(sprintf("\%2.0E", x), "E"))[ix]
       x <- as.integer(x) # complete extraction of the first digit
     }
     CGD    <- ChoGainesD(x)
@@ -118,12 +118,12 @@ lmomben(para=list(para=c(3, 10)))
   }
   print(summary(DF))
   if(is_Benford_parent) { # H0 is True
-    CGDpct <- 100*(sum(as.numeric(DF$CGD)) / nsim - alpha) / alpha
-    LMRpct <- 100*(sum(as.numeric(DF$LMR)) / nsim - alpha) / alpha
+    CGDpct <- 100*(sum(as.numeric(DF$CGD)) / nsim - alpha) / alpha;
+    LMRpct <- 100*(sum(as.numeric(DF$LMR)) / nsim - alpha) / alpha;
     message("The ChoGainesD rejection rate for alpha=", alpha,
             " is ", sum(as.numeric(DF$CGD)) / nsim,
             " (", round(CGDpct, digits=2), " percent difference).")
-	   message("The   D2lmom   rejection rate for alpha=", alpha,
+    message("The   D2lmom   rejection rate for alpha=", alpha,
             " is ", sum(as.numeric(DF$LMR)) / nsim,
             " (", round(LMRpct, digits=2), " percent difference).")
   } else { # H0 is False

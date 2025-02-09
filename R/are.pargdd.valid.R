@@ -10,10 +10,11 @@ function(para, nowarn=FALSE) {
       B2 <- B1
     }
   }
-
+  #print(para$para)
   op <- options()
   GO <- TRUE
   if(nowarn == TRUE) options(warn=-1)
+  if(is.na(A1)) return(FALSE)
   if(A1 <= 0) {
     warning("Parameter A1 is not > 0, invalid")
     GO <- FALSE

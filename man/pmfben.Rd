@@ -34,6 +34,9 @@ pmfben(1:9, para=list(para=c(1, 10)))
 # [1] 0.30103000 0.17609126 0.12493874 0.09691001
 # [5] 0.07918125 0.06694679 0.05799195 0.05115252
 # [9] 0.04575749
+cumsum( pmfben(1:9, para=list(para=c(1, 10))) ) # should end in unity
+# [1] 0.3010300 0.4771213 0.6020600 0.6989700 0.7781513
+# [6] 0.8450980 0.9030900 0.9542425 1.0000000
 }
 \keyword{distribution (discrete)}
 \keyword{probability mass function}
