@@ -1,11 +1,24 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
+Changes in version 2.5.3 (2025-12-29)
+-  Grammar fixes in lmomgdd.Rd, bibliography format change lmomco-package.Rd.
+-  Extension of lmrdia.R/Rd and lmrdia46.R/Rd with new argument usrtrim that
+     dynamically truncates the trajectories to the current axis limits by
+     par()$usr so that the user has some freedom in using par(xpd) and (or)
+     working with post processing of graphics in vector editing software
+     because R's clipping mask is just that a mask. The usrtrim argument helps
+     users by reducing manual intervention to cut the trajectories by hand.
+     The default is usrtrim=FALSE; all historical operations with these
+     functions are unaffected.
+-  Fixed NAMESPACE to export gdd functions (see NEWS:2.5.2).
+
+
 Changes in version 2.5.2 (2025-09-21)
 -  Added the internal mylegend() hack to plotlmrdia() to silence certain
-     combinations of ... arguments that make legend() therein stop with Error.
+     combinations of ... arguments that made legend() therein stop with Error.
 -  Added the internal mylegend() hack to plotlmrdia46() to silence certain
-     combinations of ... arguments that make legend() therein stop with Error.
+     combinations of ... arguments that made legend() therein stop with Error.
 -  Added the Gamma Difference distribution as "gdd."
 -  Added Benford distribution, cdfben(), lmomben(), pmfben(), quaben().
 -  Minor math delimiter size changes in PDQ3 and PDQ4 quantile functions.
@@ -268,7 +281,7 @@ Changes in version 2.3.8 (2022-08-14)
 -  Student 3t distribution in pdfst3.Rd needed editing, the t in the integral
       needed definition.
 -  Grammar edit in quawei.Rd.
--  Added the polynomail density-quantile3 (PDQ3) distribution.
+-  Added the polynomial density-quantile3 (PDQ3) distribution.
 -  Added the polynomial density-quantile4 (PDQ4) distribution.
 -  Eq. 8.106 of ISBN 978-1463508418 is incorrect. The part written as
       [1-\kappa(2F-1)^2] needs to be written as [1-\kappa(2F-1)]^2 for the
