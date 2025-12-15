@@ -5,7 +5,10 @@
 This function returns a list of the L-kurtosis (\eqn{\tau_4} and sixth L-moment ratio \eqn{\tau_6}, respectively) ordinates for construction of L-moment Ratio (L-moment diagrams) that are useful in selecting a distribution to model the data.
 }
 \usage{
-lmrdia46()
+lmrdia46(usrtrim=FALSE)
+}
+\arguments{
+  \item{usrtrim}{A logical, if set, trims the elements of the list to the current axis limits by \code{par()$usr} and this is a feature if the user is plotting by \code{par(xpd=NA)} (no masking) that makes hand manipulation of a plot in vector editing software just a bit easier;}
 }
 \value{
   An \R \code{list} is returned.
@@ -100,6 +103,16 @@ The finally differences in the L-moments between the two \code{lmr} objects are 
 \seealso{\code{\link{plotlmrdia46}}, \code{\link{lmrdia}}}
 \examples{
 lratios <- lmrdia46()
+
+\dontrun{
+  par(xpd=NA) # demonstrate the usrtrim argument by plotting with lines
+  # passing beyond the axis limits and then again with the trimming
+  plotlmrdia46(xlim=c(0.1, 0.4), ylim=c(0, 0.4), xaxs="i", yaxs="i")
+  plotlmrdia46(lmrdia46(usrtrim=FALSE), add=TRUE, nosymgdd=FALSE) # UNTRIMMED
+
+  par(xpd=NA)
+  plotlmrdia46(xlim=c(0.1, 0.4), ylim=c(0, 0.4), xaxs="i", yaxs="i")
+  plotlmrdia46(lmrdia46(usrtrim=TRUE ), add=TRUE, nosymgdd=FALSE) #   TRIMMED }
 }
 \keyword{L-moment ratio diagram}
 \keyword{L-moment ratio diagram (Tau4 and Tau6)}

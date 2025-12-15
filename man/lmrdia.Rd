@@ -5,7 +5,10 @@
 This function returns a list of the L-skew and L-kurtosis (\eqn{\tau_3} and \eqn{\tau_4}, respectively) ordinates for construction of L-moment Ratio (L-moment diagrams) that are useful in selecting a distribution to model the data.
 }
 \usage{
-lmrdia()
+lmrdia(usrtrim=FALSE)
+}
+\arguments{
+  \item{usrtrim}{A logical, if set, trims the elements of the list to the current axis limits by \code{par()$usr} and this is a feature if the user is plotting by \code{par(xpd=NA)} (no masking) that makes hand manipulation of a plot in vector editing software just a bit easier;}
 }
 \value{
   An \R \code{list} is returned.
@@ -51,6 +54,30 @@ Hosking, J.R.M., and Wallis, J.R., 1997, Regional frequency analysis---An approa
 \seealso{\code{\link{plotlmrdia}}}
 \examples{
 lratios <- lmrdia()
+
+\dontrun{
+  # check on how close we get to -1 <= tau3 <= +1 for GEV, GLO, WEI, which do
+  # not have a sequence of tau3 in tau4 computation but the parameter range
+  # itself. Are we ranging the parameter enough to canvas tau3, in other words.
+  t34 <- lmrdia()
+  for(d in names(t34)) {
+    print(d)
+    print(summary(t34[[d]][,1]), 16)
+  }
+
+  plotlmrdia(xlim=c(-1,1), ylim=c(-0.25, 1), xaxs="i", yaxs="i")
+  plotlmrdia(lmrdia(usrtrim=FALSE), add=TRUE)
+  lines(t34$gev[,1], t34$gev[,2], lwd=4) # check GEV range (thus WEI too) #}
+
+\dontrun{
+  par(xpd=NA) # demonstrate the usrtrim argument by plotting with lines
+  # passing beyond the axis limits and then again with the trimming
+  plotlmrdia(xlim=c(-0.5, 0.4), ylim=c(-0.1, 0.3), xaxs="i", yaxs="i")
+  plotlmrdia(lmrdia(usrtrim=FALSE), add=TRUE) # UNTRIMMED
+
+  par(xpd=NA)
+  plotlmrdia(xlim=c(-0.5, 0.4), ylim=c(-0.1, 0.3), xaxs="i", yaxs="i")
+  plotlmrdia(lmrdia(usrtrim=TRUE),  add=TRUE) #   TRIMMED }
 }
 \keyword{L-moment ratio diagram}
 \keyword{L-moment ratio diagram (Tau3 and Tau4)}
