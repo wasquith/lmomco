@@ -52,12 +52,12 @@ lmomgdd(para, nmom=6, paracheck=TRUE, silent=TRUE, ...)
                   L1=lmr$lambdas[1], L2=lmr$lambdas[2], T3=lmr$ratios[3],
                   T4=lmr$ratios[ 4], T5=lmr$ratios[ 3], T6=lmr$ratios[6]))
   }
-  LMR <- LMR[completed.cases(LMR), ]
+  LMR <- LMR[complete.cases(LMR),  ]
   LMR <- LMR[abs(  LMR$T3) < 0.01, ]
   LMR <- LMR[order(LMR$T4),        ]
 }
 
-We have swept through, hopefully, a sufficiently large span of viable parameter values under a constrain of symmetry. The following recipe continues in post-processing with the goal of producing a polynomial approximation between \eqn{\tau_4} and \eqn{\tau_6} for \code{\link{lmrdia46}}.
+We have swept through, hopefully, a sufficiently large span of viable parameter values under a constraint of symmetry. The following recipe continues in post-processing with the goal of producing a polynomial approximation between \eqn{\tau_4} and \eqn{\tau_6} for \code{\link{lmrdia46}}.
 
 \preformatted{
   plotlmrdia46(lmrdia46(), autolegend=TRUE, xleg="topleft")
@@ -85,8 +85,8 @@ We have swept through, hopefully, a sufficiently large span of viable parameter 
   gddsymt46f <- function(t4) { # print(coefficients(LM))
     coe <- c( -0.0969112,    2.1743687, -12.8878580,  47.8931168, -108.0871549,
              156.9200440, -139.5599813,  69.3492358, -14.7052424)
-    ix <- seq_len(length(coes))-1
-    sapply(t4, function(t) sum(coes[ix+1]*t^ix))
+    ix <- seq_len(length(coe))-1
+    sapply(t4, function(t) sum(coe[ix+1]*t^ix))
   } # This function is inserted into the lmrdia46() for deployment as symgdd.
 
   plotlmrdia46(lmrdia46(), autolegend=TRUE, xleg="topleft")
