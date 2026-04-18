@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Changes in version 2.5.3 (2025-12-NN)
+Changes in version 2.5.3 (2026-04-18)
 -  Grammar fixes in lmomgdd.Rd, bibliography format change lmomco-package.Rd.
 -  Extension of lmrdia.R/Rd and lmrdia46.R/Rd with new argument usrtrim that
      dynamically truncates the trajectories to the current axis limits by
@@ -11,7 +11,25 @@ Changes in version 2.5.3 (2025-12-NN)
      users by reducing manual intervention to cut the trajectories by hand.
      The default is usrtrim=FALSE; all historical operations with these
      functions are unaffected.
+-  Added autoaxes=TRUE to plotlmrdia[46].R/Rd to give the user the flexibility
+     for them to draw the axes separately.
 -  Fixed NAMESPACE to export gdd functions (see NEWS:2.5.2).
+-  Extended inst/ACKNOWLEDGEMENTS.
+-  Added proper use of ... in theoTLmoms() down to the integrate(...) function.
+-  Added inst/newcoes/makGNOcoes.R for new coefficients in pargno.R to make
+     improved coefficients on a approximation formula to convert L-skew to the
+     kappa relative to those in the 1996 Hosking FORTRAN source code and then
+     switched to the new coefficients for tau3 to gamma conversion in pargno()
+     with a new argument useHosking=FALSE. Edits made thus to pargno.Rd.
+-  Added inst/newcoes/makePE3coes.R for new coefficients in parpe3.R to make
+     improved coefficients on a approximation formula to convert L-skew to the
+     gamma relative to those in the 1996 Hosking FORTRAN source code and then
+     switched to the new coefficients for tau3 to gamma conversion in parpe3()
+     with a new argument useHosking=FALSE. Edits made thus to parpe3.Rd.
+-  Added useHosking=FALSE to pargev.[R|Rd] with extension to pargev.R to use
+     direct estimation by the uniroot() function in lieu of 1996 Hosking
+     FORTRAN. The cost is a speed hit as explained in Examples of pargev.Rd.
+
 
 
 Changes in version 2.5.2 (2025-09-21)
