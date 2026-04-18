@@ -33,10 +33,10 @@ function(para, nmom=5, trim=NULL, leftrim=NULL, rightrim=NULL,
   }
   else {
     trim <- NULL
-    if(length(leftrim)  == 1 && leftrim  >= 0) t1 <- leftrim
-    if(length(rightrim) == 1 && rightrim >= 0) t2 <- rightrim
-    if(is.null(leftrim) ) { leftrim <- 0; t1 <- 0 }
-    if(is.null(rightrim)) { rightrim <- 0; t2 <- 0 }
+    if(length(  leftrim) == 1 && leftrim  >= 0) t1 <- leftrim
+    if(length( rightrim) == 1 && rightrim >= 0) t2 <- rightrim
+    if(is.null( leftrim) ) { leftrim  <- 0; t1 <- 0 }
+    if(is.null(rightrim) ) { rightrim <- 0; t2 <- 0 }
   }
 
   if(is.null(t1) || is.null(t2)) {
@@ -66,7 +66,7 @@ function(para, nmom=5, trim=NULL, leftrim=NULL, rightrim=NULL,
       }
       # Perform the numerical integration
       int <- NULL; used_monte <- FALSE
-      try( int <- integrate(XofF, minF, maxF), silent=silent )
+      try( int <- integrate(XofF, minF, maxF, ...), silent=silent )
       # Error in integrate(XofF, minF, maxF) : the integral is probably divergent
       if(is.null(int)) { # Perform Monte Carlo integration
         used_monte <- TRUE
