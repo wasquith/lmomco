@@ -21,7 +21,7 @@ function(lmr=NULL,
       nouni=FALSE,
          xlab="L-skew (Tau3), dimensionless",
          ylab="L-kurtosis (Tau4), dimensionless",
-         add=FALSE, empty=FALSE,
+         add=FALSE, empty=FALSE, autoaxes=TRUE,
          autolegend=FALSE, xleg=NULL, yleg=NULL, legendcex=0.9,
          ncol=1, text.width=NULL, lwd.cex=1, expand.names=FALSE,
          ...) {
@@ -38,9 +38,13 @@ function(lmr=NULL,
 
    if(is.null(lmr)) empty <- TRUE
    if(! add) {
-      plot(c(-1,1), c(-0.25,1), xlab = xlab, ylab = ylab, type = "n", ...)
-      axis(3, at=axTicks(1), labels=NA, lwd=0, lwd.ticks=1, ...)
-      axis(4, at=axTicks(2), labels=NA, lwd=0, lwd.ticks=1, ...)
+      plot(c(-1,1), c(-0.25,1), xlab=xlab, ylab=ylab, type="n", xaxt="n", yaxt="n", ...)
+      if(autoaxes) {
+        axis(1, at=axTicks(1), labels=TRUE,  lwd=0, lwd.ticks=1, ...)
+        axis(2, at=axTicks(2), labels=TRUE,  lwd=0, lwd.ticks=1, ...)
+        axis(3, at=axTicks(1), labels=FALSE, lwd=0, lwd.ticks=1, ...)
+        axis(4, at=axTicks(2), labels=FALSE, lwd=0, lwd.ticks=1, ...)
+      }
    }
    if(empty) return(invisible())
 
@@ -225,8 +229,14 @@ function(lmr=NULL,
    #   unused argument (xlim = c(0, 1))
    mylegend <- function(...) { # we scoop up the arguments that we would pass to legend() and
      dots <- list(...) # the sweep means we sweep too the ... from plotlmrdia(), so now we can
-     dots$xlim <- dots$ylim <- NULL # remove the arguments that legend() does not like and then
-     do.call(legend, dots) # use do.call() to then call legend() with our regular arguments and the
+         dots$xlim <- dots$ylim <- NULL # remove the arguments that legend() does not like and then
+     dots$xaxs <- dots$yaxs <- NULL # remove the arguments that legend() does not like and then
+     dots$xaxt <- dots$yaxt <- NULL # remove the arguments that legend() does not like and then
+     # Error in (function (x, y = NULL, legend, fill = NULL, col = par("col"),:
+     # unused argument (yaxt = "n")
+     # But there are so many ... that plot() consumes by not legend, let us just put silent try()
+     try( do.call(legend, dots), silent=TRUE)
+     # use do.call() to then call legend() with our regular arguments and the
    }  # potential for incoming arguments on the ... from the plotlmrdia() call.
 
    if(autolegend == TRUE & length(entries) > 0) {

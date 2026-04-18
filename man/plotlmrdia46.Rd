@@ -11,7 +11,7 @@ plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
              nocau=TRUE,    nonor=FALSE, nosla=TRUE, trucate.tau4.to.gtzero=TRUE,
              xlab="L-kurtosis (Tau4), dimensionless",
              ylab="Sixth L-moment ratio (Tau6), dimensionless",
-             add=FALSE, empty=FALSE,
+             add=FALSE, empty=FALSE, autoaxes=TRUE,
              autolegend=FALSE, xleg=NULL, yleg=NULL, legendcex=0.9,
              ncol=1, text.width=NULL, lwd.cex=1, expand.names=FALSE, ...)
 }
@@ -34,6 +34,7 @@ plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
   \item{ylab}{Vertical axis label passed to \code{ylab} of the \code{plot} function.}
   \item{add}{A logical to toggle a call to \code{plot} to start a new plot, otherwise, just the trajectories are otherwise plotted.}
   \item{empty}{A logical to return before any trajectories are plotted but after the condition of the \code{add} has been evaluated.}
+  \item{autoaxes}{A logical making calls to \code{axis()} to build the typical default axes in the language, and false will surpress \code{axis()} calls.}
   \item{autolegend}{Generate the legend by built-in algorithm.}
   \item{xleg}{X-coordinate of the legend. This argument is checked for being a character versus a numeric. If it is a character, then \code{yleg} is not needed and \code{xleg} and take on \dQuote{location may also be specified by setting x to a single keyword} as per the functionality of \code{graphics::legend()} itself.}
   \item{yleg}{Y-coordinate of the legend.}

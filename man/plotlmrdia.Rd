@@ -11,7 +11,8 @@ plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
            nocau=TRUE,   noexp=FALSE, nonor=FALSE,  nogum=FALSE,
            noray=FALSE, nosla=TRUE, nouni=FALSE,
            xlab="L-skew (Tau3), dimensionless",
-           ylab="L-kurtosis (Tau4), dimensionless", add=FALSE, empty=FALSE,
+           ylab="L-kurtosis (Tau4), dimensionless",
+           add=FALSE, empty=FALSE, autoaxes=TRUE,
            autolegend=FALSE, xleg=NULL, yleg=NULL, legendcex=0.9,
            ncol=1, text.width=NULL, lwd.cex=1, expand.names=FALSE, ...)
 }
@@ -40,11 +41,12 @@ plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
   \item{ylab}{Vertical axis label passed to \code{ylab} of the \code{plot} function.}
   \item{add}{A logical to toggle a call to \code{plot} to start a new plot, otherwise, just the trajectories are otherwise plotted.}
   \item{empty}{A logical to return before any trajectories are plotted but after the condition of the \code{add} has been evaluated.}
+  \item{autoaxes}{A logical making calls to \code{axis()} to build the typical default axes in the language, and false will surpress \code{axis()} calls.}
   \item{autolegend}{Generate the legend by built-in algorithm.}
   \item{xleg}{X-coordinate of the legend. This argument is checked for being a character versus a numeric. If it is a character, then \code{yleg} is not needed and \code{xleg} and take on \dQuote{location may also be specified by setting x to a single keyword} as per the functionality of \code{graphics::legend()} itself.}
   \item{yleg}{Y-coordinate of the legend.}
   \item{legendcex}{The \code{cex} to pass to \code{graphics::legend()}.}
-    \item{ncol}{The number of columns in which to set the legend items (default is 1, which differs from \code{legend()} default of 1).}
+  \item{ncol}{The number of columns in which to set the legend items (default is 1, which differs from \code{legend()} default of 1).}
   \item{text.width}{Argument of the same name for \code{legend}. Setting to 0.1 for \code{ncol} set to 2 seems to work pretty well when two columns are desired.}
   \item{lwd.cex}{Expansion factor on the line widths.}
   \item{expand.names}{Expand the distribution names in the legend.}
