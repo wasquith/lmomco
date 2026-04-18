@@ -1,25 +1,7 @@
 "pargev" <-
-function(lmom,checklmom=TRUE,...) {
-    para <- rep(NA,3)
-    names(para) <- c("xi","alpha","kappa")
-    #  METHOD: FOR  -0.8 LE TAU3 LT 1,  K IS APPROXIMATED BY RATIONAL
-    #  FUNCTIONS AS IN DONALDSON (1996, COMMUN. STATIST. SIMUL. COMPUT.).
-    #  IF TAU3 IS OUTSIDE THIS RANGE, NEWTON-RAPHSON ITERATION IS USED.
-    #   SMALL IS USED TO TEST WHETHER K IS EFFECTIVELY ZERO
-    #   EPS,MAXIT CONTROL THE TEST FOR CONVERGENCE OF N-R ITERATION
-
-    SMALL <- 1e-5; EPS <- 1e-6; MAXIT <- 20;
-
-    #  EU IS EULER'S CONSTANT
-    #    DL2 IS LOG(2), DL3 IS LOG(3)
-    EU <- 0.57721566; DL2 <- 0.69314718; DL3 <- 1.0986123
-
-    # COEFFICIENTS OF RATIONAL-FUNCTION APPROXIMATIONS FOR K
-    A0 <- 0.28377530;  A1 <- -1.21096399; A2 <- -2.50728214
-    A3 <- -1.13455566; A4 <- -0.07138022
-    B1 <- 2.06189696;  B2 <-  1.31912239; B3 <-  0.25077104
-    C1 <- 1.59921491;  C2 <- -0.48832213; C3 <-  0.01573152
-    D1 <- -0.64363929; D2 <-  0.08985247
+function(lmom, checklmom=TRUE, useHosking=TRUE, ...) {
+    para <- rep(NA, 3)
+    names(para) <- c("xi", "alpha", "kappa")
 
     if(length(lmom$L1) == 0) { # convert to named L-moments
       lmom <- lmorph(lmom)     # nondestructive conversion!
@@ -31,40 +13,100 @@ function(lmom,checklmom=TRUE,...) {
 
     T3 <- lmom$TAU3
 
+    if(! useHosking) {
+      # Coefficients from the embedded example in pargno.Rd from which refitting to numerically
+      # integrated Tau3 from theoLmoms() for a given gamma is used with curation of settings for
+      # integrate() and optim() call to estimate other A and B parameters (also using a new SMALL).
+      # However, we use Hosking original structure and use Hosking's parameters as  initial starting
+      # points in a 7D optim()ization. These coefficients result from the script
+      # lmomco/inst/newcoes/makeGEVcoes.R.
+      SMALL <- .Machine$double.eps^0.5; EPS <- .Machine$double.eps^0.5; MAXIT <- 100
+      "ofunc" <- function(k, tau3=NA) {
+        return( ( (2*(1-3^-k)) / (1-2^(-k)) - 3) - tau3)
+      }
+      rt <- NULL
+      # The upper is for T3 =     .Machine$double.eps - 1 ---> G = 54, iter=1052, f.root=2.220446e-16
+      # The lower is for T3 = 1 - .Machine$double.eps     ---> G = -1, iter=   1, f.root=2.220446e-16
+      # but lower works for T3 = -1 too.
+      try( rt <- uniroot(ofunc, lower=-1, upper=60, tau3=T3,
+                         tol=.Machine$double.eps^0.50, maxiter=2000), silent=TRUE)
+      if(is.null(rt)) {
+        if(T3 > 0) G <- 54
+        if(T3 < 0) G <- -1
+      } else {
+        G <- rt$root
+      }
+
+      #  ESTIMATE ALPHA, XI
+      para[3] <- G
+      GAM     <- exp( lgamma(1 + G) )
+      para[2] <- lmom$L2 * G / ( GAM * (1 - 2^(-G) ) )
+      para[1] <- lmom$L1 - para[2] * (1 - GAM) / G
+      return(list(type="gev", para=para, source="pargev", uniroot=rt))
+      # Tau3 <- runif(500000, min=-1, max=1)
+      # system.time(H <- sapply(Tau3, function(t) pargev(vec2lmom(c(0,1,t)), useHosking=TRUE )$para[3]))
+      #   user  system elapsed
+      #  8.036   0.033   8.198
+      # system.time(W <- sapply(Tau3, function(t) pargev(vec2lmom(c(0,1,t)), useHosking=FALSE)$para[3]))
+      #   user  system elapsed
+      # 19.348   0.062  19.737
+      # The uniroot() by useHosking=FALSE is about 2.4 times slower but still fast.
+      # max(abs(H-W)) ----> 9.804535e-06 # viability of either algorithm is proven.
+    } else {
+      #  METHOD: FOR  -0.8 LE TAU3 LT 1,  K IS APPROXIMATED BY RATIONAL
+      #  FUNCTIONS AS IN DONALDSON (1996, COMMUN. STATIST. SIMUL. COMPUT.).
+      #  IF TAU3 IS OUTSIDE THIS RANGE, NEWTON-RAPHSON ITERATION IS USED.
+      #   SMALL IS USED TO TEST WHETHER K IS EFFECTIVELY ZERO
+      #   EPS,MAXIT CONTROL THE TEST FOR CONVERGENCE OF N-R ITERATION
+      SMALL <- 1e-5; EPS <- 1e-6; MAXIT <- 20;
+
+      #  EU IS EULER'S CONSTANT
+      #    DL2 IS LOG(2), DL3 IS LOG(3)
+      EU <- 0.57721566; DL2 <- 0.69314718; DL3 <- 1.0986123
+
+      # COEFFICIENTS OF RATIONAL-FUNCTION APPROXIMATIONS FOR K
+      A0 <- 0.28377530;  A1 <- -1.21096399; A2 <- -2.50728214
+      A3 <- -1.13455566; A4 <- -0.07138022
+      B1 <- 2.06189696;  B2 <-  1.31912239; B3 <-  0.25077104
+      C1 <- 1.59921491;  C2 <- -0.48832213; C3 <-  0.01573152
+      D1 <- -0.64363929; D2 <-  0.08985247
+    }
+
+
     if(T3 > 0) {
       #  RATIONAL-FUNCTION APPROXIMATION FOR TAU3 BETWEEN 0 AND 1
       #
-      Z <- 1-T3
-      G <- (-1+Z*(C1+Z*(C2+Z*C3)))/(1+Z*(D1+Z*D2))
+      Z <- 1 - T3
+      G <- ( -1 + Z * ( C1 + Z * ( C2 + Z * C3 ) ) ) /
+                       ( 1 + Z * ( D1 + Z * D2 ) )
       if(abs(G) < SMALL) {
         #  ESTIMATED K EFFECTIVELY ZERO
         para[3] <- 0
-        para[2] <- lmom$L2/DL2
-        para[1] <- lmom$L1-EU*para[2]
-        return(list(type = 'gev', para = para))
+        para[2] <- lmom$L2 / DL2
+        para[1] <- lmom$L1 - EU * para[2]
+        return(list(type='gev', para=para))
       }
-    }
-    else { # T3 is <= to zero
-      G <- (A0+T3*(A1+T3*(A2+T3*(A3+T3*A4))))/(1+T3*(B1+T3*(B2+T3*B3)))
+    } else { # T3 is <= to zero
+      G <- (A0 + T3 * (A1 + T3 * ( A2 + T3 * (A3 + T3 * A4) ) ) ) /
+           (1 + T3 * ( B1 + T3 * ( B2 + T3 *  B3            ) ) )
       if(T3 >= -0.80) {
         #   RATIONAL-FUNCTION APPROXIMATION FOR TAU3 BETWEEN -0.8 AND 0
         # DO NOTHING--code paralleling Hosking's as best as possible.
-      }
-      else {
+      } else {
         #  NEWTON-RAPHSON ITERATION FOR TAU3 LESS THAN -0.8
         #
-        if(T3 <= -0.97) G <- 1-log(1+T3)/DL2
-        T0 <- (T3+3)*0.5
+        if(T3 <= -0.97) G <- 1 - log( 1+T3 ) / DL2
+        T0 <- 0.5 * (T3 + 3)
         CONVERGE <- FALSE
-        for(it in seq(1,MAXIT)) {
+        for(it in seq_len(MAXIT)) {
            X2  <- 2^-G
            X3  <- 3^-G
            XX2 <- 1-X2
            XX3 <- 1-X3
-           T   <- XX3/XX2
-           DERIV <- (XX2*X3*DL3-XX3*X2*DL2)/(XX2*XX2)
-           GOLD <- G
-           G <- G-(T-T0)/DERIV
+           TT  <- XX3 / XX2
+           DERIV <- (XX2 * X3 * DL3 - XX3 * X2 * DL2) / (XX2 * XX2)
+           GOLD  <- G
+           G     <- G - (TT - T0) / DERIV
            if(abs(G-GOLD) <= EPS*G) CONVERGE <- TRUE
         }
         if(CONVERGE == FALSE) {
@@ -73,11 +115,11 @@ function(lmom,checklmom=TRUE,...) {
       }
     }
 
-    #  ESTIMATE ALPHA,XI
+    #  ESTIMATE ALPHA, XI
     para[3] <- G
-    GAM <- exp(lgamma(1+G))
-    para[2] <- lmom$L2*G/(GAM*(1-2**(-G)))
-    para[1] <- lmom$L1 - para[2]*(1-GAM)/G
-    return(list(type = 'gev', para = para, source="pargev"))
+    GAM     <- exp( lgamma(1 + G) )
+    para[2] <- lmom$L2 * G / ( GAM * (1 - 2^(-G) ) )
+    para[1] <- lmom$L1 - para[2] * (1 - GAM) / G
+    return(list(type="gev", para=para, source="pargev"))
 }
 
