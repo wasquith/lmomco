@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Changes in version 2.5.3 (2026-04-18)
+Changes in version 2.5.5 (2026-04-20)
 -  Grammar fixes in lmomgdd.Rd, bibliography format change lmomco-package.Rd.
 -  Extension of lmrdia.R/Rd and lmrdia46.R/Rd with new argument usrtrim that
      dynamically truncates the trajectories to the current axis limits by
@@ -17,19 +17,20 @@ Changes in version 2.5.3 (2026-04-18)
 -  Extended inst/ACKNOWLEDGEMENTS.
 -  Added proper use of ... in theoTLmoms() down to the integrate(...) function.
 -  Added inst/newcoes/makGNOcoes.R for new coefficients in pargno.R to make
-     improved coefficients on a approximation formula to convert L-skew to the
-     kappa relative to those in the 1996 Hosking FORTRAN source code and then
-     switched to the new coefficients for tau3 to gamma conversion in pargno()
-     with a new argument useHosking=FALSE. Edits made thus to pargno.Rd.
+     improved coefficients on an approximation formula to convert L-skew to
+     the kappa relative to those in the 1996 Hosking FORTRAN source code and
+     then switched to the new coefficients for tau3 to gamma conversion in
+     pargno() with new argument useHosking=TRUE. Edits made thus to pargno.Rd.
 -  Added inst/newcoes/makePE3coes.R for new coefficients in parpe3.R to make
-     improved coefficients on a approximation formula to convert L-skew to the
-     gamma relative to those in the 1996 Hosking FORTRAN source code and then
-     switched to the new coefficients for tau3 to gamma conversion in parpe3()
-     with a new argument useHosking=FALSE. Edits made thus to parpe3.Rd.
+     improved coefficients on an approximation formula to convert L-skew to
+     the gamma relative to those in the 1996 Hosking FORTRAN source code and
+     then switched to the new coefficients for tau3 to gamma conversion in
+     parpe3() with new argument useHosking=TRUE. Edits made thus to parpe3.Rd.
 -  Added useHosking=FALSE to pargev.[R|Rd] with extension to pargev.R to use
      direct estimation by the uniroot() function in lieu of 1996 Hosking
      FORTRAN. The cost is a speed hit as explained in Examples of pargev.Rd.
-
+-  NOTE, expect in a future release for useHosking=FALSE to be a new default
+     for pargev.R, pargno.R, and parpe3.R.
 
 
 Changes in version 2.5.2 (2025-09-21)
@@ -928,7 +929,7 @@ Changes in version 1.7.9 (2013-12-03)
       of it (Asquith, W.H., 2014, Parameter Estimation for the 4-Parameter
       Asymmetric Exponential Power Distribution by the Method of L-moments
       using R, Computational Statistics and Data Analysis, v. 41, pp. 955--970,
-      http://dx.doi.org/10.1016/j.csda.2012.12.013).
+      https://doi.org/10.1016/j.csda.2012.12.013).
 
 
 Changes in version 1.7.8 (2013-07-05)
@@ -1170,9 +1171,8 @@ Changes in version 1.4.5 (2012-04-30)
 
      Asquith, W.H., 2011, Distributional analysis with L-moment statistics
        using the R environment for statistical computing: First edition,
-       CreateSpace, ISBN 978-1463508418, 344 p. http://www.amazon.com/
-       Distributional-Statistics-Environment-Statistical-Computing/dp/
-       1463508417
+       CreateSpace, ISBN 978-1463508418, 344 p. https://www.amazon.com/
+       dp/1463508417
 
 
 Changes in version 1.4.4 (2012-04-30)
