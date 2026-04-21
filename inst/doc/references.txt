@@ -6,10 +6,10 @@
 These references listed here are slight extensions of those published in my book,
 which is currently sold royalty free and a great buy.
 
-Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: First edition, CreateSpace, ISBN 978-1463508418, 344~p. \surl{http://www.amazon.com/Distributional-Statistics-Environment-Statistical-Computing/dp/1463508417}
+Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: First edition, CreateSpace, ISBN 978-1463508418, 344~p. \surl{https://www.amazon.com/dp/1463508417}.
 
 
-The references are listed in the native long-hand bibliographic style of LaTeX.  Several packages might be needed if you use these directly, such as the ragged2e package for the RaggedRight command. Also note that I use a different url function for slightly smaller text. 
+The references are listed in the native long-hand bibliographic style of LaTeX.  Several packages might be needed if you use these directly, such as the ragged2e package for the RaggedRight command. Also note that I use a different url function for slightly smaller text.
 
 \usepackage{ragged2e}
 \usepackage{url}
@@ -23,13 +23,13 @@ The references are listed in the native long-hand bibliographic style of LaTeX. 
 \RaggedRight
 
 \bibitem[Adler(2005)]{vioplot}
-\lastname{Adler}, D., 2005, \textit{vioplot}---Violin plot: R package version 0.2, dated October 29, 2005, initial package release July 16, 2004, \surl{http://www.cran.r-project.org/package=vioplot}.
+\lastname{Adler}, D., 2005, \textit{vioplot}---Violin plot: R package version 0.2, dated October 29, 2005, initial package release July 16, 2004, \surl{https://www.cran.r-project.org/package=vioplot}.
 
 \bibitem[Adler(2010)]{RinNutshell}
 \lastname{Adler}, J., 2010, R in a nutshell: Sebastopol, California, Florida, O'Reilly Media, Inc., ISBN~978--0--596--80170--0, 611~p.
 
 \bibitem[Aho(2010)]{asbio}
-\lastname{Aho}, K., 2010, \textit{asbio}---A collection of statistical tools for biologists: R package version 0.3-28, dated December 09, 2010, initial package release July 16, 2004, \surl{http://www.cran.r-project.org/package=asbio}.
+\lastname{Aho}, K., 2010, \textit{asbio}---A collection of statistical tools for biologists: R package version 0.3-28, dated December 09, 2010, initial package release July 16, 2004, \surl{https://www.cran.r-project.org/package=asbio}.
 
 \bibitem[Alkasasbeh and Raqab(2008)]{AlkasasbehRaqab2008}
 \lastname{Alkasasbeh}, M.R., and \lastname{Raqab}, M.Z., 2008, Estimation of the generalized logistic distribution parameters---Comparative study: Statistical Methodology, v.~6, \ppages~262--279.
@@ -38,10 +38,10 @@ The references are listed in the native long-hand bibliographic style of LaTeX. 
 \lastname{Ahmad}, U.M., \lastname{Shabri}, A., and \lastname{Zakaria}, Z.A., 2011, Flood frequency analysis of annual maximum stream flows using L-moments and TL-moments: Applied Mathematical Sciences, v.~5, no.~5, \ppages~243--253.
 
 \bibitem[Asquith(1998)]{Asquith1998}
-\lastname{Asquith}, W.H., 1998, Depth-duration frequency of precipitation for Texas: U.S.~Geological Survey Water-Resources Investigations Report 98--4044, 107~p. 
+\lastname{Asquith}, W.H., 1998, Depth-duration frequency of precipitation for Texas: U.S.~Geological Survey Water-Resources Investigations Report 98--4044, 107~p.
 
 \bibitem[Asquith(2001)]{Asquith2001}
-\lastname{Asquith}, W.H., 2001, Effects of regulation on \mbox{L-moments} of annual peak streamflow in Texas: U.S.~Geological Survey Water-Resources Investigations Report 01--4243, 66~p. 
+\lastname{Asquith}, W.H., 2001, Effects of regulation on \mbox{L-moments} of annual peak streamflow in Texas: U.S.~Geological Survey Water-Resources Investigations Report 01--4243, 66~p.
 
 \bibitem[Asquith(2003)]{AsquithPhD}
 \lastname{Asquith}, W.H., 2003, Modeling of runoff-producing rainfall hyetographs in Texas using \mbox{L-moment} statistics: Ph.D.~dissertation, Jackson School of Geosciences, University of Texas at Austin, 386~p.
@@ -54,7 +54,7 @@ The references are listed in the native long-hand bibliographic style of LaTeX. 
 \lastname{Asquith}, W.H., 2011a, Univariate distributional analysis with L-moment statistics using R: Ph.D.~dissertation, Texas Tech University, Lubbock, Texas, 435~p.
 
 \bibitem[Asquith(2011b)]{lmomco}
-\lastname{Asquith}, W.H., 2011b, \textit{lmomco}---\mbox{L-moments}, censored \mbox{L-moments}, trimmed \mbox{L-moments}, \mbox{L-comoments}, and many distributions: R package version 1.3.5, dated June 8, 2011, initial package release January 31, 2006, \surl{http://www.cran.r-project.org/package=lmomco}.
+\lastname{Asquith}, W.H., 2011b, \textit{lmomco}---\mbox{L-moments}, censored \mbox{L-moments}, trimmed \mbox{L-moments}, \mbox{L-comoments}, and many distributions: R package version 1.3.5, dated June 8, 2011, initial package release January 31, 2006, \surl{https://www.cran.r-project.org/package=lmomco}.
 
 \bibitem[Asquith and Roussel(2004)]{AR2004}
 \lastname{Asquith}, W.H., and \lastname{Roussel}, M.C., 2004, Atlas of depth-duration frequency of precipitation annual maxima for Texas: U.S.~Geological Survey Scientific Investigations Report 2004--5041, 106~p.
@@ -81,7 +81,7 @@ The references are listed in the native long-hand bibliographic style of LaTeX. 
 \lastname{Benson}, C.H., 1993, Probability distributions for hydraulic conductivity of compacted soil liners: Journal of Geotechnical Engineering, v.~119, no.~3, \ppages~471--486.
 
 \bibitem[Blankespoor and others(2012)]{WBpaper5996}
-\lastname{Blankespoor}, B., \lastname{Basist}, A., \lastname{Dinar}, A., and \lastname{Dinar}, Shlomi, 2012, Accessing economic and political impacts of hydrological variability on treaties---Case studies on the Zambezi and Mekong basins (March 1, 2012): World Bank Policy Research Working Paper No.~5996, 54~p., available at SSRN: \surl{http://ssrn.com/abstract=2021705}.
+\lastname{Blankespoor}, B., \lastname{Basist}, A., \lastname{Dinar}, A., and \lastname{Dinar}, Shlomi, 2012, Accessing economic and political impacts of hydrological variability on treaties---Case studies on the Zambezi and Mekong basins (March 1, 2012): World Bank Policy Research Working Paper No.~5996, 54~p., available at SSRN: \surl{https://ssrn.com/abstract=2021705}.
 %  Brian, Alan, Ariel, and  Shlomi,
 
 \bibitem[Braun and Murdoch(2007)]{BraunMurdoch2007}
@@ -169,7 +169,7 @@ The references are listed in the native long-hand bibliographic style of LaTeX. 
 \lastname{Gilchrist}, W.G., 2000, Statistical modelling with quantile functions: Boca Raton, Florida, Chapman and \mbox{Hall/CRC}, ISBN~1--58488--174--7, 320~p.
 
 \bibitem[Gilleland and others(2010)]{extRemes}
-\lastname{Gilleland}, E., \lastname{Katz}, R., and \lastname{Young}, G., 2010, extRemes---Extreme value toolkit: R package version 1.62, dated April 25, 2010, initial package release March 19, 2004, \surl{http://www.cran.r-project.org/package=extRemes}.
+\lastname{Gilleland}, E., \lastname{Katz}, R., and \lastname{Young}, G., 2010, extRemes---Extreme value toolkit: R package version 1.62, dated April 25, 2010, initial package release March 19, 2004, \surl{https://www.cran.r-project.org/package=extRemes}.
 
 \bibitem[Gini(1912)]{gini}
 \lastname{Gini}, C., 1912, Variabilit\`{a} e mutabilit\`{a}, contributo allo studio delle distribuzioni e delle relazione statistiche: Studi Economico-Giuridici della Reale Universit\`{a} di Cagliari, v.~3, \ppages~3--159.
@@ -196,7 +196,7 @@ The references are listed in the native long-hand bibliographic style of LaTeX. 
 \lastname{Hamada}, M., 1995, Analysis of experiments for reliability improvement and robust reliability: \textit{in} Balakrishnan, N. (ed.) Recent Advances in Life-Testing and Reliability: Boca Raton, Florida, CRC Press, ISBN~0--8493--8972--0, \ppages~155--172.
 
 \bibitem[Hansen(1991)]{Hansen1991}
-\lastname{Hansen}, W.R., 1991, Suggestions to authors of the reports of the United States Geological Survey:  U.S.~Government Printing Office, Washington, D.C., 7th ed., 289 p. 
+\lastname{Hansen}, W.R., 1991, Suggestions to authors of the reports of the United States Geological Survey:  U.S.~Government Printing Office, Washington, D.C., 7th ed., 289 p.
 
 \bibitem[Heiberger and Holland(2004)]{SADD}
 \lastname{Heiberger}, R.M., and \lastname{Holland}, B., 2005, Statistical analysis and data display---An intermediate course with examples in S-Plus, R, and SAS: New York, Springer, ISBN~0--387--40270--5, 729~p.
@@ -215,7 +215,7 @@ The references are listed in the native long-hand bibliographic style of LaTeX. 
 \lastname{Helsel}, D.R., and \lastname{Hirsch}, R.M., 1992, Statistical methods in water resources: New York, Elsevier, ISBN~0--444--88528--5, 529~p.
 
 \bibitem[Helsel and Hirsch(2002)]{HelselHirsch2002}
-\lastname{Helsel}, D.R., and \lastname{Hirsch}, R.M., 2002, Statistical methods in water resources: U.S.~Geological Survey Techniques of Water-Resources Investigations, book~4, chap.~A3, 510~p., \surl{http://pubs.usgs.gov/twri/twri4a3/}
+\lastname{Helsel}, D.R., and \lastname{Hirsch}, R.M., 2002, Statistical methods in water resources: U.S.~Geological Survey Techniques of Water-Resources Investigations, book~4, chap.~A3, 510~p., \surl{https://pubs.usgs.gov/twri/twri4a3/}
 
 \bibitem[Hershfield(1961)]{TP40}
 \lastname{Hershfield}, D.B., 1961, Rainfall frequency atlas of the United States for durations from 30~minutes to 24~hours and return periods from 1 to 100~years: Washington, D.C., U.S.~Weather Bureau Technical Paper~40, 61~p.
@@ -269,22 +269,22 @@ The references are listed in the native long-hand bibliographic style of LaTeX. 
 \lastname{Hosking}, J.R.M., 2007c, Supplement to ``Distributions with maximum entropy subject to constraints on their \mbox{L-moments}'': Research Report RC24177, IBM Research Division, T.J.~Watson Research Center, Yorktown Heights, New York.
 
 \bibitem[Hosking(2009a)]{lmom}
-\lastname{Hosking}, J.R.M., 2009a, \textit{lmom}---\mbox{L-moments}: R package version 1.5, dated November 29, 2009, initial package release July 3, 2008, \surl{http://www.cran.r-project.org/package=lmom}.
+\lastname{Hosking}, J.R.M., 2009a, \textit{lmom}---\mbox{L-moments}: R package version 1.5, dated November 29, 2009, initial package release July 3, 2008, \surl{https://www.cran.r-project.org/package=lmom}.
 
 \bibitem[Hosking(2009b)]{lmomRFA}
-\lastname{Hosking}, J.R.M., 2009b, \textit{lmomRFA}---Regional frequency analysis using \mbox{L-moments}: R package version 2.3, dated August 22, 2010, initial package release March 3, 2009, \surl{http://www.cran.r-project.org/package=lmomRFA}.
+\lastname{Hosking}, J.R.M., 2009b, \textit{lmomRFA}---Regional frequency analysis using \mbox{L-moments}: R package version 2.3, dated August 22, 2010, initial package release March 3, 2009, \surl{https://www.cran.r-project.org/package=lmomRFA}.
 
 \bibitem[Hosking and others(2000)]{HoskingBontiSiegel2000}
 \lastname{Hosking}, J.R.M., \lastname{Bonti}, G., and \lastname{Siegel}, D., 2000, Beyond the lognormal---Accurate estimation of the frequency of rare events in VaR calculations: Risk, v.~13, no.~5, \mbox{\ppages~59--62.}
 
 \bibitem[Hosking and Wallis(1987)]{HW1987}
-\lastname{Hosking}, J.R.M., and \lastname{Wallis}, J.R., 1987, Parameter and quantile estimation for the generalized Pareto distribution: Technometrics, v.~29, \ppages~339--349. 
+\lastname{Hosking}, J.R.M., and \lastname{Wallis}, J.R., 1987, Parameter and quantile estimation for the generalized Pareto distribution: Technometrics, v.~29, \ppages~339--349.
 
 \bibitem[Hosking and Wallis(1993)]{HW1993}
 \lastname{Hosking}, J.R.M., and \lastname{Wallis}, J.R., 1993, Some statistics useful in regional frequency analysis: Water Resources Research, v.~29, no.~2, \ppages~271--281.
 
 \bibitem[Hosking and Wallis(1995)]{HW1995}
-\lastname{Hosking}, J.R.M., and \lastname{Wallis}, J.R., 1995, A comparison of unbiased and plotting-position estimators of \mbox{L\thinspace moments}: Water Resources Research, v.~31, no.~8, \ppages~2019--2025. 
+\lastname{Hosking}, J.R.M., and \lastname{Wallis}, J.R., 1995, A comparison of unbiased and plotting-position estimators of \mbox{L\thinspace moments}: Water Resources Research, v.~31, no.~8, \ppages~2019--2025.
 
 \bibitem[Hosking and Wallis(1997)]{HW1997}
 \lastname{Hosking}, J.R.M., and \lastname{Wallis}, J.R., 1997, Regional frequency analysis---An approach based on \mbox{L-moments}: Cambridge, Cambridge University Press, ISBN~0--521--43045--3, 224~p.
@@ -308,7 +308,7 @@ The references are listed in the native long-hand bibliographic style of LaTeX. 
 \lastname{Jeffrey}, A., 2004, Handbook of mathematical formulas and integrals, 3rd~\mbox{ed.:} Amsterdam, Elsevier, ISBN~0--12--382256--4, 453~p.
 
 \bibitem[Jensen and others(1997)]{Jensen1997}
-\lastname{Jensen}, J.L., \lastname{Lake}, L.W., \lastname{Corbett}, P.W.M., and \lastname{Goggin}, D.J., 1997, Statistics for petroleum engineers and geoscientists: Upper Saddle River, New Jersey, Prentice Hall, ISBN~0--13--131855--1, 390~p.  
+\lastname{Jensen}, J.L., \lastname{Lake}, L.W., \lastname{Corbett}, P.W.M., and \lastname{Goggin}, D.J., 1997, Statistics for petroleum engineers and geoscientists: Upper Saddle River, New Jersey, Prentice Hall, ISBN~0--13--131855--1, 390~p.
 
 %\bibitem[Johnson(1987)]{Johnson1987}
 %\lastname{Johnson}, M.E., 1987, Multivariate statistical simulation: New %York, John Wiley, ISBN~0--471--82290--6, 230~p.
@@ -327,7 +327,7 @@ The references are listed in the native long-hand bibliographic style of LaTeX. 
 \bibitem[Jurczenko and others(2008)]{Jurczenko2008}
 \lastname{Jurczenko}, E.F., \lastname{Maillet}, B.B., and \lastname{Merlin}, P.M., 2008, Efficient frontier for robust higher-order moment portfolio selection: Documents de Travail du Centre d\textquotesingle Economie de la Sorbonne, Centre National de La Recherche Scientifique Working Papers 2008.62, ISSN~1955--611X, 68~p.
 
-%accessed on January 1, 2009 at \surl{http://hal.archives-ouvertes.fr/docs/00/33/64/75/PDF/Bla08062.pdf}
+%accessed on January 1, 2009 at \surl{https://hal.archives-ouvertes.fr/docs/00/33/64/75/PDF/Bla08062.pdf}
 
 \bibitem[Jure\v{c}kov\'{a} and Picek(2006)]{RobustR}
 \lastname{Jure\v{c}kov\'{a}}, J., and \lastname{Picek}, J., 2006, Robust statistical methods with R: Boca Raton, Florida, Chapman and \mbox{Hall/CRC}, ISBN~1--58488--454--1, 197~p.
@@ -336,16 +336,16 @@ The references are listed in the native long-hand bibliographic style of LaTeX. 
 \lastname{Kaigh}, W.C., and \lastname{Driscoll}, M.F., 1987, Numerical and graphical data summary using \mbox{O-statistics}: American Statistician, v.~41, no.~1, \ppages~25--32.
 
 \bibitem[Kampstra(2008a)]{beanplot}
-\lastname{Kampstra}, P., 2008a, \textit{beanplot}---Visualization via beanplots: R package version 1.1, dated November 6, 2008, \surl{http://www.cran.r-project.org/package=beanplot}.
+\lastname{Kampstra}, P., 2008a, \textit{beanplot}---Visualization via beanplots: R package version 1.1, dated November 6, 2008, \surl{https://www.cran.r-project.org/package=beanplot}.
 
 \bibitem[Kampstra(2008b)]{Kampstra2008}
-\lastname{Kampstra}, P., 2008b, Beanplot---A boxplot alternative for visual comparison of distributions: Journal of Statistical Software, Code Snippets, v.~28, no.~1, \ppages~1--9, \surl{http://www.jstatsoft.org/v28/c01/}.
+\lastname{Kampstra}, P., 2008b, Beanplot---A boxplot alternative for visual comparison of distributions: Journal of Statistical Software, Code Snippets, v.~28, no.~1, \ppages~1--9, \surl{https://www.jstatsoft.org/v28/c01/}.
 
 \bibitem[Kaplan and Meier(1958)]{KaplanMeier1958}
 \lastname{Kaplan}, E.L., and \lastname{Meier}, P., 1958, Nonparametric estimation of incomplete observations: Journal of the American Statistical Association, v.~53, \ppages~457--481.
 
 \bibitem[Karian and Dudewicz(2000)]{KarianDudewicz2000}
-\lastname{Karian}, Z.A., \lastname{Dudewicz}, E.J., 2000, Fitting statistical distribution---The generalized Lambda distribution and generalized bootstrap methods: Boca Raton, Florida, CRC Press, ISBN~1--58488--069--4, 438~p. 
+\lastname{Karian}, Z.A., \lastname{Dudewicz}, E.J., 2000, Fitting statistical distribution---The generalized Lambda distribution and generalized bootstrap methods: Boca Raton, Florida, CRC Press, ISBN~1--58488--069--4, 438~p.
 
 \bibitem[Karvanen(2006)]{Karvanen2006Mixtures}
 \lastname{Karvanen}, J., 2006, Estimation of quantile mixtures via \mbox{L-moments} and Trimmed \mbox{L-moments}: Computational Statistics and Data Analysis, v.~51, no.~2, \ppages~947--959.
@@ -354,7 +354,7 @@ The references are listed in the native long-hand bibliographic style of LaTeX. 
 \lastname{Karvanen}, J., and \lastname{Nuutinen}, A., 2008, Characterizing the generalized lambda distribution by \mbox{L-moments}: Computational Statistics and Data Analysis, v.~52, no.~4, \ppages~1971--1983.
 
 \bibitem[Karvanen(2009)]{Lmoments}
-\lastname{Karvanen}, J., 2009, \textit{Lmoments}---\mbox{L-moments} and quantile mixtures: R package version 1.1--4, dated January 19, 2011, initial package release October 12, 2005, \surl{http://www.cran.r-project.org/package=Lmoments}.
+\lastname{Karvanen}, J., 2009, \textit{Lmoments}---\mbox{L-moments} and quantile mixtures: R package version 1.1--4, dated January 19, 2011, initial package release October 12, 2005, \surl{https://www.cran.r-project.org/package=Lmoments}.
 
 \bibitem[Katz and others(2002)]{Katz2002}
 \lastname{Katz}, R.W., and \lastname{Parlange}, M.B., and \lastname{Naveau}, P., 2002, Statistics of extremes in hydrology: Advances in Water Resources, v.~25, \ppages~1287--1304.
@@ -378,13 +378,13 @@ The references are listed in the native long-hand bibliographic style of LaTeX. 
 \lastname{Kliche}, D.V., \lastname{Smith}, P.L., and \lastname{Johnson}, R.W., 2008, \mbox{L-moment} estimators as applied to gamma drop size distributions: Journal of Applied Meteorology and Climatology, v.~47, \ppages~3117--3130.
 
 \bibitem[Kottegoda and Rosso(2008)]{KottegodaRosso2008}
-\lastname{Kottegoda}, N.T., and \lastname{Rosso}, R., 2008, Applied statistics for civil and environmental engineers: Blackwell Publishing (acquired by John Wiley), ISBN~978--1--4051--7917--1, 718~p. 
+\lastname{Kottegoda}, N.T., and \lastname{Rosso}, R., 2008, Applied statistics for civil and environmental engineers: Blackwell Publishing (acquired by John Wiley), ISBN~978--1--4051--7917--1, 718~p.
 
 \bibitem[Kroll and Stedinger(1996)]{KrollStedinger1996}
 \lastname{Kroll}, C.N., and \lastname{Stedinger}, J.R., 1996, Estimation of moments and quantiles using censored data: Water Resources Research, v.~32, no.~4, \ppages~1005--1012.
 
 \bibitem[Kumaraswamy(1980)]{Kumaraswamy1980}
-\lastname{Kumaraswamy}, P., 1980, A generalized probability density function for double-bounded random processes: Journal of Hydrology, v.~46, \ppages~79--88. 
+\lastname{Kumaraswamy}, P., 1980, A generalized probability density function for double-bounded random processes: Journal of Hydrology, v.~46, \ppages~79--88.
 
 \bibitem[Landwehr and others(1979a)]{Landwehr1979a}
 \lastname{Landwehr} J.M., \lastname{Matalas}, N.C., and \lastname{Wallis}, J.R., 1979a, Estimation of parameters and quantiles of Wakeby distributions: Water Resources Research, v.~15, no.~5, \ppages~1362--1379.
@@ -396,7 +396,7 @@ The references are listed in the native long-hand bibliographic style of LaTeX. 
 \lastname{Landwehr}, J.M., \lastname{Matalas}, N.C., and \lastname{Wallis}, J.R., 1980, Quantile estimation with more or less floodlike distributions: Water Resources Research, v.~16, no.~3, \ppages~547--555.
 
 \bibitem[Lee(2009)]{NADA}
-\lastname{Lee}, L., 2009, \textit{NADA}---Nondetects and data analysis for environmental data: R package version 1.5-3, dated December 22, 2010, initial package release June 24, 2004, \surl{http://www.cran.r-project.org/package=NADA}. 
+\lastname{Lee}, L., 2009, \textit{NADA}---Nondetects and data analysis for environmental data: R package version 1.5-3, dated December 22, 2010, initial package release June 24, 2004, \surl{https://www.cran.r-project.org/package=NADA}.
 
 \bibitem[Liou and others(2007)]{LiouWuChiangCheng2007}
 \lastname{Liou}, Jun-Jih, \lastname{Wu}, Yii-Chen, \lastname{Chiang}, Jie-Lun, and \lastname{Cheng}, Ke-Sheng, 2007, Assessing power of test for goodness-of-fit test using L-moment-ratios diagram: Journal of Chinese Agricultural Engineering, v.~53, no.~4, \ppages~80--91.
@@ -449,11 +449,11 @@ N\'{u}\~{n}ez, J.H., Verbist, K., Wallis, J.R., Schaefer, M.G., Morales, L., and
 \lastname{Qian}, S.S., 2010, Environmental and ecological statistics with R: Boca Raton, Florida, Chapman and \mbox{Hall/CRC}, ISBN~978--1--4200--6206--9, 421~p.
 
 \bibitem[R Development Core Team(2009)]{Rexts}
-\lastname{R Development Core Team}, 2009, Writing R Extensions: R Foundation for Statistical Computing, Vienna, Austria, version~2.10.1 (2009-12-14), \surl{http://www.R-project.org}, PDF file \texttt{\small R-exts.pdf}.
+\lastname{R Development Core Team}, 2009, Writing R Extensions: R Foundation for Statistical Computing, Vienna, Austria, version~2.10.1 (2009-12-14), \surl{https://www.R-project.org}, PDF file \texttt{\small R-exts.pdf}.
 
 
 \bibitem[R Development Core Team(2010)]{Rcoreteam}
-\lastname{R Development Core Team}, 2010, R---A language and environment for statistical computing: R Foundation for Statistical Computing, Vienna, Austria, version~2.12.2 (2010-12-16), ISBN~3--900051--07--0, \surl{http://www.R-project.org}.
+\lastname{R Development Core Team}, 2010, R---A language and environment for statistical computing: R Foundation for Statistical Computing, Vienna, Austria, version~2.12.2 (2010-12-16), ISBN~3--900051--07--0, \surl{https://www.R-project.org}.
 
 
 \bibitem[Raju and Srinivasan(2002)]{RajuSrinivasan2002}
@@ -463,10 +463,10 @@ N\'{u}\~{n}ez, J.H., Verbist, K., Wallis, J.R., Schaefer, M.G., Morales, L., and
 \lastname{Reimann}, C., \lastname{Filzmoser}, P., \lastname{Garrett}, R., and \lastname{Dutter}, R., 2008, Statistical data analysis explained---Applied environmental statistics with R: West Sussex, England, John Wiley, ISBN~978--0--470--98581--6, 343~p.
 
 \bibitem[Ribatet(2009)]{POT}
-\lastname{Ribatet}, M., 2009, \textit{POT}---Generalized Pareto distribution and peaks over threshold: R~package version 1.1--0, dated October 16, 2009, initial package release September 6, 2005, \surl{http://www.cran.r-project.org/package=POT}.
+\lastname{Ribatet}, M., 2009, \textit{POT}---Generalized Pareto distribution and peaks over threshold: R~package version 1.1--0, dated October 16, 2009, initial package release September 6, 2005, \surl{https://www.cran.r-project.org/package=POT}.
 
 \bibitem[Ribatet(2010)]{RFA}
-\lastname{Ribatet}, M., 2010, \textit{RFA}---Regional Frequency Analysis: R~package version 0.0--9, dated January 14, 2010, initial package release September 14, 2005, \surl{http://www.cran.r-project.org/package=RFA}.
+\lastname{Ribatet}, M., 2010, \textit{RFA}---Regional Frequency Analysis: R~package version 0.0--9, dated January 14, 2010, initial package release September 14, 2005, \surl{https://www.cran.r-project.org/package=RFA}.
 
 \bibitem[Rinne(2008)]{Rinne2008}
 \lastname{Rinne}, H., 2008, The Weibull distribution---A handbook: Boca Raton, Florida, Chapman and \mbox{Hall/CRC}, ISBN~978--1--42008--743--7, 808~p.
@@ -511,7 +511,7 @@ N\'{u}\~{n}ez, J.H., Verbist, K., Wallis, J.R., Schaefer, M.G., Morales, L., and
 
 \bibitem[Short(2004)]{RefCard}
 \lastname{Short}, T., 2004, R reference card: dated November 7, 2004,
-Granted to the public domain, \textit{see} \surl{http://www.Rpad.org} for the source and latest version, \textit{includes} material from ``R for Beginners`` by Emmanuel Paradis (with permission), \surl{http://cran.r-project.org/doc/contrib/Short-refcard.pdf}
+Granted to the public domain, \textit{see} \surl{https://www.Rpad.org} for the source and latest version, \textit{includes} material from ``R for Beginners`` by Emmanuel Paradis (with permission), \surl{https://cran.r-project.org/doc/contrib/Short-refcard.pdf}
 % Tom
 
 \bibitem[Sijbers and others(1998)]{Sijbers1998}
@@ -534,10 +534,10 @@ Granted to the public domain, \textit{see} \surl{http://www.Rpad.org} for the so
 \lastname{Spector}, P., 2008, Data manipulation with R: New York, Springer, ISBN~978--0--389--74730--9, 152~p.
 
 \bibitem[Stedinger and others(1993)]{Sted1993}
-\lastname{Stedinger}, J.R., \lastname{Vogel}, R.M., and \lastname{Foufoula-Georgiou}, E., 1993, Frequency analysis of extreme events, \textit{in} Handbook of Hydrology, chapter 18, editor-in-chief D.A. Maidment: New York, McGraw-Hill, ISBN~0--07--039732--5. 
+\lastname{Stedinger}, J.R., \lastname{Vogel}, R.M., and \lastname{Foufoula-Georgiou}, E., 1993, Frequency analysis of extreme events, \textit{in} Handbook of Hydrology, chapter 18, editor-in-chief D.A. Maidment: New York, McGraw-Hill, ISBN~0--07--039732--5.
 
 \bibitem[Su(2010)]{GLDEX}
-\lastname{Su}, S., 2010, \textit{GLDEX}---Fitting single and mixture generalized lambda distributions (RS and FMKL) using various methods: R package version 1.0.4.1, dated January 20, 2010, initial package release October 11, 2007, \surl{http://www.cran.r-project.org/package=GLDEX}.
+\lastname{Su}, S., 2010, \textit{GLDEX}---Fitting single and mixture generalized lambda distributions (RS and FMKL) using various methods: R package version 1.0.4.1, dated January 20, 2010, initial package release October 11, 2007, \surl{https://www.cran.r-project.org/package=GLDEX}.
 
 \bibitem[Thomas and others(2010)]{ThomasTorreChangMehrotra2010}
 \lastname{Thomas}, R., \lastname{de\thinspace la\thinspace Torre}, L., \lastname{Chang}, X., and \lastname{Mehrotra}, S., 2010, Validation and characterization of DNA microarray gene expression data distribution and associated moments: BMC Bioinformatics, v.~11, no.~576, 14~p.
@@ -555,13 +555,13 @@ Granted to the public domain, \textit{see} \surl{http://www.Rpad.org} for the so
 \lastname{Unnikrishnan}, N., and \lastname{Vineshkumar}, B., 2010, \mbox{L-moments} of residual life: Journal of Statistical Planning and Inference, v.~140, no.~9, \ppages~2618--2631.
 
 \bibitem[U.S.~Geological Survey(2007a)]{peakfq}
-\lastname{U.S.~Geological Survey}, 2007a, PeakFQ---Flood frequency analysis based on Bulletin 17B: U.S.~Geological Survey, Water Resources Applications Software, Reston, VA., \surl{http://water.usgs.gov/software/peakfq.html}
+\lastname{U.S.~Geological Survey}, 2007a, PeakFQ---Flood frequency analysis based on Bulletin 17B: U.S.~Geological Survey, Water Resources Applications Software, Reston, VA., \surl{https://water.usgs.gov/software/peakfq.html}
 
 \bibitem[U.S.~Geological Survey(2007b)]{swstat}
-\lastname{U.S.~Geological Survey}, 2007b, SWSTAT---Surface-water statistics: U.S.~Geological Survey, Water Resources Applications Software, Reston, VA., \surl{http://water.usgs.gov/software/swstat.html}
+\lastname{U.S.~Geological Survey}, 2007b, SWSTAT---Surface-water statistics: U.S.~Geological Survey, Water Resources Applications Software, Reston, VA., \surl{https://water.usgs.gov/software/swstat.html}
 
 \bibitem[U.S.~Water Resources Council(1981)]{17B}
-\lastname{U.S.~Water Resources Council}, 1981, Guidelines for determining flood flow frequency: U.S.~Water Resources Council, Bulletin 17B, Washington, D.C., variously paged. 
+\lastname{U.S.~Water Resources Council}, 1981, Guidelines for determining flood flow frequency: U.S.~Water Resources Council, Bulletin 17B, Washington, D.C., variously paged.
 
 \bibitem[van\thinspace Nooijen and Kolechkina(2010a)]{vanNooijenKolechkina2010a}
 \lastname{van\thinspace Nooijen}, R.R.P., and \lastname{Kolechkina}, A.G., 2010a, A comparison of fitting methods and tests for several distributions on computer generated samples: Advances in Statistical Hydrology, International Workshop, May 22--25, 2010, Taormina, Italy, 10~p.
@@ -571,7 +571,7 @@ Granted to the public domain, \textit{see} \surl{http://www.Rpad.org} for the so
 
 
 \bibitem[Venables and others(2008)]{Rintro}
-\lastname{Venables}, W.N., \lastname{Smith}, D.M., and the \lastname{R Development Core Team}, 2008, An introduction to R; Notes on R---A programming environment for data analysis and graphics: version~2.7.2 (2008-08-25), ISBN~3--900051--12--7, 94~p., \surl{http://www.R-project.org}, \\ PDF file \texttt{\small R-intro.pdf}
+\lastname{Venables}, W.N., \lastname{Smith}, D.M., and the \lastname{R Development Core Team}, 2008, An introduction to R; Notes on R---A programming environment for data analysis and graphics: version~2.7.2 (2008-08-25), ISBN~3--900051--12--7, 94~p., \surl{https://www.R-project.org}, \\ PDF file \texttt{\small R-intro.pdf}
 
 \bibitem[Verzani(2005)]{Verzani}
 \lastname{Verzani}, J., 2005, Using R for introductory statistics: Boca Raton, Florida, Chapman and \mbox{Hall/CRC}, ISBN~1--58488--4509, 414~p.
@@ -580,13 +580,13 @@ Granted to the public domain, \textit{see} \surl{http://www.Rpad.org} for the so
 \lastname{Vogel}, R.M., 1986, The probability plot correlation coefficient test for the normal, lognormal, and Gumbel distributional hypotheses: Water Resources Research, v.~22, no.~4, \ppages~587--590.
 
 \bibitem[Vogel(1995)]{Vogel1995}
-\lastname{Vogel}, R.M., 1995, Recent advances and themes in hydrology: Reviews of Geophysics, v.~33, supplement, \surl{http://www.agu.org/journals/rg/rg9504S/95RG00935/index.html}
+\lastname{Vogel}, R.M., 1995, Recent advances and themes in hydrology: Reviews of Geophysics, v.~33, supplement, \surl{https://www.agu.org/journals/rg/rg9504S/95RG00935/index.html}
 
 \bibitem[Vogel and others(2008)]{VogelHosking2008}
 \lastname{Vogel}, R.M., \lastname{Hosking}, J.R.M., \lastname{Elphick}, C.S., \lastname{Roberts}, D.L., and \lastname{Reed}, J.M., 2008, Goodness of fit of probability distributions for sightings as species approach extinction: Bulletin of Mathematical Biology, v.~71, no.~3, \ppages~701--719.
 
 \bibitem[Vogel and Fennessey(1993)]{VF1993}
-\lastname{Vogel}, R.M., and \lastname{Fennessey}, N.M., 1993, \mbox{L\thinspace moment} diagrams should replace product moment diagrams: Water Resources Research, v.~29, no.~6, \ppages~1745--1752. 
+\lastname{Vogel}, R.M., and \lastname{Fennessey}, N.M., 1993, \mbox{L\thinspace moment} diagrams should replace product moment diagrams: Water Resources Research, v.~29, no.~6, \ppages~1745--1752.
 
 \bibitem[Walker(1940)]{Walker1940}
 \lastname{Walker}, H.M., 1940, Degrees of freedom: Journal of Educational Psychology, v.~31, \ppages~253--269.
