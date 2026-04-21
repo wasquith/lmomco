@@ -2,11 +2,11 @@ Package: lmomco
 Type: Package
 Title: L-Moments, Censored L-Moments, Trimmed L-Moments,
        L-Comoments, and Many Distributions
-Version: 2.5.3
+Version: 2.5.5
 Depends: R (>= 3.5.0), utils
 Imports: goftest, Lmoments, MASS
 Suggests: copBasic
-Date: 2025-09-21
+Date: 2026-04-20
 Authors@R: person(given = "William",
                   family = "Asquith",
                   role = c("aut", "cre"),
@@ -31,6 +31,6 @@ Description: Extensive functions for Lmoments (LMs) and probability-weighted mom
 Maintainer: William Asquith <william.asquith@ttu.edu>
 Repository: CRAN
 License: GPL
-URL: https://www.amazon.com/dp/1463508417/
+URL: https://www.amazon.com/dp/1463508417
 NeedsCompilation: no
 LazyData: true
