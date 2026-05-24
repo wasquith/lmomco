@@ -4,7 +4,7 @@
 \description{
 This function estimates the L-moments of the Normal distribution given the parameters (\eqn{\mu} and \eqn{\sigma}) from \code{\link{parnor}}. The L-moments in terms of the parameters are
 \eqn{\lambda_1 = \mu},
-\eqn{\lambda_2 = \sigma / \sqrt{pi}},
+\eqn{\lambda_2 = \sigma / \sqrt{\pi}},
 \eqn{\tau_3 = 0},
 \eqn{\tau_4 = 0.122602}, and
 \eqn{\tau_5 = 0}.
