@@ -8,7 +8,7 @@ Plot the Tau4-Tau6 L-moment ratio diagram showing trajectories of \eqn{\tau_4} a
 plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
              noaep4=FALSE,  nogld_byt5opt=TRUE, nopdq4=FALSE,  nost3=FALSE,
              nosymgdd=TRUE, nosymstable=FALSE,  notukey=FALSE,
-             nocau=TRUE, nolap=TRUE,  nonor=FALSE, nosla=TRUE,
+             nocau=TRUE, nolap=FALSE,  nonor=FALSE, nosla=TRUE,
              trucate.tau4.to.gtzero=TRUE,
              xlab="L-kurtosis (Tau4), dimensionless",
              ylab="Sixth L-moment ratio (Tau6), dimensionless",
