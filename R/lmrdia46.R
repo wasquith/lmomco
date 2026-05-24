@@ -1,6 +1,9 @@
 "lmrdia46" <- function(usrtrim=FALSE) {
    tau46list <- get("tau46list", envir=.lmomcohash)
 
+   lap <- data.frame(tau4=17/72, tau6=31/360)
+   tau46list$lap <- lap
+
    #cau <- matrix(nrow = 1, ncol = 2)
    #cau[1,] <- c(0.34280842, 0.20274358) # see lmomcau.Rd :: Examples
    cau <- data.frame(tau4=0.34280842, tau6=0.20274358)
@@ -10,6 +13,7 @@
    #sla[1,] <- c(0.30420472, 0.18900723) # see lmomsla.Rd :: Examples
    sla <- data.frame(tau4=0.30420472, tau6=0.18900723)
    tau46list$sla <- sla
+
 
    # Gamma Difference Distribution
    tau4 <- c(0.1226017195408909, 0.1227, 0.123, 0.125, seq(0.13, 1, by=0.01))

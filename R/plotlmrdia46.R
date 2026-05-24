@@ -9,7 +9,7 @@ function(lmr=NULL,
       nosymgdd=TRUE,
       nosymstable=FALSE,
       notukey=FALSE,
-      nocau=TRUE, nonor=FALSE, nosla=TRUE,
+      nocau=TRUE, nolap=TRUE, nonor=FALSE, nosla=TRUE,
       trucate.tau4.to.gtzero=TRUE,
          xlab="L-kurtosis (Tau4), dimensionless",
          ylab="Sixth L-moment ratio (Tau6), dimensionless",
@@ -121,6 +121,16 @@ function(lmr=NULL,
      }
    }
    if(! nopoints) {
+     if(! nolap) {
+        points(lmr$lap, pch=17, col="red", cex=1.4)
+        entryi <- entryi + 1
+        entries[entryi] <- ifelse(expand.names, "Laplace", "LAP")
+        Elwd[entryi] <- NA
+        Ecol[entryi] <- "red"
+        Epch[entryi] <- 17
+        Elty[entryi] <- NA
+        Ecex[entryi] <- 1.4
+     }
      if(! nonor) {
         points(lmr$nor, pch=15, col="red", cex=1.5)
         entryi <- entryi + 1
