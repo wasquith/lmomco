@@ -11,15 +11,13 @@ where \eqn{G} is dependent on the integral definining the L-moments in terms of 
 \deqn{H_1 = \frac{12}{7}\frac{(\omega-\psi)^4}{(\nu-\psi)^3} - 2\psi\frac{(\nu-\omega)^3}{(\nu-\psi)^3} + 2\psi\mbox{,}}
 \deqn{H_2 = \frac{4}{5}\frac{(5\nu-6\omega+\psi)(\omega-\psi)^2}{(\nu-\psi)^2}\mbox{, and}}
 \deqn{J = -\frac{1}{15}\biggl[\frac{3(\nu-\omega)^2}{(\psi-\nu)} + 7(\nu+\omega) + 16\psi\biggl]\mbox{.}}
-The higher L-moments are even more ponderous and simpler expressions for the L-moment ratios appear elusive. Bounds for \eqn{\tau_3} and \eqn{\tau_4} are \eqn{|\tau_3| \le 0.14285710} and \eqn{0.04757138 < \tau_4 < 0.09013605}. An approximation for \eqn{\tau_4} is
-\deqn{\tau_4 = 0.09012180 - 1.777361\tau_3^2 - 17.89864\tau_3^4 + 920.4924\tau_3^6 - 37793.50\tau_3^8 \mbox{,}}
-where the residual standard error is \eqn{{<}1.750\times 10^{-5}} and the absolute value of the maximum residual is \eqn{<9.338\times 10^{-5}}. The L-moments of the Symmetrical Triangular distribution for \eqn{\tau_3 = 0} are considered by Nagaraja (2013) and therein for a symmetric triangular distribution having \eqn{\lambda_1 = 0.5} then \eqn{\lambda_4 = 0.0105} and \eqn{\tau_4 = 0.09}. These L-kurtosis values agree with results of this function that are based on the \code{\link{theoLmoms.max.ostat}} function. The 4th and 5th L-moments \eqn{\lambda_4} and \eqn{\lambda_5}, respectively, are computed using expectations of order statistic maxima (\code{\link{expect.max.ostat}}) and are defined (Asquith, 2011, p. 95) as
-\deqn{\lambda_4 = 5\mathrm{E}[X_{4:4}] - 10\mathrm{E}[X_{3:3}] +  6\mathrm{E}[X_{2:2}] - \mathrm{E}[X_{1:1}]}
-and
-\deqn{\lambda_5 = 14\mathrm{E}[X_{5:5}] - 35\mathrm{E}[X_{4:4}] + 30\mathrm{E}[X_{3:3}] - 10\mathrm{E}[X_{2:2}] + \mathrm{E}[X_{1:1}]\mbox{.}}
-These expressions are solved using the \code{\link{expect.max.ostat}} function to compute the \eqn{\mathrm{E}[X_{r:r}]}.
+The higher L-moments are even more ponderous and simple expressions for the L-moment ratios appear elusive.
 
-For the symmetrical case of \eqn{\omega = (\psi + \nu)/2}, then 
+
+The L-moments of the Symmetrical Triangular distribution for \eqn{\tau_3 = 0} are considered by Nagaraja (2013) and therein for a symmetric triangular distribution having \eqn{\lambda_1 = 0.5} then \eqn{\lambda_4 = 0.0105} and \eqn{\tau_4 = 0.09}. These L-kurtosis values agree with results of this function that are based on the \code{\link{theoLmoms.max.ostat}} function.
+
+
+For the symmetrical case of \eqn{\omega = (\psi + \nu)/2}, then
 \deqn{\lambda_1 = \frac{(\nu+\psi)}{2}\mbox{\ and}}
 \deqn{\lambda_2 = \frac{7}{60}\biggl[\psi - \nu\biggr]\mbox{,}}
 which might be useful for initial parameter estimation through
@@ -27,12 +25,11 @@ which might be useful for initial parameter estimation through
 \deqn{\nu  = \lambda_1 - \frac{30}{7}\lambda_2 \mbox{.}}
 }
 \usage{
-lmomtri(para, paracheck=TRUE, nmom=c("3", "5"))
+lmomtri(para, paracheck=TRUE)
 }
 \arguments{
   \item{para}{The parameters of the distribution.}
   \item{paracheck}{A logical controlling whether the parameters and checked for validity. Overriding of this check might help in numerical optimization of parameters for modes near either the minimum or maximum. The argument here makes code base within \code{\link{partri}} a little shorter.}
-  \item{nmom}{The L-moments greater the \eqn{r > 3} require numerical integration using the expectations of the maxima order statistics of the fitted distribution. If this argument is set to \code{"3"} then executation of \code{lmomtri} is stopped at \eqn{r = 3} and the first three L-moments returned, otherwise the 4th and 5th L-moments are computed.}
 }
 \value{
   An \R \code{list} is returned.
@@ -44,21 +41,33 @@ lmomtri(para, paracheck=TRUE, nmom=c("3", "5"))
   \item{trim}{Level of symmetrical trimming used in the computation, which is \code{0}.}
   \item{leftrim}{Level of left-tail trimming used in the computation, which is \code{NULL}.}
   \item{rightrim}{Level of right-tail trimming used in the computation, which is \code{NULL}.}
-  \item{E33err}{A percent error between the expectation of the \eqn{X_{3:3}} order statistic by analytical expression versus a theoretical by numerical integration using the \cr \code{\link{expect.max.ostat}} function. This will be \code{NA} if \code{nmom == "3"}.}
+  \item{tau3poly}{A cross check on the polynomial approximation scheme, and \code{tau3poly} is \eqn{\tau_3} from the polynomial and not the direct solution and not used for the \code{ratios[3]}.}
   \item{source}{An attribute identifying the computational
 source of the L-moments: \dQuote{lmomtri}.}
 }
 \note{
-The expression for \eqn{\tau_4} in terms of \eqn{\tau_3} is
+Study of some simulation output of \code{inst/newcoes/makelmomtri.R}, bounds for \eqn{\tau_3} and \eqn{\tau_4} are \eqn{|\tau_3| \le 0.14285717} or \eqn{\tau_3 = 1/7} (numerically at tolerance 1E-7) and \eqn{1/21 < \tau_4 < 233 / 2585} (numerically at tolerances 1E-7). An approximation for \eqn{\tau_4} is
+
+\deqn{\tau_4 = 0.090128216 - 1.7893336\tau_3^2 - 14.486666\tau_3^4 + 619.08286\tau_3^6 - 29658.04718201972\tau_3^8 \mbox{,}}
+
+where the residual standard error is \eqn{{<}1.750\times 10^{-5}} and the absolute value of the maximum residual is \eqn{<9.338\times 10^{-5}}. Lastly, an expression for \eqn{\tau_4} in terms of \eqn{\tau_3} by \code{\link{theoLmoms}} numerical integration is
 \preformatted{
   "tau4tri" <- function(t3) {
-     t3[t3 < -0.14285710 | t3 >  0.14285710] <- NA
-     b <- 0.09012180
-     a <- c(0, -1.777361, 0, -17.89864, 0,  920.4924, 0, -37793.50)
+     t3[t3 < -0.1428571650715543 | t3 >  0.1428571650715543] <- NA
+     b <- 9.012821605998006e-02
+     a <- c(0, -1.789333565397665e+00, 0,
+               -1.448666575025029e+01, 0,
+               66.190828635274557e+02, 0, -2.965804718201972e+04)
      t4 <- b + a[2]*t3^2 + a[4]*t3^4 + a[6]*t3^6 + a[8]*t3^8
      return(t4)
   }
 }
+
+\bold{Deprecated May 2026 in favor of built-in polynomial approximations}---The 4th and 5th L-moments \eqn{\lambda_4} and \eqn{\lambda_5}, respectively, are computed using expectations of order statistic maxima\cr (\code{\link{expect.max.ostat}}) and are defined (Asquith, 2011, p. 95) as
+\deqn{\lambda_4 = 5\mathrm{E}[X_{4:4}] - 10\mathrm{E}[X_{3:3}] +  6\mathrm{E}[X_{2:2}] - \mathrm{E}[X_{1:1}]}
+and
+\deqn{\lambda_5 = 14\mathrm{E}[X_{5:5}] - 35\mathrm{E}[X_{4:4}] + 30\mathrm{E}[X_{3:3}] - 10\mathrm{E}[X_{2:2}] + \mathrm{E}[X_{1:1}]\mbox{.}}
+These expressions are solved using the \code{\link{expect.max.ostat}} function to compute the \eqn{\mathrm{E}[X_{r:r}]}. The historical logic is retained in \code{lmomtri} but is below the \code{return()}.
 }
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
@@ -68,36 +77,57 @@ Nagaraja, H.N., 2013, Moments of order statistics and L-moments for the symmetri
 \author{W.H. Asquith}
 \seealso{\code{\link{partri}}, \code{\link{cdftri}}, \code{\link{pdftri}}, \code{\link{quatri}} }
 \examples{
-lmr <- lmoms(c(46, 70, 59, 36, 71, 48, 46, 63, 35, 52))
-lmr
-lmomtri(partri(lmr), nmom="5")
-
-par <- vec2par(c(-405, -390, -102), type="tri")
-lmomtri(par, nmom="5")$lambdas
-# -299           39.4495050    5.5670228    1.9317914    0.8007511
-theoLmoms.max.ostat(para=par, qua=quatri, nmom=5)$lambdas
-# -299.0000126   39.4494885    5.5670486    1.9318732    0.8002989
-# The -299 is the correct by exact solution as are 39.4495050 and 5.5670228, the 4th and
-# 5th L-moments diverge from theoLmoms.max.ostat() because the exact solutions and not
-# numerical integration of the quantile function was used for E11, E22, and E33.
-# So although E44 and E55 come from expect.max.ostat() within both lmomtri() and
-# theoLmoms.max.ostat(), the Lambda4 and Lambda5 are not the same because the E11, E22,
-# and E33 values are different.
+lmr <- lmoms(c(46, 70, 59, 36, 48, 46, 63, 35, 52))
+print(                lmr)
+print( lmomtri(partri(lmr)) )
 
 \dontrun{
-# At extreme limit of Tau3 for the triangular distribution, L-moment ratio diagram
-# shows convergence to the trajectory of the Generalized Pareto distribution.
-"tau4tri" <- function(t3) { t3[t3 < -0.14285710 | t3 >  0.14285710] <- NA
-   b <- 0.09012180; a <- c(0, -1.777361, 0, -17.89864, 0,  920.4924, 0, -37793.50)
-   t4 <- b + a[2]*t3^2 + a[4]*t3^4 + a[6]*t3^6 + a[8]*t3^8; return(t4)
-}
-F <- seq(0,1, by=0.001)
-lmr  <- vec2lmom(c(10,9,0.142857, tau4tri(0.142857)))
-parA <- partri(lmr); parB <- pargpa(lmr)
-xA <- qlmomco(F,  parA); xB <- qlmomco(F, parB); x <- sort(unique(c(xA,xB)))
-plot(x,  pdftri(x,parA), type="l", col=8, lwd=4) # Compare Asym. Tri. to 
-lines(x, pdfgpa(x,parB),           col=2)        # Gen. Pareto
-}
+  par <- vec2par(c(-405, -390, -102), type="tri")
+  lmomtri(par)$lambdas
+  # -299.0000000   39.4495050    5.5670228    1.9317517    0.8007754    0.5057529
+  theoLmoms.max.ostat(para=par, qua=quatri, nmom=6)$lambdas
+  # -299.0000126   39.4494885    5.5670486    1.9318732    0.8002989    0.5070410
+  # The -299 is the correct by exact solution as are 39.4495050 and 5.5670228, the
+  # 4-6th L-moments slightly diverge from theoLmoms.max.ostat() and its numerical
+  # integration relative the theoLmoms() used to form basis on which the built-in
+  # polynomial expressions for the 3-6 Lmoment ratios were made. }
+
+\dontrun{
+   # At extreme limit of Tau3 for the triangular distribution, L-moment ratio diagram
+   # shows convergence to the trajectory of the Generalized Pareto distribution.
+  FF   <- seq(0, 1, by=0.001)
+  lmr  <- vec2lmom( c(10, 9, 1/7, 233 / 2585) )
+  parA <- partri(lmr); parB <- pargpa(lmr)
+  xA   <- qlmomco(FF,  parA); xB <- qlmomco(FF, parB); x <- sort(unique(c(xA, xB)))
+  plot(x,  pdftri(x, parA), type="l", col=8, lwd=4) # Compare Asym. Tri. to
+  lines(x, pdfgpa(x, parB),           col=2)        # Gen. Pareto }
+
+\dontrun{
+  # Alternative view of the higher L-moment ratios for the triangular distribution.
+  df <- NULL
+  for(i in seq_len(2000)) {
+    l <- -runif(1, min=0, max=1000); r <- runif(1, min=0, max=1000)
+    lmr <- theoLmoms(vec2par(c(l,0, r), type="tri"), nmom=6, subdivisions=200)
+    t3 <- lmr$ratios[3]; t4 <- lmr$ratios[4]; t5 <- lmr$ratios[5]; t6 <- lmr$ratios[6]
+    df <- rbind(df, data.frame(l=l, r=r, rho=abs(l/r), t3=t3, t4=t4, t5=t5, t6=t6))
+  }
+  df <- df[order(df$t3),]
+
+  rho <- 10^seq(-3, 3, by=0.01)
+  t3x <- approx(log10(df$rho), df$t3, xout=log10(rho), rule=2)$y
+  plot(rho, t3x, log="x", type="l")
+  t4x <- approx(log10(df$rho), df$t4, xout=log10(rho), rule=2)$y
+  plot(rho, t4x, log="x", type="l")
+  t5x <- approx(log10(df$rho), df$t5, xout=log10(rho), rule=2)$y
+  plot(rho, t5x, log="x", type="l")
+  t6x <- approx(log10(df$rho), df$t6, xout=log10(rho), rule=2)$y
+  plot(rho, t6x, log="x", type="l")
+
+  dfo <- data.frame(rho, t3=t3x, t4=t4x, t5=t5x, t6=t6x)
+  t3s <- unique(c(seq(min(dfo$t3), max(dfo$t3), by=0.001), max(dfo$t3)))
+  t4s <- approx(dfo$t3, dfo$t4, xout=t3s, rule=2)$y
+  plotlmrdia(lmrdia(), xlim=c(-0.2, .2), ylim=c(0,0.2))
+  lines(t3s, t4s) # }
 }
 \keyword{L-moment (distribution)}
 \keyword{Distribution: Asymmetric Triangular}
