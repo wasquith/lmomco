@@ -1,5 +1,5 @@
 "partri" <-
-function(lmom,checklmom=TRUE,...) {
+function(lmom, checklmom=TRUE, ...) {
 
     if(length(lmom$L1) == 1) { # convert to named L-moments
       lmom <- lmorph(lmom)     # nondestructive conversion!
@@ -10,7 +10,7 @@ function(lmom,checklmom=TRUE,...) {
     }
 
     para <- rep(NA,3)
-    names(para) <- c("min","mode","max")
+    names(para) <- c("min", "mode", "max")
 
     S  <- 30/7
     L1 <- lmom$lambdas[1]
@@ -21,8 +21,9 @@ function(lmom,checklmom=TRUE,...) {
 
     EPS <- 1E-7
     maxTau3 <- 0.14285710
-    #print(T3)
-    #print(T3+EPS)
+    maxTau3 <- 0.1428571650715543 # from a mean(min,max) from inst/newcoes/makelmomtri.R
+    #print(T3, 16)
+    #print(T3+EPS, 16)
     if(T3+EPS < -maxTau3 | T3-EPS > maxTau3) {
        warning("abs(L-skew) > ",maxTau3," and is numerically incompatible with the distribution")
        return(list(type = 'tri', para=para, obj.val="abs(Tau3) too big", source="partri"))
@@ -37,10 +38,19 @@ function(lmom,checklmom=TRUE,...) {
 
     "afunc" <- function(par) {
        z <- list(para=par, type="tri")
+       #print(z)
        lmr <- lmomtri(z, paracheck=FALSE)
-       err <- ((lmr$lambdas[1] - L1)/L1)^2 +
-              ((lmr$lambdas[2] - L2)/L2)^2 +
-              ((lmr$ratios[3]  - T3)   )^2
+       #print(c(L1, L2, T3))
+       #print(lmr)
+       #print((lmr$lambdas[1] - L1)^2)
+       #print((lmr$lambdas[2] - L2)^2)
+       #print((lmr$ratios[3] - T3)^2)
+       #print((lmr$tau3poly - T3)^2)
+       err <- ((lmr$lambdas[1] - L1))^2 +
+              ((lmr$lambdas[2] - L2))^2 +
+              ((lmr$ratios[3]  - T3))^2 +
+              ((lmr$tau3poly   - T3))^2
+       #print(err)
        return(err)
     }
 
