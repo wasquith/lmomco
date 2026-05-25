@@ -26,7 +26,7 @@ quatri(f, para, paracheck=TRUE)
 \author{W.H. Asquith}
 \seealso{\code{\link{cdftri}}, \code{\link{pdftri}}, \code{\link{lmomtri}}, \code{\link{partri}}}
 \examples{
-  lmr <- lmoms(c(46, 70, 59, 36, 71, 48, 46, 63, 35, 52))
+  lmr <- lmoms(c(46, 70, 59, 36, 48, 46, 63, 35, 52))
   quatri(0.5,partri(lmr))
 }
 \keyword{distribution}
