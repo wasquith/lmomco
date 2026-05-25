@@ -24,8 +24,8 @@ cdftri(x, para)
 \author{W.H. Asquith}
 \seealso{\code{\link{pdftri}}, \code{\link{quatri}}, \code{\link{lmomtri}}, \code{\link{partri}}}
 \examples{
-  lmr <- lmoms(c(46, 70, 59, 36, 71, 48, 46, 63, 35, 52))
-  cdftri(50,partri(lmr))
+  lmr <- lmoms(c(46, 70, 59, 36, 48, 46, 63, 35, 52))
+  cdftri(50, partri(lmr))
 }
 \keyword{distribution}
 \keyword{cumulative distribution function}
