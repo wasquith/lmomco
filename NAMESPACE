@@ -3,7 +3,7 @@ importFrom("graphics", "Axis", "arrows", "axis", "axTicks", "legend", "lines", "
            "par", "plot", "points", "polygon", "text")
 importFrom("stats", "approx", "binomial", "coefficients", "complete.cases",
            "cov", "dcauchy", "dexp", "dgamma", "dnorm", "dt", "glm",
-           "integrate", "median", "optim", "optimize",
+           "integrate", "median", "optim", "optimize", "poly",
            "pbeta", "pcauchy", "pchisq", "pexp", "pgamma", "pnorm", "pt",
            "qbeta", "qcauchy", "qexp", "qf", "qgamma", "qnorm", "qt",
            "quantile", "runif",
