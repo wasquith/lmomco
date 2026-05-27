@@ -1,6 +1,24 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
+Changes in version 2.5.5 (2026-06-01)
+-  Mathematical correction in lmomlap.Rd for Tau4 but correct in lmomlap.R.
+-  Expanded lmomlap.Rd to demonstrate Hosking (1986) integer ratios in parts of
+     the algorithm for computation of the distribution parameters and added
+     minvar argument to parlap() for more flexibility.
+-  Added Laplace distribution to lmrdia46() and plotlmrdia46().
+-  LaTeX correction in lmomnor.Rd.
+-  Overhauled the higher L-moment ratios and extended depth for the triangular
+     distribution in lmomtri() with changes in the documentation and diary of
+     computations for polynomial construction retained in script
+     inst/newcoes/makelmomtri.R.
+-  Moved the example sample for are.partri.valid.Rd, cdftri.Rd, quatri.Rd as
+     part of moving L-skew away from the theoretical boundary as part of same
+     change in lmomtri.Rd as part of the lmomtri.Rd overhaul.
+-  NAMESPACE received an import from stats::poly() to support the polynomials
+     inside lmomtri().
+
+
 Changes in version 2.5.5 (2026-04-20)
 -  Grammar fixes in lmomgdd.Rd, bibliography format change lmomco-package.Rd.
 -  Extension of lmrdia.R/Rd and lmrdia46.R/Rd with new argument usrtrim that
