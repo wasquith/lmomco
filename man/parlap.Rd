@@ -4,11 +4,9 @@
 \description{
 This function computes the parameters of the Laplace distribution given the L-moments of the data in an L-moment object such as that returned by \code{\link{lmoms}}. Relations between distribution parameters and sample L-moments are simple, but there are two methods to discuss.
 
-First, basic theoretical formula of L-moment are simple for the Laplace and only use \eqn{\lambda_1} and \eqn{\lambda_2}, but these are used if \code{minvar=FALSE}:
-\deqn{\xi    = \lambda_1\mbox{\ and\ } \alpha = 4\lambda_2/3\mbox{.}}
-Hosking (1986, p. 56) reports these estimators as inefficient, and more efficient estimators can be obtained.
-
-Second, Hosking (1986, p. 57) provides minimum-variance unbiased linear estimators with the best combination being shown below, and these are suggested for estimation the default implemented in \pkg{lmomco}. This minimum variance method jointly uses \eqn{\lambda_1, \lambda_2, \lambda_3}, and \eqn{\lambda_4}, and these are minimum variance unbiased estimators by Hosking (1986). The mathematical expressions are
+Basic theoretical formula of L-moment are simple for the Laplace and only use \eqn{\lambda_1} and \eqn{\lambda_2}, but these are used if \code{minvar=FALSE}:
+\deqn{\xi  = \lambda_1\mbox{\ and\ } \alpha = 4\lambda_2/3\mbox{.}}
+Hosking (1986, p. 56) reports these estimators as inefficient, and more efficient estimators can be obtained. Hosking (1986, p. 57) provides minimum-variance unbiased linear estimators with the best combination being shown below, and these are suggested for estimation the default implemented in \pkg{lmomco}. This minimum variance method jointly uses \eqn{\lambda_1, \lambda_2, \lambda_3}, and \eqn{\lambda_4}, and these are minimum variance unbiased estimators by Hosking (1986). The mathematical expressions are
 \deqn{\xi = \lambda_1 - 50/31\times\lambda_3 \mbox{\ and}}
 \deqn{\alpha = 1.4741\lambda_2 - 0.5960\lambda_4 = 1309/888\times\lambda_2 - 149/250\times\lambda_4\mbox{.}}
 Astute readers will notice a fascinating aspect with these estimators. Consider that the distribution is symmetrical and therefore \eqn{\lambda_3 = 0 \equiv \lambda_3/\lambda_2 = \tau_3 = 0}, yet for a minimum-variance estimator, the \eqn{\lambda_3} resides within the estimation scheme.
@@ -58,40 +56,40 @@ lmr <- lmoms(rnorm(20))
 parlap(lmr)
 
 \dontrun{
-  # Hosking (1986) shows that minimum variance estimators are readily
-  # used via L-moments on the Laplace distribution.
-  U <- 1; A <- 1; lap <- vec2par(c(1, 1), type="lap")
-  nsim <- 50000; nsam <- c(5, 30, 50)
-  for(n in nsam) {
-    u1 <- u2 <- a1 <- a2 <- vector(mode="numeric", length=nsim)
+  # Hosking (1986) shows by theory minimum variance estimators are preferred.
+  # This is a general conclusion to be drawn from the simulations shown below.
+  # plotlmrdia(lmrdia()) # commented out for more speed
+  X <- 1; A <- 1; lap <- vec2par(c(1, 1), type="lap")
+  nsim <- 50000; nsam <- c(10, 30)
+  for(n in nsam) { set.seed(1)
+    x1 <- x2 <- a1 <- a2 <- vector(mode="numeric", length=nsim)
     for(i in seq_len(nsim)) {
-      lmr   <- lmoms(rlmomco(n, para=lap), no.stop=TRUE)
-      par1  <- parlap(lmr, minvar=TRUE )$para # the minvar below
-      par2  <- parlap(lmr, minvar=FALSE)$para # the direct below
-      u1[i] <- par1[1]; a1[i] <- par1[2]
-      u2[i] <- par2[1]; a2[i] <- par2[2]
+      q <- rlmomco(n, para=lap); lmr <- lmoms(q, no.stop=TRUE)
+      points(lmr$ratios[3], lmr$ratios[4], pch=16, col=grey(0,0.2), cex=0.4)
+      # Note, in very small samples, we can get situations of Tau4 beyond the
+      # theoretical limits. In the setup here, we accept the Tau4 as is and
+      # do not snap it to the boundary. For n=10, we see very few and for n=30,
+      # see no such situations. Uncomment the plotting operations to see more.
+      par1  <- parlap(lmr, checklmom=FALSE, minvar=TRUE )$para # minvar below
+      par2  <- parlap(lmr, checklmom=FALSE, minvar=FALSE)$para # direct below
+      x1[i] <- par1[1]; a1[i] <- par1[2]; x2[i] <- par2[1]; a2[i] <- par2[2]
     }
     message("n=", n)
-    message("minvar: Bias[u1]=", mean(U - u1), " and Var[u1]=", var(u1))
-    message("direct: Bias[u2]=", mean(U - u2), " and Var[u2]=", var(u2))
+    message("minvar: Bias[x1]=", mean(X - x1), " and Var[x1]=", var(x1))
+    message("direct: Bias[x2]=", mean(X - x2), " and Var[x2]=", var(x2))
     message("minvar: Bias[a1]=", mean(A - a1), " and Var[a1]=", var(a1))
     message("direct: Bias[a2]=", mean(A - a2), " and Var[a2]=", var(a2))
   }
-  # n=5
-  # minvar: Bias[u1]=+0.00386375015371170 and Var[u1]=0.357661731795881
-  # direct: Bias[u2]=+0.00560049550273044 and Var[u2]=0.400062259366783
-  # minvar: Bias[a1]=-0.00037914342008174 and Var[a1]=0.243574424687960
-  # direct: Bias[a2]=-0.00032851490958726 and Var[a2]=0.234478116729675
+  # n=10
+  # minvar: Bias[x1]=+0.00112636824968240 and Var[x1]=0.149853593366873
+  # direct: Bias[x2]=+0.00147737388905255 and Var[x2]=0.198993001247171
+  # minvar: Bias[a1]=+0.00025675625790722 and Var[a1]=0.106629132387976
+  # direct: Bias[a2]=-0.00011732500233820 and Var[a2]=0.108899468215813
   # n=30
-  # minvar: Bias[u1]=-0.00137763914162150 and Var[u1]=0.045735506455866
-  # direct: Bias[u2]=-0.00069032577185824 and Var[u2]=0.066210402905459
-  # minvar: Bias[a1]=0.000413407891428103 and Var[a1]=0.033904579056222
-  # direct: Bias[a2]=0.000201995978024753 and Var[a2]=0.034924875477396
-  # n=50
-  # minvar: Bias[u1]=-0.00020392075808535 and Var[u1]=0.027220946727397
-  # direct: Bias[u2]=-0.00041597093227831 and Var[u2]=0.040261174739697
-  # minvar: Bias[a1]=-0.00053784244653237 and Var[a1]=0.020364246247174
-  # direct: Bias[a2]=-0.00049308659560763 and Var[a2]=0.020926375838028 #}
+  # minvar: Bias[x1]=+0.00099647413073717 and Var[x1]=0.045870359664270
+  # direct: Bias[x2]=+0.00178495637700070 and Var[x2]=0.066410718497819
+  # minvar: Bias[a1]=+0.00074862540197578 and Var[a1]=0.033678344848655
+  # direct: Bias[a2]=+0.00079661893306864 and Var[a2]=0.034749047433539 #}
 }
 \keyword{distribution (parameters)}
 \keyword{Distribution: Laplace}
