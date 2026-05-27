@@ -1,5 +1,5 @@
 "parlap" <-
-function(lmom,checklmom=TRUE,...) {
+function(lmom, checklmom=TRUE, minvar=TRUE, ...) {
 
     para <- rep(NA,2)
     names(para) <- c("xi","alpha")
@@ -16,10 +16,16 @@ function(lmom,checklmom=TRUE,...) {
     L3 <- lmom$lambdas[3]
     L4 <- lmom$lambdas[4]
 
-    para[1] <- L1 - (50/31)*L3 # Hosking (1986), IBM RC12210 # 54860, p. 57.
-    para[2] <- 1.4741*L2 - 0.5960*L4
-
-    return(list(type = 'lap', para = para, source="parlap"))
+    if(minvar) {
+      para[1] <- L1 - (50/31)*L3 # Hosking (1986), IBM RC12210 # 54860, p. 57.
+      para[2] <- 1.4741*L2 - 0.5960*L4
+      txt <- ":minvar"
+    } else {
+      para[1] <- L1
+      para[2] <- 4/3 * L2
+      txt <- ""
+    }
+    return(list(type='lap', para=para, source=paste0("parlap",txt)))
 }
 
 
