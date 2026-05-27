@@ -5,6 +5,17 @@ ERRATA FOR FIRST EDITION OF THE FOLLOWING BOOK
        Independent Publishing Platform, 2nd printing, ISBN 978--146350841--8.
        http://www.amazon.com/dp/1463508417
 
+========== START ERRATA (post May    2026) ======
+
+Eq. 6.10: The term 1/(1-r) is incorrect and reverses sign. The correct and
+      confirmed by a revisitation to Jones (2004) is 1/(r-1), which then
+      becomes structurally similar to r-1 elsewhere. Discovered as part of
+      computation of the L-moments of a well-known CDF as the author was
+      studying conditional L-moments of a bivariate copula.
+
+==========  END ERRATA  (post May    2026) ======
+
+
 ========== START ERRATA (post April    2022) ======
 
 Eq. 8.106 is incorrect. The part written as [1-\kappa(2F-1)^2] needs to be
@@ -13,7 +24,7 @@ Eq. 8.106 is incorrect. The part written as [1-\kappa(2F-1)^2] needs to be
 Eq. 8.120 is incorrect. The ratio of 4/5 in both subequations needs to be
       5/4 during testing of implementation of the polynomial density-quantile4
       distribution and correct to Hosking (2007).
-# Both the above were discovered during April 2022 implementation of the 
+# Both the above were discovered during April 2022 implementation of the
 # PDQ3 and PDQ4 distributions. Corrections to the authors LaTeX sources done.
 
 P.170 Declaration that Kappa of the GEV is > -1 is incorrect. The Kappa can
@@ -30,7 +41,7 @@ p.xi: Preface incorrectly says that only one figure not generated from
            382--383).
   (This is not an errata per se, but represents slight clarification.)
 
-p.18: Added ahead of Section 2.1.1: 'Lastly, prodigious treatment of 
+p.18: Added ahead of Section 2.1.1: 'Lastly, prodigious treatment of
            distributional analysis is found in Karian and Dudewicz (2011).'
            and included Karian and Dudewicz (2011) in the References.
            (11/7/2013)
@@ -41,7 +52,7 @@ p.48: Added a 'Stedinger et al. (1993)' citation to closing paragraph of
   (This is not an errata per se, but represents a slight enhancement.)
 
 p.93: Added a 'Viglione (2010)' citation and minor restructuring of the
-           two paragraphs following the eq. for \tau_r = \lambda_r/\lambda_2, 
+           two paragraphs following the eq. for \tau_r = \lambda_r/\lambda_2,
            and included Viglione (2010) in the References. (11/7/2013)
   (This is not an errata per se, I was not aware of the paper until 2013.)
 
@@ -82,7 +93,7 @@ backcover: fixed misspelling of Wakeby in late June 2011
 p.3: accesssible --> accessible (09/03/2011)
 
 p.49: Added the incomplete beta function for contrast against the complete
-               beta function in eq. 3.10. Sorry, but equation numbers in 
+               beta function in eq. 3.10. Sorry, but equation numbers in
                the remainder of the chapter change by one. Minor changes
                in indexing beta function related topics. (2/18/2013)
 
