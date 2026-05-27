@@ -120,7 +120,9 @@ print( lmomtri(partri(lmr)) )
 
   dfo <- data.frame(rho, t3=t3x, t4=t4x, t5=t5x, t6=t6x)
   t3s <- unique(c(seq(min(dfo$t3), max(dfo$t3), by=0.001), max(dfo$t3)))
-  t4s <- approx(dfo$t3, dfo$t4, xout=t3s, rule=2)$y
+  suppressWarnings( t4s <- approx(dfo$t3, dfo$t4, xout=t3s, rule=2)$y )
+  # In regularize.values(x, y, ties, missing(ties), na.rm = na.rm) :
+  # collapsing to unique 'x' values
   plotlmrdia(lmrdia(), xlim=c(-0.2, .2), ylim=c(0,0.2))
   lines(t3s, t4s) # }
 }
