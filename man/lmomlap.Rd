@@ -63,6 +63,7 @@ print( str(          lmr  )  )
 print( str( lmomlap( para ) ))
 
 \dontrun{
+  para <- vec2par(c(0, 4), type="lap")
   q <- rlmomco(3000, para); lmr <- lmoms(q)
   parlap(lmr, minvar=TRUE )$para
   parlap(lmr, minvar=FALSE)$para # }
