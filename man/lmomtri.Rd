@@ -14,15 +14,10 @@ where \eqn{G} is dependent on the integral definining the L-moments in terms of 
 The higher L-moments are even more ponderous and simple expressions for the L-moment ratios appear elusive.
 
 
-The L-moments of the Symmetrical Triangular distribution for \eqn{\tau_3 = 0} are considered by Nagaraja (2013) and therein for a symmetric triangular distribution having \eqn{\lambda_1 = 0.5} then \eqn{\lambda_4 = 0.0105} and \eqn{\tau_4 = 0.09}. These L-kurtosis values agree with results of this function that are based on the \code{\link{theoLmoms.max.ostat}} function.
-
-
-For the symmetrical case of \eqn{\omega = (\psi + \nu)/2}, then
-\deqn{\lambda_1 = \frac{(\nu+\psi)}{2}\mbox{\ and}}
-\deqn{\lambda_2 = \frac{7}{60}\biggl[\psi - \nu\biggr]\mbox{,}}
+The L-moments of the Symmetrical Triangular distribution for \eqn{\tau_3 = 0} are considered by Nagaraja (2013) and therein for such a distribution having \eqn{\lambda_1 = 0.5} then \eqn{\lambda_4 = 0.0105} and \eqn{\tau_4 = 0.09}. These L-kurtosis values agree with results of this function that are based on the \code{\link{theoLmoms.max.ostat}} function. Continuing, for the symmetrical case of \eqn{\omega = (\psi + \nu)/2}, then
+\deqn{\lambda_1 = \frac{(\nu+\psi)}{2}\mbox{\ and\ } \lambda_2 = \frac{7}{60}\biggl[\psi - \nu\biggr]\mbox{,}}
 which might be useful for initial parameter estimation through
-\deqn{\psi = \lambda_1 + \frac{30}{7}\lambda_2 \mbox{\ and}}
-\deqn{\nu  = \lambda_1 - \frac{30}{7}\lambda_2 \mbox{.}}
+\deqn{\psi = \lambda_1 + \frac{30}{7}\lambda_2 \mbox{\ and\ } \nu  = \lambda_1 - \frac{30}{7}\lambda_2 \mbox{.}}
 }
 \usage{
 lmomtri(para, paracheck=TRUE)
@@ -41,7 +36,7 @@ lmomtri(para, paracheck=TRUE)
   \item{trim}{Level of symmetrical trimming used in the computation, which is \code{0}.}
   \item{leftrim}{Level of left-tail trimming used in the computation, which is \code{NULL}.}
   \item{rightrim}{Level of right-tail trimming used in the computation, which is \code{NULL}.}
-  \item{tau3poly}{A cross check on the polynomial approximation scheme, and \code{tau3poly} is \eqn{\tau_3} from the polynomial and not the direct solution and not used for the \code{ratios[3]}.}
+  \item{tau3poly}{A cross check on the polynomial approximation scheme, and \code{tau3poly} is \eqn{\tau_3} from the polynomial and not the direct solution show above, and \code{tau3poly} is not used to populate the \code{ratios[3]}.}
   \item{source}{An attribute identifying the computational
 source of the L-moments: \dQuote{lmomtri}.}
 }

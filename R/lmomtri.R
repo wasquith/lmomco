@@ -12,7 +12,7 @@ function(para, paracheck=TRUE) {
     MODE <- para$para[2]
     MAX  <- para$para[3]
     A <- (MAX-MIN); B <- (MODE-MIN); C <- (MAX-MODE)
-    ABS_LEFT_OVER_RIGHT <- abs(B/C)
+    ABS_LEFT_OVER_RIGHT <- abs(B/C) # as part of May 2026 changes
 
     L1 <- (MIN + MODE + MAX)/3
     L2 <- ((MIN-MODE)^2/(MAX-MIN) - (MIN+MODE) + 2*MAX)/15

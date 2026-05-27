@@ -48,8 +48,8 @@ function(lmom, checklmom=TRUE, ...) {
        #print((lmr$tau3poly - T3)^2)
        err <- ((lmr$lambdas[1] - L1))^2 +
               ((lmr$lambdas[2] - L2))^2 +
-              ((lmr$ratios[3]  - T3))^2 +
-              ((lmr$tau3poly   - T3))^2
+              ((lmr$ratios[3]  - T3))^2
+       # ((lmr$tau3poly   - T3))^2
        #print(err)
        return(err)
     }
