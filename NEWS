@@ -17,6 +17,7 @@ Changes in version 2.5.5 (2026-06-01)
      change in lmomtri.Rd as part of the lmomtri.Rd overhaul.
 -  NAMESPACE received an import from stats::poly() to support the polynomials
      inside lmomtri().
+-  Addition made to inst/ERRATA_FOR_ISBN9781463508418.txt related to CDF work.
 
 
 Changes in version 2.5.5 (2026-04-20)
