@@ -10,11 +10,11 @@ This function estimates the L-moments of the Laplace distribution given the para
 \eqn{\tau_5 = 0}, and
 \eqn{\tau_6 = 31/360}.
 
-For \eqn{r} odd and \eqn{r \ge 3}, \eqn{\lambda_r = 0}, and for \eqn{r} even and \eqn{r \ge 4}, the L-moments using the hypergeometric function \eqn{{}_2F_1()} (refer to the \pkg{hypergeo} package) are
+For \eqn{r} odd and \eqn{r \ge 3}, \eqn{\lambda_r = 0}, and for \eqn{r} even and \eqn{r \ge 2}, the L-moments using the \emph{hypergeometric function} \eqn{{}_2F_1()} (refer to the \pkg{hypergeo} package) are
 \deqn{\lambda_r = \frac{2\alpha}{r(r-1)}\bigl[1 - {}_2F_1(-r, r-1, 1, 1/2)\bigr]\mbox{,}}
 where \eqn{{}_2F_1(a, b, c, z)} is defined as
 \deqn{{}_2F_1(a, b, c, z) = \sum_{n=0}^\infty \frac{(a)_n(b)_n}{(c)_n}\frac{z^n}{n!}\mbox{,}}
-where \eqn{(x)_n} is the \emph{rising} Pochhammer symbol, which is defined by
+where \eqn{(x)_n} is the \emph{rising factorial} (\emph{rising Pochhammer symbol}), which is defined by
 \deqn{(x)_n =  1 \mbox{\ for\ } n = 0\mbox{, and}}
 \deqn{(x)_n = x(x+1)\cdots(x+n-1) \mbox{\ for\ } n > 0\mbox{.}}
 }

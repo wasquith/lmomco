@@ -41,7 +41,7 @@ lmomtri(para, paracheck=TRUE)
 source of the L-moments: \dQuote{lmomtri}.}
 }
 \note{
-Study of some simulation output of \code{inst/newcoes/makelmomtri.R}, bounds for \eqn{\tau_3} and \eqn{\tau_4} are \eqn{|\tau_3| \le 0.14285717} or \eqn{\tau_3 = 1/7} (numerically at tolerance 1E-7) and \eqn{1/21 < \tau_4 < 233 / 2585} (numerically at tolerances 1E-7). An approximation for \eqn{\tau_4} is
+Study of some simulation output of \code{inst/newcoes/makelmomtri.R}, bounds for \eqn{\tau_3} and \eqn{\tau_4} are \eqn{|\tau_3| \le 0.14285717} or \eqn{\tau_3 = 1/7} (numerically at tolerance 1E-7) and \eqn{1/21 < \tau_4 < 233 / 2585} (numerically at tolerances 1E-7). An approximation for \eqn{\tau_4} as a function of \eqn{\tau_3} is
 
 \deqn{\tau_4 = 0.090128216 - 1.7893336\tau_3^2 - 14.486666\tau_3^4 + 619.08286\tau_3^6 - 29658.04718201972\tau_3^8 \mbox{,}}
 
@@ -62,7 +62,7 @@ where the residual standard error is \eqn{{<}1.750\times 10^{-5}} and the absolu
 \deqn{\lambda_4 = 5\mathrm{E}[X_{4:4}] - 10\mathrm{E}[X_{3:3}] +  6\mathrm{E}[X_{2:2}] - \mathrm{E}[X_{1:1}]}
 and
 \deqn{\lambda_5 = 14\mathrm{E}[X_{5:5}] - 35\mathrm{E}[X_{4:4}] + 30\mathrm{E}[X_{3:3}] - 10\mathrm{E}[X_{2:2}] + \mathrm{E}[X_{1:1}]\mbox{.}}
-These expressions are solved using the \code{\link{expect.max.ostat}} function to compute the \eqn{\mathrm{E}[X_{r:r}]}. The historical logic is retained in \code{lmomtri} but is below the \code{return()}.
+These expressions are solved using the \code{\link{expect.max.ostat}} function to compute the \eqn{\mathrm{E}[X_{r:r}]}. The historical logic is retained in \code{lmomtri} but is below the \code{return()} in the source code for \code{lmomtri()}.
 }
 \references{
 Asquith, W.H., 2011, Distributional analysis with L-moment statistics using the R environment for statistical computing: Createspace Independent Publishing Platform, ISBN 978--146350841--8.
