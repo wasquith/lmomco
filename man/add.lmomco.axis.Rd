@@ -12,7 +12,8 @@ add.lmomco.axis(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
                 otherside.type=c("NA", "RI", "SNV", "NPP"),
                 alt.lab=NA, alt.other.lab=NA, npp.as.aep=FALSE,
                 case=c("upper", "lower"),
-                NPP.control=NULL, RI.control=NULL, SNV.control=NULL, ...)
+                NPP.control=NULL, RI.control=NULL, SNV.control=NULL,
+                npp.digits=3, npp.line=3,  ...)
 }
 \arguments{
   \item{side}{The side of the plot (1=bottom, 2=left, 3=top, 4=right).}
@@ -27,6 +28,8 @@ add.lmomco.axis(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
   \item{NPP.control}{An optional \R \code{list} used to influence the NPP axis.}
   \item{RI.control}{An optional \R \code{list} used to influence the RI axis.}
   \item{SNV.control}{An optional \R \code{list} used to influence the SNV axis.}
+  \item{npp.digits}{A convenient way to pass rounding digits into the internally built \code{NPP.control} if null on the function call. The \code{npp.digits} is passed to \code{format(..., }\code{digits=npp.digits, }\code{nsmall=npp.digits)}; the user might need to adjust the digits down a couple of values as needed.}
+  \item{npp.line}{A convenient way to pass the line in \code{mtext} into the internally built \code{NPP.control} if null on the function call.}
    \item{...}{Additional arguments that are passed to the \R function \code{Axis}.}
 }
 \value{
@@ -80,7 +83,8 @@ add.log.axis(side=2,    tcl=+0.8*abs(par()$tcl),         two.sided=TRUE)
 add.log.axis(logs=c(1), tcl=-0.5*abs(par()$tcl), side=2, two.sided=TRUE)
 add.log.axis(logs=c(1), tcl=+1.3*abs(par()$tcl), side=2, two.sided=TRUE)
 add.log.axis(logs=1:8, side=2, make.labs=TRUE, las=1, label="QUANTILE")
-add.lmomco.axis(las=2, tcl=0.5, side.type="NPP", npp.as.aep=TRUE, case="lower")
+add.lmomco.axis(las=2, tcl=0.5, side.type="NPP", npp.as.aep=TRUE, case="lower",
+                npp.digits=2, npp.line=4)
 options(opts)
 par(mgp=c(3,1,0)) # restore defaults}
 }

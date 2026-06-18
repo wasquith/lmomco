@@ -2,7 +2,8 @@
 function(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
          side.type=c("NPP", "RI", "SNV"), otherside.type=c("NA", "RI", "SNV", "NPP"),
          alt.lab=NA, alt.other.lab=NA, npp.as.aep=FALSE, case=c("upper", "lower"),
-         NPP.control=NULL, RI.control=NULL, SNV.control=NULL, ...) {
+         NPP.control=NULL, RI.control=NULL, SNV.control=NULL,
+         npp.digits=3, npp.line=3, ...) {
    case <- match.arg(case)
    other.side <- switch(as.character(side), "1"=3, "2"=4, "3"=1, "4"=1)
 
@@ -46,13 +47,13 @@ function(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
                           other.label=the.other.label,
                           probs=my.nonexceeds(minors=TRUE),
                           probs.label=my.nonexceeds(minors=FALSE),
-                          digits=3, line=3, as.exceed=FALSE)
+                          digits=npp.digits, line=npp.line, as.exceed=FALSE)
    }
    if(is.null(RI.control)) {
       txt.ri <- ifelse(case == "upper", "RECURRENCE INTERVAL, IN YEARS", "Recurrence interval, in years")
       the.label <- ifelse(is.na(alt.lab), txt.ri, alt.lab)
       RI.control <- list(label=the.label,
-                         Tyear=c(2, 5, 10, 25, 50, 100, 200, 500), line=2)
+                         Tyear=c(2, 5, 10, 25, 50, 100, 200, 500, 1000), line=2)
    }
    if(is.null(SNV.control)) {
       txt.snv <- ifelse(case == "upper", "STANDARD NORMAL VARIATE", "Standard normal variate")
@@ -71,15 +72,53 @@ function(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
          the.true.NPP.lab <-     NPP.lab
       }
       qNPP <- qnorm(NPP); qNPP.lab <- qnorm(NPP.lab)
-      if(npp.as.aep) {
-        NPP.lab <- format(1-the.true.NPP.lab, nsmall=NPP.control$digits)
-      } else {
-        NPP.lab <- format(  the.true.NPP.lab, nsmall=NPP.control$digits)
+      #print(qNPP); print(qNPP.lab)
+      if(side == 1 | side == 3) {
+        qNPP     <- qNPP[qNPP         >= par()$usr[1]]
+        qNPP     <- qNPP[qNPP         <= par()$usr[2]]
+        qNPP.lab <- qNPP.lab[qNPP.lab >= par()$usr[1]]
+        qNPP.lab <- qNPP.lab[qNPP.lab <= par()$usr[2]]
+       # the.true.NPP.lab <- the.true.NPP.lab[the.true.NPP.lab >= par()$usr[1]]
+       # the.true.NPP.lab <- the.true.NPP.lab[the.true.NPP.lab <= par()$usr[2]]
       }
-      # By placing tcl last (after ...), its value will trump that potentially in ...
+      if(side == 2 | side == 4) {
+        qNPP     <- qNPP[    qNPP     >= par()$usr[3]]
+        qNPP     <- qNPP[    qNPP     <= par()$usr[4]]
+        qNPP.lab <- qNPP.lab[qNPP.lab >= par()$usr[3]]
+        qNPP.lab <- qNPP.lab[qNPP.lab <= par()$usr[4]]
+        #the.true.NPP.lab <- the.true.NPP.lab[the.true.NPP.lab >= par()$usr[3]]
+        #the.true.NPP.lab <- the.true.NPP.lab[the.true.NPP.lab <= par()$usr[4]]
+      }
+      # -------------------- handling of the reversal to AEP with some care to avoid unequal
+      # lengths of the elements passed to axis(), which happens at by lack of symmetry on the
+      # par()$usr edges
+      if(npp.as.aep) {
+        NPP.lab <- format(1-the.true.NPP.lab, digits=NPP.control$digits,
+                                               nsmall=NPP.control$digits)
+        me <- qnorm(1 - as.numeric(NPP.lab))
+      } else {
+        NPP.lab <- format(  the.true.NPP.lab, digits=NPP.control$digits,
+                                              nsmall=NPP.control$digits)
+        me <- qnorm(as.numeric(NPP.lab))
+      }
 
-      Axis(qNPP,     at=qNPP,     labels=NA,      side=side, ..., tcl=0.8*tcl)
-      Axis(qNPP.lab, at=qNPP.lab, labels=NPP.lab, side=side, ..., tcl=1.3*tcl)
+      if(side == 1 | side == 3) {
+        wnt <- par()$usr[1] <= me & me <= par()$usr[2]
+        NPP.lab <- NPP.lab[wnt]
+             me <-      me[wnt]
+      }
+      if(side == 2 | side == 4) {
+        wnt <- par()$usr[3] <= me & me <= par()$usr[4]
+        NPP.lab <- NPP.lab[wnt]
+             me <-      me[wnt]
+      }
+      axis(side, at=me,  labels=NPP.lab, ..., tcl=1.3*tcl)
+      axis(side, at=qNPP, labels=NA,     ..., tcl=0.8*tcl)
+
+      # By placing tcl last (after ...), its value will trump that potentially in ...
+      #print(qNPP); print(qNPP.lab); print(NPP.lab)
+      #Axis(qNPP,     at=qNPP,     labels=NA,      side=side, ..., tcl=0.8*tcl)
+      #Axis(qNPP.lab, at=qNPP.lab, labels=NPP.lab, side=side, ..., tcl=1.3*tcl)
       if(npp.as.aep) {
         mtext(NPP.control$other.label, line=NPP.control$line, side=side)
       } else {
@@ -98,6 +137,18 @@ function(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
 
    RIf <- function(side, other.side) {
       F <- 1 - 1/RI.control$Tyear; qF <- qnorm(F); labF <- RI.control$Tyear
+      if(side == 1 | side == 3) {
+        labF <- labF[qF >= par()$usr[1]]
+        labF <- labF[qF <= par()$usr[2]]
+        qF   <-   qF[qF >= par()$usr[1]]
+        qF   <-   qF[qF <= par()$usr[2]]
+      }
+      if(side == 2 | side == 4) {
+        labF <- labF[qF >= par()$usr[3]]
+        labF <- labF[qF <= par()$usr[4]]
+        qF   <-   qF[qF >= par()$usr[3]]
+        qF   <-   qF[qF <= par()$usr[4]]
+      }
       Axis(qF, at=qF, labels=labF, side=side, ...)
       if(twoside) {
          Axis(at=qF,  labels=NA, side=other.side, ...)
@@ -111,6 +162,14 @@ function(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
       if(is.null(SNV)) {
          warning("Poorly constructed SNV.control, trapping, and using alternative")
          SNV <- seq(-5, 5, by=0.5)
+      }
+      if(side == 1 | side == 3) {
+        SNV <- SNV[SNV >= par()$usr[1]]
+        SNV <- SNV[SNV <= par()$usr[2]]
+      }
+      if(side == 2 | side == 4) {
+        SNV <- SNV[SNV >= par()$usr[3]]
+        SNV <- SNV[SNV <= par()$usr[4]]
       }
       Axis(SNV, at=SNV, side=side, ...)
       mtext(SNV.control$label, line=SNV.control$line, side=side)
