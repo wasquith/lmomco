@@ -26,6 +26,16 @@ function(make.labs=FALSE, logs=c(2, 3, 4, 5, 6, 7, 8, 9), side=1,
       the.logs.in.cycle <- logs*10^(cycle)
       the.logs <- c(the.logs, the.logs.in.cycle)
    }
+   #if(usrtrim) { # will par() always have the true limits? as long as user has not reset par() before add.log.axis
+     if(side == 1 | side == 3) {
+       the.logs <- the.logs[the.logs >= 10^par()$usr[1]]
+       the.logs <- the.logs[the.logs <= 10^par()$usr[2]]
+     }
+     if(side == 2 | side == 4) {
+       the.logs <- the.logs[the.logs >= 10^par()$usr[3]]
+       the.logs <- the.logs[the.logs <= 10^par()$usr[4]]
+     }
+   #}
    if(make.labs) {
       axis(side, at=the.logs, labels=the.logs, tcl=0, col.ticks=col.ticks,  col=NA, ...)
       mtext(label, line=2, side=side)
