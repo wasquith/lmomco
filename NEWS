@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Changes in version 2.5.5 (2026-06-01)
+Changes in version 2.5.6 (2026-07-01)
 -  Mathematical correction in lmomlap.Rd for Tau4 but correct in lmomlap.R.
 -  Expanded lmomlap.Rd to demonstrate Hosking (1986) integer ratios in parts of
      the algorithm for computation of the distribution parameters and added
@@ -18,6 +18,11 @@ Changes in version 2.5.5 (2026-06-01)
 -  NAMESPACE received an import from stats::poly() to support the polynomials
      inside lmomtri().
 -  Addition made to inst/ERRATA_FOR_ISBN9781463508418.txt related to CDF work.
+-  Added trimming of the log-cycled ticks to par()$usr in add.log.axis.R. This
+     has been missed for years because one rarely disables R's clipping mask.
+-  Added trimming to par()$usr of the axis operations in add.lmomco.axis.R and
+     added arguments npp.digits and npp.line to help a user more readily adapt
+     to their needs without having to define an entire NPP.control list.
 
 
 Changes in version 2.5.5 (2026-04-20)
