@@ -133,7 +133,7 @@ function(lmr=NULL,
      if(! nopdq3) {
         lines(lmr$pdq3, col="darkgreen", lwd=1.3*lwd.cex, lty=2)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Polynomial Quantile-Density3", "PDQ3")
+        entries[entryi] <- ifelse(expand.names, "Polynomial Density-Quantile3", "PDQ3")
         Elwd[entryi] <- 1.3*lwd.cex
         Ecol[entryi] <- "darkgreen"
         Epch[entryi] <- NA

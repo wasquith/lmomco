@@ -71,7 +71,7 @@ function(lmr=NULL,
         if(trucate.tau4.to.gtzero) tmp <- tmp[tmp[,1] >= 0, ]
         lines(tmp, col="darkgreen", lwd=1*lwd.cex, lty=1)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Polynomial Quantile Density4", "PDQ4")
+        entries[entryi] <- ifelse(expand.names, "Polynomial Density-Quantile4", "PDQ4")
         Elwd[entryi] <- 1*lwd.cex
         Ecol[entryi] <- "darkgreen"
         Epch[entryi] <- NA
