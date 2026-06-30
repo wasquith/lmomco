@@ -23,6 +23,8 @@ Changes in version 2.5.6 (2026-07-01)
 -  Added trimming to par()$usr of the axis operations in add.lmomco.axis.R and
      added arguments npp.digits and npp.line to help a user more readily adapt
      to their needs without having to define an entire NPP.control list.
+-  Fixed nomenclature of PDQ3 and PDQ4 in plotlmrdia.R and plotlmrdia46.R in
+     their TitleCase representation by argument expand.names.
 
 
 Changes in version 2.5.5 (2026-04-20)
@@ -1850,7 +1852,7 @@ Changes in version 0.4 (2006-02-28)
 -  Numerous enhancements to the documentation.
 -  BUG FIX: on fourth L-moment of Cauchy distribution in lmomcau().
 -  BUG FIX: on absolute value of TAU5 in are.lmom.valid().
--  BUG FIXES on are.pargld.valid().
+-  BUG FIX: on are.pargld.valid().
 -  Addition of cdfgld() [stable], lmomgld() [stable], pargld() [experimental].
 -  Addition of lmomTLgld() [stable] and parTLgld() [experimental].
 -  Addition of lmomTLgpa() [stable] and parTLgpa() [stable].
