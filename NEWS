@@ -1,6 +1,11 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
+Changes in version 2.5.7 (2026-07-03)
+-  Removed urls to https://www.amazon.com/dp/1463508417 because redirections
+     are detected by some checked but not others.
+
+
 Changes in version 2.5.6 (2026-07-01)
 -  Mathematical correction in lmomlap.Rd for Tau4 but correct in lmomlap.R.
 -  Expanded lmomlap.Rd to demonstrate Hosking (1986) integer ratios in parts of

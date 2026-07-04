@@ -3,7 +3,7 @@ ERRATA FOR FIRST EDITION OF THE FOLLOWING BOOK
     Asquith, W.H., 2011, Distributional analysis with L-moment statistics
        using the R environment for statistical computing: Createspace
        Independent Publishing Platform, 2nd printing, ISBN 978--146350841--8.
-       http://www.amazon.com/dp/1463508417
+       https://www.amazon.com/dp/1463508417.
 
 ========== START ERRATA (post May    2026) ======
 
