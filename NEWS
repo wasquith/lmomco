@@ -1,6 +1,19 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
+Changes in version 2.5.8 (2026-MM-DD)
+-  Added transf and nolabels arguments to add.lmomco.axis() supporting Gumbel
+     reduced and logistic reduced variates + total disabling of axis labels.
+-  Added better cross-linking function references in grv2prob.Rd, lrv2prob.Rd,
+     prob2grv.Rd, and prob2lrv.Rd.
+-  Removed trailing spaces on a few lines in lcomoms2.R.
+-  Added the titlecase argument to plotlmrdia() and plotlmrdia46() for legend.
+-  Added true hyphen character insertion into the applicable areas in functions
+     plotlmrdia() and plotlmrdia46() with argument rehyphen.
+-  Minor edits to add.log.axis.Rd, dat2bernqua.Rd, parglo.Rd, plmomco.Rd,
+     qlmomco.Rd, and slmomco.Rd.
+
+
 Changes in version 2.5.7 (2026-07-03)
 -  Removed urls to https://www.amazon.com/dp/1463508417 because redirections
      are detected by some checked but not others.
