@@ -16,7 +16,7 @@ Changes in version 2.5.8 (2026-MM-DD)
 
 Changes in version 2.5.7 (2026-07-03)
 -  Removed urls to https://www.amazon.com/dp/1463508417 because redirections
-     are detected by some checked but not others.
+     are detected by some checks but not others.
 
 
 Changes in version 2.5.6 (2026-07-01)
