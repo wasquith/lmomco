@@ -6,7 +6,7 @@ function(L2) {
   }
 
   # Following Serfling and Xiao (2006)
-  #  L-correlations are the L-comoment coefficents of L-scale
+  #  L-correlations are the L-comoment coefficients of L-scale
   #  The diagonal of LC are the coefficients of L-variation
   LC <- Lcomoment.coefficients(L2,L2)
   return(LC)
