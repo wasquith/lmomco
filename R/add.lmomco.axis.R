@@ -1,10 +1,31 @@
 "add.lmomco.axis" <-
-function(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
+function(side=1, nolabels=FALSE,
+         twoside=FALSE, twoside.suppress.labels=FALSE,
          side.type=c("NPP", "RI", "SNV"), otherside.type=c("NA", "RI", "SNV", "NPP"),
          alt.lab=NA, alt.other.lab=NA, npp.as.aep=FALSE, case=c("upper", "lower"),
          NPP.control=NULL, RI.control=NULL, SNV.control=NULL,
-         npp.digits=3, npp.line=3, ...) {
-   case <- match.arg(case)
+         npp.digits=3, npp.line=3, transf=c("norm", "grv", "lrv"), ...) {
+   case   <- match.arg(case  )
+   transf <- tolower(transf)
+   transf <- match.arg(transf)
+   if(       transf == "norm") {
+     ptrans <- pnorm
+     qtrans <- qnorm
+   } else if(transf == "grv") {
+     ptrans <- grv2prob
+     qtrans <- prob2grv
+   } else if(transf == "lrv") {
+     ptrans <- lrv2prob
+     qtrans <- prob2lrv
+   } else {
+     stop("should not be here in logic")
+   }
+   if(nolabels) {
+     mymtext <- function(...) { }
+   } else {
+     mymtext <- mtext
+   }
+
    other.side <- switch(as.character(side), "1"=3, "2"=4, "3"=1, "4"=1)
 
    side.type      <- match.arg(side.type)
@@ -14,7 +35,7 @@ function(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
    lims <- par()$usr; #print(lims)
    ifelse(side == 1 | side == 3, lims <- lims[1:2], lims <- lims[3:4])
    #print(lims)
-   lims <- pnorm(lims)
+   lims <- ptrans(lims)
    #print(lims)
    "my.nonexceeds" <- function(minors=FALSE) {
       if(minors) {
@@ -56,7 +77,13 @@ function(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
                          Tyear=c(2, 5, 10, 25, 50, 100, 200, 500, 1000), line=2)
    }
    if(is.null(SNV.control)) {
-      txt.snv <- ifelse(case == "upper", "STANDARD NORMAL VARIATE", "Standard normal variate")
+      if(       transf == "norm") {
+        txt.snv <- ifelse(case == "upper", "STANDARD NORMAL VARIATE",  "Standard normal variate" )
+      } else if(transf == "grv") {
+        txt.snv <- ifelse(case == "upper", "GUMBEL REDUCED VARIATE",   "Gumbel reduced variate"  )
+      } else if(transf == "lrv") {
+        txt.snv <- ifelse(case == "upper", "LOGISTIC REDUCED VARIATE", "Logistic reduced variate")
+      }
       the.label <- ifelse(is.na(alt.lab), txt.snv, alt.lab)
       SNV.control <- list(label=the.label,
                           begin=-5, end=5, by=0.5, line=2)
@@ -71,7 +98,7 @@ function(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
       } else {
          the.true.NPP.lab <-     NPP.lab
       }
-      qNPP <- qnorm(NPP); qNPP.lab <- qnorm(NPP.lab)
+      qNPP <- qtrans(NPP); qNPP.lab <- qtrans(NPP.lab)
       #print(qNPP); print(qNPP.lab)
       if(side == 1 | side == 3) {
         qNPP     <- qNPP[qNPP         >= par()$usr[1]]
@@ -95,11 +122,11 @@ function(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
       if(npp.as.aep) {
         NPP.lab <- format(1-the.true.NPP.lab, digits=NPP.control$digits,
                                                nsmall=NPP.control$digits)
-        me <- qnorm(1 - as.numeric(NPP.lab))
+        me <- qtrans(1 - as.numeric(NPP.lab))
       } else {
         NPP.lab <- format(  the.true.NPP.lab, digits=NPP.control$digits,
                                               nsmall=NPP.control$digits)
-        me <- qnorm(as.numeric(NPP.lab))
+        me <- qtrans(as.numeric(NPP.lab))
       }
 
       if(side == 1 | side == 3) {
@@ -122,7 +149,7 @@ function(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
       if(npp.as.aep) {
         mtext(NPP.control$other.label, line=NPP.control$line, side=side)
       } else {
-        mtext(NPP.control$label, line=NPP.control$line, side=side)
+        mymtext(NPP.control$label,     line=NPP.control$line, side=side)
       }
 
       if(twoside) {
@@ -136,7 +163,7 @@ function(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
    }
 
    RIf <- function(side, other.side) {
-      F <- 1 - 1/RI.control$Tyear; qF <- qnorm(F); labF <- RI.control$Tyear
+      FF <- 1 - 1/RI.control$Tyear; qF <- qtrans(FF); labF <- RI.control$Tyear
       if(side == 1 | side == 3) {
         labF <- labF[qF >= par()$usr[1]]
         labF <- labF[qF <= par()$usr[2]]
@@ -153,7 +180,7 @@ function(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
       if(twoside) {
          Axis(at=qF,  labels=NA, side=other.side, ...)
       }
-      mtext(RI.control$label, line=RI.control$line, side=side)
+      mymtext(RI.control$label, line=RI.control$line, side=side)
    }
 
    SNVf <- function(side, other.side) {
@@ -172,7 +199,7 @@ function(side=1, twoside=FALSE, twoside.suppress.labels=FALSE,
         SNV <- SNV[SNV <= par()$usr[4]]
       }
       Axis(SNV, at=SNV, side=side, ...)
-      mtext(SNV.control$label, line=SNV.control$line, side=side)
+      mymtext(SNV.control$label, line=SNV.control$line, side=side)
       if(twoside) {
          Axis(SNV, at=SNV, side=other.side, ...)
       }
