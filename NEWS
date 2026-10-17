@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
                          NEWS for R Package "lmomco"
 --------------------------------------------------------------------------------
-Changes in version 2.5.8 (2026-MM-DD)
+Changes in version 2.5.8 (2026-10-18)
 -  Added transf and nolabels arguments to add.lmomco.axis() supporting Gumbel
      reduced and logistic reduced variates + total disabling of axis labels.
 -  Added better cross-linking function references in grv2prob.Rd, lrv2prob.Rd,
