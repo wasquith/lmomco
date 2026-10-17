@@ -2,7 +2,7 @@
 \alias{prob2lrv}
 \title{Convert a Vector of Annual Nonexceedance Probabilities to Logistic Reduced Variates}
 \description{
-This function converts a vector of annual nonexceedance probabilities \eqn{F} to logistic reduced variates (LRV, \eqn{lrv}) 
+This function converts a vector of annual nonexceedance probabilities \eqn{F} to logistic reduced variates (LRV, \eqn{lrv})
 \deqn{lrv = 1/(\exp(-lrv) + 1)\mbox{,}}
 where \eqn{0 \le F \le 1}. The logistic distribution, which is generalized by the Generalized Logistic (\code{\link{quaglo}}) with \eqn{\kappa = 0}, will plot as a straightline when the horizontal axis is LRV transformed.
 }
@@ -19,7 +19,7 @@ prob2lrv(f)
 \references{
 Bradford, R.B., 2002, Volume-duration growth curves for flood estimation in permeable catchments: Hydrology and Earth System Sciences, v. 6, no. 5, pp. 939--947.
 }
-\seealso{\code{\link{lrv2prob}}, \code{\link{prob2T}}
+\seealso{\code{\link{lrv2prob}}, \code{\link{prob2T}}, \code{\link{grv2prob}}
 }
 \examples{
 F <- nonexceeds()

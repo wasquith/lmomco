@@ -19,7 +19,7 @@ lrv2prob(lrv)
 \references{
 Bradford, R.B., 2002, Volume-duration growth curves for flood estimation in permeable catchments: Hydrology and Earth System Sciences, v. 6, no. 5, pp. 939--947.
 }
-\seealso{\code{\link{prob2lrv}}, \code{\link{prob2T}}
+\seealso{\code{\link{prob2lrv}}, \code{\link{prob2T}}, \code{\link{prob2grv}}
 }
 \examples{
 T <- c(1, 2, 5, 10, 25, 50, 100, 250, 500); lrv <- prob2grv(T2prob(T))

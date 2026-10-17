@@ -16,7 +16,7 @@ grv2prob(grv)
    A vector of annual nonexceedance probabilities.
 }
 \author{W.H. Asquith}
-\seealso{\code{\link{prob2grv}}, \code{\link{prob2T}}
+\seealso{\code{\link{prob2grv}}, \code{\link{prob2T}}, \code{\link{prob2lrv}}
 }
 \examples{
 T <- c(1, 2, 5, 10, 25, 50, 100, 250, 500); grv <- prob2grv(T2prob(T))
