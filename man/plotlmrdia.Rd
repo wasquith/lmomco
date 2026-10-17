@@ -14,7 +14,8 @@ plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
            ylab="L-kurtosis (Tau4), dimensionless",
            add=FALSE, empty=FALSE, autoaxes=TRUE,
            autolegend=FALSE, xleg=NULL, yleg=NULL, legendcex=0.9,
-           ncol=1, text.width=NULL, lwd.cex=1, expand.names=FALSE, ...)
+           ncol=1, text.width=NULL, lwd.cex=1,
+           expand.names=FALSE, titlecase=TRUE, rehyphen=FALSE, ...)
 }
 \arguments{
   \item{lmr}{L-moment diagram object from \code{\link{lmrdia}}, if \code{NULL}, then \code{empty} is internally set to \code{TRUE}.}
@@ -50,6 +51,8 @@ plotlmrdia(lmr=NULL, nopoints=FALSE, nolines=FALSE, nolimits=FALSE,
   \item{text.width}{Argument of the same name for \code{legend}. Setting to 0.1 for \code{ncol} set to 2 seems to work pretty well when two columns are desired.}
   \item{lwd.cex}{Expansion factor on the line widths.}
   \item{expand.names}{Expand the distribution names in the legend.}
+  \item{titlecase}{A logical influencing capitalization in the legend.}
+  \item{rehyphen}{Perform substitution of the hyphen with \code{"\u00ad"}, which is the proper hyphen in UTF-8 encoding.}
   \item{...}{Additional arguments passed into \code{plot()} and \code{legend()} functions..}
 }
 \note{
@@ -93,40 +96,43 @@ Vogel, R.M., and Fennessey, N.M., 1993, L moment diagrams should replace product
 \author{W.H. Asquith}
 \seealso{\code{\link{lmrdia}}, \code{\link{plotlmrdia46}}, \code{\link{plotradarlmr}}}
 \examples{
-plotlmrdia(lmrdia()) # simplest of all uses
+plotlmrdia(lmrdia(), autolegend=TRUE, xleg="topleft",
+                     expand.names=TRUE, titlecase=FALSE)
 
 \dontrun{
-# A more complex example follows: for a given mean, L-scale, L-skew, and L-kurtosis,
-# use sample size of 30, use 500 simulations, set L-moments, fit the Kappa distribution
-T3 <- 0.34; T4 <- 0.21; n <- 30; nsim <- 500
-lmr <- vec2lmom(c(10000, 7500, T3, T4)); kap <- parkap(lmr)
+  # A more complex example follows: for a given mean, L-scale, L-skew, and L-kurtosis,
+  # use sample size of 30, use 500 simulations, set L-moments, fit Kappa distribution
+  T3 <- 0.34; T4 <- 0.21; n <- 30; nsim <- 500
+  lmr <- vec2lmom(c(10000, 7500, T3, T4)); kap <- parkap(lmr)
 
-# create vectors for storing simulated L-skew (t3) and L-kurtosis (t4)
-t3 <- t4 <- vector(mode="numeric")
+  # create vectors for storing simulated L-skew (t3) and L-kurtosis (t4)
+  t3 <- t4 <- vector(mode="numeric")
 
-# perform nsim simulations by randomly drawing from the Kappa distribution
-# and compute the L-moments in sim.lmr and store the t3 and t4 of each sample
-for(i in 1:nsim) {
-  sim.lmr <- lmoms(rlmomco(n, kap))
-  t3[i] <- sim.lmr$ratios[3]; t4[i] <- sim.lmr$ratios[4]
-}
+  # perform nsim simulations by randomly drawing from the Kappa distribution
+  # and compute the L-moments in sim.lmr and store the t3 and t4 of each sample
+  for(i in 1:nsim) {
+    sim.lmr <- lmoms(rlmomco(n, kap))
+    t3[i] <- sim.lmr$ratios[3]; t4[i] <- sim.lmr$ratios[4]
+  }
 
-# plot the diagram and "zoom" by manually setting the axis limits
-plotlmrdia(xlim=c(-0.1, 0.5), ylim=c(-0.1, 0.4), las=1, empty=TRUE)
+  # plot the diagram and "zoom" by manually setting the axis limits
+  # Try wrapping a pdf() ... dev.off() around these plotting operations and set
+  # rehyphen=TRUE to see a proper hyphen inserted into the axis labels.
+  plotlmrdia(xlim=c(-0.1,0.5), ylim=c(-0.1,0.4), las=1, empty=TRUE, rehyphen=FALSE)
 
-# Follow up by plotting the {t3, t4} values and the mean of the values
-points(t3, t4, pch=21, bg="white", lwd=0.8) # plot each simulation
+  # Follow up by plotting the {t3, t4} values and the mean of the values
+  points(t3, t4, pch=21, bg="white", lwd=0.8) # plot each simulation
 
-# plot crossing dashed lines at true values of L-skew and L-kurtosis
-abline(v=T3, col="salmon4", lty=2, lwd=3) # Theoretical values for the
-abline(h=T4, col="salmon4", lty=2, lwd=3) # distribution as fit
+  # plot crossing dashed lines at true values of L-skew and L-kurtosis
+  abline(v=T3, col="salmon4", lty=2, lwd=3) # Theoretical values for the
+  abline(h=T4, col="salmon4", lty=2, lwd=3) # distribution as fit
 
-points(mean(t3), mean(t4), pch=16, cex=3) # mean of simulations and
-# should plot reasonably close to the salmon4-colored crossing lines
+  points(mean(t3), mean(t4), pch=16, cex=3) # mean of simulations and
+  # should plot reasonably close to the salmon4-colored crossing lines
 
-# plot the trajectories of the distributions
-plotlmrdia(lmrdia(), add=TRUE, nopoints=TRUE, inset=0.01,
-           autolegend=TRUE, xleg="topleft", lwd.cex=1.5) # }
+  # plot the trajectories of the distributions
+  plotlmrdia(lmrdia(), add=TRUE, nopoints=TRUE, inset=0.01,
+             autolegend=TRUE, xleg="topleft", lwd.cex=1.5, rehyphen=FALSE) # }
 }
 \keyword{L-moment ratio diagram}
 \keyword{Graphics}

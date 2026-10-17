@@ -23,8 +23,12 @@ function(lmr=NULL,
          ylab="L-kurtosis (Tau4), dimensionless",
          add=FALSE, empty=FALSE, autoaxes=TRUE,
          autolegend=FALSE, xleg=NULL, yleg=NULL, legendcex=0.9,
-         ncol=1, text.width=NULL, lwd.cex=1, expand.names=FALSE,
+         ncol=1, text.width=NULL, lwd.cex=1,
+         expand.names=FALSE, titlecase=TRUE, rehyphen=FALSE,
          ...) {
+
+   if(rehyphen) xlab <- gsub("-", "\u00ad", xlab) # see documentation of pdf()
+   if(rehyphen) ylab <- gsub("-", "\u00ad", ylab) # see documentation of pdf()
 
    entries <- vector(mode = "character")
    Elwd    <- vector(mode = "numeric")
@@ -51,7 +55,7 @@ function(lmr=NULL,
    if(! nolimits) {
      lines(lmr$limits, lwd=2*lwd.cex, col=grey(0.4))
      entryi <- entryi + 1
-     entries[entryi] <- "Theoretical limits"
+     entries[entryi] <- ifelse(titlecase, "Theoretical Limits", "Theoretical limits")
      Elwd[entryi] <- 2*lwd.cex
      Ecol[entryi] <- grey(0.4)
      Epch[entryi] <- NA
@@ -62,8 +66,9 @@ function(lmr=NULL,
      if(! noaep4) {
         lines(lmr$aep4, col="red", lwd=1*lwd.cex, lty=4)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Asymmetrical Exponential Power4 lower bounds",
-                                                "AEP4 lower bounds")
+        entries[entryi] <- ifelse(! expand.names, "AEP4 lower bounds",
+                           ifelse(titlecase, "Asymmetrical Exponential Power4 lower bounds",
+                                             "Asymmetrical exponential power4 lower bounds"))
         Elwd[entryi] <- 1*lwd.cex
         Ecol[entryi] <- "red"
         Epch[entryi] <- NA
@@ -73,7 +78,9 @@ function(lmr=NULL,
      if(! nogev) {
         lines(lmr$gev, col="darkred", lwd=1*lwd.cex, lty=1)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Generalized Extreme Value", "GEV")
+        entries[entryi] <- ifelse(! expand.names, "GEV",
+                           ifelse(titlecase, "Generalized Extreme Value",
+                                             "Generalized extreme value"))
         Elwd[entryi] <- 1*lwd.cex
         Ecol[entryi] <- "darkred"
         Epch[entryi] <- NA
@@ -83,7 +90,9 @@ function(lmr=NULL,
      if(! noglo) {
         lines(lmr$glo, col="green", lwd=1*lwd.cex)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Generalized Logistic", "GLO")
+        entries[entryi] <- ifelse(! expand.names, "GLO",
+                           ifelse(titlecase, "Generalized Logistic",
+                                             "Generalized logistic"))
         Elwd[entryi] <- 1*lwd.cex
         Ecol[entryi] <- "green"
         Epch[entryi] <- NA
@@ -93,7 +102,9 @@ function(lmr=NULL,
      if(! nogno) {
         lines(lmr$gno, col="blue", lwd=1*lwd.cex, lty=2)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Generalized Normal", "GNO")
+        entries[entryi] <- ifelse(! expand.names, "GNO",
+                           ifelse(titlecase, "Generalized Normal",
+                                             "Generalized normal"))
         Elwd[entryi] <- 1*lwd.cex
         Ecol[entryi] <- "blue"
         Epch[entryi] <- NA
@@ -103,7 +114,8 @@ function(lmr=NULL,
      if(! nogov) {
         lines(lmr$gov, col="magenta", lwd=1*lwd.cex, lty=2)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Govindarajulu", "GOV")
+        entries[entryi] <- ifelse(! expand.names, "GOV",
+                           ifelse(titlecase, "Govindarajulu", "Govindarajulu"))
         Elwd[entryi] <- 1*lwd.cex
         Ecol[entryi] <- "magenta"
         Epch[entryi] <- NA
@@ -113,7 +125,8 @@ function(lmr=NULL,
      if(! nogpa) {
         lines(lmr$gpa, col="blue", lwd=1*lwd.cex)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Generalized Pareto", "GPA")
+        entries[entryi] <- ifelse(! expand.names, "GPA",
+                           ifelse(titlecase, "Generalized Pareto", "Generalized Pareto"))
         Elwd[entryi] <- 1*lwd.cex
         Ecol[entryi] <- "blue"
         Epch[entryi] <- NA
@@ -123,7 +136,8 @@ function(lmr=NULL,
      if(! nope3) {
         lines(lmr$pe3, col="purple", lwd=1*lwd.cex)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Pearson Type III" , "PE3")
+        entries[entryi] <- ifelse(! expand.names, "PE3",
+                           ifelse(titlecase, "Pearson Type III", "Pearson type III"))
         Elwd[entryi] <- 1*lwd.cex
         Ecol[entryi] <- "purple"
         Epch[entryi] <- NA
@@ -133,7 +147,9 @@ function(lmr=NULL,
      if(! nopdq3) {
         lines(lmr$pdq3, col="darkgreen", lwd=1.3*lwd.cex, lty=2)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Polynomial Density-Quantile3", "PDQ3")
+        entries[entryi] <- ifelse(! expand.names, "PDQ3",
+                           ifelse(titlecase, "Polynomial Density-Quantile3",
+                                             "Polynomial density-quantile3"))
         Elwd[entryi] <- 1.3*lwd.cex
         Ecol[entryi] <- "darkgreen"
         Epch[entryi] <- NA
@@ -143,7 +159,8 @@ function(lmr=NULL,
      if(! nowei) {
         lines(lmr$wei, col="darkorange", lwd=1*lwd.cex, lty=1)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Weibull", "WEI")
+        entries[entryi] <- ifelse(! expand.names, "WEI",
+                           ifelse(titlecase, "Weibull", "Weibull"))
         Elwd[entryi] <- 1*lwd.cex
         Ecol[entryi] <- "darkorange"
         Epch[entryi] <- NA
@@ -155,7 +172,8 @@ function(lmr=NULL,
      if(! noexp) {
         points(lmr$exp, pch=16, col="red", cex=1.5)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Exponential", "EXP")
+        entries[entryi] <- ifelse(! expand.names, "EXP",
+                           ifelse(titlecase, "Exponential", "Exponential"))
         Elwd[entryi] <- NA
         Ecol[entryi] <- "red"
         Epch[entryi] <- 16
@@ -165,7 +183,8 @@ function(lmr=NULL,
      if(! nonor) {
         points(lmr$nor, pch=15, col="red", cex=1.5)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Normal", "NOR")
+        entries[entryi] <- ifelse(! expand.names, "NOR",
+                           ifelse(titlecase, "Normal", "Normal"))
         Elwd[entryi] <- NA
         Ecol[entryi] <- "red"
         Epch[entryi] <- 15
@@ -175,7 +194,8 @@ function(lmr=NULL,
      if(! nogum) {
         points(lmr$gum, pch=17, col="red", cex=1.5)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Gumbel", "GUM")
+        entries[entryi] <- ifelse(! expand.names, "GUM",
+                           ifelse(titlecase, "Gumbel", "Gumbel"))
         Elwd[entryi] <- NA
         Ecol[entryi] <- "red"
         Epch[entryi] <- 17
@@ -185,7 +205,8 @@ function(lmr=NULL,
      if(! noray) {
         points(lmr$ray, pch=18, col="red", cex=1.5)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Rayleigh", "RAY")
+        entries[entryi] <- ifelse(! expand.names, "RAY",
+                           ifelse(titlecase, "Rayleigh", "Rayleigh"))
         Elwd[entryi] <- NA
         Ecol[entryi] <- "red"
         Epch[entryi] <- 18
@@ -195,7 +216,8 @@ function(lmr=NULL,
      if(! nouni) {
         points(lmr$uniform, pch=12, cex=1.25, col="red")
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Uniform", "UNI")
+        entries[entryi] <- ifelse(! expand.names, "UNI",
+                           ifelse(titlecase, "Uniform", "Uniform"))
         Elwd[entryi] <- NA
         Ecol[entryi] <- "red"
         Epch[entryi] <- 12
@@ -205,7 +227,8 @@ function(lmr=NULL,
      if(! nocau) {
         points(lmr$cau, pch=13, col="turquoise4", cex=1.25)
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "CAU (TL1)", "Cauchy (TL1)")
+        entries[entryi] <- ifelse(! expand.names, "CAU (TL1)",
+                           ifelse(titlecase, "Cauchy (TL1)", "Cauchy (TL1)"))
         Elwd[entryi] <- NA
         Ecol[entryi] <- "turquoise4"
         Epch[entryi] <- 13
@@ -215,7 +238,8 @@ function(lmr=NULL,
      if(! nosla) {
         points(lmr$sla, pch=10, cex=1.25, col="turquoise4")
         entryi <- entryi + 1
-        entries[entryi] <- ifelse(expand.names, "Slash (TL1)", "SLA (TL1)")
+        entries[entryi] <- ifelse(! expand.names, "SLA (TL1)",
+                           ifelse(titlecase, "Slash (TL1)", "Slash (TL1)"))
         Elwd[entryi] <- NA
         Ecol[entryi] <- "turquoise4"
         Epch[entryi] <- 10
@@ -238,6 +262,8 @@ function(lmr=NULL,
      try( do.call(legend, dots), silent=TRUE)
      # use do.call() to then call legend() with our regular arguments and the
    }  # potential for incoming arguments on the ... from the plotlmrdia() call.
+
+   if(rehyphen) entries <- gsub("-", "\u00ad", entries) # see documentation of pdf()
 
    if(autolegend == TRUE & length(entries) > 0) {
      if(is.character(xleg)) {

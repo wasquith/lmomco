@@ -6,7 +6,7 @@ Plot the Tau4-Tau6 L-moment ratio diagram showing trajectories of \eqn{\tau_4} a
 }
 \usage{
 plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
-             noaep4=FALSE,  nogld_byt5opt=TRUE, nopdq4=FALSE,  nost3=FALSE,
+             noaep4=FALSE,  nogld_byt5opt=TRUE, nopdq4=FALSE, nost3=FALSE,
              nosymgdd=TRUE, nosymstable=FALSE,  notukey=FALSE,
              nocau=TRUE, nolap=FALSE,  nonor=FALSE, nosla=TRUE,
              trucate.tau4.to.gtzero=TRUE,
@@ -14,7 +14,8 @@ plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
              ylab="Sixth L-moment ratio (Tau6), dimensionless",
              add=FALSE, empty=FALSE, autoaxes=TRUE,
              autolegend=FALSE, xleg=NULL, yleg=NULL, legendcex=0.9,
-             ncol=1, text.width=NULL, lwd.cex=1, expand.names=FALSE, ...)
+             ncol=1, text.width=NULL, lwd.cex=1,
+             expand.names=FALSE, titlecase=TRUE, rehyphen=FALSE, ...)
 }
 \arguments{
   \item{lmr}{L-moment diagram object from \code{\link{lmrdia46}}, if \code{NULL}, then \code{empty} is internally set to \code{TRUE}.}
@@ -45,6 +46,8 @@ plotlmrdia46(lmr=NULL, nopoints=FALSE, nolines=FALSE,
   \item{text.width}{Argument of the same name for \code{legend}. Setting to 0.1 for \code{ncol} set to 2 seems to work pretty well when two columns are desired.}
   \item{lwd.cex}{Expansion factor on the line widths.}
   \item{expand.names}{Expand the distribution names in the legend.}
+  \item{titlecase}{A logical influencing capitalization in the legend.}
+  \item{rehyphen}{Perform substitution of the hyphen with \code{"\u00ad"}, which is the proper hyphen in UTF-8 encoding.}
   \item{...}{Additional arguments passed into the \code{plot()} and \code{legend()} functions.}
 }
 \note{
@@ -75,40 +78,42 @@ plotlmrdia46(lmrdia46(), nogld_byt5opt=FALSE, nosymgdd=FALSE,
              autolegend=TRUE, xleg="topleft")
 
 \dontrun{
-# A more complex example follows: for a given mean, L-scale, L-skew = 0 (symmetry), and
-# L-kurtosis, use sample size of 30, use 500 simulations, set L-moments,
-# fit the Asymmetric Exponential Power4 distribution, which is symmetrical when the
-# L-skew is zero and thus the distribution is the Exponential Power.
-T3  <- 0; T4 <- 0.21; n <- 30; nsim <- 500
-lmr <- vec2lmom(c(10000, 7500, T3, T4, 0)); aep4 <- paraep4(lmr)
-T6  <- theoLmoms(aep4, nmom=6)$ratios[6]
+  # A more complex example follows: for a given mean, L-scale, L-skew = 0 (symmetry),
+  # and L-kurtosis, use sample size of 30, use 500 simulations, set L-moments,
+  # fit the Asymmetric Exponential Power4 distribution, which is symmetrical when the
+  # L-skew is zero and thus the distribution is the Exponential Power.
+  T3  <- 0; T4 <- 0.21; n <- 30; nsim <- 500
+  lmr <- vec2lmom(c(10000, 7500, T3, T4, 0)); aep4 <- paraep4(lmr)
+  T6  <- theoLmoms(aep4, nmom=6)$ratios[6]
 
-# create vectors for storing simulated L-kurtosis (t4) and Tau6 (t6)
-t4 <- t6 <- vector(mode="numeric")
+  # create vectors for storing simulated L-kurtosis (t4) and Tau6 (t6)
+  t4 <- t6 <- vector(mode="numeric")
 
-# perform nsim simulations by randomly drawing from the AEP4 distribution
-# and compute the L-moments in sim.lmr and store the t4 and t6 of each sample
-for(i in 1:nsim) {
-  sim.lmr <- lmoms(rlmomco(n, aep4), nmom=6)
-  t4[i] <- sim.lmr$ratios[4]; t6[i] <- sim.lmr$ratios[6]
-}
+  # perform nsim simulations by randomly drawing from the AEP4 distribution
+  # and compute the L-moments in sim.lmr and store the t4 and t6 of each sample
+  for(i in 1:nsim) {
+    sim.lmr <- lmoms(rlmomco(n, aep4), nmom=6)
+    t4[i] <- sim.lmr$ratios[4]; t6[i] <- sim.lmr$ratios[6]
+  }
 
-# plot the diagram and "zoom" by manually setting the axis limits
-plotlmrdia46(xlim=c(-0.05, 0.5), ylim=c(-0.1, 0.35), las=1, empty=TRUE)
+  # plot the diagram and "zoom" by manually setting the axis limits
+  # Try wrapping a pdf() ... dev.off() around these plotting operations and set
+  # rehyphen=TRUE to see a proper hyphen inserted into the axis labels.
+  plotlmrdia46(xlim=c(-0.05,0.5), ylim=c(-0.1,0.35), las=1, empty=TRUE, rehyphen=FALSE)
 
-# follow up by plotting the {t3, t4} values and the mean of the values
-points(t4, t6, cex=0.8, pch=21, bg="white", lwd=0.8) # plot each simulation
+  # follow up by plotting the {t3, t4} values and the mean of the values
+  points(t4, t6, cex=0.8, pch=21, bg="white", lwd=0.8) # plot each simulation
 
-# plot crossing dashed lines at true values of L-skew and L-kurtosis
-abline(v=T4, col="salmon4", lty=2, lwd=3) # Theoretical values for the
-abline(h=T6, col="salmon4", lty=2, lwd=3) # distribution as fit
+  # plot crossing dashed lines at true values of L-skew and L-kurtosis
+  abline(v=T4, col="salmon4", lty=2, lwd=3) # Theoretical values for the
+  abline(h=T6, col="salmon4", lty=2, lwd=3) # distribution as fit
 
-points(mean(t4), mean(t6), pch=16, cex=3) # mean of simulations and
-# should plot reasonably close to the salmon4-colored crossing lines
+  points(mean(t4), mean(t6), pch=16, cex=3) # mean of simulations and
+  # should plot reasonably close to the salmon4-colored crossing lines
 
-# plot the trajectories of the distributions
-plotlmrdia46(lmrdia46(), add=TRUE, nopoints=TRUE, inset=0.01,
-             autolegend=TRUE, xleg="topleft", lwd.cex=1.5) # }
+  # plot the trajectories of the distributions
+  plotlmrdia46(lmrdia46(), add=TRUE, nopoints=TRUE, inset=0.01,
+               autolegend=TRUE, xleg="topleft", lwd.cex=1.5, rehyphen=FALSE) # }
 }
 \keyword{L-moment ratio diagram}
 \keyword{L-moment ratio diagram (Tau4 and Tau6)}
