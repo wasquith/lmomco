@@ -15,7 +15,7 @@ slmomco(x, para)
   Exceedance probability (\eqn{0 \le S \le 1}) for \code{x}.
 }
 \author{W.H. Asquith}
-\seealso{\code{\link{dlmomco}}, \code{\link{plmomco}}, \code{\link{qlmomco}}, \code{\link{rlmomco}}, \code{\link{add.lmomco.axis}} }
+\seealso{\code{\link{dlmomco}}, \code{\link{plmomco}}, \code{\link{qlmomco}}, \code{\link{rlmomco}} }
 \examples{
 para <- vec2par(c(0,1),type='nor') # Standard Normal parameters
 exceed <- slmomco(1, para) # percentile of one standard deviation

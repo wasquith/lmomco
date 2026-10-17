@@ -25,24 +25,24 @@ add.log.axis(make.labs=FALSE, logs=c(2, 3, 4, 5, 6, 7, 8, 9), side=1,
 \seealso{\code{\link{add.lmomco.axis}} }
 \examples{
 \dontrun{
-par(mgp=c(3,0.5,0)) # going to tick to the inside, change some parameters
-X <- 10^sort(rnorm(65)); pp <- pp(X) # generate synthetic data
-ylim <- add.log.axis(x=X) # snap to some nice integers within the cycle
-plot(qnorm(pp), X, xaxt="n", yaxt="n", xlab="", ylab="", log="y",
-     xlim=c(-2,3), ylim=ylim, pch=6, yaxs="i", col=4)
-add.lmomco.axis(las=2, tcl=0.5, side.type="RI", otherside.type="NPP")
-# Logarithmic axis: the base ticks to show logarithms
-add.log.axis(side=2,      tcl=0.8*abs(par()$tcl), two.sided=TRUE)
-#                   the long even-cycle tick, set to inside and outside
-add.log.axis(logs=c(1),   tcl=-0.5*abs(par()$tcl), side=2, two.sided=TRUE)
-add.log.axis(logs=c(1),   tcl=+1.3*abs(par()$tcl), side=2, two.sided=TRUE)
-#                   now a micro tick at the 1.5 logs but only on the right
-add.log.axis(logs=c(1.5), tcl=+0.5*abs(par()$tcl), side=4)
-#                   and only label the micro tick at 1.5 on the right
-add.log.axis(logs=c(1.5), side=4, make.labs=TRUE, las=3) # but weird rotate
-#                   add the bulk tick labeling and axis label.
-add.log.axis(logs=c(1, 2, 3, 4, 6), side=2, make.labs=TRUE, las=1, label="QUANTILE")
-par(mgp=c(3,1,0)) # restore defaults}
+  par(mgp=c(3,0.5,0)) # going to tick to the inside, change some parameters
+  X <- 10^sort(rnorm(65)); ppp <- pp(X) # generate synthetic data
+  ylim <- add.log.axis(x=X) # snap to some nice integers within the cycle
+  plot(qnorm(ppp), X, xaxt="n", yaxt="n", xlab="", ylab="", log="y",
+       xlim=c(-2,3), ylim=ylim, pch=6, yaxs="i", col=4)
+  add.lmomco.axis(las=2, tcl=0.5, side.type="RI", otherside.type="NPP")
+  # Logarithmic axis: the base ticks to show logarithms
+  add.log.axis(side=2,      tcl=0.8*abs(par()$tcl), two.sided=TRUE)
+  #                   the long even-cycle tick, set to inside and outside
+  add.log.axis(logs=c(1),   tcl=-0.5*abs(par()$tcl), side=2, two.sided=TRUE)
+  add.log.axis(logs=c(1),   tcl=+1.3*abs(par()$tcl), side=2, two.sided=TRUE)
+  #                   now a micro tick at the 1.5 logs but only on the right
+  add.log.axis(logs=c(1.5), tcl=+0.5*abs(par()$tcl), side=4)
+  #                   and only label the micro tick at 1.5 on the right
+  add.log.axis(logs=c(1.5), side=4, make.labs=TRUE, las=3) # but weird rotate
+  #                   add the bulk tick labeling and axis label.
+  add.log.axis(logs=c(1, 2, 3, 4, 6), side=2, make.labs=TRUE, las=1, label="QUANTILE")
+  par(mgp=c(3,1,0)) # restore defaults}
 }
 \keyword{utility (logarithmic)}
 \keyword{axis (utility)}

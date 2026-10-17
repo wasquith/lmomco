@@ -93,11 +93,11 @@ dat2bernqua(F, X, bound.type="either", listem=TRUE)$x
 dat2bernqua(F, X, bound.type="sd",     listem=TRUE, fix.lower=0)$x
 
 \dontrun{
-X <- sort(10^rnorm(20)); F <- nonexceeds(f01=TRUE)
+X <- sort(10^rnorm(20)); FF <- nonexceeds(f01=TRUE)
 plot(qnorm(pp(X)), X, xaxt="n", xlab="", ylab="QUANTILE", log="y")
 add.lmomco.axis(las=2, tcl=0.5, side.type="NPP", twoside=TRUE)
-lines(qnorm(F),     dat2bernqua(F,    X,  bound.type="sd"), col="red", lwd=2)
-lines(qnorm(F), exp(dat2bernqua(F,log(X), bound.type="sd"))) # }
+lines(qnorm(FF),     dat2bernqua(FF,    X,  bound.type="sd"), col="red", lwd=2)
+lines(qnorm(FF), exp(dat2bernqua(FF,log(X), bound.type="sd"))) # }
 
 \dontrun{
 X <- exp(rnorm(20)); F <- seq(0.001, 0.999, by=.001)
